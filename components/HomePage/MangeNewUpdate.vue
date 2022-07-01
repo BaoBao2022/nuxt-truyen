@@ -50,8 +50,8 @@ const mangas = ref([
       <div class="swiper swiper-initialized swiper-horizontal swiper-ios section-swiper">
         <Swiper slides-per-view="auto"
                 :pagination="true"
-                space-between="20"
-                :modules="modules" style="transform: translate3d(0px, 0px, 0px);">
+                :space-between="20"
+                :modules="modules" style="transform: translate3d(0px, 0px, 0px); padding-bottom: 50px">
           <SwiperSlide v-for="manga in mangas">
             <div class="aspect-h-4 aspect-w-3 rounded-xl">
               <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt">
@@ -85,45 +85,5 @@ const mangas = ref([
 <style scoped lang="scss">
 .swiper-slide {
   width: 30%
-}
-
-.section-swiper {
-  padding-bottom: 50px;
-}
-
-.swiper-pagination {
-  position: absolute;
-  text-align: center;
-  transition: opacity .3s;
-  transform: translateZ(0);
-  z-index: 10;
-}
-
-.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-  bottom: 10px;
-  left: 0;
-  width: 100%;
-}
-
-.section-swiper .swiper-pagination-bullet-active {
-  background-color: #f43f5e!important;
-}
-
-.swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-  margin: 0 var(--swiper-pagination-bullet-horizontal-gap,4px);
-}
-
-.swiper-pagination-clickable .swiper-pagination-bullet {
-  cursor: pointer;
-}
-
-.section-swiper .swiper-pagination-bullet {
-  height: 5px;
-  width: 5px;
-}
-
-.swiper-pagination-bullet-active {
-  opacity: var(--swiper-pagination-bullet-opacity,1);
-  background: var(--swiper-pagination-color,var(--swiper-theme-color));
 }
 </style>
