@@ -1,0 +1,31 @@
+@import "assets/scss/utils.scss";
+@import "assets/css/home.scss";
+@import './animate.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    /*background-color: #fff;*/
+    /*color: rgba(0, 0, 0, 0.8);*/
+    font-size: 1.6rem;
+    text-rendering: optimizeSpeed;
+    height: fit-content;
+    transition-duration: .35s;
+
+    --tw-bg-opacity: 1;
+    font-family: Nunito, sans-serif;
+}
+
+.dark-mode body {
+    /*background-color: #091a28;*/
+    background-color: rgb(31 31 31/var(--tw-bg-opacity));
+
+    /*color: #ebf4f1;*/
+}
+
+.sepia-mode body {
+    background-color: #f1e7d0;
+    color: #433422;
+}
