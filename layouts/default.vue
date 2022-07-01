@@ -1,5 +1,7 @@
 <template>
   <TheHeader/>
-  <TheHome/>
+  <main class="overflow-x-hidden">
+    <slot/>
+  </main>
   <TheFooter/>
 </template>

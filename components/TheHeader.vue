@@ -1,5 +1,14 @@
 <script lang="ts" setup>
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
+import {useRoute} from "#app";
+import {computed} from "#imports";
+const route = useRoute();
+const hasIndexPage = computed(() => {
+  return route.name.startsWith("index");
+});
+
+console.log("hasIndexPage", hasIndexPage.value);
+
 </script>
 
 <template>
@@ -15,7 +24,7 @@ import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
         <TheSidebar :close="close" />
       </PopoverPanel>
     </transition>
-    <header class="h-40 bg-background">
+    <header :class="hasIndexPage ? 'h-40 bg-background' : 'w-full max-w-[1400px] h-40 absolute top-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent' ">
       <div class="header-content mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
         <PopoverButton class="outline-0 button mx-6 rounded-full p-4 md:m-0 lg:hidden">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
