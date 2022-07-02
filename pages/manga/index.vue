@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+import {useRoute} from "#imports";
 import {SourceParams} from "~/contants";
 
-const slug = 'nguyen-ton';
+const route = useRoute();
+const {slug} = route.query;
+
 const url = `/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`;
-const {pending, data: comic} = useLazyFetch(url);
+const {data: comic} = useLazyFetch(url);
 console.log("comic", comic.value)
 </script>
 
@@ -28,12 +31,13 @@ console.log("comic", comic.value)
             <div class="mt-4 w-[50%] md:w-[250px] md:min-w-[250px]">
               <figure class="aspect-w-3 aspect-h-5 relative rounded-2xl">
                 <span
-                  style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
-                  alt="manga-thumbnail" sizes="100vw"
-                  :srcset="comic.data.thumbnail"
-                  :src="comic.data.thumbnail"
-                  decoding="async" data-nimg="fill" class="absolute inset-0 rounded-2xl object-cover object-center"
-                  style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                  <img alt="manga-thumbnail" sizes="100vw"
+                       :srcset="comic.data.thumbnail"
+                       :src="comic.data.thumbnail"
+                       decoding="async" data-nimg="fill" class="absolute inset-0 rounded-2xl object-cover object-center"
+                       style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                </span>
               </figure>
             </div>
             <div class="flex h-full w-full flex-col justify-center p-4 text-white md:min-h-[430px] lg:ml-4">
@@ -59,7 +63,7 @@ console.log("comic", comic.value)
                   </li>
                 </ul>
                 <div class="flex h-[150px] w-full flex-col items-center gap-6 md:flex-row md:items-start">
-                  <a href="/manga/read/nhat-niem-vinh-hang-20674/1/445949">
+                  <a :href="`/manga/read/${slug}/${comic.data.chapterList[0].chapterNumber}/${comic.data.chapterList[0].chapterId}`">
                     <button
                         class="pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -69,18 +73,19 @@ console.log("comic", comic.value)
                       </svg>
                       Đọc ngay
                     </button>
-                  </a><a href="/manga/read/nhat-niem-vinh-hang-20674/63.5/872343">
-                  <button
-                      class="pulse-effect-secondary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-white text-gray-800 transition-all hover:scale-[110%]">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                         class="h-8 w-8 text-primary">
-                      <path fill-rule="evenodd"
-                            d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    Chap mới nhất
-                  </button>
-                </a>
+                  </a>
+                  <a href="/manga/read/nhat-niem-vinh-hang-20674/63.5/872343">
+                    <button
+                        class="pulse-effect-secondary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-white text-gray-800 transition-all hover:scale-[110%]">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                           class="h-8 w-8 text-primary">
+                        <path fill-rule="evenodd"
+                              d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                              clip-rule="evenodd"></path>
+                      </svg>
+                      Chap mới nhất
+                    </button>
+                  </a>
                   <button
                       class="shine-effect absolute-center bg-hight-light h-[50px] w-[50px] rounded-xl transition-all hover:text-primary">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -94,8 +99,8 @@ console.log("comic", comic.value)
             </div>
           </div>
         </section>
-        <LazyMangaReview :review="comic.data.review" />
-        <LazyMangaChaplist :chapterList="comic.data.chapterList" />
+        <LazyMangaReview :review="comic.data.review"/>
+        <LazyMangaChaplist :chapterList="comic.data.chapterList"/>
       </div>
     </div>
   </NuxtLayout>

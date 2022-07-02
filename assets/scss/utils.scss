@@ -52,3 +52,17 @@
 .aspect-h-5 {
   --tw-aspect-h: 5;
 }
+
+.odd\:bg-highlight\/40:nth-child(odd) {
+  background-color: rgba(63, 63, 63, .4);
+}
+
+.line-clamp-1, .line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-1 {
+  -webkit-line-clamp: 1;
+}

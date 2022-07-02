@@ -1,12 +1,17 @@
+<script lang="ts" setup>
+import {useLazyAsyncData} from "#app";
+const {data: homeProps} = useLazyAsyncData('homeProps', () => $fetch('/api/home-props'));
+</script>
+
 <template>
   <LazyHomePageSpotlight/>
   <LazyHomePageMangeNewUpdate/>
-  <LazyHomePageMangaFeatured />
+  <LazyHomePageMangaFeatured title="Truyện nổi bật nhất" :mangas="homeProps.newMangaUpdated"/>
+  <LazyHomePageMangaFeatured title="Truyện top tháng" :mangas="homeProps.topMonthManga"/>
+  <LazyHomePageMangaFeatured title="Truyện top tuần" :mangas="homeProps.topWeekManga"/>
+  <LazyHomePageMangaFeatured title="Truyện top ngày" :mangas="homeProps.topDayManga"/>
   <LazyHomePageMangeNewUpdate/>
 </template>
-<script setup lang="ts">
-</script>
-
 
 <style lang="scss">
 .deslide-cover:before {
@@ -15,7 +20,7 @@
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg,#202125,rgba(32,33,37,0) 50%,#202125);
+  background: linear-gradient(0deg, #202125, rgba(32, 33, 37, 0) 50%, #202125);
   z-index: 2;
 }
 

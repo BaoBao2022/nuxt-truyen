@@ -10,3 +10,9 @@ export interface Genre {
     genreTitle: string;
     slug: string;
 }
+
+export interface ChapterImg {
+    id: string;
+    imgSrc: string;
+    imgSrcFallback: string;
+}

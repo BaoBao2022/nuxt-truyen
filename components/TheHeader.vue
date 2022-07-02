@@ -2,12 +2,11 @@
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
 import {useRoute} from "#app";
 import {computed} from "#imports";
+
 const route = useRoute();
 const hasIndexPage = computed(() => {
   return route.name.startsWith("index");
 });
-
-console.log("hasIndexPage", hasIndexPage.value);
 
 </script>
 
@@ -105,9 +104,7 @@ console.log("hasIndexPage", hasIndexPage.value);
         </div>
       </div>
     </header>
-
   </Popover>
-
 </template>
 
 <style lang="scss" scoped>

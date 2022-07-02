@@ -6,6 +6,8 @@ declare module 'vue' {
     'TheHome': typeof import("../components/TheHome.vue")['default'],
     'TheNav': typeof import("../components/TheNav.vue")['default'],
     'TheSidebar': typeof import("../components/TheSidebar.vue")['default'],
+    'MangaChaplist': typeof import("../components/Manga/Chaplist.vue")['default'],
+    'MangaReview': typeof import("../components/Manga/Review.vue")['default'],
     'HomePageMangaFeatured': typeof import("../components/HomePage/MangaFeatured.vue")['default'],
     'HomePageMangeNewUpdate': typeof import("../components/HomePage/MangeNewUpdate.vue")['default'],
     'HomePageSpotlight': typeof import("../components/HomePage/Spotlight.vue")['default'],
@@ -21,6 +23,8 @@ declare module 'vue' {
     'LazyTheHome': typeof import("../components/TheHome.vue")['default'],
     'LazyTheNav': typeof import("../components/TheNav.vue")['default'],
     'LazyTheSidebar': typeof import("../components/TheSidebar.vue")['default'],
+    'LazyMangaChaplist': typeof import("../components/Manga/Chaplist.vue")['default'],
+    'LazyMangaReview': typeof import("../components/Manga/Review.vue")['default'],
     'LazyHomePageMangaFeatured': typeof import("../components/HomePage/MangaFeatured.vue")['default'],
     'LazyHomePageMangeNewUpdate': typeof import("../components/HomePage/MangeNewUpdate.vue")['default'],
     'LazyHomePageSpotlight': typeof import("../components/HomePage/Spotlight.vue")['default'],
@@ -38,6 +42,8 @@ export const TheHeader: typeof import("../components/TheHeader.vue")['default']
 export const TheHome: typeof import("../components/TheHome.vue")['default']
 export const TheNav: typeof import("../components/TheNav.vue")['default']
 export const TheSidebar: typeof import("../components/TheSidebar.vue")['default']
+export const MangaChaplist: typeof import("../components/Manga/Chaplist.vue")['default']
+export const MangaReview: typeof import("../components/Manga/Review.vue")['default']
 export const HomePageMangaFeatured: typeof import("../components/HomePage/MangaFeatured.vue")['default']
 export const HomePageMangeNewUpdate: typeof import("../components/HomePage/MangeNewUpdate.vue")['default']
 export const HomePageSpotlight: typeof import("../components/HomePage/Spotlight.vue")['default']
@@ -53,6 +59,8 @@ export const LazyTheHeader: typeof import("../components/TheHeader.vue")['defaul
 export const LazyTheHome: typeof import("../components/TheHome.vue")['default']
 export const LazyTheNav: typeof import("../components/TheNav.vue")['default']
 export const LazyTheSidebar: typeof import("../components/TheSidebar.vue")['default']
+export const LazyMangaChaplist: typeof import("../components/Manga/Chaplist.vue")['default']
+export const LazyMangaReview: typeof import("../components/Manga/Review.vue")['default']
 export const LazyHomePageMangaFeatured: typeof import("../components/HomePage/MangaFeatured.vue")['default']
 export const LazyHomePageMangeNewUpdate: typeof import("../components/HomePage/MangeNewUpdate.vue")['default']
 export const LazyHomePageSpotlight: typeof import("../components/HomePage/Spotlight.vue")['default']
