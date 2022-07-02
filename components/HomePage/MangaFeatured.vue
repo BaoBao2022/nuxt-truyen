@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {SourceParams} from "~/contants";
 
 defineProps({
   title: String,
