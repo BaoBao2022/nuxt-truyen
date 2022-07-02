@@ -10,7 +10,7 @@ const autoPlaySettings = ref({
   disableOnInteraction: false
 });
 
-const bgCover = (spotlight) => {
+const backgroundImage = (spotlight) => {
   return {
     backgroundImage: `url(${spotlight.thumbnail})`,
   }
@@ -25,7 +25,7 @@ console.log("spotlights", spotlights.value)
     <SwiperSlide v-for="spotlight in spotlights">
       <div class="cursor-pointer">
         <figure class="deslide-cover h-[250px] w-full bg-cover bg-center bg-no-repeat blur md:h-[350px] lg:h-[450px]"
-                :style="bgCover(spotlight)"></figure>
+                :style="backgroundImage(spotlight)"></figure>
         <div
             class="aspect-[3/4] 0 absolute-center absolute top-1/2 right-[5%] md:right-[10%] z-10 flex h-[80%] w-[150px] -translate-y-1/2 items-center md:w-[200px] lg:w-[250px]">
           <div class="relative h-full w-[90%] overflow-hidden rounded-2xl magictime vanishIn"><span
