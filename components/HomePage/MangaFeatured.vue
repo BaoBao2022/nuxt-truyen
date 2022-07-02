@@ -11,17 +11,16 @@ defineProps({
 </script>
 
 <template>
-  <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-      <div class="w-full rounded-xl bg-deep-black pb-4 lg:my-4">
-        <h2 class="my-6 whitespace-nowrap text-center font-secondary text-3xl text-white lg:text-[160%]">
-          {{ title }}
-        </h2>
-        <ul class="w-full space-y-4 overflow-hidden text-white">
-          <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
-            <a :href="`/manga?slug=${manga.slug}`">
-              <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
-                <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+  <div class="w-full rounded-xl bg-deep-black pb-4 lg:my-4">
+    <h2 class="my-6 whitespace-nowrap text-center font-secondary text-3xl text-white lg:text-[160%]">
+      {{ title }}
+    </h2>
+    <ul class="w-full space-y-4 overflow-hidden text-white">
+      <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
+        <a :href="`/manga?slug=${manga.slug}`">
+          <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
+                <span
+                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
                 <img
                     alt="img-preview"
                     :src="manga.thumbnail"
@@ -30,18 +29,18 @@ defineProps({
                     :srcset="manga.thumbnail"
                     style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
               </span>
-              </figure>
-            </a>
-            <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-              <a :href="`/manga?slug=${manga.slug}`">
-                <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
-                  {{ manga.name }}
-                </h3></a>
-              <h4 class="text-lg">Chapter 205</h4>
-              <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
-                <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
-                  <span>{{ genre }}</span>
-                  <span>
+          </figure>
+        </a>
+        <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
+          <a :href="`/manga?slug=${manga.slug}`">
+            <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+              {{ manga.name }}
+            </h3></a>
+          <h4 class="text-lg">Chapter 205</h4>
+          <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
+            <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
+              <span>{{ genre }}</span>
+              <span>
                     <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"
                          stroke-width="0" viewBox="0 0 16 16"
                          class="inline-block" height="1em" width="1em"
@@ -50,22 +49,19 @@ defineProps({
                     </path>
                     </svg>
                   </span>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
-            <button class="lg:text-3xl">
-              <a href="/browse?comics=manga-112&amp;view=all">Xem thêm</a>
-            </button>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                 stroke="currentColor" aria-hidden="true" class="h-8 w-8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
+        <button class="lg:text-3xl">
+          <a href="/browse?comics=manga-112&amp;view=all">Xem thêm</a>
+        </button>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+             stroke="currentColor" aria-hidden="true" class="h-8 w-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </li>
+    </ul>
+  </div>
 </template>
