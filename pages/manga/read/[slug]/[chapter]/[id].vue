@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import {useRoute} from "#imports";
+const runtimeConfig = useRuntimeConfig()
 
 const route = useRoute();
 const {params} = route;
@@ -9,7 +10,6 @@ const realSlug = slug.slice(0, slug.lastIndexOf('-'));
 
 const url = `/api/chapters?slug=${realSlug}&chapter=${chapter}&id=${id}`
 const {data: chapters} = useLazyFetch(url);
-console.log("chapters", chapters.value)
 </script>
 <template>
   <main class="overflow-x-hidden">
@@ -78,7 +78,7 @@ console.log("chapters", chapters.value)
                    :id="`page-${index}`"
                    class="relative my-0 h-fit w-full">
                 <img alt="chapter-img" class="h-auto comic-img mx-auto w-auto"
-                     :src="`http://localhost:5001/api/proxy?url=http://www.nettruyenco.com&src=${chap.imgSrc}`">
+                     :src="`${runtimeConfig.NUXT_PUBLIC_SERVICE_URL}/api/proxy?url=http://www.nettruyenco.com&src=${chap.imgSrc}`">
               </div>
             </div>
 

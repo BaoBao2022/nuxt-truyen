@@ -35,7 +35,6 @@ const netTruyenAPI: Repository = {
 
     getChapters(req: ChapterRequest) {
         const url = `${SOURCE_PREFIX}/chapter/${req.slug}/${req.chapter}/${req.id}`;
-        console.log("url", url)
         return client.get(url);
     },
 

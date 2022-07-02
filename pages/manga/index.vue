@@ -7,7 +7,6 @@ const {slug} = route.query;
 
 const url = `/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`;
 const {data: comic} = useLazyFetch(url);
-console.log("comic", comic.value)
 </script>
 
 <template>

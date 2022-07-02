@@ -17,7 +17,6 @@ const backgroundImage = (spotlight) => {
 }
 
 const {data: spotlights} = await useFetch('/api/header');
-console.log("spotlights", spotlights.value)
 </script>
 
 <template>

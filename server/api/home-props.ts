@@ -5,8 +5,7 @@ import {REVALIDATE_TIME} from "~/contants";
 export default defineEventHandler(async (event) => {
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
 
-    return false;
-    const filterRequest: FilterRequest = {page: 1, genres: "manga-112", top: "month"}
+    // const filterRequest: FilterRequest = {page: 1, genres: "manga-112", top: "month"}
     const rankingAllRequest: RankingMangeRequest = {
         status: undefined,
         top: 'all',
