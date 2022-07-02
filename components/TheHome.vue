@@ -1,22 +1,30 @@
 <script lang="ts" setup>
-import {useFetch} from "#imports";
+// import {useFetch} from "#imports";
 
-const {data: homeProps} = useFetch('/api/home-props');
-console.log("homeProps", homeProps.value)
+const {pending, data: homeProps} = useLazyFetch('/api/home-props');
+watch(homeProps, (newHomeProps) => {
+  // Because posts starts out null, you won't have access
+  // to its contents immediately, but you can watch it.
+})
 </script>
 
 <template>
-  <LazyHomePageSpotlight/>
-  <LazyHomePageMangeNewUpdate title="Cập nhật mới" :mangas="homeProps.newManga "/>
-  <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-      <LazyHomePageMangaFeatured title="Truyện nổi bật nhất" :mangas="homeProps.newMangaUpdated"/>
-      <LazyHomePageMangaFeatured title="Truyện top tháng" :mangas="homeProps.topMonthManga"/>
-      <LazyHomePageMangaFeatured title="Truyện top tuần" :mangas="homeProps.topWeekManga"/>
-      <LazyHomePageMangaFeatured title="Truyện top ngày" :mangas="homeProps.topDayManga"/>
-    </div>
-  </section>
-  <LazyHomePageMangeNewUpdate title="Truyện mới" :mangas="homeProps.newManga "/>
+  <div v-if="pending">
+    ... loading
+  </div>
+  <div v-else>
+    <LazyHomePageSpotlight/>
+    <LazyHomePageMangeNewUpdate title="Cập nhật mới" :mangas="homeProps?.newManga "/>
+    <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <LazyHomePageMangaFeatured title="Truyện nổi bật nhất" :mangas="homeProps?.newMangaUpdated"/>
+        <LazyHomePageMangaFeatured title="Truyện top tháng" :mangas="homeProps?.topMonthManga"/>
+        <LazyHomePageMangaFeatured title="Truyện top tuần" :mangas="homeProps?.topWeekManga"/>
+        <LazyHomePageMangaFeatured title="Truyện top ngày" :mangas="homeProps?.topDayManga"/>
+      </div>
+    </section>
+    <LazyHomePageMangeNewUpdate title="Truyện mới" :mangas="homeProps?.newManga "/>
+  </div>
 </template>
 
 <style lang="scss">

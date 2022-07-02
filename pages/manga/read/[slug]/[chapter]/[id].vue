@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {useRoute} from "#imports";
+// import {useRoute} from "#imports";
 const runtimeConfig = useRuntimeConfig()
 
 const route = useRoute();

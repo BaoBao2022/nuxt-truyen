@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {useRoute} from "#imports";
+// import {useRoute} from "#imports";
 import {SourceParams} from "~/contants";
 
 const route = useRoute();

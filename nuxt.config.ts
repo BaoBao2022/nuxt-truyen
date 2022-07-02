@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     meta: {
         title: "Truyện tranh online free",
     },
-    // ssr: true,
+    ssr: true,
     modules: ['@nuxtjs/color-mode', '@vueuse/nuxt',],
     colorMode: {
         preference: 'dark', // default value of $colorMode.preference

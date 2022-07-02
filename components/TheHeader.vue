@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
 import {useRoute} from "#app";
-import {computed} from "#imports";
+// import {computed} from "#imports";
 
 const route = useRoute();
 const hasIndexPage = computed(() => {
