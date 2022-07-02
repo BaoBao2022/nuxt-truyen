@@ -41,17 +41,17 @@ export default defineEventHandler(async (event) => {
     const topDayManga = await NET_TRUYEN_API?.getMangaRanking(rankingDayRequest);
     const newManga = await NET_TRUYEN_API?.getNewManga(1);
 
-    const topMonthListData = topMonthManga.data.data;
-    const newMangaUpdatedData = newMangaUpdated.data.data;
-    const newMangaData = newManga.data.data;
+    const topMonthListData = topMonthManga?.data.data;
+    const newMangaUpdatedData = newMangaUpdated?.data.data;
+    const newMangaData = newManga?.data.data;
 
     return {
         // topMonthList: topMonthList.data.data,
         newMangaUpdated: newMangaUpdatedData,
-        topAllManga: topAllManga.data.data,
+        topAllManga: topAllManga?.data.data,
         topMonthManga: topMonthListData,
-        topWeekManga: topWeekManga.data.data,
-        topDayManga: topDayManga.data.data,
+        topWeekManga: topWeekManga?.data.data,
+        topDayManga: topDayManga?.data.data,
         newManga: newMangaData,
         revalidate: REVALIDATE_TIME,
     };
