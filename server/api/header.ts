@@ -5,9 +5,9 @@ export default defineEventHandler(async (event) => {
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
     const filterRequest: FilterRequest = {page: 1, genres: "manhua", top: "month"}
     const mangas = await NET_TRUYEN_API?.filter(filterRequest);
-    if (!mangas) return [];
+    if (mangas.status !== 200) return;
 
-    const manData = mangas.data.data.slice(0, 10);
+    const manData = mangas?.data.data.slice(0, 10);
 
     const response = []
     for (let i = 0; i < 10; i++) {
