@@ -4,7 +4,7 @@ import {SearchResponse, ChapterResponse, MangaResponse, MangaDetailsResponse} fr
 import {RankingMangeRequest, ChapterRequest, FilterRequest, AdvanceQueryRequest} from './request';
 
 export const NET_TRUYEN = "nettruyen";
-import NetTruyenRepository from '~/server/repositorys/netTruyenRepository';
+import NetTruyenRepository from '~/services/repositorys/netTruyenRepository';
 
 export interface Repository {
     filter: (req: FilterRequest) => Promise<AxiosResponse<MangaResponse>>;

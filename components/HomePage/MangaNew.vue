@@ -6,8 +6,9 @@ import {ref} from 'vue';
 defineProps({
   title: String
 });
+
 const modules = ref([Pagination]);
-const {data: mangas} = useFetch('/api/manga-updated');
+const {data: mangas} = useFetch('/api/manga-new');
 </script>
 
 <template>

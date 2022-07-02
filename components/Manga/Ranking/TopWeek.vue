@@ -1,12 +1,9 @@
 <script lang="ts" setup>
-
 defineProps({
-  title: String,
-  mangas: {
-    type: Array,
-    default: () => [],
-  },
-})
+  title: String
+});
+
+const {data: mangas} = useFetch('/api/top-week');
 </script>
 
 <template>
@@ -16,7 +13,7 @@ defineProps({
     </h2>
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
-        <a :href="`/manga?slug=${manga.slug}`">
+        <a :href="`/api?slug=${manga.slug}`">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
                 <span
                     style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
@@ -31,11 +28,11 @@ defineProps({
           </figure>
         </a>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <a :href="`/manga?slug=${manga.slug}`">
+          <a :href="`/api?slug=${manga.slug}`">
             <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
               {{ manga.name }}
             </h3></a>
-          <h4 class="text-lg">Chapter 205</h4>
+          <h4 class="text-lg">{{ manga.newChapter }}</h4>
           <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
             <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
               <span>{{ genre }}</span>
@@ -54,7 +51,7 @@ defineProps({
       </li>
       <li class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
         <button class="lg:text-3xl">
-          <a href="/browse?comics=manga-112&amp;view=all">Xem thêm</a>
+          <a href="/browse?comics=api-112&amp;view=all">Xem thêm</a>
         </button>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
              stroke="currentColor" aria-hidden="true" class="h-8 w-8">

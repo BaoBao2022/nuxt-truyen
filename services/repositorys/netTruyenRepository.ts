@@ -1,7 +1,7 @@
-import client from "~/server/client";
+import client from "~/services/client";
 // @ts-ignore
-import {ChapterRequest, RankingMangeRequest, Repository} from "~/server/repositoryFactory";
-import {AdvanceQueryRequest, FilterRequest} from "~/server/request";
+import {ChapterRequest, RankingMangeRequest, Repository} from "~/services/repositoryFactory";
+import {AdvanceQueryRequest, FilterRequest} from "~/services/request";
 
 export const SOURCE_PREFIX = "nt";
 
