@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-import {useLazyAsyncData} from "#app";
-const {data: homeProps} = useLazyAsyncData('homeProps', () => $fetch('/api/home-props'));
+import {useFetch} from "#imports";
+const {data: homeProps} = useFetch('/api/home-props');
+console.log("homeProps", homeProps.value)
 </script>
 
 <template>
   <LazyHomePageSpotlight/>
-  <LazyHomePageMangeNewUpdate/>
+  <LazyHomePageMangeNewUpdate title="Cập nhật mới" :mangas="homeProps.newManga "/>
   <LazyHomePageMangaFeatured title="Truyện nổi bật nhất" :mangas="homeProps.newMangaUpdated"/>
   <LazyHomePageMangaFeatured title="Truyện top tháng" :mangas="homeProps.topMonthManga"/>
   <LazyHomePageMangaFeatured title="Truyện top tuần" :mangas="homeProps.topWeekManga"/>
   <LazyHomePageMangaFeatured title="Truyện top ngày" :mangas="homeProps.topDayManga"/>
-  <LazyHomePageMangeNewUpdate/>
+  <LazyHomePageMangeNewUpdate title="Truyện mới" :mangas="homeProps.newManga "/>
 </template>
 
 <style lang="scss">

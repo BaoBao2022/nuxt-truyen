@@ -248,7 +248,6 @@ import("file:///Users/bonn/Documents/GitHub/next-truyen/node_modules/ufo/dist/in
 // - /node_modules/nuxt/dist/app/components/layout.mjs ($id_39003883)
 // - /components/TheHeader.vue ($id_d18d7003)
 // - /@id/virtual:nuxt:/Users/bonn/Documents/GitHub/next-truyen/.nuxt/imports.mjs ($id_fe38f457)
-// - /components/TheHome.vue ($id_370723ed)
 // - /components/HomePage/Spotlight.vue ($id_3c9ba117)
 // - /pages/manga/index.vue?macro=true ($id_811fac0c)
 // - /pages/manga/read/[slug]/[chapter]/[id].vue?macro=true ($id_6e06068f)
@@ -3693,6 +3692,7 @@ import("file:///Users/bonn/Documents/GitHub/next-truyen/node_modules/@headlessui
 // Parents: 
 // - /components/TheHeader.vue ($id_d18d7003)
 // - /node_modules/@nuxtjs/color-mode/dist/runtime/composables.mjs ($id_9d5ba8e3)
+// - /components/TheHome.vue ($id_370723ed)
 // - /pages/manga/index.vue?macro=true ($id_811fac0c)
 // - /pages/manga/read/[slug]/[chapter]/[id].vue?macro=true ($id_6e06068f)
 // - /pages/manga/index.vue ($id_f3f97c4e)
@@ -11519,7 +11519,7 @@ __vite_ssr_exports__.default = /*#__PURE__*/__vite_ssr_import_3__.default(_sfc_m
 // - /pages/index.vue ($id_cca58e97)
 // Dependencies: 
 // - /node_modules/vue/dist/vue.cjs.js ($id_60f0615f)
-// - /node_modules/nuxt/dist/app/index.mjs ($id_36927477)
+// - /@id/virtual:nuxt:/Users/bonn/Documents/GitHub/next-truyen/.nuxt/imports.mjs ($id_fe38f457)
 // - /node_modules/vue/server-renderer/index.js ($id_b215fa1c)
 // - /components/TheHome.vue?vue&type=style&index=0&lang.scss ($id_3c70adbd)
 // - /@id/plugin-vue:export-helper ($id_bbb863c1)
@@ -11535,13 +11535,14 @@ const __nuxt_component_1_lazy = __vite_ssr_import_0__.defineAsyncComponent(() =>
 const __nuxt_component_2_lazy = __vite_ssr_import_0__.defineAsyncComponent(() => __vite_ssr_dynamic_import__('/components/HomePage/MangaFeatured.vue'))
 const __vite_ssr_import_1__ = await __vite_ssr_import__("/node_modules/vue/dist/vue.cjs.js");
 
-const __vite_ssr_import_2__ = await __vite_ssr_import__("/node_modules/nuxt/dist/app/index.mjs");
+const __vite_ssr_import_2__ = await __vite_ssr_import__("/@id/virtual:nuxt:/Users/bonn/Documents/GitHub/next-truyen/.nuxt/imports.mjs");
 
 const _sfc_main = /* @__PURE__ */ __vite_ssr_import_1__.defineComponent({
   __name: "TheHome",
   setup(__props, { expose }) {
     expose();
-    const { data: homeProps } = __vite_ssr_import_2__.useLazyAsyncData("homeProps", () => $fetch("/api/home-props"));
+    const { data: homeProps } = __vite_ssr_import_2__.useFetch("/api/home-props");
+    console.log("homeProps", homeProps.value);
     const __returned__ = { homeProps };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
@@ -11557,7 +11558,10 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
   const _component_LazyHomePageMangaFeatured = __nuxt_component_2_lazy;
   _push(`<!--[-->`);
   _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageSpotlight, null, null, _parent));
-  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageMangeNewUpdate, null, null, _parent));
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageMangeNewUpdate, {
+    title: "C\u1EADp nh\u1EADt m\u1EDBi",
+    mangas: $setup.homeProps.newManga
+  }, null, _parent));
   _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageMangaFeatured, {
     title: "Truy\u1EC7n n\u1ED5i b\u1EADt nh\u1EA5t",
     mangas: $setup.homeProps.newMangaUpdated
@@ -11574,7 +11578,10 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
     title: "Truy\u1EC7n top ng\xE0y",
     mangas: $setup.homeProps.topDayManga
   }, null, _parent));
-  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageMangeNewUpdate, null, null, _parent));
+  _push(__vite_ssr_import_4__.ssrRenderComponent(_component_LazyHomePageMangeNewUpdate, {
+    title: "Truy\u1EC7n m\u1EDBi",
+    mangas: $setup.homeProps.newManga
+  }, null, _parent));
   _push(`<!--]-->`);
 }
 const __vite_ssr_import_5__ = await __vite_ssr_import__("/components/TheHome.vue?vue&type=style&index=0&lang.scss");
@@ -12547,37 +12554,13 @@ const __vite_ssr_import_3__ = await __vite_ssr_import__("/node_modules/vue/dist/
 
 const _sfc_main = /* @__PURE__ */ __vite_ssr_import_0__.defineComponent({
   __name: "MangeNewUpdate",
+  props: {
+    mangas: Array
+  },
   setup(__props, { expose }) {
     expose();
     const modules = __vite_ssr_import_3__.ref([__vite_ssr_import_2__.Pagination]);
-    const mangas = __vite_ssr_import_3__.ref([
-      {
-        title: "Kekkon Yubiwa Monogatari",
-        thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F158%2Fkekkon-yubiwa-monogatari.jpg&w=1200&q=75",
-        chapter: "54"
-      },
-      {
-        title: "Nh\u1EA5t Ni\u1EC7m V\u0129nh H\u1EB1ng",
-        thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-        chapter: "32.4"
-      },
-      {
-        title: "Nh\u1EA5t Ni\u1EC7m V\u0129nh H\u1EB1ng",
-        thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-        chapter: "32.4"
-      },
-      {
-        title: "Nh\u1EA5t Ni\u1EC7m V\u0129nh H\u1EB1ng",
-        thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-        chapter: "32.4"
-      },
-      {
-        title: "Nh\u1EA5t Ni\u1EC7m V\u0129nh H\u1EB1ng",
-        thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-        chapter: "32.4"
-      }
-    ]);
-    const __returned__ = { modules, mangas, Swiper: __vite_ssr_import_1__.Swiper, SwiperSlide: __vite_ssr_import_1__.SwiperSlide };
+    const __returned__ = { modules, Swiper: __vite_ssr_import_1__.Swiper, SwiperSlide: __vite_ssr_import_1__.SwiperSlide };
     Object.defineProperty(__returned__, "__isScriptSetup", { enumerable: false, value: true });
     return __returned__;
   }
@@ -12598,11 +12581,11 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
     default: __vite_ssr_import_4__.withCtx((_, _push2, _parent2, _scopeId) => {
       if (_push2) {
         _push2(`<!--[-->`);
-        __vite_ssr_import_5__.ssrRenderList($setup.mangas, (manga) => {
+        __vite_ssr_import_5__.ssrRenderList($props.mangas.slice(0, 15), (manga) => {
           _push2(__vite_ssr_import_5__.ssrRenderComponent($setup["SwiperSlide"], null, {
             default: __vite_ssr_import_4__.withCtx((_2, _push3, _parent3, _scopeId2) => {
               if (_push3) {
-                _push3(`<div class="aspect-h-4 aspect-w-3 rounded-xl" data-v-9bf7f932${_scopeId2}><a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt" data-v-9bf7f932${_scopeId2}><span style="${__vite_ssr_import_5__.ssrRenderStyle({ "box-sizing": "border-box", "display": "block", "overflow": "hidden", "width": "initial", "height": "initial", "background": "none", "opacity": "1", "border": "0", "margin": "0", "padding": "0", "position": "absolute", "inset": "0" })}" data-v-9bf7f932${_scopeId2}><img alt="manga-thumbnail z-50" sizes="100vw"${__vite_ssr_import_5__.ssrRenderAttr("srcset", manga.thumbnail)}${__vite_ssr_import_5__.ssrRenderAttr("src", manga.thumbnail)} decoding="async" data-nimg="fill" class="absolute inset-0 rounded-xl object-cover object-center" style="${__vite_ssr_import_5__.ssrRenderStyle({ "position": "absolute", "inset": "0", "box-sizing": "border-box", "padding": "0", "border": "none", "margin": "auto", "display": "block", "width": "0", "height": "0", "min-width": "100%", "max-width": "100%", "min-height": "100%", "max-height": "100%" })}" data-v-9bf7f932${_scopeId2}></span></a><span class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl" data-v-9bf7f932${_scopeId2}> Chapter ${__vite_ssr_import_5__.ssrInterpolate(manga.chapter)}</span></div><a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt" data-v-9bf7f932${_scopeId2}><h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" data-v-9bf7f932${_scopeId2}>${__vite_ssr_import_5__.ssrInterpolate(manga.title)}</h2></a>`);
+                _push3(`<div class="aspect-h-4 aspect-w-3 rounded-xl" data-v-9bf7f932${_scopeId2}><a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt" data-v-9bf7f932${_scopeId2}><span style="${__vite_ssr_import_5__.ssrRenderStyle({ "box-sizing": "border-box", "display": "block", "overflow": "hidden", "width": "initial", "height": "initial", "background": "none", "opacity": "1", "border": "0", "margin": "0", "padding": "0", "position": "absolute", "inset": "0" })}" data-v-9bf7f932${_scopeId2}><img alt="manga-thumbnail z-50" sizes="100vw"${__vite_ssr_import_5__.ssrRenderAttr("srcset", manga.thumbnail)}${__vite_ssr_import_5__.ssrRenderAttr("src", manga.thumbnail)} decoding="async" data-nimg="fill" class="absolute inset-0 rounded-xl object-cover object-center" style="${__vite_ssr_import_5__.ssrRenderStyle({ "position": "absolute", "inset": "0", "box-sizing": "border-box", "padding": "0", "border": "none", "margin": "auto", "display": "block", "width": "0", "height": "0", "min-width": "100%", "max-width": "100%", "min-height": "100%", "max-height": "100%" })}" data-v-9bf7f932${_scopeId2}></span></a><span class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl" data-v-9bf7f932${_scopeId2}> Chapter ${__vite_ssr_import_5__.ssrInterpolate(manga.chapter)}</span></div><a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt" data-v-9bf7f932${_scopeId2}><h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" data-v-9bf7f932${_scopeId2}>${__vite_ssr_import_5__.ssrInterpolate(manga.name)}</h2></a>`);
               } else {
                 return [
                   __vite_ssr_import_4__.createVNode("div", { class: "aspect-h-4 aspect-w-3 rounded-xl" }, [
@@ -12623,7 +12606,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
                     __vite_ssr_import_4__.createVNode("span", { class: "absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl" }, " Chapter " + __vite_ssr_import_4__.toDisplayString(manga.chapter), 1)
                   ]),
                   __vite_ssr_import_4__.createVNode("a", { href: "/manga/details/vo-luyen-dinh-phong-17696?src=nt" }, [
-                    __vite_ssr_import_4__.createVNode("h2", { class: "my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" }, __vite_ssr_import_4__.toDisplayString(manga.title), 1)
+                    __vite_ssr_import_4__.createVNode("h2", { class: "my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" }, __vite_ssr_import_4__.toDisplayString(manga.name), 1)
                   ])
                 ];
               }
@@ -12634,7 +12617,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
         _push2(`<!--]-->`);
       } else {
         return [
-          (__vite_ssr_import_4__.openBlock(true), __vite_ssr_import_4__.createBlock(__vite_ssr_import_4__.Fragment, null, __vite_ssr_import_4__.renderList($setup.mangas, (manga) => {
+          (__vite_ssr_import_4__.openBlock(true), __vite_ssr_import_4__.createBlock(__vite_ssr_import_4__.Fragment, null, __vite_ssr_import_4__.renderList($props.mangas.slice(0, 15), (manga) => {
             return __vite_ssr_import_4__.openBlock(), __vite_ssr_import_4__.createBlock($setup["SwiperSlide"], null, {
               default: __vite_ssr_import_4__.withCtx(() => [
                 __vite_ssr_import_4__.createVNode("div", { class: "aspect-h-4 aspect-w-3 rounded-xl" }, [
@@ -12655,7 +12638,7 @@ function _sfc_ssrRender(_ctx, _push, _parent, _attrs, $props, $setup, $data, $op
                   __vite_ssr_import_4__.createVNode("span", { class: "absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl" }, " Chapter " + __vite_ssr_import_4__.toDisplayString(manga.chapter), 1)
                 ]),
                 __vite_ssr_import_4__.createVNode("a", { href: "/manga/details/vo-luyen-dinh-phong-17696?src=nt" }, [
-                  __vite_ssr_import_4__.createVNode("h2", { class: "my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" }, __vite_ssr_import_4__.toDisplayString(manga.title), 1)
+                  __vite_ssr_import_4__.createVNode("h2", { class: "my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl" }, __vite_ssr_import_4__.toDisplayString(manga.name), 1)
                 ])
               ]),
               _: 2

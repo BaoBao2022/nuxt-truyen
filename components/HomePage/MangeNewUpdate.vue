@@ -1,38 +1,12 @@
 <script setup lang="ts">
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Pagination} from "swiper";
-
 import {ref} from 'vue';
 
-
 const modules = ref([Pagination]);
-const mangas = ref([
-  {
-    title: "Kekkon Yubiwa Monogatari",
-    thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F158%2Fkekkon-yubiwa-monogatari.jpg&w=1200&q=75",
-    chapter: "54"
-  },
-  {
-    title: "Nhất Niệm Vĩnh Hằng",
-    thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-    chapter: "32.4"
-  },
-  {
-    title: "Nhất Niệm Vĩnh Hằng",
-    thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-    chapter: "32.4"
-  },
-  {
-    title: "Nhất Niệm Vĩnh Hằng",
-    thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-    chapter: "32.4"
-  },
-  {
-    title: "Nhất Niệm Vĩnh Hằng",
-    thumbnail: "https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F194%2Fnhat-niem-vinh-hang.jpg&w=1200&q=75",
-    chapter: "32.4"
-  }
-]);
+defineProps({
+  mangas: Array
+});
 
 </script>
 
@@ -51,8 +25,9 @@ const mangas = ref([
         <Swiper slides-per-view="auto"
                 :pagination="true"
                 :space-between="20"
-                :modules="modules" style="transform: translate3d(0px, 0px, 0px); padding-bottom: 50px">
-          <SwiperSlide v-for="manga in mangas">
+                :modules="modules"
+                style="transform: translate3d(0px, 0px, 0px); padding-bottom: 50px">
+          <SwiperSlide v-for="manga in mangas.slice(0, 15)">
             <div class="aspect-h-4 aspect-w-3 rounded-xl">
               <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt">
               <span
@@ -69,9 +44,9 @@ const mangas = ref([
                 Chapter {{ manga.chapter }}
               </span>
             </div>
-            <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt"><h2
-                class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
-              {{ manga.title }}
+            <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt">
+              <h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
+              {{ manga.name }}
             </h2>
             </a>
           </SwiperSlide>

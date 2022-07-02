@@ -10,31 +10,30 @@ export default defineEventHandler(async (event) => {
         status: undefined,
         top: 'all',
         page: 1,
-        genre: 'manga-112'
+        genre: 'manhua'
     }
 
     const rankingMonthRequest: RankingMangeRequest = {
         status: undefined,
         top: 'month',
         page: 1,
-        genre: 'manga-112'
+        genre: 'manhua'
     }
 
     const rankingWeekRequest: RankingMangeRequest = {
         status: undefined,
         top: 'week',
-        page: 1,
-        genre: 'manga-112'
+        page: 2,
+        genre: 'manhua'
     }
 
     const rankingDayRequest: RankingMangeRequest = {
         status: undefined,
         top: 'day',
-        page: 1,
-        genre: 'manga-112'
+        page: 3,
+        genre: 'manhua'
     }
 
-    // const topMonthList = await NET_TRUYEN_API?.filter(filterRequest);
     const newMangaUpdated = await NET_TRUYEN_API?.getNewMangaUpdated(1);
     const topAllManga = await NET_TRUYEN_API?.getMangaRanking(rankingAllRequest);
     const topMonthManga = await NET_TRUYEN_API?.getMangaRanking(rankingMonthRequest);
