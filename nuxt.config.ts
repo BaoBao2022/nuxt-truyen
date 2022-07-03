@@ -1,18 +1,21 @@
 import {defineNuxtConfig} from 'nuxt'
 // #NUXT_PUBLIC_SERVICE_URL=http://baobaoapp.herokuapp.com
-
-
 // NUXT_PUBLIC_SERVICE_URL=https://1847-2a09-bac0-412-00-81d-6909.ap.ngrok.io
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     runtimeConfig: {
-        NUXT_PUBLIC_SERVICE_URL: 'http://baobaoapp.herokuapp.com',
-        PUBLIC_API: 'http://baobaoapp.herokuapp.com'
+        public: {
+            NUXT_PUBLIC_SERVICE_URL: 'http://baobaoapp.herokuapp.com',
+        },
+        // NUXT_PUBLIC_SERVICE_URL: 'https://1847-2a09-bac0-412-00-81d-6909.ap.ngrok.io',
+        // PUBLIC_API: 'https://1847-2a09-bac0-412-00-81d-6909.ap.ngrok.io'
     },
     meta: {
         title: "Truyện tranh online free",
+        link: [{ rel: 'icon', type: 'image/x-icon', href: './assets/favicon.png' }],
     },
-    // ssr: true,
+    ssr: true,
     modules: ['@nuxtjs/color-mode'],
     colorMode: {
         preference: 'dark', // default value of $colorMode.preference
@@ -25,6 +28,7 @@ export default defineNuxtConfig({
         storageKey: 'nuxt-color-mode'
     },
     build: {
+        transpile: ['@heroicons/vue'],
         postcss: {
             postcssOptions: {
                 plugins: {
