@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME} from "~/contants";
-import {ref, useAsyncData, useRoute} from "#imports";
+import {ref, useAsyncData, useHead, useRoute} from "#imports";
 import {isClient, set, useStorage} from "@vueuse/core";
 import {CogIcon} from '@heroicons/vue/outline';
 import {keys} from "~/types";
@@ -78,6 +78,13 @@ const handleNextProcess = () => {
 
 }
 
+console.log("manStorage", manStorage.value)
+
+useHead({
+  title: `${manStorage.value.title} | Chapter ${chapterNumber.value}`,
+  description: manStorage.value.review,
+})
+
 </script>
 
 <template>
@@ -92,7 +99,7 @@ const handleNextProcess = () => {
                   <ArrowNarrowLeftIcon class="h-8 w-8"/>
                 </button>
               </NuxtLink>
-              <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{chapters.data[0].title }}</h1>
+              <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ manStorage.title }}</h1>
               <button
                   class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">
                 Chapter: {{ chapter }}
@@ -114,7 +121,7 @@ const handleNextProcess = () => {
           </div>
         </div>
         <LazyMangaChapterImg :chapters="chapters.data"/>
-        <LazyMangaReadMangaFooter @nextProcess="handleNextProcess" />
+        <LazyMangaReadMangaFooter @nextProcess="handleNextProcess"/>
       </div>
     </div>
   </div>

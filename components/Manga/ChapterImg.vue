@@ -2,7 +2,7 @@
 import {useRuntimeConfig} from "#imports";
 
 const config = useRuntimeConfig();
-const publicAPI = config.PUBLIC_API || 'http://baobaoapp.herokuapp.com';
+const publicAPI = config.public.NUXT_PUBLIC_SERVICE_URL || 'http://baobaoapp.herokuapp.com';
 
 defineProps({
   chapters: Array,

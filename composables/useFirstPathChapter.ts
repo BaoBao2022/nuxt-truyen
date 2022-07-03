@@ -4,8 +4,9 @@ import {useStorage} from "@vueuse/core";
 // import {useState} from "#build/imports";
 // import {State} from '~/types';
 
-const useFirstPathChapter = async (spotlight: Manga) => {
-    const slug = spotlight.slug
+const useFirstPathChapter = async (spotlight: Manga, slugs: string) => {
+    const slug = slugs || spotlight?.slug
+    console.log("slug", slug)
     const {data: comic} = await useFetch(`/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`);
     if (!comic.value) {
         return '';

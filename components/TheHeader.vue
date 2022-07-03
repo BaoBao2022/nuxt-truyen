@@ -45,32 +45,9 @@ const hasIndexPage = computed(() => {
 
           </div>
         </div>
-        <TheNav/>
+        <LazyTheNav/>
         <div class="ml-10 flex h-full flex-1 items-center justify-end md:justify-between lg:ml-0">
-          <form
-              class="undefined ml-16 flex h-[40%] w-fit items-center justify-between rounded-2xl  bg-white shadow-xl shadow-white/20 lg:w-[68%]">
-            <button
-                class="mx-4 hidden rounded-xl bg-rose-300 px-2 py-1 text-rose-600 transition-all hover:bg-rose-500 hover:text-white/80 md:block">
-              <a href="/browse">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                     class="h-8 w-8">
-                  <path
-                      d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
-                </svg>
-              </a></button>
-            <input readonly="" class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm manga...">
-            <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 lg:text-background">
-              <SearchIcon class="w-8 h-8"/>
-            </div>
-          </form>
-          <div class="absolute-center h-full w-40 ">
-            <div class="relative">
-              <button
-                  class="absolute-center h-20 w-20 overflow-hidden rounded-full bg-secondary bg-cover bg-no-repeat text-white hover:bg-white/10">
-                <UserIcon class="w-12 h-12" />
-              </button>
-            </div>
-          </div>
+          <LazyModalMangaSearch />
         </div>
       </div>
     </header>

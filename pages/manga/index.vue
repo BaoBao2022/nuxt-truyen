@@ -1,13 +1,26 @@
 <script lang="ts" setup>
 import {SourceParams} from "~/contants";
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
-import {useAsyncData} from "#imports";
+import {navigateTo, useAsyncData, useHead} from "#imports";
+import useFirstPathChapter from "~/composables/useFirstPathChapter";
 
 const route = useRoute();
 const {slug} = route.query;
 
 const url = `/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`;
 const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
+
+const navigateToManga = async (slug) => {
+  const path = await useFirstPathChapter(null, slug);
+  return navigateTo({
+    path: path
+  })
+}
+
+useHead({
+  title: comic.value.title,
+  description: comic.value.author,
+})
 
 </script>
 
@@ -17,14 +30,14 @@ const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
         <figure class="deslide-cover">
           <span
-            style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
-            alt="comic-banner"
-            :src="comic.thumbnail"
-            decoding="async" data-nimg="fill"
-            class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur"
-            sizes="100vw"
-            :srcset="comic.thumbnail"
-            style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+              style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
+              alt="comic-banner"
+              :src="comic.thumbnail"
+              decoding="async" data-nimg="fill"
+              class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur"
+              sizes="100vw"
+              :srcset="comic.thumbnail"
+              style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
         </figure>
       </div>
       <div class="z-10 mx-auto w-[85%] pt-32">
@@ -65,7 +78,7 @@ const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
                   </li>
                 </ul>
                 <div class="flex h-[150px] w-full flex-col items-center gap-6 md:flex-row md:items-start">
-                  <a :href="`/manga/read/${slug}/${comic.chapterList[0].chapterNumber}/${comic.chapterList[0].chapterId}`">
+                  <a @click="navigateToManga(slug)">
                     <button
                         class="pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -83,7 +96,8 @@ const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
                            class="h-8 w-8 text-primary">
                         <path fill-rule="evenodd"
                               d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                              clip-rule="evenodd"></path>
+                              clip-rule="evenodd">
+                        </path>
                       </svg>
                       Chap mới nhất
                     </button>
@@ -101,14 +115,17 @@ const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
             </div>
           </div>
         </section>
-<!--        <LazyMangaReview :review="comic?.review"/>-->
+        <!--        <LazyMangaReview :review="comic?.review"/>-->
 
         <div class="flex-col-reverse flex">
           <Disclosure v-slot="{ open }">
             <DisclosureButton>
               <button class="flex w-full flex-col items-center bg-cyan-300/0 text-white">
                 Tóm tắt
-                <svg :class="open ? 'rotate-180 transform' : ''" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-8 w-8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+                <svg :class="open ? 'rotate-180 transform' : ''" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-8 w-8">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                </svg>
               </button>
             </DisclosureButton>
             <DisclosurePanel class="transform scale-100 opacity-100">
