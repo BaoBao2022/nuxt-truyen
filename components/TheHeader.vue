@@ -11,17 +11,17 @@ const hasIndexPage = computed(() => {
 
 <template>
   <Popover class="relative h-40" v-slot="{close}">
-<!--    <transition-->
-<!--        enter-active-class="transition duration-200 ease-out"-->
-<!--        enter-from-class="translate-y-1 opacity-0"-->
-<!--        enter-to-class="translate-y-0 opacity-100"-->
-<!--        leave-active-class="transition duration-150 ease-in"-->
-<!--        leave-from-class="translate-y-0 opacity-100"-->
-<!--        leave-to-class="translate-y-1 opacity-0">-->
-      <PopoverPanel>
-        <TheSidebar :close="close"/>
-      </PopoverPanel>
-<!--    </transition>-->
+    <!--    <transition-->
+    <!--        enter-active-class="transition duration-200 ease-out"-->
+    <!--        enter-from-class="translate-y-1 opacity-0"-->
+    <!--        enter-to-class="translate-y-0 opacity-100"-->
+    <!--        leave-active-class="transition duration-150 ease-in"-->
+    <!--        leave-from-class="translate-y-0 opacity-100"-->
+    <!--        leave-to-class="translate-y-1 opacity-0">-->
+    <PopoverPanel>
+      <TheSidebar :close="close"/>
+    </PopoverPanel>
+    <!--    </transition>-->
     <header
         :class="hasIndexPage ? 'h-40 bg-background' : 'w-full max-w-[1400px] h-40 absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent' ">
       <div class="header-content mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
@@ -36,35 +36,35 @@ const hasIndexPage = computed(() => {
         </PopoverButton>
         <div class="relative flex h-full w-56 items-center md:w-80 md:px-6 lg:px-0 lg:pl-6">
           <figure class="absolute z-10 text-4xl font-semibold text-white md:text-5xl">
-            <Nuxt to="/">
+            <NuxtLink to="/" style="font-family: fantasy">
               Next Truyen
-            </Nuxt>
+            </NuxtLink>
           </figure>
-          <div class="absolute left-10 top-auto z-0">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
-                 xml:space="preserve" width="50" height="50"><path style="fill:#88888f" d="M133.818 116.364h34.909v116.364h-34.909z"></path>
-              <path
-                  style="fill:#797781" d="M343.273 116.364h34.909v116.364h-34.909z"></path>
-              <path style="fill:#e02753"
-                    d="M512 23.273C473.659 36.83 377.594 69.818 256 69.818S38.341 36.83 0 23.273l15.914 93.091C54.255 129.921 134.407 139.636 256 139.636s201.745-9.715 240.086-23.273L512 23.273z"></path>
-              <path
-                  style="fill:#c5142c"
-                  d="M256 69.818v69.818c121.594 0 201.745-9.715 240.086-23.273L512 23.273C473.659 36.83 377.594 69.818 256 69.818z"></path>
-              <path
-                  style="fill:#e07188" d="M116.364 267.636h69.818v221.091h-69.818z"></path>
-              <path style="fill:#e02753"
-                    d="M325.818 267.636h69.818v221.091h-69.818z"></path>
-              <path
-                  style="fill:#e02753"
-                  d="m494.547 219.093-11.639-32.911C454.173 196.343 391.48 208.456 256 208.456S57.827 196.343 29.092 186.182l-11.639 32.911c10.358 3.662 22.529 6.91 36.451 9.748v50.432h404.191v-50.432c13.922-2.838 26.094-6.085 36.452-9.748z"></path>
-              <path
-                  style="fill:#c5142c"
-                  d="M482.908 186.182C454.173 196.343 391.48 208.456 256 208.456v70.817h202.096v-50.432c13.922-2.838 26.093-6.086 36.451-9.748l-11.639-32.911z"></path>
-              <path
-                  style="fill:#88888f" d="M221.091 128h69.818v93.089h-69.818z"></path>
-              <path style="fill:#797781"
-                    d="M256 128h34.909v93.089H256z"></path></svg>
-          </div>
+<!--          <div class="absolute left-10 top-auto z-0">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"-->
+<!--                 xml:space="preserve" width="50" height="50"><path style="fill:#88888f" d="M133.818 116.364h34.909v116.364h-34.909z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#797781" d="M343.273 116.364h34.909v116.364h-34.909z"></path>-->
+<!--              <path style="fill:#e02753"-->
+<!--                    d="M512 23.273C473.659 36.83 377.594 69.818 256 69.818S38.341 36.83 0 23.273l15.914 93.091C54.255 129.921 134.407 139.636 256 139.636s201.745-9.715 240.086-23.273L512 23.273z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#c5142c"-->
+<!--                  d="M256 69.818v69.818c121.594 0 201.745-9.715 240.086-23.273L512 23.273C473.659 36.83 377.594 69.818 256 69.818z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#e07188" d="M116.364 267.636h69.818v221.091h-69.818z"></path>-->
+<!--              <path style="fill:#e02753"-->
+<!--                    d="M325.818 267.636h69.818v221.091h-69.818z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#e02753"-->
+<!--                  d="m494.547 219.093-11.639-32.911C454.173 196.343 391.48 208.456 256 208.456S57.827 196.343 29.092 186.182l-11.639 32.911c10.358 3.662 22.529 6.91 36.451 9.748v50.432h404.191v-50.432c13.922-2.838 26.094-6.085 36.452-9.748z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#c5142c"-->
+<!--                  d="M482.908 186.182C454.173 196.343 391.48 208.456 256 208.456v70.817h202.096v-50.432c13.922-2.838 26.093-6.086 36.451-9.748l-11.639-32.911z"></path>-->
+<!--              <path-->
+<!--                  style="fill:#88888f" d="M221.091 128h69.818v93.089h-69.818z"></path>-->
+<!--              <path style="fill:#797781"-->
+<!--                    d="M256 128h34.909v93.089H256z"></path></svg>-->
+<!--          </div>-->
         </div>
         <TheNav/>
         <div class="ml-10 flex h-full flex-1 items-center justify-end md:justify-between lg:ml-0">

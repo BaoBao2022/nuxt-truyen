@@ -25,7 +25,7 @@ const {data: mangas} = useFetch('/api/manga-new');
     </h2>
     <div class="mt-4 hover:cursor-grab lg:mt-6">
       <div class="swiper swiper-initialized swiper-horizontal swiper-ios section-swiper">
-        <Swiper slides-per-view="auto"
+        <Swiper slides-per-view="3"
                 :pagination="true"
                 :space-between="20"
                 :modules="modules"
@@ -61,7 +61,7 @@ const {data: mangas} = useFetch('/api/manga-new');
 </template>
 
 <style scoped lang="scss">
-.swiper-slide {
-  width: 30%
-}
+//.swiper-slide {
+//  width: 30%
+//}
 </style>
