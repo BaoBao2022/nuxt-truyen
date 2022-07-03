@@ -1,13 +1,62 @@
 <script setup lang="ts">
-defineProps({
+import {useStorage} from "@vueuse/core";
+import {keys, MangaDetails} from "~/types";
+import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME} from '~/contants';
+import {useRoute} from "#imports";
+
+const props = defineProps({
+  refresh: Function,
   chapter: String,
   title: String
 });
 
+const router = useRouter();
+const route = useRoute();
+
+const params = route.params;
+const mangaStorage = useStorage(keys.MANGA_DETAIL, {
+  serializer: {
+    read: (v: any) => v ? JSON.parse(v) : null,
+    write: (v: any) => JSON.stringify(v),
+  }
+});
+
+const handleChapter = (action: string) => {
+  let index = mangaStorage.value.chapterList.findIndex((chapter) => chapter.chapterNumber === params.chapter);
+
+  switch (action) {
+    case 'next':
+      if (!mangaStorage.value.chapterList[--index]) return;
+
+      const nextChapNumber = mangaStorage.value.chapterList[index].chapterNumber;
+      const nextChapId = mangaStorage.value.chapterList[index].chapterId;
+
+      router.replace(
+          `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${nextChapNumber}/${nextChapId}`,
+      );
+
+      break;
+    case 'prev':
+      if (!mangaStorage.value.chapterList[++index]) return;
+
+      const prevChapNumber =
+          mangaStorage.value.chapterList[index].chapterNumber;
+      const prevChapId = mangaStorage.value.chapterList[index].chapterId;
+
+      router.replace(
+          `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${prevChapNumber}/${prevChapId}`,
+      );
+
+      break;
+  }
+
+  props.refresh();
+};
+
 </script>
 
 <template>
-  <div class="slideUpReturn magictime fixed top-0 left-0 z-[999] h-[60px] w-full bg-[#141313]">
+  <div class="slideUpReturn magictime fixed top-0 left-0 z-[999] h-[60px] w-full">
     <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl">
       <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
         <NuxtLink to="/" class="flex">
@@ -25,14 +74,14 @@ defineProps({
           Chapter: {{ chapter }}
         </button>
         <div class="absolute-center h-full w-fit gap-4 md:mx-6">
-          <button data-id="prev" class="rounded-lg bg-highlight p-4 md:p-4">
+          <button data-id="prev" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('prev')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor" aria-hidden="true" class="h-6 w-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18">
               </path>
             </svg>
           </button>
-          <button data-id="next" class="rounded-lg bg-highlight p-4 md:p-4 ">
+          <button data-id="next" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('next')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor" aria-hidden="true" class="h-6 w-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>

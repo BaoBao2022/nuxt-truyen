@@ -4,6 +4,7 @@ import {Autoplay, EffectFade} from "swiper";
 import {computed, ref} from 'vue';
 import {navigateTo} from "#imports";
 import useFirstPathChapter from "~/composables/useFirstPathChapter";
+import useMangaPagePath from '~/composables/useMangaPagePath';
 
 const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
@@ -24,7 +25,6 @@ const spotlights = computed(() => {
 
 const navigateToManga = async (spotlight) => {
   const path = await useFirstPathChapter(spotlight);
-
   return navigateTo({
     path: path
   })
