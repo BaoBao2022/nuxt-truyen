@@ -9,4 +9,5 @@ export const SourceParams = {
 }
 
 export const MANGA_PATH_NAME = 'manga';
+export const MANGA_PATH_DETAIL_NAME = 'detail';
 export const MANGA_PATH_READ_NAME = 'read';

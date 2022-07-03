@@ -78,8 +78,6 @@ const handleNextProcess = () => {
 
 }
 
-console.log("manStorage", manStorage.value)
-
 useHead({
   title: `${manStorage.value.title} | Chapter ${chapterNumber.value}`,
   description: manStorage.value.review,

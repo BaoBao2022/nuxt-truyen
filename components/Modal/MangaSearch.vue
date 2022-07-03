@@ -9,11 +9,11 @@ import {
   Dialog,
   DialogPanel,
 } from '@headlessui/vue'
-import {useRuntimeConfig} from "#imports";
+import {useRuntimeConfig, useState} from "#imports";
 
 const config = useRuntimeConfig();
 const refInput = ref('');
-const debounced = useDebounce(refInput, 500)
+const debounced = useDebounce(refInput, 300)
 const shouldShow = ref(false);
 
 const open = () => {
@@ -30,15 +30,17 @@ const clearInput = () => {
   searchData.value = {};
 }
 
-watch([debounced], async () => {
+watch([refInput], async () => {
   try {
     hasResult.value = true;
     loading.value = true;
+
     const mangas = await $fetch(`${config.public.NUXT_PUBLIC_SERVICE_URL}/api/nt/search`, {
       params: {
         q: debounced.value
       }
     });
+
     searchData.value = mangas;
     loading.value = false
   } catch (e) {
@@ -131,7 +133,7 @@ watch([debounced], async () => {
                     <EmojiSadIcon class="h-10 w-10"/>
                   </div>
                   <LazyCommonSearchLoading v-if="loading" class-name="h-20 w-20"/>
-                  <LazyModalSearchResult :searchData="searchData" v-if="hasResult"/>
+                  <LazyModalSearchResult @closeSearchModal="close" :searchData="searchData" v-if="hasResult"/>
                 </div>
               </div>
             </DialogPanel>

@@ -5,7 +5,7 @@ import {navigateTo, useAsyncData, useHead, useState, watchEffect} from "#imports
 import useFirstPathChapter from "~/composables/useFirstPathChapter";
 
 const route = useRoute();
-const slug = ref(route.query.slug);
+const slug = ref(route.params.slug);
 
 const onPickManga = useState('pickManga');
 const url = `/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`;
@@ -18,10 +18,20 @@ const navigateToManga = async (slug) => {
   })
 }
 
+const navigateLastToManga = async (slug) => {
+  const path = await useLastPathChapter(null, slug);
+  return navigateTo({
+    path: path
+  })
+}
+
 watch([onPickManga], async () => {
   if (onPickManga.value) {
     slug.value = onPickManga.value;
-    await refresh()
+    // await refresh()
+    const refresh = () => refreshNuxtData('manga-detail')
+    refresh()
+
   }
 })
 
@@ -97,7 +107,7 @@ useHead({
                       Đọc ngay
                     </button>
                   </a>
-                  <a href="/manga/read/nhat-niem-vinh-hang-20674/63.5/872343">
+                  <a @click="navigateLastToManga(slug)">
                     <button
                         class="pulse-effect-secondary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-white text-gray-800 transition-all hover:scale-[110%]">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
@@ -144,7 +154,7 @@ useHead({
           </Disclosure>
         </div>
 
-        <LazyMangaChaplist :chapterList="comic.chapterList"/>
+        <LazyMangaChaplist :slug="slug" :chapterList="comic.chapterList"/>
       </div>
     </div>
   </NuxtLayout>
