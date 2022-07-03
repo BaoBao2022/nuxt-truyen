@@ -15,8 +15,5 @@ export default defineEventHandler(async (event) => {
     }
 
     const comic = await model.getComic(slug);
-    return {
-        success: true,
-        data: comic
-    }
+    return comic
 })

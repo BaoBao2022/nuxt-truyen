@@ -1,7 +1,10 @@
 <template>
-  <TheHeader/>
-  <main class="overflow-x-hidden">
-    <slot/>
-  </main>
-  <TheFooter/>
+  <div class="_layout">
+    <TheHeader/>
+    <div class="overflow-x-hidden">
+      <slot/>
+    </div>
+    <TheFooter/>
+  </div>
+
 </template>

@@ -3,10 +3,13 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import {Autoplay, EffectFade} from "swiper";
 import {computed, ref} from 'vue';
 import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from '~/contants';
+import {navigateTo, useState} from "#imports";
+import useComic from "~/composables/state/useComic";
+import {set} from "vue-demi";
 
 const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
-  delay: 2500,
+  delay: 2000,
   disableOnInteraction: false
 });
 
@@ -20,6 +23,21 @@ const {data: spotlightD} = await useFetch('/api/spotlights');
 const spotlights = computed(() => {
   return spotlightD.value.filter(spotlight => spotlight.review !== '')
 });
+
+const navigateToManga = async (spotlight) => {
+  const slug = spotlight.slug
+  const {data: comic} = await useFetch(`/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`);
+
+  const chapterNumber = comic.value.chapterList && comic.value.chapterList[comic.value.chapterList?.length - 1].chapterNumber;
+  const chapterId = comic.value?.chapterList && comic.value?.chapterList[comic.value.chapterList?.length - 1].chapterId;
+
+  const path = `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
+  const x = useState('comic', () => comic.value);
+  console.log("x", x)
+  return navigateTo({
+    path: path
+  })
+}
 
 // if (spotlights.value)
 //   for (let i = 0; i < spotlights.value.length; i++) {
@@ -36,13 +54,13 @@ const spotlights = computed(() => {
 
 <template>
   <Swiper
-      effect="fade"
       :modules="modules"
       :autoplay="autoPlaySettings">
     <SwiperSlide v-for="spotlight in spotlights">
       <div class="cursor-pointer">
-        <figure class="deslide-cover h-[250px] w-full bg-cover bg-center bg-no-repeat blur md:h-[350px] lg:h-[450px]"
-                :style="backgroundImage(spotlight)"></figure>
+        <figure
+            class="deslide-cover h-[250px] w-full bg-cover bg-center bg-no-repeat blur md:h-[350px] lg:h-[450px]"
+            :style="backgroundImage(spotlight)"></figure>
         <div
             class="aspect-[3/4] 0 absolute-center absolute top-1/2 right-[5%] md:right-[10%] z-10 flex h-[80%] w-[150px] -translate-y-1/2 items-center md:w-[200px] lg:w-[250px]">
           <div class="relative h-full w-[90%] overflow-hidden rounded-2xl magictime vanishIn">
@@ -91,12 +109,17 @@ const spotlights = computed(() => {
             </li>
           </ul>
           <div class="flex space-x-6 text-xl md:text-2xl lg:pt-6">
-            <a :href="`${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${spotlight.slug}/${spotlight?.chapters && spotlight.chapters[spotlight.chapters?.length - 1].chapterNumber}/${spotlight?.chapters && spotlight?.chapters[spotlight.chapters?.length - 1].chapterId}`">
-              <button
-                  class="absolute-center rounded-xl bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
-                Đọc ngay
-              </button>
-            </a>
+            <!--            <NuxtLink to="/manga">-->
+
+            <!--              <a :href="`${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${spotlight.slug}/${spotlight?.chapters && spotlight.chapters[spotlight.chapters?.length - 1].chapterNumber}/${spotlight?.chapters && spotlight?.chapters[spotlight.chapters?.length - 1].chapterId}`">-->
+            <button
+                @click="navigateToManga(spotlight)"
+                class="absolute-center rounded-xl bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
+              Đọc ngay
+            </button>
+            <!--            </NuxtLink>-->
+
+            <!--              </a>-->
             <a :href="`/manga?slug=${spotlight.slug}`">
               <button
                   class="absolute-center rounded-xl bg-white py-3 px-5 text-gray-800 transition-all hover:scale-110 md:w-[100px]">

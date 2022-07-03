@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// import {useRoute} from "#imports";
 import {SourceParams} from "~/contants";
 
 const route = useRoute();
@@ -7,6 +6,7 @@ const {slug} = route.query;
 
 const url = `/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`;
 const {data: comic} = useLazyFetch(url);
+
 </script>
 
 <template>
@@ -32,8 +32,8 @@ const {data: comic} = useLazyFetch(url);
                 <span
                     style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
                   <img alt="manga-thumbnail" sizes="100vw"
-                       :srcset="comic.data.thumbnail"
-                       :src="comic.data.thumbnail"
+                       :srcset="comic.thumbnail"
+                       :src="comic.thumbnail"
                        decoding="async" data-nimg="fill" class="absolute inset-0 rounded-2xl object-cover object-center"
                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
                 </span>
@@ -42,27 +42,27 @@ const {data: comic} = useLazyFetch(url);
             <div class="flex h-full w-full flex-col justify-center p-4 text-white md:min-h-[430px] lg:ml-4">
               <div class="w-full space-y-4 text-center md:ml-2 md:text-left lg:w-[80%]">
                 <h1 class="font-secondary  font-bold leading-none text-[6.5vw] md:text-[5.5vw] lg:text-[3.5vw]">
-                  {{ comic.data.title }}
+                  {{ comic.title }}
                 </h1>
                 <h2 class="text-[3vw] md:min-h-[28px] md:text-[2vw] lg:text-[1.2vw]"></h2>
                 <h3 class="text-center text-[3vw] md:text-left md:text-[2vw] lg:text-[1.1vw]">
-                  {{ comic.data.author }}
+                  {{ comic.author }}
                 </h3>
                 <h4 class="flex items-center justify-center gap-4 md:justify-start">
             <span class="block h-3 w-3 rounded-full bg-green-500 ">
             </span>
-                  {{ comic.data.status }}
+                  {{ comic.status }}
                 </h4>
               </div>
               <div class="mt-4 flex flex-col-reverse gap-2 md:flex-col">
                 <ul class="my-4 flex flex-wrap items-center gap-4">
                   <h3 class="px-2 py-2">Thể loại:</h3>
-                  <li class="rounded-xl bg-highlight px-4 py-2" v-for="genre in comic.data.genres">
+                  <li class="rounded-xl bg-highlight px-4 py-2" v-for="genre in comic.genres">
                     <a href="/browse?genres=mystery">{{ genre.genreTitle }}</a>
                   </li>
                 </ul>
                 <div class="flex h-[150px] w-full flex-col items-center gap-6 md:flex-row md:items-start">
-                  <a :href="`/manga/read/${slug}/${comic.data.chapterList[0].chapterNumber}/${comic.data.chapterList[0].chapterId}`">
+                  <a :href="`/manga/read/${slug}/${comic.chapterList[0].chapterNumber}/${comic.chapterList[0].chapterId}`">
                     <button
                         class="pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -98,9 +98,19 @@ const {data: comic} = useLazyFetch(url);
             </div>
           </div>
         </section>
-        <LazyMangaReview :review="comic.data.review"/>
-        <LazyMangaChaplist :chapterList="comic.data.chapterList"/>
+        <LazyMangaReview :review="comic.review"/>
+        <LazyMangaChaplist :chapterList="comic.chapterList"/>
       </div>
     </div>
   </NuxtLayout>
 </template>
+
+<!--<template>-->
+<!--  <div>-->
+<!--    <NuxtLink to="/" class="text-cyan-50">-->
+<!--      <button>hehehehe</button>-->
+<!--    </NuxtLink>-->
+
+<!--    <h3 class="text-cyan-50">helo manga</h3>-->
+<!--  </div>-->
+<!--</template>-->
