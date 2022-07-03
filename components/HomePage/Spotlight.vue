@@ -2,7 +2,7 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Autoplay, EffectFade} from "swiper";
 import {computed, ref} from 'vue';
-import {navigateTo} from "#imports";
+import {navigateTo, useState} from "#imports";
 import useFirstPathChapter from "~/composables/useFirstPathChapter";
 import useMangaPagePath from '~/composables/useMangaPagePath';
 
@@ -17,14 +17,13 @@ const backgroundImage = (spotlight) => {
     backgroundImage: `url(${spotlight.thumbnail})`,
   }
 }
-
 const {data: spotlightD} = await useFetch('/api/spotlights');
 const spotlights = computed(() => {
   return spotlightD.value.filter(spotlight => spotlight.review !== '')
 });
 
 const navigateToManga = async (spotlight) => {
-  const path = await useFirstPathChapter(spotlight);
+  const path = await useFirstPathChapter(spotlight, '');
   return navigateTo({
     path: path
   })

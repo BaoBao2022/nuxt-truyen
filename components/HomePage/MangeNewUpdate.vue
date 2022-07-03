@@ -3,6 +3,8 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import {Pagination} from "swiper";
 import {ref} from 'vue';
 import useMangaPagePath from '~/composables/useMangaPagePath';
+import {computed, useState} from "#imports";
+import {devices} from '~/types';
 
 defineProps({
   title: String
@@ -10,6 +12,16 @@ defineProps({
 
 const modules = ref([Pagination]);
 const {data: mangas} = useFetch('/api/manga-updated');
+
+const device = useState<devices>('devices');
+console.log("devices", device.value)
+const sliderPerView = computed(() => {
+  if (device.value.hasDesktop) {
+    return 7;
+  }
+
+  return 3;
+});
 
 </script>
 
@@ -28,7 +40,7 @@ const {data: mangas} = useFetch('/api/manga-updated');
     </h2>
     <div class="mt-4 hover:cursor-grab lg:mt-6">
       <div class="swiper swiper-initialized swiper-horizontal swiper-ios section-swiper">
-        <Swiper slides-per-view="3"
+        <Swiper :slides-per-view="sliderPerView"
                 :pagination="true"
                 :space-between="20"
                 :modules="modules"
