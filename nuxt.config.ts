@@ -6,7 +6,7 @@ import {defineNuxtConfig} from 'nuxt'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     runtimeConfig: {
-        NUXT_PUBLIC_SERVICE_URL: 'https://1847-2a09-bac0-412-00-81d-6909.ap.ngrok.io',
+        NUXT_PUBLIC_SERVICE_URL: 'http://baobaoapp.herokuapp.com',
         PUBLIC_API: 'http://baobaoapp.herokuapp.com'
     },
     meta: {
