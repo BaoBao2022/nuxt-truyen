@@ -12,7 +12,7 @@ const {data: mangas} = useFetch('/api/top-month');
     </h2>
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
-        <NuxtLink :to="useMangaPagePath(manga.slug)">
+        <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
                 <span
                     style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
@@ -28,7 +28,7 @@ const {data: mangas} = useFetch('/api/top-month');
 
         </NuxtLink>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <NuxtLink :to="useMangaPagePath(manga.slug)">
+          <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
               {{ manga.name }}
             </h3>

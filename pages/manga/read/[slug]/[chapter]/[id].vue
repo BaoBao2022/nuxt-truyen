@@ -19,11 +19,12 @@ const chapterID = ref(id);
 const realSlug = slug.slice(0, slug.lastIndexOf('-'));
 const chapterNumber = ref(chapter);
 
+console.log("chapterID", chapterID.value)
 const {
   pending,
   data: chapters,
   refresh,
-} = await useAsyncData('read-manga', () => $fetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID}`));
+} = await useAsyncData('read-manga', () => $fetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID.value}`));
 
 const manStorage = useStorage(keys.MANGA_DETAIL, {
   serializer: {

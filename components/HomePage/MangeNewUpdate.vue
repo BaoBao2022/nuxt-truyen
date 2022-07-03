@@ -47,7 +47,7 @@ const sliderPerView = computed(() => {
                 style="transform: translate3d(0px, 0px, 0px); padding-bottom: 50px">
           <SwiperSlide v-for="manga in mangas">
             <div class="aspect-h-4 aspect-w-3 rounded-xl">
-              <NuxtLink :to="useMangaPagePath(manga.slug)">
+              <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <span
                     style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0; margin: 0; padding: 0; position: absolute; inset: 0;"><img
                     alt="manga-thumbnail z-50" sizes="100vw"
@@ -62,7 +62,7 @@ const sliderPerView = computed(() => {
                 {{ manga.newChapter }}
               </span>
             </div>
-            <NuxtLink :to="useMangaPagePath(manga.slug)">
+            <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
               <h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
                 {{ manga.name }}
               </h2>

@@ -54,19 +54,19 @@ const navigateToManga = async (spotlight) => {
         </div>
         <div
             class="absolute top-12 left-5 z-40 flex h-[70%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">
-          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
+          <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
 
             <h3 class="mx-4 mt-6 text-xl md:text-4xl">
               {{ spotlight.newChapter }}
             </h3>
           </NuxtLink>
 
-          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
+          <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
             <h1 class="text-3xl transition-all line-clamp-1 hover:text-primary md:min-h-[30px] md:text-6xl">
               {{ spotlight.name }}
             </h1>
           </NuxtLink>
-          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
+          <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
             <h5 class="text-sm line-clamp-3 md:min-h-[60px] md:text-2xl">
               {{ spotlight.review ? spotlight.review : '' }}
             </h5>
@@ -94,12 +94,14 @@ const navigateToManga = async (spotlight) => {
                 class="absolute-center rounded-xl bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
               Đọc ngay
             </button>
-            <a :href="`/manga?slug=${spotlight.slug}`">
+            <!--            <a :href="`/manga?slug=${spotlight.slug}`">-->
+            <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
               <button
                   class="absolute-center rounded-xl bg-white py-3 px-5 text-gray-800 transition-all hover:scale-110 md:w-[100px]">
                 Chi tiết
               </button>
-            </a>
+            </NuxtLink>
+            <!--            </a>-->
           </div>
         </div>
       </div>

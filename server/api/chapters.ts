@@ -1,5 +1,4 @@
 import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
-import {reactive} from "vue";
 
 export default defineEventHandler(async (event) => {
     const query = useQuery(event);
