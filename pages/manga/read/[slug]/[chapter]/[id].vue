@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// const runtimeConfig = useRuntimeConfig()
 
 const route = useRoute();
 const {params} = route;
@@ -11,20 +10,14 @@ const url = `/api/chapters?slug=${realSlug}&chapter=${chapter}&id=${id}`
 const {data: chapters} = await useFetch(url);
 
 </script>
+
 <template>
   <main class="overflow-x-hidden">
     <div class="flex h-fit min-h-screen flex-col bg-black">
       <section class="flex h-fit relative">
         <div class="relative flex h-fit flex-1 text-white">
-<!--          <div class="absolute top-0 left-0 z-[699] h-full w-[75px]">-->
-
-<!--          </div>-->
-<!--          <div class="absolute top-0 right-0 z-[699] h-full w-[75px]">-->
-
-<!--          </div>-->
           <div class="h-fit min-h-screen w-full bg-black">
-<!--            <div class="fixed top-0 right-0 z-[888] min-h-[50px] px-24" style="width: 390px;"></div>-->
-            <LazyMangaChapterHeader :chapter="chapter"/>
+            <LazyMangaChapterHeader :chapter="chapter" :title="chapters.data[0].title"/>
             <LazyMangaChapterImg :chapters="chapters.data"/>
             <div class="h-[200px] w-full overflow-hidden py-4">
               <div class="mx-auto flex h-full w-full flex-col space-y-4 md:w-1/2">

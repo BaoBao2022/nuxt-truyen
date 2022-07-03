@@ -2,20 +2,24 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Pagination} from "swiper";
 import {ref} from 'vue';
+import useMangaPagePath from '~/composables/useMangaPagePath';
 
 defineProps({
   title: String
 });
+
 const modules = ref([Pagination]);
 const {data: mangas} = useFetch('/api/manga-updated');
+
 </script>
 
 <template>
   <section class="w-[90%] mx-auto w-max-[1300px] mt-6 overflow-x-hidden">
     <h2 class="mt-4 flex select-none items-center font-secondary text-3xl text-white hover:cursor-pointer md:text-4xl lg:text-5xl">
-      <div class="flex items-center transition-all hover:text-primary"><a href="/browse?view=newComic">
-        {{ title }}
-      </a>
+      <div class="flex items-center transition-all hover:text-primary">
+        <a href="/browse?view=newComic">
+          {{ title }}
+        </a>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
              aria-hidden="true" class="h-8 w-8 lg:h-10 lg:w-10">
           <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
@@ -31,26 +35,26 @@ const {data: mangas} = useFetch('/api/manga-updated');
                 style="transform: translate3d(0px, 0px, 0px); padding-bottom: 50px">
           <SwiperSlide v-for="manga in mangas">
             <div class="aspect-h-4 aspect-w-3 rounded-xl">
-              <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt">
-              <span
-                  style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0; margin: 0; padding: 0; position: absolute; inset: 0;"><img
-                  alt="manga-thumbnail z-50" sizes="100vw"
-                  :srcset="manga.thumbnail"
-                  :src="manga.thumbnail"
-                  decoding="async" data-nimg="fill" class="absolute inset-0 rounded-xl object-cover object-center"
-                  style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0; height: 0; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+              <NuxtLink :to="useMangaPagePath(manga.slug)">
+                <span
+                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0; margin: 0; padding: 0; position: absolute; inset: 0;"><img
+                    alt="manga-thumbnail z-50" sizes="100vw"
+                    :srcset="manga.thumbnail"
+                    :src="manga.thumbnail"
+                    decoding="async" data-nimg="fill" class="absolute inset-0 rounded-xl object-cover object-center"
+                    style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0; height: 0; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
               </span>
-              </a>
+              </NuxtLink>
               <span
                   class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl">
                 {{ manga.newChapter }}
               </span>
             </div>
-            <a href="/manga/details/vo-luyen-dinh-phong-17696?src=nt">
+            <NuxtLink :to="useMangaPagePath(manga.slug)">
               <h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
                 {{ manga.name }}
               </h2>
-            </a>
+            </NuxtLink>
           </SwiperSlide>
         </Swiper>
       </div>

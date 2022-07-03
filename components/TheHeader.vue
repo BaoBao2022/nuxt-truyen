@@ -36,9 +36,9 @@ const hasIndexPage = computed(() => {
         </PopoverButton>
         <div class="relative flex h-full w-56 items-center md:w-80 md:px-6 lg:px-0 lg:pl-6">
           <figure class="absolute z-10 text-4xl font-semibold text-white md:text-5xl">
-            <a href="/">
+            <Nuxt to="/">
               Next Truyen
-            </a>
+            </Nuxt>
           </figure>
           <div class="absolute left-10 top-auto z-0">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"

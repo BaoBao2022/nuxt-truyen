@@ -1,7 +1,7 @@
 <script setup lang="ts">
-
 defineProps({
-  chapter: String
+  chapter: String,
+  title: String
 });
 
 </script>
@@ -10,13 +10,16 @@ defineProps({
   <div class="slideUpReturn magictime fixed top-0 left-0 z-[999] h-[60px] w-full bg-[#141313]">
     <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl">
       <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
-        <button>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-               stroke="currentColor" aria-hidden="true" class="h-8 w-8">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
-          </svg>
-        </button>
-        <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%] ">Kiếm Nghịch Thương Khung</h1>
+        <NuxtLink to="/" class="flex">
+          <button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                 stroke="currentColor" aria-hidden="true" class="h-8 w-8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18">
+              </path>
+            </svg>
+          </button>
+        </NuxtLink>
+        <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ title }}</h1>
         <button
             class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">
           Chapter: {{ chapter }}

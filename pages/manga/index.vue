@@ -13,7 +13,8 @@ const {data: comic} = useLazyFetch(url);
   <NuxtLayout>
     <div class="flex h-fit flex-col" style="height: auto">
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
-        <figure class="deslide-cover"><span
+        <figure class="deslide-cover">
+          <span
             style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
             alt="comic-banner"
             src="https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F131%2Fbao-boi-cua-lao-dai-da-xuyen-khong-tro-v-5719.jpg&w=3840&q=75"
@@ -104,13 +105,3 @@ const {data: comic} = useLazyFetch(url);
     </div>
   </NuxtLayout>
 </template>
-
-<!--<template>-->
-<!--  <div>-->
-<!--    <NuxtLink to="/" class="text-cyan-50">-->
-<!--      <button>hehehehe</button>-->
-<!--    </NuxtLink>-->
-
-<!--    <h3 class="text-cyan-50">helo manga</h3>-->
-<!--  </div>-->
-<!--</template>-->

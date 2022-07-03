@@ -14,5 +14,6 @@ export interface Genre {
 export interface ChapterImg {
     id: string;
     imgSrc: string;
+    title: string;
     imgSrcFallback: string;
 }

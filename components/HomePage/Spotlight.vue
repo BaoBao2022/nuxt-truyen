@@ -2,10 +2,8 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Autoplay, EffectFade} from "swiper";
 import {computed, ref} from 'vue';
-import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from '~/contants';
-import {navigateTo, useState} from "#imports";
-import useComic from "~/composables/state/useComic";
-import {set} from "vue-demi";
+import {navigateTo} from "#imports";
+import useFirstPathChapter from "~/composables/useFirstPathChapter";
 
 const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
@@ -25,31 +23,12 @@ const spotlights = computed(() => {
 });
 
 const navigateToManga = async (spotlight) => {
-  const slug = spotlight.slug
-  const {data: comic} = await useFetch(`/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`);
+  const path = await useFirstPathChapter(spotlight);
 
-  const chapterNumber = comic.value.chapterList && comic.value.chapterList[comic.value.chapterList?.length - 1].chapterNumber;
-  const chapterId = comic.value?.chapterList && comic.value?.chapterList[comic.value.chapterList?.length - 1].chapterId;
-
-  const path = `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
-  const x = useState('comic', () => comic.value);
-  console.log("x", x)
   return navigateTo({
     path: path
   })
 }
-
-// if (spotlights.value)
-//   for (let i = 0; i < spotlights.value.length; i++) {
-//     console.log("eee", spotlights.value[i].slug)
-//
-//     const {data: comic} = await useFetch(`/api/comic?slug=${spotlights.value[i].slug}&source=${SourceParams.netTruyen}`);
-//     console.log("comic", comic.value)
-//     // Object.assign(spotlights[i], {
-//     //   chapters: comic.value
-//     // });
-//   }
-
 </script>
 
 <template>
@@ -76,21 +55,23 @@ const navigateToManga = async (spotlight) => {
         </div>
         <div
             class="absolute top-12 left-5 z-40 flex h-[70%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">
-          <a :href="`/manga?slug=${spotlight.slug}`">
+          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
+
             <h3 class="mx-4 mt-6 text-xl md:text-4xl">
               {{ spotlight.newChapter }}
             </h3>
-          </a>
-          <a :href="`/manga?slug=${spotlight.slug}`">
+          </NuxtLink>
+
+          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
             <h1 class="text-3xl transition-all line-clamp-1 hover:text-primary md:min-h-[30px] md:text-6xl">
               {{ spotlight.name }}
             </h1>
-          </a>
-          <a :href="`/manga?slug=${spotlight.slug}`">
+          </NuxtLink>
+          <NuxtLink :to="useMangaPagePath(spotlight.slug)">
             <h5 class="text-sm line-clamp-3 md:min-h-[60px] md:text-2xl">
               {{ spotlight.review ? spotlight.review : '' }}
             </h5>
-          </a>
+          </NuxtLink>
           <ul class="hidden space-x-4 text-lg md:flex">
             <li class="flex w-fit max-w-[100px] items-center whitespace-nowrap rounded-xl border-[1px] border-white py-2 px-4 line-clamp-1">
               Action
@@ -109,17 +90,11 @@ const navigateToManga = async (spotlight) => {
             </li>
           </ul>
           <div class="flex space-x-6 text-xl md:text-2xl lg:pt-6">
-            <!--            <NuxtLink to="/manga">-->
-
-            <!--              <a :href="`${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${spotlight.slug}/${spotlight?.chapters && spotlight.chapters[spotlight.chapters?.length - 1].chapterNumber}/${spotlight?.chapters && spotlight?.chapters[spotlight.chapters?.length - 1].chapterId}`">-->
             <button
                 @click="navigateToManga(spotlight)"
                 class="absolute-center rounded-xl bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
               Đọc ngay
             </button>
-            <!--            </NuxtLink>-->
-
-            <!--              </a>-->
             <a :href="`/manga?slug=${spotlight.slug}`">
               <button
                   class="absolute-center rounded-xl bg-white py-3 px-5 text-gray-800 transition-all hover:scale-110 md:w-[100px]">
