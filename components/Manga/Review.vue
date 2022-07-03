@@ -2,9 +2,7 @@
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
 
 defineProps({
-  review: {
-    type: Object,
-  }
+  review: String
 })
 </script>
 

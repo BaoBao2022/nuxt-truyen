@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 import {SourceParams} from "~/contants";
+import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
+import {useAsyncData} from "#imports";
 
 const route = useRoute();
 const {slug} = route.query;
 
 const url = `/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`;
-const {data: comic} = useLazyFetch(url);
+const {data: comic} = await useAsyncData('manga-detail', () => $fetch(url));
 
 </script>
 
@@ -17,12 +19,12 @@ const {data: comic} = useLazyFetch(url);
           <span
             style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
             alt="comic-banner"
-            src="https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F131%2Fbao-boi-cua-lao-dai-da-xuyen-khong-tro-v-5719.jpg&w=3840&q=75"
+            :src="comic.thumbnail"
             decoding="async" data-nimg="fill"
             class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur"
             sizes="100vw"
-            srcset="https://kyotomanga.live/_next/image?url=https%3A%2F%2Fst.nettruyenco.com%2Fdata%2Fcomics%2F131%2Fbao-boi-cua-lao-dai-da-xuyen-khong-tro-v-5719.jpg&w=3840&q=75"
-            style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+            :srcset="comic.thumbnail"
+            style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
         </figure>
       </div>
       <div class="z-10 mx-auto w-[85%] pt-32">
@@ -99,7 +101,24 @@ const {data: comic} = useLazyFetch(url);
             </div>
           </div>
         </section>
-        <LazyMangaReview :review="comic.review"/>
+<!--        <LazyMangaReview :review="comic?.review"/>-->
+
+        <div class="flex-col-reverse flex">
+          <Disclosure v-slot="{ open }">
+            <DisclosureButton>
+              <button class="flex w-full flex-col items-center bg-cyan-300/0 text-white">
+                Tóm tắt
+                <svg :class="open ? 'rotate-180 transform' : ''" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-8 w-8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+            </DisclosureButton>
+            <DisclosurePanel class="transform scale-100 opacity-100">
+              <p class="text-white">
+                {{ comic?.review }}
+              </p>
+            </DisclosurePanel>
+          </Disclosure>
+        </div>
+
         <LazyMangaChaplist :chapterList="comic.chapterList"/>
       </div>
     </div>

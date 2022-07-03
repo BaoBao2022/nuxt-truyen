@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {Popover, PopoverButton, PopoverPanel} from '@headlessui/vue';
-import {useRoute} from "#app";
+import {useRoute} from "#imports";
 
 const route = useRoute();
 const hasIndexPage = computed(() => {
@@ -10,18 +10,18 @@ const hasIndexPage = computed(() => {
 </script>
 
 <template>
-  <Popover class="relative" v-slot="{close}">
-    <transition
-        enter-active-class="transition duration-200 ease-out"
-        enter-from-class="translate-y-1 opacity-0"
-        enter-to-class="translate-y-0 opacity-100"
-        leave-active-class="transition duration-150 ease-in"
-        leave-from-class="translate-y-0 opacity-100"
-        leave-to-class="translate-y-1 opacity-0">
+  <Popover class="relative h-40" v-slot="{close}">
+<!--    <transition-->
+<!--        enter-active-class="transition duration-200 ease-out"-->
+<!--        enter-from-class="translate-y-1 opacity-0"-->
+<!--        enter-to-class="translate-y-0 opacity-100"-->
+<!--        leave-active-class="transition duration-150 ease-in"-->
+<!--        leave-from-class="translate-y-0 opacity-100"-->
+<!--        leave-to-class="translate-y-1 opacity-0">-->
       <PopoverPanel>
         <TheSidebar :close="close"/>
       </PopoverPanel>
-    </transition>
+<!--    </transition>-->
     <header
         :class="hasIndexPage ? 'h-40 bg-background' : 'w-full max-w-[1400px] h-40 absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent' ">
       <div class="header-content mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
