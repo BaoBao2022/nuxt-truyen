@@ -9,7 +9,3 @@
 // const useColor = useColorMode()
 // useColor.preference = "dark";
 </script>
-
-<style>
-
-</style>

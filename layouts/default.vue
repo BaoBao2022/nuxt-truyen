@@ -1,10 +1,10 @@
 <template>
   <div class="_layout">
-    <TheHeader/>
+    <LazyTheHeader/>
     <div class="overflow-x-hidden">
       <slot/>
     </div>
-    <TheFooter/>
+    <LazyTheFooter/>
   </div>
 
 </template>

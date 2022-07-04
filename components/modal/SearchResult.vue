@@ -15,7 +15,7 @@ defineProps({
     <ul class="h-fit w-full space-y-5">
       <div class="lazyload-wrapper" v-for="manga in searchData.data">
         <li class="h-fit overflow-x-hidden bg-secondary py-4">
-          <NuxtLink class="flex h-full space-x-2" :to="useMangaDetailPagePath(manga.slug)" @click="close">
+          <LazyNuxtLink class="flex h-full space-x-2" :to="useMangaDetailPagePath(manga.slug)" @click="close">
             <figure class="aspect-w-3 relative mt-4 ml-4 h-[120px] w-[90px] min-w-[85px] overflow-hidden rounded-xl">
             <span
                 style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0;">
@@ -41,7 +41,7 @@ defineProps({
                 </li>
               </ul>
             </div>
-          </NuxtLink>
+          </LazyNuxtLink>
         </li>
       </div>
     </ul>

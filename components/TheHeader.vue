@@ -39,9 +39,9 @@ const hasIndexPage = computed(() => {
         </PopoverButton>
         <div class="relative flex h-full w-56 items-center md:w-80 md:px-6 lg:px-0 lg:pl-6">
           <figure class="absolute z-10 text-4xl font-semibold text-white md:text-5xl">
-            <NuxtLink to="/" style="font-family: cursive">
+            <LazyNuxtLink to="/" style="font-family: cursive">
               Next Truyen
-            </NuxtLink>
+            </LazyNuxtLink>
           </figure>
           <div class="absolute left-10 top-auto z-0">
 

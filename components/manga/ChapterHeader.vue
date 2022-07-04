@@ -59,7 +59,7 @@ const handleChapter = (action: string) => {
   <div class="slideUpReturn magictime fixed top-0 left-0 z-[999] h-[60px] w-full">
     <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl">
       <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
-        <NuxtLink to="/" class="flex">
+        <LazyNuxtLink to="/" class="flex">
           <button>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                  stroke="currentColor" aria-hidden="true" class="h-8 w-8">
@@ -67,7 +67,7 @@ const handleChapter = (action: string) => {
               </path>
             </svg>
           </button>
-        </NuxtLink>
+        </LazyNuxtLink>
         <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ title }}</h1>
         <button
             class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">

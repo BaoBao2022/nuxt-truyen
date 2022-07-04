@@ -1,8 +1,6 @@
 import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from "~/contants";
-import {Manga, MangaDetails, keys} from "~/types";
+import {keys, Manga, MangaDetails} from "~/types";
 import {useStorage} from "@vueuse/core";
-// import {useState} from "#build/imports";
-// import {State} from '~/types';
 
 const useFirstPathChapter = async (spotlight: Manga, slugs: string) => {
     const slug = slugs || spotlight?.slug
@@ -19,8 +17,7 @@ const useFirstPathChapter = async (spotlight: Manga, slugs: string) => {
     const chapterId = mangaDetail?.chapterList && mangaDetail?.chapterList[mangaDetail.chapterList?.length - 1].chapterId;
     const chapterNumber = mangaDetail.chapterList && mangaDetail.chapterList[mangaDetail.chapterList?.length - 1].chapterNumber;
 
-    const path = `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
-    return path;
+    return `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
 }
 
 export default useFirstPathChapter;

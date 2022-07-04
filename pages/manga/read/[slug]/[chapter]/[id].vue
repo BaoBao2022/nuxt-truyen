@@ -93,11 +93,11 @@ useHead({
         <div class="fixed top-0 left-0 z-[999] h-[60px] w-full">
           <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl bg-black">
             <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
-              <NuxtLink :to="`/${MANGA_PATH_NAME}?slug=${slug}`" class="flex">
+              <LazyNuxtLink :to="`/${MANGA_PATH_NAME}?slug=${slug}`" class="flex">
                 <button>
                   <ArrowNarrowLeftIcon class="h-8 w-8"/>
                 </button>
-              </NuxtLink>
+              </LazyNuxtLink>
               <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ manStorage.title }}</h1>
               <button
                   class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">

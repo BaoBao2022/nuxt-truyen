@@ -9,7 +9,7 @@ const slug = ref(route.params.slug);
 
 // const onPickManga = useState('pickManga');
 const url = `/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`;
-const {data: comic, pending} = useLazyFetch(url);
+const {data: comic, pending} = await useLazyFetch(url);
 useState('pending', () => pending);
 
 const navigateToManga = async (slug) => {

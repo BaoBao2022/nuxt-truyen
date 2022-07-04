@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
-import {TagIcon} from "@heroicons/vue/solid";
+import {BookmarkIcon} from "@heroicons/vue/solid";
 
 defineProps({
   title: String,
@@ -16,37 +16,41 @@ defineProps({
     </h2>
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
-        <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
+        <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
                 <span class="default-span-figure">
-                <img
-                    alt="img-preview"
-                    :src="manga.thumbnail"
-                    decoding="async" data-nimg="fill"
-                    class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
-                    sizes="100vw"
-                    :srcset="manga.thumbnail">
+                  <img alt="img-preview"
+                       :src="manga.thumbnail"
+                       decoding="async" data-nimg="fill"
+                       class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
+                       sizes="100vw"
+                       :srcset="manga.thumbnail">
               </span>
           </figure>
 
-        </NuxtLink>
+        </LazyNuxtLink>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
+          <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
               {{ manga.name }}
             </h3>
-          </NuxtLink>
+          </LazyNuxtLink>
 
           <h4 class="text-lg">{{ manga.newChapter }}</h4>
           <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
             <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
               <span>{{ genre }}</span>
               <span>
-                  <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"
-                       stroke-width="0" viewBox="0 0 16 16"
-                       class="inline-block" height="1em" width="1em"
-                       xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path></svg>
+<!--                <BookmarkIcon v-if="index !== 3" class="h-1 w-1" />-->
+<!--                .-->
+<!--                  <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"-->
+<!--                       stroke-width="0" viewBox="0 0 16 16"-->
+<!--                       class="inline-block" height="1em" width="1em"-->
+<!--                       xmlns="http://www.w3.org/2000/svg">-->
+<!--                                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">-->
+
+<!--                                    </path>-->
+<!--                  </svg>-->
                   </span>
             </li>
           </ul>

@@ -13,7 +13,7 @@ const swiper = useSwiper();
 <template>
   <div
       class="aspect-[3/4] 0 absolute-center absolute top-1/2 right-[5%] md:right-[10%] z-10 flex h-[80%] w-[150px] -translate-y-1/2 items-center md:w-[200px] lg:w-[250px]">
-    <div class="relative h-full w-[90%] overflow-hidden rounded-2xl magictime vanishIn">
+    <div class="relative h-full w-[90%] overflow-hidden rounded-2xl">
             <span class="default-span-figure">
             <img
                 alt="image-preview" sizes="100vw"
