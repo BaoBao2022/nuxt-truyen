@@ -10,7 +10,8 @@ const slug = ref(route.params.slug);
 // const onPickManga = useState('pickManga');
 const url = `/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`;
 const {data: comic, pending} = useLazyFetch(url);
-console.log("comic", comic.value)
+useState('pending', () => pending);
+
 const navigateToManga = async (slug) => {
   const path = await useFirstPathChapter(null, slug);
   return navigateTo({
@@ -58,10 +59,10 @@ const navigateLastToManga = async (slug) => {
               style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
         </figure>
       </div>
-      <div class="z-10 mx-auto w-[85%] pt-32">
+      <div class="z-10 mx-auto w-[85%] pt-16">
         <section class="h-fit w-full">
           <div class="flex h-full w-full flex-col items-center overflow-x-hidden md:flex-row md:items-start">
-            <div class="mt-4 w-[50%] md:w-[250px] md:min-w-[250px]">
+            <div class="mt-4 w-[60%] md:w-[250px] md:min-w-[250px]">
               <figure class="aspect-w-3 aspect-h-5 relative rounded-2xl">
                 <span
                     style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">

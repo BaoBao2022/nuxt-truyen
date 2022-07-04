@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import {reactive} from 'vue';
+import {reactive, watchEffect} from 'vue';
+import {useState} from "#imports";
 
 const props = defineProps({
   throttle: {
@@ -82,6 +83,12 @@ const nuxtApp = useNuxtApp();
 
 nuxtApp.hook('page:start', start);
 nuxtApp.hook('page:finish', finish);
+const pending = useState('pending');
+watch([pending], () => {
+  console.log("pending", pending)
+  if (pending.value) start();
+  if (!pending.value) finish();
+})
 
 onBeforeUnmount(() => clear);
 </script>

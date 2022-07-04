@@ -1,67 +1,64 @@
 <script lang="ts" setup>
 import {useFetch, useLazyFetch} from '#imports'
 
-// const [
-//   {data: topAll, pending},
-//   {data: topDay},
-//   {data: topWeek},
-//   {data: topMonth},
-//   {data: mangaUpdated},
-//   {data: newMangas}] = await Promise.all([
-//   useFetch('/api/top-all', {
-//     initialCache: true,
-//     lazy: false
-//   }),
-//   useFetch('/api/top-day', {
-//     initialCache: true,
-//     lazy: true
-//   }),
-//   useFetch('/api/top-week', {
-//     initialCache: true,
-//     lazy: true
-//   }),
-//   useFetch('/api/top-month', {
-//     initialCache: true,
-//     lazy: true
-//   }),
-//   useFetch('/api/manga-updated', {
-//     initialCache: true,
-//     lazy: true
-//   }),
-//   useFetch('/api/manga-new', {
-//     initialCache: true,
-//     lazy: true
-//   })
-// ]);
+const [
+  {data: topAll, pending},
+  {data: topDay},
+  {data: topWeek},
+  {data: topMonth},
+  {data: mangaUpdated},
+  {data: newMangas}] = await Promise.all([
+  useFetch('/api/top-all', {
+    initialCache: true,
+    lazy: false
+  }),
+  useFetch('/api/top-day', {
+    initialCache: true,
+    lazy: true
+  }),
+  useFetch('/api/top-week', {
+    initialCache: true,
+    lazy: true
+  }),
+  useFetch('/api/top-month', {
+    initialCache: true,
+    lazy: true
+  }),
+  useFetch('/api/manga-updated', {
+    initialCache: true,
+    lazy: true
+  }),
+  useFetch('/api/manga-new', {
+    initialCache: true,
+    lazy: true
+  })
+]);
 
-const {data: topAll, pending} = useLazyFetch(() => '/api/top-all', {
-  initialCache: true,
-  server: true
-})
-const {data: topDay} = useLazyFetch(() => '/api/top-day', {
-  initialCache: false,
-  server: true
-})
-const {data: topWeek} = useLazyFetch(() => '/api/top-week', {
-  initialCache: false,
-  server: true
-})
-const {data: topMonth} = useLazyFetch(() => '/api/top-month', {
-  initialCache: false,
-  server: true
-})
-const {data: mangaUpdated} = useLazyFetch(() => '/api/manga-updated', {
-  initialCache: false,
-  server: true
-})
-const {data: newMangas} = useLazyFetch(() => '/api/manga-new', {
-  initialCache: false,
-  server: true,
-  // transform: (tran) => {
-  //   console.log("tran", tran)
-  //   // tran.slice(0, 5)
-  // }
-})
+useState('pending', () => pending);
+// const {data: topAll, pending} = useLazyFetch(() => '/api/top-all', {
+//   initialCache: true,
+//   server: true
+// })
+// const {data: topDay} = useLazyFetch(() => '/api/top-day', {
+//   initialCache: false,
+//   server: true
+// })
+// const {data: topWeek} = useLazyFetch(() => '/api/top-week', {
+//   initialCache: false,
+//   server: true
+// })
+// const {data: topMonth} = useLazyFetch(() => '/api/top-month', {
+//   initialCache: false,
+//   server: true
+// })
+// const {data: mangaUpdated} = useLazyFetch(() => '/api/manga-updated', {
+//   initialCache: false,
+//   server: true
+// })
+// const {data: newMangas} = useLazyFetch(() => '/api/manga-new', {
+//   initialCache: false,
+//   server: true,
+// })
 
 </script>
 
