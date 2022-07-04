@@ -12,17 +12,19 @@ const hasIndexPage = computed(() => {
 
 <template>
   <Popover class="relative h-40" v-slot="{close}">
-    <!--    <transition-->
-    <!--        enter-active-class="transition duration-200 ease-out"-->
-    <!--        enter-from-class="translate-y-1 opacity-0"-->
-    <!--        enter-to-class="translate-y-0 opacity-100"-->
-    <!--        leave-active-class="transition duration-150 ease-in"-->
-    <!--        leave-from-class="translate-y-0 opacity-100"-->
-    <!--        leave-to-class="translate-y-1 opacity-0">-->
-    <PopoverPanel>
-      <TheSidebar :close="close"/>
-    </PopoverPanel>
-    <!--    </transition>-->
+    <transition
+        enter-active-class="transition duration-200 ease-out"
+        enter-from-class="translate-y-1 opacity-0"
+        enter-to-class="translate-y-0 opacity-100"
+        leave-active-class="transition duration-150 ease-in"
+        leave-from-class="translate-y-0 opacity-100"
+        leave-to-class="translate-y-1 opacity-0">
+      <div>
+        <PopoverPanel>
+          <TheSidebar :close="close"/>
+        </PopoverPanel>
+      </div>
+    </transition>
     <header
         :class="hasIndexPage ? 'h-40 bg-background' : 'w-full max-w-[1400px] h-40 absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent' ">
       <div class="header-content mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
@@ -47,7 +49,7 @@ const hasIndexPage = computed(() => {
         </div>
         <LazyTheNav/>
         <div class="ml-10 flex h-full flex-1 items-center justify-end md:justify-between lg:ml-0">
-          <LazyModalMangaSearch />
+          <LazyModalMangaSearch/>
         </div>
       </div>
     </header>
