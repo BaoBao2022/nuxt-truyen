@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
+import {TagIcon} from "@heroicons/vue/solid";
+
 defineProps({
-  title: String
+  title: String,
+  mangas: Array
 });
 
-const {data: mangas} = useFetch('/api/top-week');
 </script>
 
 <template>
@@ -15,35 +18,35 @@ const {data: mangas} = useFetch('/api/top-week');
       <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
         <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
-                <span
-                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                <span class="default-span-figure">
                 <img
                     alt="img-preview"
                     :src="manga.thumbnail"
-                    decoding="async" data-nimg="fill" class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
+                    decoding="async" data-nimg="fill"
+                    class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
                     sizes="100vw"
-                    :srcset="manga.thumbnail"
-                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                    :srcset="manga.thumbnail">
               </span>
           </figure>
+
         </NuxtLink>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <a :href="`/api?slug=${manga.slug}`">
+          <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h3 class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
               {{ manga.name }}
-            </h3></a>
+            </h3>
+          </NuxtLink>
+
           <h4 class="text-lg">{{ manga.newChapter }}</h4>
           <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
             <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
               <span>{{ genre }}</span>
               <span>
-                    <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"
-                         stroke-width="0" viewBox="0 0 16 16"
-                         class="inline-block" height="1em" width="1em"
-                         xmlns="http://www.w3.org/2000/svg">
-                      <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z">
-                    </path>
-                    </svg>
+                  <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"
+                       stroke-width="0" viewBox="0 0 16 16"
+                       class="inline-block" height="1em" width="1em"
+                       xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"></path></svg>
                   </span>
             </li>
           </ul>

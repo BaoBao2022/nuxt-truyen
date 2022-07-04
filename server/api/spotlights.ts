@@ -9,6 +9,7 @@ export default defineEventHandler(async (event) => {
     if (mangas.status !== 200)
         return []
 
-    return mangas?.data.data;
+    const response = mangas?.data.data.filter(spotlight => spotlight.review !== '');
+    return response;
 
 });

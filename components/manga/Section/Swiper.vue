@@ -2,19 +2,19 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Pagination} from "swiper";
 import {ref} from 'vue';
-import useMangaPagePath from '~/composables/useMangaPagePath';
+import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import {computed, useState} from "#imports";
 import {devices} from '~/types';
+import {ChevronRightIcon} from "@heroicons/vue/solid";
 
 defineProps({
-  title: String
+  title: String,
+  mangas: Array
 });
 
 const modules = ref([Pagination]);
-const {data: mangas} = useFetch('/api/manga-updated');
-
 const device = useState<devices>('devices');
-console.log("devices", device.value)
+
 const sliderPerView = computed(() => {
   if (device.value.hasDesktop) {
     return 7;
@@ -32,10 +32,7 @@ const sliderPerView = computed(() => {
         <a href="/browse?view=newComic">
           {{ title }}
         </a>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-             aria-hidden="true" class="h-8 w-8 lg:h-10 lg:w-10">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-        </svg>
+        <ChevronRightIcon class="h-8 w-8"/>
       </div>
     </h2>
     <div class="mt-4 hover:cursor-grab lg:mt-6">
@@ -48,14 +45,15 @@ const sliderPerView = computed(() => {
           <SwiperSlide v-for="manga in mangas">
             <div class="aspect-h-4 aspect-w-3 rounded-xl">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                <span
-                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0; margin: 0; padding: 0; position: absolute; inset: 0;"><img
-                    alt="manga-thumbnail z-50" sizes="100vw"
+                <span class="default-span-figure">
+                <img
+                    alt="manga-thumbnail z-50"
+                    sizes="100vw"
                     :srcset="manga.thumbnail"
                     :src="manga.thumbnail"
-                    decoding="async" data-nimg="fill" class="absolute inset-0 rounded-xl object-cover object-center"
-                    style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0; height: 0; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-              </span>
+                    decoding="async" data-nimg="fill"
+                    class="absolute inset-0 rounded-xl object-cover object-center default-img">
+                </span>
               </NuxtLink>
               <span
                   class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl">
@@ -71,12 +69,5 @@ const sliderPerView = computed(() => {
         </Swiper>
       </div>
     </div>
-
   </section>
 </template>
-
-<style scoped lang="scss">
-.swiper-slide {
-  //width: 30%
-}
-</style>
