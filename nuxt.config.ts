@@ -4,7 +4,7 @@ import {defineNuxtConfig} from 'nuxt'
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            NUXT_PUBLIC_SERVICE_URL: process.env.NUXT_PUBLIC_SERVICE_URL
+            NUXT_PUBLIC_SERVICE_URL: 'https://truyenmem.herokuapp.com'
         },
     },
     meta: {
