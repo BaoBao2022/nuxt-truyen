@@ -64,7 +64,7 @@ const [
 
 <template>
   <div v-show="!pending">
-<!--    <LazyHomePageSpotlight/>-->
+   <LazyHomePageSpotlight/>
     <LazyMangaSectionSwiper :mangas="mangaUpdated" title="Truyện cập nhật mới"/>
     <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
