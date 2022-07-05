@@ -34,7 +34,7 @@ const [
   })
 ]);
 
-useState('pending', () => pending);
+// useState('pending', () => pending);
 // const {data: topAll, pending} = useLazyFetch(() => '/api/top-all', {
 //   initialCache: true,
 //   server: true
@@ -63,8 +63,8 @@ useState('pending', () => pending);
 </script>
 
 <template>
-  <div v-if="!pending">
-    <LazyHomePageSpotlight/>
+  <div v-show="!pending">
+<!--    <LazyHomePageSpotlight/>-->
     <LazyMangaSectionSwiper :mangas="mangaUpdated" title="Truyện cập nhật mới"/>
     <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">

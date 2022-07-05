@@ -15,7 +15,7 @@ defineProps({
       {{ title }}
     </h2>
     <ul class="w-full space-y-4 overflow-hidden text-white">
-      <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)">
+      <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 5)" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
                 <span class="default-span-figure">
@@ -27,7 +27,6 @@ defineProps({
                        :srcset="manga.thumbnail">
               </span>
           </figure>
-
         </LazyNuxtLink>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
           <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
@@ -38,9 +37,9 @@ defineProps({
 
           <h4 class="text-lg">{{ manga.newChapter }}</h4>
           <ul class="flex items-center text-base line-clamp-1 lg:text-xl">
-            <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)">
+            <li class="inline-block" v-for="(genre, index) in manga.genres.slice(0, 4)" :key="index">
               <span>{{ genre }}</span>
-              <span>
+              <span>.
 <!--                <BookmarkIcon v-if="index !== 3" class="h-1 w-1" />-->
 <!--                .-->
 <!--                  <svg v-if="index !== 3" stroke="currentColor" fill="currentColor"-->

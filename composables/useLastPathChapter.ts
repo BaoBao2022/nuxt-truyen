@@ -1,8 +1,6 @@
 import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from "~/contants";
-import {Manga, MangaDetails, keys} from "~/types";
+import {keys, Manga, MangaDetails} from "~/types";
 import {useStorage} from "@vueuse/core";
-// import {useState} from "#build/imports";
-// import {State} from '~/types';
 
 const useLastPathChapter = async (spotlight: Manga, slugs: string) => {
     const slug = slugs || spotlight?.slug
@@ -11,16 +9,16 @@ const useLastPathChapter = async (spotlight: Manga, slugs: string) => {
         return '';
     }
 
-    const mangaDetail: MangaDetails = (comic.value as MangaDetails)
-
+    const mangas: MangaDetails = (comic.value as MangaDetails)
     // Cache manga detail to local storage
-    useStorage(keys.MANGA_DETAIL, mangaDetail);
+    const cache = useStorage(keys.MANGA_DETAIL, '');
+    cache.value = null
+    cache.value = JSON.stringify(mangas)
 
-    const chapterId = mangaDetail?.chapterList && mangaDetail?.chapterList[mangaDetail.chapterList?.length].chapterId;
-    const chapterNumber = mangaDetail.chapterList && mangaDetail.chapterList[mangaDetail.chapterList?.length].chapterNumber;
+    const chapterId = mangas?.chapterList && mangas?.chapterList[mangas.chapterList?.length].chapterId;
+    const chapterNumber = mangas.chapterList && mangas.chapterList[mangas.chapterList?.length].chapterNumber;
 
-    const path = `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
-    return path;
+    return `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
 }
 
 export default useLastPathChapter;

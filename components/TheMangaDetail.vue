@@ -1,16 +1,18 @@
 <script lang="ts" setup>
 import {SourceParams} from "~/contants";
 import {Disclosure, DisclosureButton, DisclosurePanel} from '@headlessui/vue'
-import {navigateTo, useAsyncData, useHead, useLazyFetch, useState, watchEffect} from "#imports";
+import {navigateTo, useAsyncData, useHead, useLazyAsyncData, useLazyFetch, useState, watchEffect} from "#imports";
 import useFirstPathChapter from "~/composables/useFirstPathChapter";
 
 const route = useRoute();
 const slug = ref(route.params.slug);
 
 // const onPickManga = useState('pickManga');
-const url = `/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`;
-const {data: comic, pending} = await useLazyFetch(url);
-useState('pending', () => pending);
+const {
+  data: comic,
+  pending
+} = await useLazyAsyncData('manga-detail', () => $fetch(`/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`));
+// useState('pending', () => pending);
 
 const navigateToManga = async (slug) => {
   const path = await useFirstPathChapter(null, slug);
@@ -45,18 +47,23 @@ const navigateLastToManga = async (slug) => {
 
 <template>
   <NuxtLayout>
-    <div class="flex h-fit flex-col" style="height: auto" v-if="!pending">
+    <div v-if="pending">
+      <h2>
+        hhahahah
+      </h2>
+    </div>
+    <div class="flex h-fit flex-col" style="height: auto" v-else>
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
         <figure class="deslide-cover">
-          <span
-              style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;"><img
-              alt="comic-banner"
-              :src="comic.thumbnail"
-              decoding="async" data-nimg="fill"
-              class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur"
-              sizes="100vw"
-              :srcset="comic.thumbnail"
-              style="position: absolute; inset: 0; box-sizing: border-box; padding: 0; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"></span>
+          <span class="default-span-figure">
+            <img
+                alt="comic-banner"
+                :src="comic.thumbnail"
+                decoding="async" data-nimg="fill"
+                class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur default-img"
+                sizes="100vw"
+                :srcset="comic.thumbnail">
+          </span>
         </figure>
       </div>
       <div class="z-10 mx-auto w-[85%] pt-16">
@@ -64,13 +71,12 @@ const navigateLastToManga = async (slug) => {
           <div class="flex h-full w-full flex-col items-center overflow-x-hidden md:flex-row md:items-start">
             <div class="mt-4 w-[60%] md:w-[250px] md:min-w-[250px]">
               <figure class="aspect-w-3 aspect-h-5 relative rounded-2xl">
-                <span
-                    style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                <span class="default-span-figure">
                   <img alt="manga-thumbnail" sizes="100vw"
                        :srcset="comic.thumbnail"
                        :src="comic.thumbnail"
-                       decoding="async" data-nimg="fill" class="absolute inset-0 rounded-2xl object-cover object-center"
-                       style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
+                       decoding="async" data-nimg="fill"
+                       class="absolute inset-0 rounded-2xl object-cover object-center default-img">
                 </span>
               </figure>
             </div>
@@ -111,7 +117,8 @@ const navigateLastToManga = async (slug) => {
                   <a @click="navigateLastToManga(slug)">
                     <button
                         class="pulse-effect-secondary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-white text-gray-800 transition-all hover:scale-[110%]">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                           aria-hidden="true"
                            class="h-8 w-8 text-primary">
                         <path fill-rule="evenodd"
                               d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
@@ -134,8 +141,6 @@ const navigateLastToManga = async (slug) => {
             </div>
           </div>
         </section>
-        <!--        <LazyMangaReview :review="comic?.review"/>-->
-
         <div class="flex-col-reverse flex">
           <Disclosure v-slot="{ open }">
             <DisclosureButton>
@@ -154,7 +159,6 @@ const navigateLastToManga = async (slug) => {
             </DisclosurePanel>
           </Disclosure>
         </div>
-
         <LazyMangaChaplist :slug="slug" :chapterList="comic.chapterList"/>
       </div>
     </div>
