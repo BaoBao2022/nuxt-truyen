@@ -44,7 +44,7 @@ watchEffect(() => {
 			<TabList class="flex space-x-1 rounded-xl p-1 bg-deep-black" style="height: 45px">
 				<Tab v-for="category in Object.keys(categories)" as="template" :key="category" v-slot="{ selected }">
 					<button :class="[
-						'w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-white-700',
+						'w-full rounded-lg py-2.5 font-medium leading-5 text-white-700 text-1xl',
 						'focus:outline-none focus:ring-2',
 						selected
 							? 'bg-white text-gray-700 shadow'

@@ -17,7 +17,7 @@ defineProps({
 
 <template>
     <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
-        <h2 class="my-6 whitespace-nowrap text-center font-secondary text-3xl text-white lg:text-[160%]">
+        <h2 class="my-6 whitespace-nowrap font-secondary text-3xl text-white lg:text-[160%] absolute-center h-[40px]">
             {{ title }}
         </h2>
         <ul class="w-full space-y-4 overflow-hidden text-white grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2">

@@ -13,7 +13,7 @@ console.log("spotlights", spotlights.value);
 
 const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
-  delay: 2500,
+  delay: 50000,
   disableOnInteraction: false
 });
 const backgroundImage = (spotlight) => {
