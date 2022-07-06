@@ -44,7 +44,10 @@ const navigateLastToManga = async () => {
 
 <template>
   <NuxtLayout>
-    <div class="flex h-fit flex-col" style="height: auto" v-if="!pending">
+  <div v-if="pending">
+		<CommonSearchLoading />
+	</div>
+    <div class="flex h-fit flex-col" style="height: auto" v-else>
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
         <figure class="deslide-cover">
           <span class="default-span-figure">

@@ -1,7 +1,7 @@
 <template>
   <NuxtLoadingBar/>
   <!-- <LazyCommonSearchLoading v-if="isPageLoading" /> -->
-  <NuxtPage/>
+  <NuxtPage />
 </template>
 
 <script setup lang="ts">

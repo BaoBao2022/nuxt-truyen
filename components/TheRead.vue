@@ -91,7 +91,10 @@ useHead({
 </script>
 
 <template>
-  <div class="flex h-fit min-h-screen flex-col bg-black" v-if="!pending">
+<div v-if="pending">
+		<CommonSearchLoading />
+	</div>
+  <div class="flex h-fit min-h-screen flex-col bg-black" v-else>
     <div class="relative flex h-fit flex-1 text-white">
       <div class="h-fit min-h-screen w-full bg-black">
         <div class="fixed top-0 left-0 z-[999] h-[60px] w-full">

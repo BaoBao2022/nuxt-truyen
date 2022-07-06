@@ -8,7 +8,7 @@ import { ChevronRightIcon, StatusOnlineIcon, ClipboardListIcon } from "@heroicon
 
 const { data: mangas, pending } = await useLazyFetch('/api/manga-updated');
 const device = useState<devices>('devices');
-const hasPreview = useState('hasPreview', () => 1);
+const hasPreview = useState('hasPreview', () => -1);
 const navigateToManga = async (manga) => {
   const path = await useFirstPathChapter(manga, '');
   return navigateTo({
@@ -18,7 +18,7 @@ const navigateToManga = async (manga) => {
 
 const sliderPerView = computed(() => {
   if (device.value.hasDesktop) {
-    return 7;
+    return 6;
   }
 
   return 3;
