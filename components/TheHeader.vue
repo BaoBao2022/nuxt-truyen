@@ -1,12 +1,5 @@
 <script lang="ts" setup>
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
-import { SearchIcon, UserIcon } from '@heroicons/vue/solid';
-import { useRoute } from "#imports";
-
-// const route = useRoute();
-// const hasIndexPage = computed(() => {
-//   return route.name.startsWith("index");
-// });
 
 </script>
 
@@ -22,7 +15,7 @@ import { useRoute } from "#imports";
       </div>
     </transition>
     <header class="w-full max-w-[1400px] h-40 absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent">
-      <div class="header-content mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
+      <div class="mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
         <PopoverButton class="outline-0 button mx-6 rounded-full p-4 md:m-0 lg:hidden">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
             class=" text-4xl text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">

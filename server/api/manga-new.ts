@@ -3,7 +3,7 @@ import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
 export default defineEventHandler(async (event) => {
     const query = useQuery(event);
     const {comic} = query;
-    let param = 'dam-my';
+    let param = 'manhua';
     if (comic) {
         param = comic as string;
     }

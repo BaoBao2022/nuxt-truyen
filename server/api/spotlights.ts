@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     //     'dam-my',
     //     'manhua',
     // ]
-    const filterRequest: FilterRequest = {page: 1, genres: "dam-my", top: "month"}
+    const filterRequest: FilterRequest = {page: 1, genres: "manhua", top: "month"}
 
     const mangas = await NET_TRUYEN_API?.filter(filterRequest);
     if (mangas.status !== 200)

@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
     const query = useQuery(event);
     const {comic} = query;
-    let param = 'dam-my';
+    let param = 'manhua';
     if (comic) {
         param = comic as string;
     }

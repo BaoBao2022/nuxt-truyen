@@ -27,3 +27,8 @@ export const TailwindColors = [
     '#a78bfa',
     '#e879f9',
 ];
+
+export interface DropDownLink {
+    title: string;
+    href: string;
+}

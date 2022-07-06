@@ -81,4 +81,5 @@ export interface AdvanceQueryRequest {
     top?: string;
     minchapter?: number;
     page?: number;
+    comics?: string;
 }
