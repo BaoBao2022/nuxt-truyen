@@ -25,7 +25,7 @@ const {
   pending,
   data: chapters,
   refresh,
-} = await useLazyAsyncData('read-manga', () => $fetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID.value}`));
+} = useFetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID.value}`);
 
 const manga = useStorage(keys.MANGA_DETAIL, {
   serializer: {
@@ -84,14 +84,14 @@ const handleNextProcess = () => {
 }
 
 useHead({
-  title: `${manga.value.title} | Chapter ${chapterNumber.value}`,
-  description: manga.value.review,
+  title: `${manga.value?.title} | Chapter ${chapterNumber.value}`,
+  description: manga.value?.review,
 })
 
 </script>
 
 <template>
-  <div class="flex h-fit min-h-screen flex-col bg-black" v-show="!pending">
+  <div class="flex h-fit min-h-screen flex-col bg-black" v-if="!pending">
     <div class="relative flex h-fit flex-1 text-white">
       <div class="h-fit min-h-screen w-full bg-black">
         <div class="fixed top-0 left-0 z-[999] h-[60px] w-full">

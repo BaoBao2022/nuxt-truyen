@@ -9,11 +9,9 @@ import 'swiper/css/effect-fade';
 import "swiper/css/pagination";
 
 const { data: spotlights, pending } = useLazyFetch<Manga[]>('/api/spotlights');
-console.log("spotlights", spotlights.value);
-
 const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
-  delay: 50000,
+  delay: 2000,
   disableOnInteraction: false
 });
 const backgroundImage = (spotlight) => {

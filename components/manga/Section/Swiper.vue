@@ -1,21 +1,12 @@
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Pagination } from "swiper";
-import { PropType, ref } from 'vue';
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import { computed, useState } from "#imports";
 import { devices } from '~/types';
-import { Manga } from '~/types';
 import { ClockIcon, BookOpenIcon, InformationCircleIcon } from '@heroicons/vue/outline';
 import { ChevronRightIcon, StatusOnlineIcon, ClipboardListIcon } from "@heroicons/vue/solid";
 
-const { data: mangas, pending } = useFetch('/api/manga-updated');
-
-defineProps({
-  title: String,
-});
-
-const modules = ref([Pagination]);
+const { data: mangas, pending } = await useLazyFetch('/api/manga-updated');
 const device = useState<devices>('devices');
 const hasPreview = useState('hasPreview', () => 1);
 const navigateToManga = async (manga) => {
@@ -24,6 +15,7 @@ const navigateToManga = async (manga) => {
     path: path
   })
 }
+
 const sliderPerView = computed(() => {
   if (device.value.hasDesktop) {
     return 7;
@@ -40,7 +32,7 @@ const sliderPerView = computed(() => {
       class="mt-4 flex select-none items-center font-secondary text-3xl text-white hover:cursor-pointer md:text-4xl lg:text-5xl">
       <div class="flex items-center transition-all hover:text-primary">
         <a href="/browse?view=newComic">
-          {{ title }}
+          Truyện cập nhật mới
         </a>
         <ChevronRightIcon class="h-8 w-8" />
       </div>

@@ -83,12 +83,11 @@ const nuxtApp = useNuxtApp();
 
 nuxtApp.hook('page:start', start);
 nuxtApp.hook('page:finish', finish);
-const pending = useState('pending');
-watch([pending], () => {
-  console.log("pending", pending)
-  if (pending.value) start();
-  if (!pending.value) finish();
-})
+// const pending = useState('pending');
+// watch([pending], () => {
+//   if (pending.value) start();
+//   if (!pending.value) finish();
+// })
 
 onBeforeUnmount(() => clear);
 </script>
