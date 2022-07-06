@@ -63,7 +63,7 @@ const sliderPerView = computed(() => {
                 class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl">
                 {{ manga.newChapter }}
               </span>
-              <div v-if="hasPreview === imanga"
+              <div v-if="hasPreview === imanga && device.hasDesktop"
                 class="animate__faster animate__animated animate__fadeIn flex h-full w-full flex-col space-y-2 overflow-hidden rounded-xl bg-highlight text-white">
                 <a>
                   <h3 class="ml-4 mt-4 min-h-[40px] text-[100%] font-semibold line-clamp-2 hover:text-primary">

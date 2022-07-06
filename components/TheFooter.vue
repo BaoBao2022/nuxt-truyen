@@ -1,5 +1,5 @@
 <template>
-  <footer class="my-6 bg-background pb-6 text-white">
+  <footer class="my-6 pb-6 text-white">
     <div class="mx-auto flex w-[70%] flex-col justify-center space-y-4 text-lg md:text-2xl"><h1
         class="text-center text-2xl font-bold md:text-4xl">Next Truyen là website đọc truyện tranh miễn phí</h1>
       <div class="flex flex-col items-center justify-center gap-4 md:flex-row md:space-x-8 md:text-2xl"><a
