@@ -3,17 +3,58 @@ import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import { EyeIcon } from '@heroicons/vue/solid';
 import { randomColors } from '~/serveless/utils';
 import { TailwindColors } from '~/contants';
+import { Manga } from '~~/types';
 
-const { data: mangas, pending } = useFetch("/api/manga-new", {
-    initialCache: true,
-    lazy: true,
-})
+const comic = ref("");
+const { data: mangas, pending, refresh } = await useAsyncData<Manga[]>('new-mangas', () => $fetch(`/api/manga-new?comic=${comic.value}`));
+
+const comics = [
+    {
+        title: 'Manga',
+        slug: 'manga-112',
+    },
+    {
+        title: 'Manhua',
+        slug: 'manhua',
+    },
+    {
+        title: 'Đàm Mỹ',
+        slug: 'dam-my',
+    },
+    {
+        title: 'Chuyển Sinh',
+        slug: 'chuyen-sinh-213'
+    },
+    {
+        title: 'Ngôn Tình',
+        slug: 'ngon-tinh'
+    }
+
+];
+
+const wComic = useState('switch:comic');
+const switchComic = async (slug: string) => {
+    comic.value = slug
+    wComic.value = slug;
+    await refresh();
+}
 </script>
 
 <template>
+    <div v-if="pending">
+        <CommonSearchLoading />
+    </div>
     <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
-        <h2 class="my-6 whitespace-nowrap font-secondary text-3xl text-white lg:text-[160%] absolute-center h-[40px]">
+        <h2
+            class="my-6 whitespace-nowrap font-secondary text-3xl text-white lg:text-[160%] h-[40px] absolute-center-between">
             Truyện nổi bật nhất
+            <ul class="hidden space-x-4 text-lg md:flex mr-4">
+                <li v-for="(comic, c) in comics" @click="switchComic(comic.slug)" :key="`comic_${c}`"
+                    :style="{ 'border': `1px solid ${randomColors(TailwindColors, c)}` }"
+                    class=" cursor-pointer flex w-fit max-w-[100px] items-center whitespace-nowrap rounded-xl border-[1px] border-white py-2 px-4 line-clamp-1">
+                    {{ comic.title }}</li>
+
+            </ul>
         </h2>
         <ul class="w-full space-y-4 overflow-hidden text-white grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2">
             <li class="flex px-4 py-2 w-full inline-grid" v-for="manga in mangas.slice(0, 16)" :key="manga.slug"
@@ -45,7 +86,7 @@ const { data: mangas, pending } = useFetch("/api/manga-new", {
                     </div>
                     <ul class=" space-x-4 text-lg md:flex flex flex-wrap">
                         <li class="flex w-fit max-w-[70px] items-center whitespace-nowrap"
-                        style="margin-left: 0px; margin-right: 0px; margin: 3px"
+                            style="margin-left: 0px; margin-right: 0px; margin: 3px"
                             v-for="(genre, i) in manga.genres.slice(0, 4)" :key="`genre_${i}`"
                             :style="{ 'background-color': randomColors(TailwindColors, i) }">
                             {{ genre }}

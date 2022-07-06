@@ -23,15 +23,19 @@ const backgroundImage = (spotlight) => {
 </script>
 
 <template>
-  <div v-if="!pending">
+  <div v-if="!pending" class="relative">
+    <!-- <div class="absolute top-5 left-5 z-10">
+      <img src="~/assets/images/h5_boy.png" alt="">
+    </div> -->
     <Swiper :modules="modules" :autoplay="autoPlaySettings" effect="fade">
       <SwiperSlide v-for="spotlight in spotlights" :key="spotlight.slug">
         <div class="cursor-pointer">
-          <figure class="deslide-cover h-[250px] w-full bg-cover bg-center bg-no-repeat blur md:h-[350px] lg:h-[450px]"
+          <figure
+            class="deslide-cover h-[200px] w-full bg-cover bg-center bg-no-repeat blur md:h-[300px] lg:h-[480px]"
             :style="backgroundImage(spotlight)">
           </figure>
           <div
-            class="absolute top-12 left-5 z-40 flex h-[70%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">
+            class="absolute top-12 left-5 z-40 flex h-[60%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">
             <LazySharedSwiperCardContent :spotlight="spotlight" />
             <LazySharedSwiperCardButton :spotlight="spotlight" />
           </div>
