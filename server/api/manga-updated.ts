@@ -9,5 +9,5 @@ export default defineEventHandler(async (event) => {
     if (mangas.status !== 200)
         return []
 
-    return mangas.data.data.slice(0, 15);
+    return mangas.data.data;
 });

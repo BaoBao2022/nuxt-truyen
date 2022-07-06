@@ -18,6 +18,7 @@ export interface Manga extends SearchResponseData {
     review: string;
     updatedAt: string;
     chapters?: Chapter[];
+    view: string;
 }
 
 export interface MangaDetails {

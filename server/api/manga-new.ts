@@ -4,10 +4,10 @@ import {REVALIDATE_TIME} from "~/contants";
 
 export default defineEventHandler(async (event) => {
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
-    const mangas = await NET_TRUYEN_API?.getNewManga(1);
+    const mangas = await NET_TRUYEN_API?.getNewManga(1, 'manhua');
 
     if (mangas.status !== 200)
         return []
 
-    return mangas.data.data.slice(0, 15);
+    return mangas.data.data;
 });

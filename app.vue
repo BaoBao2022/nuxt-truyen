@@ -4,8 +4,10 @@
 </template>
 
 <script setup lang="ts">
-// import {useColorMode} from "#imports";
+import {useColorMode} from "#imports";
 
-// const useColor = useColorMode()
-// useColor.preference = "dark";
+const useColor = useColorMode()
+console.log("useColor", useColor);
+
+useColor.preference = "dark";
 </script>

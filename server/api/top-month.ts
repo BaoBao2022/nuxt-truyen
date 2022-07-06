@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     const rankingAllRequest: RankingMangeRequest = {
         status: undefined,
         top: 'month',
-        page: 2,
+        page: 1,
         genre: 'manhua'
     }
 
