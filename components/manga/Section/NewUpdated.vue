@@ -21,7 +21,7 @@ defineProps({
             {{ title }}
         </h2>
         <ul class="w-full space-y-4 overflow-hidden text-white grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2">
-            <li class="flex px-4 py-2 odd:bg-highlight/40 w-full inline-grid" v-for="manga in mangas" :key="manga.slug"
+            <li class="flex px-4 py-2 w-full inline-grid" v-for="manga in mangas" :key="manga.slug"
                 style="margin-top: 0px !important">
                 <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                     <figure class="relative h-[180px] lg:h-[300px] w-full overflow-hidden rounded-xl">
