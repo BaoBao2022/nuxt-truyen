@@ -9,12 +9,14 @@ defineProps({
   chapterList: Array as PropType<Chapter[]>
 })
 
-// const navigateToManga = async (chapterNumber, chapterId, slug) => {
-//   const path = await useChapter(chapterNumber, chapterId, slug);
-//   return navigateTo({
-//     path: path
-//   })
-// }
+const navigateToManga = async (chapterNumber, chapterId, slug) => {
+  const path = await useChapter(chapterNumber, chapterId, slug);
+  console.log("path", path);
+  
+  return navigateTo({
+    path: path
+  })
+}
 
 </script>
 
@@ -54,7 +56,7 @@ defineProps({
 
       <div class="animate__fadeIn animate__animated m-2 overflow-hidden text-white overflow-y-scroll lg:h-[350px] h-[200px]">
         <button class="w-full my-1" v-for="(chap, index) in chapterList">
-          <NuxtLink :to="`/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chap.chapterNumber}/${chap.chapterId}`"
+          <a @click="navigateToManga(chap.chapterNumber, chap.chapterId, slug)"
             class="bg-deep-black flex h-[30px] items-center justify-between rounded-lg">
             <div class="flex w-[30%] min-w-max items-center">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
@@ -72,7 +74,7 @@ defineProps({
             <div class="flex items-center px-4">
               <span class="whitespace-nowrap text-lg font-extralight text-gray-300">{{ chap.updatedAt }}</span>
             </div>
-          </NuxtLink>
+          </a>
         </button>
       </div>
     </div>
