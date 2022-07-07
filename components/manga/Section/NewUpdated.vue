@@ -4,9 +4,10 @@ import { EyeIcon } from '@heroicons/vue/solid';
 import { randomColors } from '~/serveless/utils';
 import { TailwindColors } from '~/contants';
 import { Manga } from '~~/types';
-
 const comic = ref("");
 const { data: mangas, pending, refresh } = await useAsyncData<Manga[]>('new-mangas', () => $fetch(`/api/manga-new?comic=${comic.value}`));
+
+console.log("mangas", mangas.value);
 
 const comics = [
     {
@@ -79,8 +80,8 @@ const switchComic = async (slug: string) => {
                         <h4 class="text-lg">{{ manga.newChapter }}</h4>
 
                         <div class="flex">
-                            <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px" />
-                            <h4 class="text-lg"> {{ manga.view }}</h4>
+                            <!-- <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px" /> -->
+                            <h4 class="text-lg"> {{ manga.updatedAt }}</h4>
                         </div>
 
                     </div>
