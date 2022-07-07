@@ -45,7 +45,7 @@ const navigateLastToManga = async () => {
 <template>
   <NuxtLayout>
   <div v-if="pending">
-		<CommonSearchLoading />
+		<CommonPageLoading />
 	</div>
     <div class="flex h-fit flex-col" style="height: auto" v-else>
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
@@ -150,7 +150,7 @@ const navigateLastToManga = async () => {
             </Disclosure>
           </ClientOnly>
         </div>
-        <LazyMangaChaplist :manga="slug" :chapterList="manga.chapterList" />
+        <LazyMangaChaplist :slug="(slug as string)" :chapterList="manga.chapterList" />
       </div>
     </div>
   </NuxtLayout>

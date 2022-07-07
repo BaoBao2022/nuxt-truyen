@@ -1,23 +1,15 @@
 <script lang="ts" setup>
 import { useFetch, useLazyFetch } from "#imports";
 
-const [
-	{ data: topAll, pending },
-] = await Promise.all([
-	useFetch("/api/top-all", {
-		initialCache: true,
-		lazy: false,
-	})
-]);
-
-// watchEffect(() => {
-// 	useState('page:loading', () => pending.value);
-// })
+const { data: topAll, pending } = useFetch("/api/top-all", {
+	initialCache: true,
+	lazy: false,
+});
 </script>
 
 <template>
 	<div v-if="pending">
-		<CommonSearchLoading />
+		<CommonPageLoading />
 	</div>
 	<div v-else>
 		<HomePageSpotlight />

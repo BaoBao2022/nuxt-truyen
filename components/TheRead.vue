@@ -92,7 +92,7 @@ useHead({
 
 <template>
   <div v-if="pending">
-    <CommonSearchLoading />
+    <CommonPageLoading />
   </div>
   <div class="flex h-fit min-h-screen flex-col bg-black" v-else>
     <div class="relative flex h-fit flex-1 text-white">
