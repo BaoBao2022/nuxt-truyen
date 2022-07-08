@@ -4,6 +4,8 @@ import { EyeIcon } from '@heroicons/vue/solid';
 import { randomColors } from '~/serveless/utils';
 import { TailwindColors } from '~/contants';
 import { Manga } from '~~/types';
+import { ChevronRightIcon } from "@heroicons/vue/solid";
+
 const comic = ref("");
 const { data: mangas, pending, refresh } = await useAsyncData<Manga[]>('new-mangas', () => $fetch(`/api/manga-new?comic=${comic.value}`));
 
@@ -45,21 +47,16 @@ const switchComic = async (slug: string) => {
     </div>
     <div class="w-full rounded-xl pb-4 lg:my-4 col-span-4" v-if="!pending">
         <h2
-            class="my-6 whitespace-nowrap font-secondary text-3xl text-white lg:text-[160%] h-[40px] absolute-center-between">
+            class="items-center	justify-start whitespace-nowrap font-secondary text-3xl lg:text-[160%] h-[40px] flex page-title px-3">
             Truyện nổi bật nhất
-            <ul class="hidden space-x-4 text-lg md:flex mr-4">
-                <li v-for="(comic, c) in comics" @click="switchComic(comic.slug)" :key="`comic_${c}`"
-                    :style="{ 'border': `1px solid ${randomColors(TailwindColors, c)}` }"
-                    class=" cursor-pointer flex w-fit max-w-[100px] items-center whitespace-nowrap rounded-xl border-[1px] border-white py-2 px-4 line-clamp-1">
-                    {{ comic.title }}</li>
-
-            </ul>
+            <ChevronRightIcon class="h-8 w-8" />
         </h2>
         <ul class="w-full space-y-4 overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2">
             <li class="flex px-3 py-1 w-full inline-grid" v-for="manga in mangas" :key="manga.slug"
                 style="margin-top: 0px !important">
                 <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                    <figure class="image relative h-[200px] md:h-[197px] lg:h-[197px] w-full overflow-hidden rounded-sm">
+                    <figure
+                        class="image relative h-[200px] md:h-[197px] lg:h-[197px] w-full overflow-hidden rounded-sm">
                         <span class="default-span-figure">
                             <nuxt-img fil="fill" sizes="159px md:159px lg:159px" format="webp" loading="lazy"
                                 :src="manga.thumbnail"
@@ -77,12 +74,10 @@ const switchComic = async (slug: string) => {
                     </LazyNuxtLink>
                     <div class="flex align-center place-content-between">
                         <h4 class="text-lg">{{ manga.newChapter }}</h4>
-
                         <div class="flex">
                             <!-- <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px" /> -->
                             <h4 class="text-lg"> {{ manga.updatedAt }}</h4>
                         </div>
-
                     </div>
                     <ul class=" space-x-4 text-lg md:flex flex flex-wrap">
                         <li class="flex w-fit max-w-[70px] items-center whitespace-nowrap"

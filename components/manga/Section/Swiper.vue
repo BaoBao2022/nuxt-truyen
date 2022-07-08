@@ -29,7 +29,7 @@ const sliderPerView = computed(() => {
 <template>
   <section class="w-[90%] mx-auto w-max-[1300px] mt-6 overflow-x-hidden" v-if="!pending">
     <h2
-      class="mt-4 flex select-none items-center font-secondary text-3xl text-white hover:cursor-pointer md:text-4xl lg:text-5xl">
+      class="mt-4 flex select-none items-center font-secondary text-3xl page-title  hover:cursor-pointer md:text-4xl lg:text-5xl">
       <div class="flex items-center transition-all hover:text-primary">
         <a href="/browse?view=newComic">
           Truyện cập nhật mới
@@ -46,7 +46,7 @@ const sliderPerView = computed(() => {
               <span class="default-span-figure">
                 <nuxt-img sizes="sm:100vw md:100vw lg:100vw" format="webp" loading="lazy" :src="manga.thumbnail"
                   class="absolute inset-0 rounded-sm object-cover object-center default-img">
-                  </nuxt-img>
+                </nuxt-img>
               </span>
             </LazyNuxtLink>
             <span
@@ -94,7 +94,6 @@ const sliderPerView = computed(() => {
               </div>
             </div>
           </div>
-
           <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h2 class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
               {{ manga.name }}

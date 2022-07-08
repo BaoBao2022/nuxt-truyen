@@ -314,7 +314,7 @@ input[type='number'] {
 
 .deslide-cover:before {
   z-index: 1;
-  background: linear-gradient(90deg, #202125, rgba(32, 33, 37, .6) 40%, rgba(32, 33, 37, 0) 60%, rgba(32, 33, 37, 0) 80%, #202125);
+  background: linear-gradient(90deg,#000000,rgba(32,33,37,.6) 40%,rgba(32,33,37,0) 60%,rgba(32,33,37,0) 80%,#0b1022);
 }
 
 .deslide-cover:after {
@@ -383,4 +383,8 @@ input[type='number'] {
   box-shadow: #000 0 0 0;
   text-align: center;
   overflow: hidden;
+}
+
+.page-title {
+  color: #ff9601;
 }

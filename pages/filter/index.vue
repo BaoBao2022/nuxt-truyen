@@ -29,7 +29,7 @@ watch([route], () => {
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                 <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3">
                     <h2
-                        class="my-6 whitespace-nowrap font-secondary text-3xl text-white lg:text-[160%] h-[40px] absolute-center-between">
+                        class="my-6 whitespace-nowrap font-secondary text-3xl lg:text-[160%] h-[40px] absolute-center-between px-3">
                         Truyện nổi bật nhất
                         <!-- <ul class="hidden space-x-4 text-lg md:flex mr-4">
                             <li v-for="(comic, c) in comics" @click="switchComic(comic.slug)" :key="`comic_${c}`"

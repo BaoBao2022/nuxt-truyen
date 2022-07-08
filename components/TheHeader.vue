@@ -4,7 +4,7 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
 </script>
 
 <template>
-  <Popover class="relative h-40" v-slot="{ close }">
+  <Popover class="relative h-[70px]" v-slot="{ close }">
     <transition enter-active-class="transition duration-200 ease-out" enter-from-class="translate-y-1 opacity-0"
       enter-to-class="translate-y-0 opacity-100" leave-active-class="transition duration-150 ease-in"
       leave-from-class="translate-y-0 opacity-100" leave-to-class="translate-y-1 opacity-0">
@@ -14,7 +14,7 @@ import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue';
         </PopoverPanel>
       </div>
     </transition>
-    <header class="w-full max-w-[1400px] h-40 absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent">
+    <header class="w-full max-w-[1400px] h-[70px] absolute ranking-[-10px] z-50 left-1/2 -translate-x-1/2 bg-transparent">
       <div class="mx-auto flex h-full w-full items-center md:max-w-[644px] lg:max-w-[1200px]">
         <PopoverButton class="outline-0 button mx-6 rounded-full p-4 md:m-0 lg:hidden">
           <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20"
