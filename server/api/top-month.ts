@@ -18,9 +18,6 @@ export default defineEventHandler(async (event) => {
         genre: param as GENRES
     }
 
-    console.log("rankingAllRequest", rankingAllRequest);
-    
-
     const mangas = await NET_TRUYEN_API?.getMangaRanking(rankingAllRequest);
     if (mangas.status !== 200)
         return []

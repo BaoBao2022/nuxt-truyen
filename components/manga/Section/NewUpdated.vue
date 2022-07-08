@@ -7,8 +7,6 @@ import { Manga } from '~~/types';
 const comic = ref("");
 const { data: mangas, pending, refresh } = await useAsyncData<Manga[]>('new-mangas', () => $fetch(`/api/manga-new?comic=${comic.value}`));
 
-console.log("mangas", mangas.value);
-
 const comics = [
     {
         title: 'Manga',

@@ -9,8 +9,6 @@ export default defineEventHandler(async (event) => {
     comic = comics as string;
   }
 
-  console.log("comics", comics);
-  
 
   const filterRequest: AdvanceQueryRequest = {
     genres: genres as string,

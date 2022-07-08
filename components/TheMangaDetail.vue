@@ -18,8 +18,6 @@ const {
   pending
 } = useFetch<MangaDetails>(`/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`);
 
-console.log("manga", manga.value);
-
 useHead({
   title: manga.value?.title,
   description: manga.value?.author,

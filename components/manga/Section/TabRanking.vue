@@ -44,7 +44,6 @@ watch([wComic], () => {
 	categories.value["Top Tháng"] = month.value;
 	categories.value["Top Tuần"] = week.value;
 	categories.value["Top Ngày"] = day.value;
-	console.log("categories", categories.value);
 	comic.value = wComic.value;
 	refresh();
 })

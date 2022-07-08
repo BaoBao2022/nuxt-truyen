@@ -1,0 +1,1 @@
+const a={netTruyen:"nt"},A="manga",s="detail",f="read",c=["#facc15","#a3e635","#fbbf24","#34d399","#fb923c","#22d3ee","#f87171","#38bdf8","#f472b6","#818cf8","#fb7185","#a78bfa","#e879f9"];export{A as M,a as S,c as T,s as a,f as b};
