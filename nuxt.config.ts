@@ -1,40 +1,49 @@
-import {defineNuxtConfig} from 'nuxt'
+import { defineNuxtConfig } from "nuxt";
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            NUXT_PUBLIC_SERVICE_URL: 'https://truyenmem.herokuapp.com'
+            NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
         },
     },
     meta: {
         title: "Truyện tranh online free",
-        link: [{ rel: 'icon', type: 'image/x-icon', href: './assets/favicon.png' }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "./assets/favicon.png" }],
+    },
+    image: {
+        // The screen sizes predefined by `@nuxt/image`:
+        screens: {
+            xs: 320,
+            sm: 640,
+            md: 768,
+            lg: 1024,
+            xl: 1280,
+            xxl: 1536,
+            "2xl": 1536,
+        },
     },
     ssr: true,
-    modules: ['@nuxtjs/color-mode', '@nuxt/image-edge'],
+    modules: ["@nuxtjs/color-mode", "@nuxt/image-edge"],
     colorMode: {
-        preference: 'dark', // default value of $colorMode.preference
-        fallback: 'dark', // fallback value if not system preference found
-        hid: 'nuxt-color-mode-script',
-        globalName: '__NUXT_COLOR_MODE__',
-        componentName: 'ColorScheme',
-        classPrefix: '',
-        classSuffix: '-mode',
-        storageKey: 'nuxt-color-mode'
+        preference: "dark", // default value of $colorMode.preference
+        fallback: "dark", // fallback value if not system preference found
+        hid: "nuxt-color-mode-script",
+        globalName: "__NUXT_COLOR_MODE__",
+        componentName: "ColorScheme",
+        classPrefix: "",
+        classSuffix: "-mode",
+        storageKey: "nuxt-color-mode",
     },
     build: {
-        transpile: ['@heroicons/vue'],
+        transpile: ["@heroicons/vue"],
         postcss: {
             postcssOptions: {
                 plugins: {
                     tailwindcss: {},
-                    autoprefixer: {}
-                }
-            }
-        }
+                    autoprefixer: {},
+                },
+            },
+        },
     },
-    css: [
-        '~/assets/css/main.css'
-    ],
-})
+    css: ["~/assets/css/main.css"],
+});

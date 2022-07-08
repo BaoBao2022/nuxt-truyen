@@ -1,5 +1,11 @@
 {
+  "name": "nuxt-truyen-tranh",
+  "version": "0.0.1",
+  "author": "BaoBao",
   "private": true,
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -25,5 +31,6 @@
     "node-html-parser": "^5.3.3",
     "swiper": "^8.2.6",
     "mobile-detect": "^1.4.5"
-  }
+  },
+  "license": "ISC"
 }
