@@ -54,9 +54,12 @@ const handleChapter = async (action: string) => {
     chapterID.value = cID;
     chapterNumber.value = cNum;
 
+    
     router.replace(
       `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${cNum}/${cID}`,
     );
+
+    await refresh();
   }
 
   if (action === 'prev') {
