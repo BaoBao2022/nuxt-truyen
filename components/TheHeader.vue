@@ -22,12 +22,11 @@ import { MenuIcon } from '@heroicons/vue/solid';
         </PopoverButton>
         <div class="relative flex h-full w-56 items-center md:w-80 md:px-6 lg:px-0 lg:pl-6">
           <figure class="absolute z-10 text-3xl font-semibold text-white md:text-5xl">
-            <LazyNuxtLink to="/" style="font-family: HandelGothic">
-              MêTruyện
+            <LazyNuxtLink to="/" style="font-family: HandelGothic; font-size: 24px">
+              <span style="color: #009ddc">M<span style="color: #4aa942">e</span><span style="color: #f47a1f">e</span></span><span style="color: #ee2c74">Truyen</span>
             </LazyNuxtLink>
           </figure>
           <div class="absolute left-10 top-auto z-0">
-
           </div>
         </div>
         <LazyTheNav />
