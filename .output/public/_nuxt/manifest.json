@@ -1,15 +1,15 @@
 {
   "node_modules/nuxt/dist/app/entry.mjs": {
-    "file": "entry-b8207ed2.mjs",
+    "file": "entry-cf94757b.mjs",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "isDynamicEntry": true,
     "dynamicImports": [
       "layouts/default.vue",
-      "_TheHome-eb4be4fe.mjs",
+      "_TheHome-cc3c2616.mjs",
       "components/TheMangaDetail.vue",
       "components/manga/Chaplist.vue",
-      "_TheRead-61d841fe.mjs",
+      "_TheRead-2574cbe8.mjs",
       "pages/filter/index.vue",
       "pages/index.vue",
       "pages/manga/detail/[slug].vue",
@@ -21,38 +21,38 @@
     ]
   },
   "pages/filter/index.vue": {
-    "file": "index-bcfd108b.mjs",
+    "file": "index-2ecd3e16.mjs",
     "src": "pages/filter/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
       "components/common/SearchLoading.vue",
-      "_asyncData-2e01ffb0.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_asyncData-40d50575.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_stringHandler-8d1e9e69.mjs",
       "_index-f67d4f5a.mjs",
-      "_EyeIcon-ceebd9d1.mjs"
+      "_EyeIcon-cd715cad.mjs"
     ],
     "dynamicImports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "components/common/SearchLoading.vue": {
-    "file": "SearchLoading-f532ceb8.mjs",
+    "file": "SearchLoading-1b388ce5.mjs",
     "src": "components/common/SearchLoading.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_asyncData-2e01ffb0.mjs": {
-    "file": "asyncData-2e01ffb0.mjs",
+  "_asyncData-40d50575.mjs": {
+    "file": "asyncData-40d50575.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_useMangaDetailPagePath-38a61a49.mjs": {
-    "file": "useMangaDetailPagePath-38a61a49.mjs",
+  "_useMangaDetailPagePath-f5912eda.mjs": {
+    "file": "useMangaDetailPagePath-f5912eda.mjs",
     "imports": [
       "_index-f67d4f5a.mjs",
       "node_modules/nuxt/dist/app/entry.mjs"
@@ -64,25 +64,25 @@
   "_index-f67d4f5a.mjs": {
     "file": "index-f67d4f5a.mjs"
   },
-  "_EyeIcon-ceebd9d1.mjs": {
-    "file": "EyeIcon-ceebd9d1.mjs",
+  "_EyeIcon-cd715cad.mjs": {
+    "file": "EyeIcon-cd715cad.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "pages/index.vue": {
-    "file": "index-0ea35529.mjs",
+    "file": "index-9b37ea24.mjs",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "dynamicImports": [
-      "_TheHome-eb4be4fe.mjs"
+      "_TheHome-cc3c2616.mjs"
     ]
   },
   "pages/manga/detail/[slug].vue": {
-    "file": "_slug_-00db710f.mjs",
+    "file": "_slug_-9b3f9b6f.mjs",
     "src": "pages/manga/detail/[slug].vue",
     "isDynamicEntry": true,
     "imports": [
@@ -93,100 +93,100 @@
     ]
   },
   "pages/manga/index.vue": {
-    "file": "index-952c70e0.mjs",
+    "file": "index-479a1ec8.mjs",
     "src": "pages/manga/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_asyncData-2e01ffb0.mjs",
+      "_asyncData-40d50575.mjs",
       "_index-f67d4f5a.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs",
-      "_disclosure-5c2aa184.mjs",
-      "_storage-49453dae.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_open-closed-03b1d5d3.mjs"
+      "_useFirstPathChapter-1b1e9572.mjs",
+      "_disclosure-945aba9f.mjs",
+      "_storage-d1ab7c87.mjs",
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs",
+      "_use-resolve-button-type-7926236c.mjs",
+      "_open-closed-ba1645f9.mjs"
     ],
     "dynamicImports": [
       "components/manga/Chaplist.vue"
     ]
   },
-  "_useFirstPathChapter-6b4114d4.mjs": {
-    "file": "useFirstPathChapter-6b4114d4.mjs",
+  "_useFirstPathChapter-1b1e9572.mjs": {
+    "file": "useFirstPathChapter-1b1e9572.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_storage-49453dae.mjs",
+      "_storage-d1ab7c87.mjs",
       "_index-f67d4f5a.mjs",
-      "_index-566e9911.mjs"
+      "_index-e4ef1a56.mjs"
     ]
   },
-  "_disclosure-5c2aa184.mjs": {
-    "file": "disclosure-5c2aa184.mjs",
+  "_disclosure-945aba9f.mjs": {
+    "file": "disclosure-945aba9f.mjs",
     "imports": [
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_open-closed-03b1d5d3.mjs",
+      "_use-resolve-button-type-7926236c.mjs",
+      "_open-closed-ba1645f9.mjs",
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_storage-49453dae.mjs": {
-    "file": "storage-49453dae.mjs",
+  "_storage-d1ab7c87.mjs": {
+    "file": "storage-d1ab7c87.mjs",
     "imports": [
-      "_asyncData-2e01ffb0.mjs",
+      "_asyncData-40d50575.mjs",
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_index-566e9911.mjs": {
-    "file": "index-566e9911.mjs",
+  "_index-e4ef1a56.mjs": {
+    "file": "index-e4ef1a56.mjs",
     "imports": [
-      "_index-7c9a43e8.mjs",
+      "_index-fe66ebaf.mjs",
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_use-resolve-button-type-f15fddb7.mjs": {
-    "file": "use-resolve-button-type-f15fddb7.mjs",
-    "imports": [
-      "node_modules/nuxt/dist/app/entry.mjs"
-    ]
-  },
-  "_open-closed-03b1d5d3.mjs": {
-    "file": "open-closed-03b1d5d3.mjs",
+  "_use-resolve-button-type-7926236c.mjs": {
+    "file": "use-resolve-button-type-7926236c.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_index-7c9a43e8.mjs": {
-    "file": "index-7c9a43e8.mjs",
+  "_open-closed-ba1645f9.mjs": {
+    "file": "open-closed-ba1645f9.mjs",
+    "imports": [
+      "node_modules/nuxt/dist/app/entry.mjs"
+    ]
+  },
+  "_index-fe66ebaf.mjs": {
+    "file": "index-fe66ebaf.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "pages/manga/read/[slug]/[chapter]/[id].vue": {
-    "file": "_id_-e65325d5.mjs",
+    "file": "_id_-114fbe20.mjs",
     "src": "pages/manga/read/[slug]/[chapter]/[id].vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "dynamicImports": [
-      "_TheRead-61d841fe.mjs"
+      "_TheRead-2574cbe8.mjs"
     ]
   },
-  "_TheHome-eb4be4fe.mjs": {
-    "file": "TheHome-eb4be4fe.mjs",
+  "_TheHome-cc3c2616.mjs": {
+    "file": "TheHome-cc3c2616.mjs",
     "isDynamicEntry": true,
     "imports": [
-      "_client-only-2813a9b5.mjs",
+      "_client-only-0bd67db4.mjs",
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_storage-49453dae.mjs",
+      "_storage-d1ab7c87.mjs",
       "components/common/SearchLoading.vue",
-      "_asyncData-2e01ffb0.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_asyncData-40d50575.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_stringHandler-8d1e9e69.mjs",
       "_index-f67d4f5a.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_hidden-614d6193.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs"
+      "_use-resolve-button-type-7926236c.mjs",
+      "_hidden-0f902d27.mjs",
+      "_useFirstPathChapter-1b1e9572.mjs"
     ],
     "dynamicImports": [
       "components/shared/SwiperCardContent.vue",
@@ -199,64 +199,64 @@
       "TheHome.a5a47ebc.css"
     ]
   },
-  "_client-only-2813a9b5.mjs": {
-    "file": "client-only-2813a9b5.mjs",
+  "_client-only-0bd67db4.mjs": {
+    "file": "client-only-0bd67db4.mjs",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
-  "_hidden-614d6193.mjs": {
-    "file": "hidden-614d6193.mjs",
+  "_hidden-0f902d27.mjs": {
+    "file": "hidden-0f902d27.mjs",
     "imports": [
-      "_use-resolve-button-type-f15fddb7.mjs",
+      "_use-resolve-button-type-7926236c.mjs",
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "components/TheMangaDetail.vue": {
-    "file": "TheMangaDetail-db5e8ac1.mjs",
+    "file": "TheMangaDetail-4183fab4.mjs",
     "src": "components/TheMangaDetail.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_client-only-2813a9b5.mjs",
-      "_storage-49453dae.mjs",
+      "_client-only-0bd67db4.mjs",
+      "_storage-d1ab7c87.mjs",
       "_index-f67d4f5a.mjs",
-      "_index-566e9911.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs",
-      "_disclosure-5c2aa184.mjs",
-      "_asyncData-2e01ffb0.mjs",
-      "_index-7c9a43e8.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_open-closed-03b1d5d3.mjs"
+      "_index-e4ef1a56.mjs",
+      "_useFirstPathChapter-1b1e9572.mjs",
+      "_disclosure-945aba9f.mjs",
+      "_asyncData-40d50575.mjs",
+      "_index-fe66ebaf.mjs",
+      "_use-resolve-button-type-7926236c.mjs",
+      "_open-closed-ba1645f9.mjs"
     ],
     "dynamicImports": [
       "components/manga/Chaplist.vue"
     ]
   },
   "components/manga/Chaplist.vue": {
-    "file": "Chaplist-29c3b250.mjs",
+    "file": "Chaplist-703a5a8e.mjs",
     "src": "components/manga/Chaplist.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_storage-49453dae.mjs",
+      "_storage-d1ab7c87.mjs",
       "_index-f67d4f5a.mjs",
-      "_index-566e9911.mjs",
-      "_asyncData-2e01ffb0.mjs",
-      "_index-7c9a43e8.mjs"
+      "_index-e4ef1a56.mjs",
+      "_asyncData-40d50575.mjs",
+      "_index-fe66ebaf.mjs"
     ]
   },
-  "_TheRead-61d841fe.mjs": {
-    "file": "TheRead-61d841fe.mjs",
+  "_TheRead-2574cbe8.mjs": {
+    "file": "TheRead-2574cbe8.mjs",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_client-only-2813a9b5.mjs",
-      "_storage-49453dae.mjs",
+      "_client-only-0bd67db4.mjs",
+      "_storage-d1ab7c87.mjs",
       "_index-f67d4f5a.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_index-e4ef1a56.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
+      "_index-fe66ebaf.mjs"
     ],
     "dynamicImports": [
       "node_modules/nuxt/dist/app/entry.mjs",
@@ -265,24 +265,24 @@
     ]
   },
   "layouts/default.vue": {
-    "file": "default-6b7c0389.mjs",
+    "file": "default-4745020d.mjs",
     "src": "layouts/default.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "dynamicImports": [
-      "_TheHeader-c02660df.mjs",
+      "_TheHeader-ac46eb6c.mjs",
       "components/TheFooter.vue"
     ]
   },
   "components/shared/SwiperCardContent.vue": {
-    "file": "SwiperCardContent-be779b15.mjs",
+    "file": "SwiperCardContent-69b50e96.mjs",
     "src": "components/shared/SwiperCardContent.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_index-f67d4f5a.mjs"
     ],
     "dynamicImports": [
@@ -290,71 +290,71 @@
     ]
   },
   "components/shared/SwiperCardButton.vue": {
-    "file": "SwiperCardButton-a54f0fdf.mjs",
+    "file": "SwiperCardButton-bc4641b2.mjs",
     "src": "components/shared/SwiperCardButton.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
+      "_useFirstPathChapter-1b1e9572.mjs",
       "_index-f67d4f5a.mjs",
-      "_storage-49453dae.mjs",
-      "_asyncData-2e01ffb0.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_storage-d1ab7c87.mjs",
+      "_asyncData-40d50575.mjs",
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs"
     ],
     "dynamicImports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "components/shared/SwiperCard.vue": {
-    "file": "SwiperCard-c2540ec0.mjs",
+    "file": "SwiperCard-5d51038f.mjs",
     "src": "components/shared/SwiperCard.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_TheHome-eb4be4fe.mjs",
-      "_client-only-2813a9b5.mjs",
-      "_storage-49453dae.mjs",
-      "_asyncData-2e01ffb0.mjs",
+      "_TheHome-cc3c2616.mjs",
+      "_client-only-0bd67db4.mjs",
+      "_storage-d1ab7c87.mjs",
+      "_asyncData-40d50575.mjs",
       "components/common/SearchLoading.vue",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_index-f67d4f5a.mjs",
       "_stringHandler-8d1e9e69.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_hidden-614d6193.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_use-resolve-button-type-7926236c.mjs",
+      "_hidden-0f902d27.mjs",
+      "_useFirstPathChapter-1b1e9572.mjs",
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs"
     ]
   },
   "components/manga/Section/RankList.vue": {
-    "file": "RankList-6af9b09c.mjs",
+    "file": "RankList-cba50a3a.mjs",
     "src": "components/manga/Section/RankList.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_TheHome-eb4be4fe.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_TheHome-cc3c2616.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_stringHandler-8d1e9e69.mjs",
       "_index-f67d4f5a.mjs",
-      "_EyeIcon-ceebd9d1.mjs",
-      "_client-only-2813a9b5.mjs",
-      "_storage-49453dae.mjs",
-      "_asyncData-2e01ffb0.mjs",
+      "_EyeIcon-cd715cad.mjs",
+      "_client-only-0bd67db4.mjs",
+      "_storage-d1ab7c87.mjs",
+      "_asyncData-40d50575.mjs",
       "components/common/SearchLoading.vue",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_hidden-614d6193.mjs",
-      "_useFirstPathChapter-6b4114d4.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_use-resolve-button-type-7926236c.mjs",
+      "_hidden-0f902d27.mjs",
+      "_useFirstPathChapter-1b1e9572.mjs",
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs"
     ],
     "dynamicImports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
   },
   "components/manga/ChapterImg.vue": {
-    "file": "ChapterImg-540bab58.mjs",
+    "file": "ChapterImg-4f8abb6b.mjs",
     "src": "components/manga/ChapterImg.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -362,29 +362,29 @@
     ]
   },
   "components/manga/ReadMangaFooter.vue": {
-    "file": "ReadMangaFooter-37cf9de8.mjs",
+    "file": "ReadMangaFooter-522cf158.mjs",
     "src": "components/manga/ReadMangaFooter.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_TheRead-61d841fe.mjs",
-      "_client-only-2813a9b5.mjs",
-      "_storage-49453dae.mjs",
-      "_asyncData-2e01ffb0.mjs",
+      "_TheRead-2574cbe8.mjs",
+      "_client-only-0bd67db4.mjs",
+      "_storage-d1ab7c87.mjs",
+      "_asyncData-40d50575.mjs",
       "_index-f67d4f5a.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs"
     ]
   },
-  "_TheHeader-c02660df.mjs": {
-    "file": "TheHeader-c02660df.mjs",
+  "_TheHeader-ac46eb6c.mjs": {
+    "file": "TheHeader-ac46eb6c.mjs",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_hidden-614d6193.mjs",
-      "_open-closed-03b1d5d3.mjs"
+      "_use-resolve-button-type-7926236c.mjs",
+      "_hidden-0f902d27.mjs",
+      "_open-closed-ba1645f9.mjs"
     ],
     "dynamicImports": [
       "node_modules/nuxt/dist/app/entry.mjs",
@@ -396,7 +396,7 @@
     ]
   },
   "components/TheFooter.vue": {
-    "file": "TheFooter-23832d8a.mjs",
+    "file": "TheFooter-26b737b8.mjs",
     "src": "components/TheFooter.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -404,26 +404,26 @@
     ]
   },
   "components/TheNav.vue": {
-    "file": "TheNav-ceeda173.mjs",
+    "file": "TheNav-bb24449f.mjs",
     "src": "components/TheNav.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_index-566e9911.mjs",
-      "_index-7c9a43e8.mjs"
+      "_index-e4ef1a56.mjs",
+      "_index-fe66ebaf.mjs"
     ]
   },
   "components/modal/MangaSearch.vue": {
-    "file": "MangaSearch-878098b3.mjs",
+    "file": "MangaSearch-9f07addf.mjs",
     "src": "components/modal/MangaSearch.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_index-7c9a43e8.mjs",
-      "_use-resolve-button-type-f15fddb7.mjs",
-      "_open-closed-03b1d5d3.mjs",
-      "_hidden-614d6193.mjs",
-      "_TheHeader-c02660df.mjs"
+      "_index-fe66ebaf.mjs",
+      "_use-resolve-button-type-7926236c.mjs",
+      "_open-closed-ba1645f9.mjs",
+      "_hidden-0f902d27.mjs",
+      "_TheHeader-ac46eb6c.mjs"
     ],
     "dynamicImports": [
       "components/common/SearchLoading.vue",
@@ -431,12 +431,12 @@
     ]
   },
   "components/modal/SearchResult.vue": {
-    "file": "SearchResult-a29aec1b.mjs",
+    "file": "SearchResult-b5f7eb06.mjs",
     "src": "components/modal/SearchResult.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_useMangaDetailPagePath-38a61a49.mjs",
+      "_useMangaDetailPagePath-f5912eda.mjs",
       "_index-f67d4f5a.mjs"
     ],
     "dynamicImports": [

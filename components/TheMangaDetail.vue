@@ -42,9 +42,9 @@ const navigateLastToManga = async () => {
 
 <template>
   <NuxtLayout>
-  <div v-if="pending">
-		<CommonPageLoading />
-	</div>
+    <div v-if="pending">
+      <CommonPageLoading />
+    </div>
     <div class="flex h-fit flex-col" style="height: auto" v-else>
       <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
         <figure class="deslide-cover">
@@ -59,11 +59,10 @@ const navigateLastToManga = async () => {
         <section class="h-fit w-full">
           <div class="flex h-full w-full flex-col items-center overflow-x-hidden md:flex-row md:items-start">
             <div class="mt-4 w-[60%] md:w-[250px] md:min-w-[250px]">
-              <figure class="aspect-w-3 aspect-h-5 relative rounded-2xl">
+              <figure class="aspect-w-3 aspect-h-5 relative">
                 <span class="default-span-figure">
-                  <img alt="manga-thumbnail" sizes="100vw" :srcset="manga.thumbnail" :src="manga.thumbnail"
-                    decoding="async" data-nimg="fill"
-                    class="absolute inset-0 rounded-2xl object-cover object-center default-img">
+                  <nuxt-img sizes="100vw" :srcset="manga.thumbnail" :src="manga.thumbnail" loading="lazy" fil="fill" class="absolute rounded-sm inset-0 object-cover object-center default-img">
+                  </nuxt-img>
                 </span>
               </figure>
             </div>

@@ -21,11 +21,12 @@ defineProps({
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2 odd:bg-highlight/40" v-for="manga in mangas.slice(0, 12)" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-          <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
+          <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-sm image">
             <span class="default-span-figure">
-              <nuxt-img format="webp" loading="lazy" :src="manga.thumbnail"
-                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" sizes="sm:100vw md:100vw lg:100vw"
-                :srcset="manga.thumbnail"></nuxt-img>
+              <nuxt-img format="webp" loading="lazy" fil="fill" :src="manga.thumbnail"
+                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
+                sizes="sm:100vw md:100vw lg:100vw" :srcset="manga.thumbnail">
+                </nuxt-img>
             </span>
           </figure>
         </LazyNuxtLink>

@@ -18,10 +18,10 @@ const navigateToManga = async (manga) => {
 
 const sliderPerView = computed(() => {
   if (device.value.hasDesktop) {
-    return 6;
+    return 7;
   }
 
-  return 3;
+  return 2;
 });
 
 </script>
@@ -41,16 +41,16 @@ const sliderPerView = computed(() => {
       <Swiper :slides-per-view="sliderPerView" :space-between="20">
         <SwiperSlide v-for="(manga, imanga) in mangas" :key="`slide_${manga.slug}`" @mousemove="hasPreview = imanga"
           @mouseleave="hasPreview = -1">
-          <div class="aspect-h-4 aspect-w-3 rounded-xl">
+          <div class="aspect-h-4 aspect-w-3 rounded-sm image">
             <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
               <span class="default-span-figure">
                 <nuxt-img sizes="sm:100vw md:100vw lg:100vw" format="webp" loading="lazy" :src="manga.thumbnail"
-                  class="absolute inset-0 rounded-xl object-cover object-center default-img">
+                  class="absolute inset-0 rounded-sm object-cover object-center default-img">
                   </nuxt-img>
               </span>
             </LazyNuxtLink>
             <span
-              class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl">
+              class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl bg-black">
               {{ manga.newChapter }}
             </span>
             <div v-if="hasPreview === imanga && device.hasDesktop"

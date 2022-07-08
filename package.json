@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "author": "BaoBao",
   "private": true,
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

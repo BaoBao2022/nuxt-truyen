@@ -374,3 +374,13 @@ input[type='number'] {
   align-items: center;
   justify-content: space-between;
 }
+
+.image {
+  height: 200px;
+  line-height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: #000 0 0 0;
+  text-align: center;
+  overflow: hidden;
+}
