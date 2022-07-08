@@ -44,9 +44,9 @@ const sliderPerView = computed(() => {
           <div class="aspect-h-4 aspect-w-3 rounded-xl">
             <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
               <span class="default-span-figure">
-                <img alt="manga-thumbnail z-50" sizes="100vw" :srcset="manga.thumbnail" :src="manga.thumbnail"
-                  decoding="async" data-nimg="fill"
+                <nuxt-img sizes="sm:100vw md:100vw lg:100vw" format="webp" loading="lazy" :src="manga.thumbnail"
                   class="absolute inset-0 rounded-xl object-cover object-center default-img">
+                  </nuxt-img>
               </span>
             </LazyNuxtLink>
             <span

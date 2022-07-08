@@ -3,8 +3,8 @@ import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import { EyeIcon } from '@heroicons/vue/solid';
 import { randomColors } from '~/serveless/utils';
 import { TailwindColors } from '~/contants';
-import {PropType} from 'vue';
-import {Manga} from '~/types';
+import { PropType } from 'vue';
+import { Manga } from '~/types';
 
 defineProps({
   title: String,
@@ -23,9 +23,9 @@ defineProps({
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[80px] min-h-[80px] w-[60px] min-w-[60px] overflow-hidden rounded-xl">
             <span class="default-span-figure">
-              <img alt="img-preview" :src="manga.thumbnail" decoding="async" data-nimg="fill"
-                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" sizes="100vw"
-                :srcset="manga.thumbnail">
+              <nuxt-img format="webp" loading="lazy" :src="manga.thumbnail"
+                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" sizes="sm:100vw md:100vw lg:100vw"
+                :srcset="manga.thumbnail"></nuxt-img>
             </span>
           </figure>
         </LazyNuxtLink>

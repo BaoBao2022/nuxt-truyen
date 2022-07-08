@@ -8,6 +8,7 @@
     "start": "nuxt start"
   },
   "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-27620518.ac187e6",
     "@nuxtjs/color-mode": "^3.1.4",
     "@vueuse/core": "^8.7.5",
     "@vueuse/nuxt": "^8.7.5",

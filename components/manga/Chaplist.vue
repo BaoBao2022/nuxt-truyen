@@ -1,17 +1,14 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
-import { MANGA_PATH_NAME, MANGA_PATH_READ_NAME } from "~/contants";
 import {Chapter} from '~/types';
-// import { navigateTo } from "#imports";
 
 defineProps({
   slug: String,
   chapterList: Array as PropType<Chapter[]>
 })
 
-const navigateToManga = async (chapterNumber, chapterId, slug) => {
+const navigateToManga = async (chapterNumber: string, chapterId: string, slug: string) => {
   const path = await useChapter(chapterNumber, chapterId, slug);
-  console.log("path", path);
   
   return navigateTo({
     path: path
@@ -55,7 +52,7 @@ const navigateToManga = async (chapterNumber, chapterId, slug) => {
       </div>
 
       <div class="animate__fadeIn animate__animated m-2 overflow-hidden text-white overflow-y-scroll lg:h-[350px] h-[200px]">
-        <button class="w-full my-1" v-for="(chap, index) in chapterList">
+        <button class="w-full my-1" v-for="(chap, cI) in chapterList" :key="`chap_${chap.chapterId}`">
           <a @click="navigateToManga(chap.chapterNumber, chap.chapterId, slug)"
             class="bg-deep-black flex h-[30px] items-center justify-between rounded-lg">
             <div class="flex w-[30%] min-w-max items-center">

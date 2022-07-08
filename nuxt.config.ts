@@ -12,7 +12,7 @@ export default defineNuxtConfig({
         link: [{ rel: 'icon', type: 'image/x-icon', href: './assets/favicon.png' }],
     },
     ssr: true,
-    modules: ['@nuxtjs/color-mode'],
+    modules: ['@nuxtjs/color-mode', '@nuxt/image-edge'],
     colorMode: {
         preference: 'dark', // default value of $colorMode.preference
         fallback: 'dark', // fallback value if not system preference found

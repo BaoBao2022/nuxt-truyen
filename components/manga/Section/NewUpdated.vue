@@ -63,9 +63,10 @@ const switchComic = async (slug: string) => {
                 <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                     <figure class="relative h-[180px] lg:h-[300px] w-full overflow-hidden rounded-xl">
                         <span class="default-span-figure">
-                            <img alt="img-preview" :src="manga.thumbnail" decoding="async" data-nimg="fill"
-                                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
-                                sizes="100vw" :srcset="manga.thumbnail">
+                            <nuxt-img sizes="sm:100vw md:100vw lg:100vw" format="webp" loading="lazy" alt="img-preview"
+                                :src="manga.thumbnail"
+                                class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img">
+                            </nuxt-img>
                         </span>
                     </figure>
                 </LazyNuxtLink>
