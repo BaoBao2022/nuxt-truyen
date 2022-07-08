@@ -4,8 +4,8 @@ const publicConfig = config.public;
 </script>
 
 <template>
-
-  <Head>
+  <div class="_layout">
+    <Head>
     <Meta name="theme-color" content="#403667" />
     <Meta name="msapplication-navbutton-color" content="#403667" />
     <Meta name="apple-mobile-web-app-status-bar-style" content="#403667" />
@@ -27,7 +27,6 @@ const publicConfig = config.public;
     <Meta itemprop="description"
       :content="`Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 💚10 triệu thành viên tại ${publicConfig.SIZE_NAME}`" />
   </Head>
-  <div class="_layout">
     <LazyTheHeader />
     <div class="overflow-x-hidden">
       <slot />
