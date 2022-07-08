@@ -55,21 +55,21 @@ watch([refInput], async () => {
   <form @click="open"
     class="ml-16 flex h-[40%] w-fit items-center justify-between rounded-2xl lg:w-[68%]">
     <button
-      class="mx-4 hidden rounded-xl bg-rose-300 px-2 py-1 text-rose-600 transition-all hover:bg-rose-500 hover:text-white/80 md:block">
+      class="mx-4 hidden bg-orange px-2 py-1 text-rose-600 transition-all hover:bg-rose-500 hover:text-white/80 md:block">
     </button>
     <input class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm truyện...">
-    <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 text-background">
+    <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 text-background h-[40px]">
       <SearchIcon class="w-8 h-8 text-white" />
     </div>
   </form>
-  <div class="absolute-center h-full w-40 ">
+  <!-- <div class="absolute-center h-full w-40 ">
     <div class="relative">
       <button
         class="absolute-center h-20 w-20 overflow-hidden rounded-full bg-secondary bg-cover bg-no-repeat text-white hover:bg-white/10">
         <UserIcon class="w-12 h-12" />
       </button>
     </div>
-  </div>
+  </div> -->
   <TransitionRoot appear :show="shouldShow" as="template">
     <Dialog as="div" @close="close" class="relative z-10">
       <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"

@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { Swiper, SwiperSlide } from "swiper/vue";
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import { computed, useState } from "#imports";
 import { devices } from '~/types';
 import { ClockIcon, BookOpenIcon, InformationCircleIcon } from '@heroicons/vue/outline';
 import { ChevronRightIcon, StatusOnlineIcon, ClipboardListIcon } from "@heroicons/vue/solid";
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 const { data: mangas, pending } = await useLazyFetch('/api/manga-updated');
 const device = useState<devices>('devices');
@@ -25,6 +26,7 @@ const sliderPerView = computed(() => {
 });
 
 </script>
+
 
 <template>
   <section class="w-[90%] mx-auto w-max-[1300px] mt-6 overflow-x-hidden" v-if="!pending">
