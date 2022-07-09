@@ -2,6 +2,8 @@
 @import "assets/css/home.scss";
 @import "assets/scss/background.scss";
 @import "assets/scss/globals.scss";
+@import "assets/scss/theme.scss";
+@import "assets/scss/button.scss";
 @import "assets/css/magic.min.css";
 
 @tailwind base;
@@ -16,16 +18,6 @@ body {
 
     --tw-bg-opacity: 1;
     font-family: Nunito, sans-serif;
-}
-
-.dark-mode body {
-    background-color: rgb(0 0 0/var(--tw-bg-opacity));
-    color: #fff;
-}
-
-.light-mode body {
-    background: #fff;
-    color: #000;
 }
 
 /* .sepia-mode body {

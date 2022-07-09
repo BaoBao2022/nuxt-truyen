@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap');
 
-@font-face
-{
-    font-family: 'Handel Gothic';
-    font-weight: normal;
-    font-style: normal;
-    src: url('~/assets/fonts/HandelGothic.ttf') format('truetype');
+@font-face {
+  font-family: 'Handel Gothic';
+  font-weight: normal;
+  font-style: normal;
+  src: url('~/assets/fonts/HandelGothic.ttf') format('truetype');
 }
 
 $dot-width: 15px !default;
@@ -322,11 +321,12 @@ input[type='number'] {
 
 .deslide-cover:before {
   z-index: 1;
-  background: linear-gradient(90deg,#1e1d21,rgba(32,33,37,.6) 40%,rgba(32,33,37,0) 60%,rgba(32,33,37,0) 80%,#181a21)
+  background: linear-gradient(90deg, #1e1d21, rgba(32, 33, 37, .6) 40%, rgba(32, 33, 37, 0) 60%, rgba(32, 33, 37, 0) 80%, #181a21)
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg,#000,rgba(32,33,37,0) 50%,#403667);
+  background: linear-gradient(0deg,#252525,rgb(64 54 103 / 50%) 70%,rgb(64 54 103));
+  //background: linear-gradient(90deg, rgba(2, 0, 36, 1) 30%, rgba(70, 70, 213, 1) 77%, rgba(0, 212, 255, 1) 100%);
   z-index: 2;
 }
 
@@ -397,10 +397,142 @@ input[type='number'] {
   color: #ff9601;
 }
 
-#header {
-  background-image: url('~/assets/images/bg_header.jpeg');
-}
-
 .navbar-toggle {
   background-color: #d0b32e !important;
+}
+
+.breadcrumb {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  background-color: transparent;
+}
+
+.breadcrumb {
+  padding: 8px 0px;
+  border-radius: 4px;
+}
+
+.breadcrumb > li, .pagination {
+  display: inline-block;
+}
+
+.initial {
+  display: initial;
+}
+
+.manga-detail time {
+  line-height: 1;
+  font-size: 13px;
+  font-style: italic;
+  opacity: .7;
+  display: block;
+  text-align: center;
+  padding: 5px 0 0;
+}
+
+#item-detail .list-title {
+  color: #2980b9;
+  border-bottom: 2px solid #2980b9;
+  font-weight: 300;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin: 10px 0;
+  padding-bottom: 2px;
+}
+
+#item-detail .list-chapter .heading {
+  padding: 5px 10px 5px 5px;
+  font-size: 17px;
+}
+
+#item-detail .list-chapter nav {
+  border: solid 1px #ddd;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+#item-detail .list-chapter nav ul li {
+  border-bottom: 1px dashed #ddd;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 6px 0;
+  margin: 0;
+}
+
+#item-detail .list-chapter nav ul li .small {
+  font-size: 13px;
+  color: #999;
+}
+
+#item-detail .list-chapter .no-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#item-detail .list-chapter nav ul li > div.chapter a {
+  font-size: 14px;
+}
+
+.shortened {
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.shortened-chaplist {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.morelink {
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 14px;
+}
+
+#item-detail .list-chapter .view-more:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 35px;
+  top: -36px;
+  background: linear-gradient(rgba(255, 255, 255, 0), white);
+  width: 100%;
+}
+
+.view-more {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  border: 1px solid #ddd;
+  line-height: 35px;
+}
+
+.bg-right-top {
+  background-position: right top;
+}
+
+.image:hover {
+  transform: scale(1.1);
+}
+
+.rank-title {
+  clear: both;
+  margin: 15px 0 15px 2px;
+  font-size: 22px;
+  -webkit-transform: scaleY(.9);
+  transform: scaleY(.9);
+  border-left: 4px solid;
+  padding-left: 10px;
+  font-weight: 600;
+  line-height: 16px;
+  height: 18px;
+  text-transform: uppercase;
+  color: #00796b;
 }

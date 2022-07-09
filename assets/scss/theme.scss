@@ -1,0 +1,64 @@
+.dark-mode body {
+  background-color: #252525;
+  color: #fff;
+}
+
+.light-mode body a {
+  background: #fff;
+  color: #000;
+}
+
+.dark-mode .a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
+  color: #ff7043;
+}
+
+.dark-mode #header {
+  background-image: url(~/assets/images/bg_header.jpeg);
+  width: 100%;
+  height: 50px;
+  transition: top .3s ease-in-out;
+}
+
+.light-mode #header {
+  background-color: #403667;
+}
+
+.dark-mode .breadcrumb, .dark-mode .breadcrumb a.active {
+  color: #fff;
+}
+
+.dark-mode #item-detail .list-title {
+  color: #ff7043;
+  border-bottom-color: #ff7043;
+}
+
+.dark-mode #item-detail .detail-content p.shortened:before, .dark-mode #item-detail .list-chapter .view-more:before {
+  background: linear-gradient(rgba(255, 255, 255, 0), #484848);
+}
+
+.dark-mode .morelink, .view-more {
+  color: #0cd444;
+}
+
+#item-detail .detail-content p.shortened:before {
+  position: absolute;
+  content: '';
+  display: block;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 20px;
+  background: linear-gradient(rgba(255, 255, 255, 0), white);
+}
+
+.dark-mode #item-detail .list-chapter .view-more {
+  border-color: transparent;
+}
+
+.dark-mode #item-detail .detail-content p.shortened:before, .dark-mode #item-detail .list-chapter .view-more:before {
+  background: linear-gradient(rgba(255, 255, 255, 0), #484848);
+}
+
+.dark-mode .view-more {
+  background: #252525;
+}

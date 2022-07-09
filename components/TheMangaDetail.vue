@@ -1,9 +1,15 @@
 <script lang="ts" setup>
-import { SourceParams } from "~/contants";
-import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { navigateTo, useHead, useLazyAsyncData, useLazyFetch, useState, watchEffect } from "#imports";
-import useFirstPathChapter from "~/composables/useFirstPathChapter";
-import { MangaDetails } from "~/types";
+import {SourceParams} from "~/contants";
+import {useHead, watchEffect, useRoute} from "#imports";
+import {MangaDetails} from "~/types";
+
+import {
+  ChevronDoubleRightIcon,
+  UserIcon,
+  RssIcon,
+  TagIcon,
+  EyeIcon,
+} from '@heroicons/vue/solid';
 
 const route = useRoute();
 const params = route.params;
@@ -18,136 +24,155 @@ const {
   pending
 } = useFetch<MangaDetails>(`/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`);
 
+const comic = ref("");
+const {data: month} = useFetch(`/api/top-month?comic=${comic.value}`);
+
 useHead({
   title: manga.value?.title,
   description: manga.value?.author,
 })
-
-
-const navigateToManga = async () => {
-  const path = await useFirstPathChapter(null, slug.value);
-  return navigateTo({
-    path: path
-  })
-}
-
-const navigateLastToManga = async () => {
-  const path = await useLastPathChapter(null, slug.value);
-  return navigateTo({
-    path: path
-  })
-}
 
 </script>
 
 <template>
   <NuxtLayout>
     <div v-if="pending">
-      <CommonPageLoading />
+      <CommonPageLoading/>
     </div>
-    <div class="flex h-fit flex-col" style="height: auto" v-else>
-      <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">
-        <figure class="deslide-cover">
-          <span class="default-span-figure">
-            <img alt="comic-banner" :src="manga.thumbnail" decoding="async" data-nimg="fill"
-              class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover blur default-img"
-              sizes="100vw" :srcset="manga.thumbnail">
-          </span>
-        </figure>
-      </div>
-      <div class="z-10 mx-auto w-[85%] pt-16">
-        <section class="h-fit w-full">
-          <div class="flex h-full w-full flex-col items-center overflow-x-hidden md:flex-row md:items-start">
-            <div class="mt-4 w-[60%] md:w-[250px] md:min-w-[250px]">
-              <figure class="aspect-w-3 aspect-h-5 relative">
-                <span class="default-span-figure">
-                  <nuxt-img sizes="100vw" :srcset="manga.thumbnail" :src="manga.thumbnail" loading="lazy" fil="fill" class="absolute rounded-sm inset-0 object-cover object-center default-img">
-                  </nuxt-img>
-                </span>
-              </figure>
+    <div class="flex h-fit flex-col" v-else>
+      <!--      <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">-->
+      <!--        <figure class="deslide-cover">-->
+      <!--          <span class="default-span-figure">-->
+      <!--            <nuxt-img fil="fill" loading="lazy" :src="manga.thumbnail"-->
+      <!--              class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover default-img"-->
+      <!--              sizes="100vw" :srcset="manga.thumbnail">-->
+      <!--              </nuxt-img>-->
+      <!--          </span>-->
+      <!--        </figure>-->
+      <!--      </div>-->
+      <div id="item-detail" class="mx-auto mt-2 w-[95%] grid grid-cols-1 lg:grid-cols-5">
+        <article class="col-span-3 manga-detail">
+          <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <a href="http://www.nettruyenco.com" class="itemcrumb" itemprop="item"
+                 itemtype="http://schema.org/Thing">
+              <span itemprop="name">
+                Trang chủ
+              </span>
+              </a>
+              <meta itemprop="position" content="1">
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
+              <a
+                  href="http://www.nettruyenco.com/tim-truyen" class="itemcrumb" itemprop="item"
+                  itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
+              <meta itemprop="position" content="2">
+            </li>
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+              <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
+              <a
+                  href="http://www.nettruyenco.com/truyen-tranh/youjo-to-sukoppu-to-magan-ou-535380"
+                  class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">Youjo to Sukoppu to Magan Ou</span></a>
+              <meta itemprop="position" content="3">
+            </li>
+          </ul>
+          <h1 class="text-center uppercase font-semibold text-3xl">
+            {{ manga.title }}
+          </h1>
+          <time class="small">
+            {{ manga.updatedAt }}
+          </time>
+          <div class="flex grid grid-cols-1 lg:grid-cols-4 mt-4">
+            <div class="px-2 absolute-center">
+              <div class="w-[250px] md:w-[250px] md:min-w-[198px] lg:w-[198px] h-[333px] lg:h-[268px] lg:h-[268px]">
+                <figure>
+                  <NuxtImg class="h-[333px] lg:h-[268px] lg:h-[268px]" sizes="250px" :srcset="manga.thumbnail"
+                           :src="manga.thumbnail"
+                           loading="lazy" fil="fill">
+                  </NuxtImg>
+                </figure>
+              </div>
             </div>
-            <div class="flex h-full w-full flex-col justify-center p-4 text-white md:min-h-[430px] lg:ml-4">
-              <div class="w-full space-y-4 text-center md:ml-2 md:text-left lg:w-[80%]">
-                <h1 class="font-secondary  font-bold leading-none text-[6.5vw] md:text-[5.5vw] lg:text-[3.5vw]">
-                  {{ manga.title }}
-                </h1>
-                <h2 class="text-[3vw] md:min-h-[28px] md:text-[2vw] lg:text-[1.2vw]"></h2>
-                <h3 class="text-center text-[3vw] md:text-left md:text-[2vw] lg:text-[1.1vw]">
-                  {{ manga.author }}
-                </h3>
-                <h4 class="flex items-center justify-center gap-4 md:justify-start">
-                  <span class="block h-3 w-3 rounded-full bg-green-500 ">
-                  </span>
-                  {{ manga.status }}
-                </h4>
+            <div class="px-5 col-span-3 mt-10">
+              <ul class="list-info pt-4">
+                <li class="author grid grid-cols-9 mb-3">
+                  <div class="flex col-span-3">
+                    <p class="name absolute-center-start">
+                      <UserIcon class="h-7 w-7 mr-2"/>
+                      Tác giả
+                    </p>
+                  </div>
+                  <p class="col-span-6">
+                    {{ manga.author }}
+                  </p>
+                </li>
+                <li class="status grid grid-cols-9 mb-3">
+                  <div class="flex col-span-3">
+                    <p class="name absolute-center-start">
+                      <RssIcon class="h-7 w-7 mr-2"/>
+                      Tình trạng
+                    </p>
+                  </div>
+                  <p class="col-span-6">
+                    {{ manga.status }}
+                  </p>
+                </li>
+                <li class="kind grid grid-cols-9 mb-3">
+                  <div class="flex col-span-3 items-start">
+                    <p class="name absolute-center-start">
+                      <TagIcon class="h-7 w-7 mr-2"/>
+                      Thể loại
+                    </p>
+                  </div>
+                  <p class="col-span-6">
+                    <a class="a" v-for="(genre, g) in manga.genres" :key="`genre${g}`">
+                      {{ genre.genreTitle }} <span v-if="g !== manga.genres.length - 1">- </span>
+                    </a>
+                  </p>
+                </li>
+                <li class="grid grid-cols-9 mb-1">
+                  <div class="flex col-span-3">
+                    <p class="name absolute-center-start">
+                      <EyeIcon class="h-7 w-7 mr-2"/>
+
+                      Lượt xem
+                    </p>
+                  </div>
+                  <p class="col-span-6">
+                    {{ manga.view }}
+                  </p>
+                </li>
+              </ul>
+              <div class="mt-10" itemscope="" itemtype="http://schema.org/Book">
+                <a>
+                  <span itemprop="name">{{ manga.title }} </span>
+                </a>
+                <span itemprop="aggregateRating" itemscope=""
+                      itemtype="https://schema.org/AggregateRating"> Xếp hạng: <span itemprop="ratingValue">4.7</span>/5 - <span
+                    itemprop="ratingCount">2.380</span> Lượt đánh giá.</span>
               </div>
-              <div class="mt-4 flex flex-col-reverse gap-2 md:flex-col">
-                <ul class="my-4 flex flex-wrap items-center gap-4">
-                  <h3 class="px-2 py-2">Thể loại:</h3>
-                  <li class="rounded-xl bg-highlight px-4 py-2" v-for="(genre, g) in manga.genres" :key="`genre${g}`">
-                    <a href="/browse?genres=mystery">{{ genre.genreTitle }}</a>
-                  </li>
-                </ul>
-                <div class="flex h-[150px] w-full flex-col items-center gap-6 md:flex-row md:items-start">
-                  <a @click="navigateToManga()">
-                    <button
-                      class="pulse-effect-primary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-primary transition-all hover:scale-[110%]">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                        stroke="currentColor" aria-hidden="true" class="h-8 w-8">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                        </path>
-                      </svg>
-                      Đọc ngay
-                    </button>
-                  </a>
-                  <a @click="navigateLastToManga()">
-                    <button
-                      class="pulse-effect-secondary absolute-center h-[50px] w-[150px] gap-3 rounded-2xl bg-white text-gray-800 transition-all hover:scale-[110%]">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
-                        class="h-8 w-8 text-primary">
-                        <path fill-rule="evenodd"
-                          d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
-                          clip-rule="evenodd">
-                        </path>
-                      </svg>
-                      Chap mới nhất
-                    </button>
-                  </a>
-                  <button
-                    class="shine-effect absolute-center bg-hight-light h-[50px] w-[50px] rounded-xl transition-all hover:text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                      stroke="currentColor" aria-hidden="true" class=" h-8 w-8">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
-                    </svg>
-                  </button>
-                </div>
+              <div class="star flex items-center" data-id="62882" data-rating="3.7" data-allowrating="true"
+                   style="cursor: pointer;">
+                <img
+                    src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="1" title="bad">&nbsp;<img
+                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="2" title="poor">&nbsp;<img
+                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="3" title="regular">&nbsp;<img
+                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-half.png" alt="4" title="good">&nbsp;<img
+                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-off.png" alt="5" title="gorgeous"><input
+                  type="hidden" name="score" value="3.7">
               </div>
+              <LazyMangaDetailFollowButton/>
+              <LazyMangaDetailReadButton :slug="slug"/>
             </div>
           </div>
-        </section>
-        <div class="flex-col-reverse flex">
-          <ClientOnly>
-            <Disclosure v-slot="{ open }">
-              <DisclosureButton>
-                <button class="flex w-full flex-col items-center bg-cyan-300/0 text-white">
-                  Tóm tắt
-                  <svg :class="open ? 'rotate-180 transform' : ''" xmlns="http://www.w3.org/2000/svg" fill="none"
-                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="h-8 w-8">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                  </svg>
-                </button>
-              </DisclosureButton>
-              <DisclosurePanel class="transform scale-100 opacity-100">
-                <p class="text-white">
-                  {{ manga?.review }}
-                </p>
-              </DisclosurePanel>
-            </Disclosure>
-          </ClientOnly>
+
+          <LazyMangaDetailReview :review="manga.review"/>
+          <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
+        </article>
+        <div>
+          <LazyMangaSectionRankList limit="7" :mangas="month"/>
         </div>
-        <LazyMangaChaplist :slug="(slug as string)" :chapterList="manga.chapterList" />
       </div>
     </div>
   </NuxtLayout>

@@ -18,7 +18,7 @@ defineProps({
     </h1>
   </LazyNuxtLink>
   <LazyNuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
-    <div class="text-sm line-clamp-3 lg:min-h-[150px] md:text-2xl">
+    <div class="text-sm line-clamp-3 lg:min-h-[100px] md:text-2xl">
       {{ spotlight.review ? spotlight.review : '' }}
     </div>
   </LazyNuxtLink>

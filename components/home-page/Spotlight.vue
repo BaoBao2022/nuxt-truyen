@@ -1,34 +1,34 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, EffectFade } from "swiper";
-import { ref } from 'vue';
+import { Autoplay } from "swiper";
+import {PropType, ref} from 'vue';
 import { Manga } from "~/types";
 
-import "swiper/css";
-import 'swiper/css/effect-fade';
-import "swiper/css/pagination";
+const props = defineProps({
+  spotlights: Array as PropType<Manga[]>
+})
 
-const { data: spotlights, pending } = useLazyFetch<Manga[]>('/api/spotlights');
-const modules = ref([Autoplay, EffectFade]);
+const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
-  delay: 2500,
-  disableOnInteraction: false
+  delay: 3500,
+  disableOnInteraction: true
 });
+
 const backgroundImage = (spotlight) => {
   return {
     backgroundImage: `url(${spotlight.thumbnail})`,
   }
 }
-
+const mangas = props.spotlights.filter(spotlight => spotlight.review !== '');
 </script>
 
 <template>
-  <Swiper v-if="!pending" :modules="modules" :autoplay="autoPlaySettings" effect="fade"
-    class="relative lg:h-[480px] md:h-[350px] h-[250px]">
-    <SwiperSlide v-for="spotlight in spotlights">
+  <Swiper :modules="modules" :autoplay="autoPlaySettings" effect="fade"
+    class="relative lg:h-[380px] md:h-[250px] h-[200px]">
+    <SwiperSlide v-for="spotlight in mangas">
       <div :key="spotlight.slug">
         <figure
-          class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] w-full bg-cover bg-center bg-no-repeat md:h-[300px] lg:h-[480px]"
+          class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right-top bg-no-repeat md:h-[300px] lg:h-[480px]"
           :style="backgroundImage(spotlight)">
         </figure>
         <div
@@ -38,7 +38,6 @@ const backgroundImage = (spotlight) => {
         </div>
         <LazySharedSwiperCard :spotlight="spotlight" />
       </div>
-
     </SwiperSlide>
   </Swiper>
 </template>
