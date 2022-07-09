@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
-            DOMAIN: 'https://lexhey.com',
+            DOMAIN: 'https://meetruyen.com',
             SIZE_NAME: "MeeTruyen"
         },
     },
@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     ],
     meta: {
         title: "Đọc truyện tranh online - Truyện gì cũng có - MeeTruyen",
-        link: [{ rel: "icon", type: "image/x-icon", href: "./assets/images/favicon.png" }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "~/assets/images/favicon.png" }],
         /* For PWA. */
         // name: "theme-color", content: '#fff'
     },
