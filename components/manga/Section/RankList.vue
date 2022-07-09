@@ -25,7 +25,7 @@ defineProps({
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2" v-for="manga in mangas.slice(0, limit)" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-          <figure class="relative h-[120px] w-[100px] overflow-hidden rounded-sm image">
+          <figure class="relative h-[120px] w-[100px]">
             <span class="default-span-figure">
               <nuxt-img format="webp" loading="lazy" fil="fill" :src="manga.thumbnail"
                         class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
@@ -43,10 +43,10 @@ defineProps({
           </LazyNuxtLink>
           <h4 class="text-lg">{{ manga.newChapter }}</h4>
 
-<!--          <div class="flex align-center">-->
-<!--            <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px"/>-->
-<!--            <h4 class="text-lg"> {{ manga.view }}</h4>-->
-<!--          </div>-->
+          <div class="flex align-center">
+            <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px"/>
+            <h4 class="text-lg"> {{ manga.view }}</h4>
+          </div>
 
           <ul class="hidden space-x-4 text-lg md:flex">
             <li class="flex w-fit max-w-[70px] items-center whitespace-nowrap"

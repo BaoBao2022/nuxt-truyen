@@ -21,6 +21,13 @@ export interface Manga extends SearchResponseData {
   updatedAt: string;
   chapters?: Chapter[];
   view: string;
+  chapSuggests: ChapSuggests[]
+}
+
+export type ChapSuggests = {
+  chapId: string;
+  chapNumber: string;
+  updatedAt: string;
 }
 
 export interface MangaDetails {
