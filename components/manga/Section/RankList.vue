@@ -19,7 +19,7 @@ defineProps({
 
 <template>
   <div class="w-full pb-4 lg:my-4">
-    <h2 class="rank-title">
+    <h2 class="items-center justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex page-title px-3 custom-title">
      Top tháng
     </h2>
     <ul class="w-full space-y-4 overflow-hidden text-white">
@@ -37,7 +37,7 @@ defineProps({
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
           <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h3
-                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
               {{ manga.name }}
             </h3>
           </LazyNuxtLink>

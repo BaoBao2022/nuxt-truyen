@@ -55,8 +55,8 @@ onClickOutside(mangaTars, (event) => openMangaTypes.value = false)
         </div>
 
       </li>
-      <li class="transition-all hover:text-primary "><a href="/browse?view=newComic">Mới cập nhật</a></li>
-      <li class="transition-all hover:text-primary "><a href="/browse?view=all">Bảng xếp hạng</a></li>
+      <li class="transition-all hover:text-primary"><a class="text-white" href="/browse?view=newComic">Mới cập nhật</a></li>
+      <li class="transition-all hover:text-primary"><a class="text-white" href="/browse?view=all">Bảng xếp hạng</a></li>
     </ul>
   </nav>
 </template>

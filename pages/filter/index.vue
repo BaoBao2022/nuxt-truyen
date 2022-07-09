@@ -55,7 +55,7 @@ watch([route], () => {
                             <div class="flex w-full flex-col justify-center space-y-2 mt-4">
                                 <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                                     <h3
-                                        class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+                                        class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
                                         {{ manga.name }}
                                     </h3>
                                 </LazyNuxtLink>

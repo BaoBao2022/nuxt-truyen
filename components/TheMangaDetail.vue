@@ -40,32 +40,22 @@ useHead({
       <CommonPageLoading/>
     </div>
     <div class="flex h-fit flex-col" v-else>
-      <!--      <div class="absolute inset-0 z-0 h-[35%] w-full lg:h-[45%] ">-->
-      <!--        <figure class="deslide-cover">-->
-      <!--          <span class="default-span-figure">-->
-      <!--            <nuxt-img fil="fill" loading="lazy" :src="manga.thumbnail"-->
-      <!--              class=" count={10} object-fit absolute h-full w-full bg-cover bg-top bg-no-repeat object-cover default-img"-->
-      <!--              sizes="100vw" :srcset="manga.thumbnail">-->
-      <!--              </nuxt-img>-->
-      <!--          </span>-->
-      <!--        </figure>-->
-      <!--      </div>-->
       <div id="item-detail" class="mx-auto mt-2 w-[95%] grid grid-cols-1 lg:grid-cols-5">
-        <article class="col-span-3 manga-detail">
+        <article class="col-span-3 manga-detail detail-info">
           <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-              <a href="http://www.nettruyenco.com" class="itemcrumb" itemprop="item"
-                 itemtype="http://schema.org/Thing">
+              <NuxtLink to="/" href="" class="itemcrumb" itemprop="item"
+                        itemtype="http://schema.org/Thing">
               <span itemprop="name">
                 Trang chủ
               </span>
-              </a>
+              </NuxtLink>
               <meta itemprop="position" content="1">
             </li>
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
               <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
               <a
-                  href="http://www.nettruyenco.com/tim-truyen" class="itemcrumb" itemprop="item"
+                  href="#" class="itemcrumb" itemprop="item"
                   itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
               <meta itemprop="position" content="2">
             </li>
@@ -77,7 +67,7 @@ useHead({
               <meta itemprop="position" content="3">
             </li>
           </ul>
-          <h1 class="text-center uppercase font-semibold text-3xl">
+          <h1 class="text-center uppercase font-semibold text-3xl title-detail">
             {{ manga.title }}
           </h1>
           <time class="small">
@@ -104,7 +94,9 @@ useHead({
                     </p>
                   </div>
                   <p class="col-span-6">
-                    {{ manga.author }}
+                    <a>
+                      {{ manga.author }}
+                    </a>
                   </p>
                 </li>
                 <li class="status grid grid-cols-9 mb-3">

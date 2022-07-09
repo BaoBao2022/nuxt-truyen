@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue';
-import { SearchIcon, UserIcon } from '@heroicons/vue/solid';
+import { SearchIcon, UserIcon, MoonIcon } from '@heroicons/vue/solid';
 import { XIcon, EmojiSadIcon } from '@heroicons/vue/outline';
 import { useDebounce } from '@vueuse/core';
 import {
@@ -62,14 +62,6 @@ watch([refInput], async () => {
       <SearchIcon class="w-8 h-8 text-white" />
     </div>
   </form>
-  <!-- <div class="absolute-center h-full w-40 ">
-    <div class="relative">
-      <button
-        class="absolute-center h-20 w-20 overflow-hidden rounded-full bg-secondary bg-cover bg-no-repeat text-white hover:bg-white/10">
-        <UserIcon class="w-12 h-12" />
-      </button>
-    </div>
-  </div> -->
   <TransitionRoot appear :show="shouldShow" as="template">
     <Dialog as="div" @close="close" class="relative z-10">
       <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
@@ -93,7 +85,6 @@ watch([refInput], async () => {
                       <XIcon class="h-8 w-8" />
                     </button>
                   </div>
-
                   <div class="my-10 flex h-[60px] items-center rounded-xl bg-secondary py-4 text-white">
                     <SearchIcon class="h-10 w-10 ml-4" />
                     <input autofocus type="text" class="w-full bg-transparent p-4" @keyup="search" @change="search"

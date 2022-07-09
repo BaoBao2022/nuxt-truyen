@@ -8,17 +8,17 @@ defineProps({
 </script>
 <template>
   <LazyNuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
-    <h3 class="mx-4 mt-6 text-xl md:text-4xl">
+    <h3 class="mx-4 mt-6 text-xl md:text-4xl text-white">
       {{ spotlight.newChapter }}
     </h3>
   </LazyNuxtLink>
   <LazyNuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
-    <h1 class="text-3xl transition-all line-clamp-1 hover:text-primary md:min-h-[30px] md:text-6xl">
+    <h1 class="text-3xl transition-all line-clamp-1 hover:text-primary md:min-h-[30px] md:text-6xl text-white">
       {{ spotlight.name }}
     </h1>
   </LazyNuxtLink>
   <LazyNuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
-    <div class="text-sm line-clamp-3 lg:min-h-[100px] md:text-2xl">
+    <div class="text-sm line-clamp-3 lg:min-h-[100px] md:text-2xl text-white">
       {{ spotlight.review ? spotlight.review : '' }}
     </div>
   </LazyNuxtLink>

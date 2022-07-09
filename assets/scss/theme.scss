@@ -3,9 +3,41 @@
   color: #fff;
 }
 
-.light-mode body a {
+.light-mode body {
   background: #fff;
   color: #000;
+}
+
+.light-mode .chap-title {
+  color: #000;
+}
+
+.dark-mode .chap-title {
+  color: #fff;
+}
+
+.light-mode a {
+  color: #288ad6;
+}
+
+.light-mode #item-detail .detail-info ul.list-info li p, #item-detail .detail-info h2 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0;
+  text-transform: inherit;
+  color: #777676;
+}
+
+.light-mode .deslide-cover:after {
+  //background: linear-gradient(90deg,#020024 30%,#4646d5 77%,#00d4ff);
+  background: linear-gradient(0deg, #fff, rgba(64, 54, 103, .5) 70%, #403667);
+  transition: all;
+  z-index: 2;
+}
+
+.light-mode .text-white {
+  color: #fff !important;
 }
 
 .dark-mode .a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {

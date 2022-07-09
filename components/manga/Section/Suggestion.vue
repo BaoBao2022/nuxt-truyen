@@ -18,7 +18,7 @@ const {
   </div>
   <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
     <h2
-        class="items-center	justify-start whitespace-nowrap font-secondary text-3xl lg:text-[160%] h-[40px] flex page-title px-3">
+        class="items-center	justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex page-title px-3 custom-title">
       Gợi ý cho bạn
       <ChevronRightIcon class="h-8 w-8"/>
     </h2>
@@ -39,7 +39,7 @@ const {
         <div class="flex w-full flex-col justify-center space-y-2 mt-4">
           <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <h3
-                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
               {{ manga.name }}
             </h3>
           </LazyNuxtLink>
