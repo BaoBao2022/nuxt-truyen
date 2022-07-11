@@ -325,7 +325,7 @@ input[type='number'] {
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg,#252525,rgb(64 54 103 / 50%) 70%,rgb(64 54 103));
+  background: linear-gradient(0deg, #252525, rgb(64 54 103 / 50%) 70%, rgb(64 54 103));
   //background: linear-gradient(90deg, rgba(2, 0, 36, 1) 30%, rgba(70, 70, 213, 1) 77%, rgba(0, 212, 255, 1) 100%);
   z-index: 2;
 }
@@ -544,4 +544,24 @@ input[type='number'] {
   text-align: center;
   margin: 0;
   line-height: 1.2;
+}
+
+.dark-box {
+  border: 1px solid #ddd;
+  color: #333;
+  padding: 10px;
+  clear: right;
+  margin-bottom: 15px;
+}
+
+.genres ul li a {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.dark-box ul li {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid #dedede;
 }

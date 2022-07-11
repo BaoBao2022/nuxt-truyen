@@ -3,27 +3,15 @@ import { AdvanceQueryRequest, GENRES } from "~/services/request";
 
 export default defineEventHandler(async (event) => {
   const query = useQuery(event);
-  const { comics, genres } = query;
-  let comic = "manhua";
-  if (comics) {
-    comic = comics as string;
-  }
-
+  const { genres, view, status, gender, chapter } = query;
 
   const filterRequest: AdvanceQueryRequest = {
-    genres: genres as string,
-    // genres: '3,25',
-    // minchapter: 200,
-    // status: 'ongoing',
-    top: 'month'
+    genres: genres as any,
+    minchapter: chapter as any,
+    status: status as string,
+    top: view as string,
+    gender: gender as any
   };
-
-//   genres?: string;
-//     gender?: number;
-//     status?: string;
-//     top?: string;
-//     minchapter?: number;
-//     page?: number;
 
   const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
   const mangas = await NET_TRUYEN_API?.advancedSearch(filterRequest);

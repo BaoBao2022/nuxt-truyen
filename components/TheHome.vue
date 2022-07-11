@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 
 const comic = ref("");
-const {data: month, pending} = useFetch(`/api/top-month?comic=${comic.value}`);
-
+const {data: month, pending} = useLazyFetch(`/api/top-month?comic=${comic.value}`);
 </script>
 
 <template>

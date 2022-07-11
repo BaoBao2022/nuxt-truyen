@@ -62,8 +62,12 @@ useHead({
             <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
               <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
               <a
-                  href="http://www.nettruyenco.com/truyen-tranh/youjo-to-sukoppu-to-magan-ou-535380"
-                  class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing"><span itemprop="name">Youjo to Sukoppu to Magan Ou</span></a>
+                  href="#"
+                  class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing">
+                <span itemprop="name">
+                {{ manga.title }}
+              </span>
+              </a>
               <meta itemprop="position" content="3">
             </li>
           </ul>

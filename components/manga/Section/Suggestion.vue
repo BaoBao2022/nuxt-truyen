@@ -7,8 +7,8 @@ const comic = ref("");
 const {
   data: mangas,
   pending,
-} = await useAsyncData<Manga[]>('new-mangas', () => $fetch(`/api/manga-new?comic=${comic.value}`));
-console.log("mangas", mangas.value);
+} = await useLazyFetch<Manga[]>(`/api/manga-new?comic=${comic.value}`);
+
 const navigateToManga = async (chapterNumber: string, chapterId: string, slug: string) => {
   const path = await useChapter(chapterNumber, chapterId, slug);
 
@@ -32,13 +32,11 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
       <li class="flex px-3 py-1 w-full inline-grid mb-4" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure
-              class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-[158px] overflow-hidden rounded-sm">
-                        <span class="default-span-figure">
-                            <nuxt-img fil="fill" sizes="159px md:159px lg:159px" format="webp" loading="lazy"
-                                      :src="manga.thumbnail"
-                                      class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img">
-                            </nuxt-img>
-                        </span>
+              class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
+                          <nuxt-img fil="fill" sizes="159px md:159px lg:159px" format="webp" loading="lazy"
+                                    :src="manga.thumbnail"
+                                    class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" placeholder>
+                          </nuxt-img>
           </figure>
         </LazyNuxtLink>
         <div class="flex w-full flex-col justify-center mt-4">

@@ -8,16 +8,20 @@
   color: #000;
 }
 
-.light-mode .chap-title {
+.light-mode .chap-title .genre_list-title {
   color: #000;
 }
 
-.dark-mode .chap-title {
+.dark-mode .chap-title .text-mode {
   color: #fff;
 }
 
-.light-mode a {
-  color: #288ad6;
+.dark-mode a, .text-mode {
+  color: #fff;
+}
+
+.light-mode a, .text-mode {
+  color: #000;
 }
 
 .light-mode #item-detail .detail-info ul.list-info li p, #item-detail .detail-info h2 {
@@ -36,11 +40,7 @@
   z-index: 2;
 }
 
-.light-mode .text-white {
-  color: #fff !important;
-}
-
-.dark-mode .a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
+.a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
   color: #ff7043;
 }
 

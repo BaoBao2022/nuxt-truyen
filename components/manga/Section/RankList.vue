@@ -10,7 +10,7 @@ defineProps({
   title: String,
   limit: {
     type: Number,
-    default: 12
+    default: 7
   },
   mangas: Array as PropType<Manga[]>,
 });
@@ -41,11 +41,11 @@ defineProps({
               {{ manga.name }}
             </h3>
           </LazyNuxtLink>
-          <h4 class="text-lg">{{ manga.newChapter }}</h4>
+          <h4 class="text-lg text-mode">{{ manga.newChapter }}</h4>
 
           <div class="flex align-center">
-            <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px"/>
-            <h4 class="text-lg"> {{ manga.view }}</h4>
+            <EyeIcon class="h-6 w-5 mr-2 text-mode" style="margin-top: 1px"/>
+            <h4 class="text-lg text-mode"> {{ manga.view }}</h4>
           </div>
 
           <ul class="hidden space-x-4 text-lg md:flex">
