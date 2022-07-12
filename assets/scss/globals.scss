@@ -393,10 +393,6 @@ input[type='number'] {
   overflow: hidden;
 }
 
-.page-title {
-  color: #ff9601;
-}
-
 .navbar-toggle {
   background-color: #d0b32e !important;
 }
@@ -547,11 +543,7 @@ input[type='number'] {
 }
 
 .dark-box {
-  border: 1px solid #ddd;
   color: #333;
-  padding: 10px;
-  clear: right;
-  margin-bottom: 15px;
 }
 
 .genres ul li a {
@@ -564,4 +556,12 @@ input[type='number'] {
   margin: 0;
   padding: 10px 0;
   border-top: 1px solid #dedede;
+}
+
+.page-title {
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2980b9;
 }

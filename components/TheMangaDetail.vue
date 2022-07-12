@@ -14,6 +14,7 @@ import {
 const route = useRoute();
 const params = route.params;
 const slug = ref<string | readonly string[]>("");
+const limitRank = ref<number>(7);
 
 watchEffect(() => {
   slug.value = params.slug;
@@ -98,9 +99,7 @@ useHead({
                     </p>
                   </div>
                   <p class="col-span-6">
-                    <a>
-                      {{ manga.author }}
-                    </a>
+                    {{ manga.author }}
                   </p>
                 </li>
                 <li class="status grid grid-cols-9 mb-3">
@@ -122,7 +121,7 @@ useHead({
                     </p>
                   </div>
                   <p class="col-span-6">
-                    <a class="a" v-for="(genre, g) in manga.genres" :key="`genre${g}`">
+                    <a v-for="(genre, g) in manga.genres" :key="`genre${g}`">
                       {{ genre.genreTitle }} <span v-if="g !== manga.genres.length - 1">- </span>
                     </a>
                   </p>
@@ -167,7 +166,7 @@ useHead({
           <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
         </article>
         <div>
-          <LazyMangaSectionRankList :limit="7" :mangas="month"/>
+          <LazyMangaSectionRankList :limit="limitRank" :mangas="month"/>
         </div>
       </div>
     </div>

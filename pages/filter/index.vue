@@ -144,8 +144,8 @@ watch([route], async () => {
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         <div class="w-full pb-4 lg:my-4 col-span-3">
           <ul
-              class="w-full overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 mt-2">
-            <li class="flex px-3 py-1 w-full inline-grid mb-4" v-for="manga in mangas" :key="manga.slug">
+              class="w-full overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 mt-2 items">
+            <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
               <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <figure
                     class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
@@ -159,24 +159,27 @@ watch([route], async () => {
                   </nuxt-img>
                 </figure>
               </LazyNuxtLink>
-              <div class="flex w-full flex-col justify-center mt-4">
-                <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                  <h3
-                      class="mb-3 font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
+              <figcaption class="flex w-full flex-col justify-center mt-4">
+                <h3
+                    class="mb-3 font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
+                  <a>
                     {{ manga.name }}
-                  </h3>
-                </LazyNuxtLink>
-                <div class="flex align-center place-content-between mb-2 cursor-pointer"
+                  </a>
+                </h3>
+                <div class="flex align-center place-content-between mb-2 cursor-pointer chapter"
                      v-for="chapSug in manga.chapSuggests">
                   <a @click="navigateToManga(chapSug.chapNumber, chapSug.chapId, manga.slug)"
                      :data-id="chapSug.chapNumber" :title="`Chapter ${chapSug.chapId}`"
                      class="text-xl font-normal chap-title">Chapter {{ chapSug.chapId }}</a>
                   <div class="flex">
-                    <!-- <EyeIcon class="h-6 w-5 mr-2" style="margin-top: 1px" /> -->
-                    <h4 class="text-lg chap-title"> {{ chapSug.updatedAt }}</h4>
+                    <h4 class="text-lg chap-title chapter">
+                      <i class="time">
+                        {{ chapSug.updatedAt }}
+                      </i>
+                    </h4>
                   </div>
                 </div>
-              </div>
+              </figcaption>
             </li>
             <li
                 class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
@@ -207,10 +210,7 @@ watch([route], async () => {
             </li>
           </ul>
         </div>
-
-
       </div>
     </section>
   </NuxtLayout>
-
 </template>

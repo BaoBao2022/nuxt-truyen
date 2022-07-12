@@ -19,11 +19,11 @@ defineProps({
 
 <template>
   <div class="w-full pb-4 lg:my-4">
-    <a class="items-center justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex px-3 custom-title">
-     Top tháng
+    <a class="items-center justify-start font-secondary h-[40px] flex px-3 page-title custom-title">
+      Top tháng
     </a>
-    <ul class="w-full space-y-4 overflow-hidden text-white">
-      <li class="flex w-full px-4 py-2" v-for="manga in mangas.slice(0, limit)" :key="manga.slug">
+    <ul class="w-full space-y-4 overflow-hidden dark-box">
+      <li class="flex w-full px-4 py-2" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure class="relative h-[120px] w-[100px]">
             <span class="default-span-figure">
@@ -35,17 +35,17 @@ defineProps({
           </figure>
         </LazyNuxtLink>
         <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <h3
-                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
-              {{ manga.name }}
-            </h3>
-          </LazyNuxtLink>
-          <a class="text-lg text-mode">{{ manga.newChapter }}</a>
+          <h3
+              class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
+            {{ manga.name }}
+          </h3>
+          <a class="text-lg text-mode">
+            {{ manga.newChapter }}
+          </a>
 
-          <div class="flex align-center">
-            <EyeIcon class="h-6 w-5 mr-2 text-mode" style="margin-top: 1px"/>
-            <a class="text-lg text-mode"> {{ manga.view }}</a>
+          <div class="flex align-center chapter">
+            <EyeIcon class="h-6 w-5 mr-2 text-mode view" style="margin-top: 1px"/>
+            <i class="text-lg text-mode view"> {{ manga.view }}</i>
           </div>
 
           <ul class="hidden space-x-4 text-lg md:flex">

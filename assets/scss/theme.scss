@@ -8,20 +8,37 @@
   color: #000;
 }
 
-.light-mode .chap-title .genre_list-title {
-  color: #000;
-}
-
-.dark-mode .chap-title .text-mode {
+.dark-mode .chapter a {
   color: #fff;
 }
 
-.dark-mode a, .text-mode {
+.chapter a {
+  font-size: 13px;
+  color: #000;
+}
+
+.dark-mode .dark-box, .dark-mode .dark-box a {
   color: #fff;
 }
 
-.light-mode a, .text-mode {
+.dark-box a {
   color: #000;
+}
+
+.dark-mode .chapter .time {
+  color: #999;
+}
+
+.light-mode .chapter .time {
+  color: #999;
+}
+
+.dark-mode .chapter .time, .view {
+  color: #999;
+}
+
+.light-mode .chapter .time, .view {
+  color: #999;
 }
 
 .light-mode #item-detail .detail-info ul.list-info li p, #item-detail .detail-info h2 {
@@ -40,8 +57,16 @@
   z-index: 2;
 }
 
-.a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
-  color: #ff7043;
+.dark-mode a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
+  color: #ff9601;
+}
+
+.items .item figcaption h3 a {
+  color: #000;
+}
+
+.dark-mode .items .item figcaption h3 a {
+  color: #fff;
 }
 
 .dark-mode #header {
@@ -93,4 +118,8 @@
 
 .dark-mode .view-more {
   background: #252525;
+}
+
+.dark-mode .main-menu>li>a {
+  color: #fff;
 }

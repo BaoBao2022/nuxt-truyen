@@ -22,52 +22,51 @@ defineProps({
             </svg>
           </button>
         </div>
-        <ul class="mt-4 h-full w-full text-white">
-          <li class="mx-4 mt-4 md:mt-8"><h3 class="font-secondary text-3xl md:text-5xl">Truyện tranh</h3></li>
+        <ul class="mt-4 h-full w-full text-white main-menu">
+          <li class="mx-4 mt-4 md:mt-8">
+            <a class="font-secondary text-3xl md:text-5xl">Truyện tranh</a>
+          </li>
           <li class="flex flex-wrap">
-            <button class="absolute-center bg-hight-light ml-4 mt-4 w-fit rounded-xl py-2 px-4 md:mt-6"
-                    v-for="manga in MANGA_NT">
-              <NuxtLink class="text-xl md:text-3xl" :to="`/filter?comics=${manga.value}`">
-                {{ manga.label }}
-              </NuxtLink>
-            </button>
+            <NuxtLink :to="`/filter?comics=${manga.value}`"
+                      class="text-xl md:text-3xl absolute-center bg-hight-light ml-4 mt-4 w-fit rounded-xl py-2 px-4 md:mt-6"
+                      v-for="manga in MANGA_NT">
+              {{ manga.label }}
+            </NuxtLink>
           </li>
-          <li class="mx-4 mt-4 border-t-[2px] border-highlight pt-4 md:mt-8"><h3
-              class="font-secondary text-3xl md:text-5xl">Thể loại</h3></li>
+          <li class="mx-4 mt-4 border-t-[2px] border-highlight pt-4 md:mt-8">
+            <a class="font-secondary text-3xl md:text-5xl">
+              Thể loại
+            </a>
+          </li>
           <li class="grid grid-cols-2">
-            <button class="hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded-xl py-2 px-4 md:mt-6"
-                    v-for="genre in GENRES_NT.slice(0, 8)">
-              <NuxtLink class="text-xl md:text-3xl" :to="`/filter?genres=${genre.value}`">
-                {{ genre.label }}
-              </NuxtLink>
-            </button>
+            <NuxtLink :to="`/filter?genres=${genre.value}`"
+                      class="text-xl md:text-3xl hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded-xl py-2 px-4 md:mt-6"
+                      v-for="genre in GENRES_NT.slice(0, 8)">
+              {{ genre.label }}
+            </NuxtLink>
           </li>
           <li class="mx-4 mt-4 border-t-[2px] border-highlight pt-4 md:mt-8">
-            <h3 class="font-secondary text-3xl md:text-5xl">
-              <NuxtLink class="flex items-center"
-                        to="/filter?view=newComic">
-                Mới cập nhật
-                <button class="absolute-center h-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" aria-hidden="true" class="ml-2 h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-              </NuxtLink>
-            </h3>
+            <NuxtLink class="flex items-center font-secondary text-3xl md:text-5xl"
+                      to="/filter?view=newComic">
+              Mới cập nhật
+              <button class="absolute-center h-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" aria-hidden="true" class="ml-2 h-6 w-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </NuxtLink>
           </li>
           <li class="mx-4 mt-4 border-t-[2px] border-highlight pt-4 md:mt-8">
-            <h3 class="font-secondary text-3xl md:text-5xl">
-              <NuxtLink class="flex items-center" href="/filter?view=all">
-                Bảng xếp hạng
-                <button class="absolute-center h-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
-                       stroke="currentColor" aria-hidden="true" class="ml-2 h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-                  </svg>
-                </button>
-              </NuxtLink>
-            </h3>
+            <NuxtLink class="flex items-center font-secondary text-3xl md:text-5xl" href="/filter?view=all">
+              Bảng xếp hạng
+              <button class="absolute-center h-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                     stroke="currentColor" aria-hidden="true" class="ml-2 h-6 w-6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </NuxtLink>
           </li>
         </ul>
       </div>

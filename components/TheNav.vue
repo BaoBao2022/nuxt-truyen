@@ -18,7 +18,7 @@ onClickOutside(rankTars, (event) => openRanking.value = false)
 
 <template>
   <nav>
-    <ul class="ml-32 hidden h-full w-fit items-center space-x-10 font-secondary text-3xl text-white lg:flex">
+    <ul class="ml-32 hidden h-full w-fit items-center space-x-10 font-secondary text-3xl text-white lg:flex main-menu">
       <li class="relative transition-all">
         <button :class="{ 'text-primary': openGenresPreview }" class="flex items-center"
                 @click="openGenresPreview = !openGenresPreview">
@@ -37,7 +37,6 @@ onClickOutside(rankTars, (event) => openRanking.value = false)
           </ul>
         </div>
       </li>
-
       <li class="relative transition-all">
         <!--        <button :class="{ 'text-primary': openRanking }" class="flex items-center">-->
         <!--          Bảng xếp hạng-->
@@ -46,62 +45,13 @@ onClickOutside(rankTars, (event) => openRanking.value = false)
         <NuxtLink to="/filter?view=all" class="flex items-center cursor-pointer">
           Bảng xếp hạng
         </NuxtLink>
-        <!--        <div v-show="openRanking">-->
-        <!--          <ul ref="rankTars"-->
-        <!--              class="absolute top-full left-1/2 z-50 -translate-x-1/2 bg-secondary py-4 transition-all w-[350px]">-->
-        <!--            <div class="grid grid-cols-2 cursor-pointer w-full">-->
-        <!--              <div>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 duration-300">-->
-        <!--                    Top All-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Top Tháng-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Top Tuần-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Top Ngày-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--              </div>-->
-        <!--              <div>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Yêu thích-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Truyện full-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Mới cập nhật-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--                <li class="hover:text-primary flex">-->
-        <!--                  <a class="absolute-center mx-2 my-2 h-14 whitespace-nowrap px-6 font-primary duration-300">-->
-        <!--                    Truyện mới-->
-        <!--                  </a>-->
-        <!--                </li>-->
-        <!--              </div>-->
-
-        <!--            </div>-->
-        <!--          </ul>-->
-
-        <!--        </div>-->
       </li>
       <li class="transition-all hover:text-primary">
-        <NuxtLink class="text-white" to="/filter?gender=2">Con trai</NuxtLink>
+        <NuxtLink class="text-white" to="/filter?gender=2">
+          <button>
+            Con trai
+          </button>
+        </NuxtLink>
       </li>
       <li class="transition-all hover:text-primary">
         <NuxtLink class="text-white" to="/filter?gender=1">Con gái</NuxtLink>

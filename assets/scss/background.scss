@@ -27,3 +27,8 @@
 .bg-orange {
   background-color: #ff9601 !important;
 }
+
+.bg-secondary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(47 47 47/var(--tw-bg-opacity));
+}
