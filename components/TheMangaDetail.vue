@@ -167,7 +167,7 @@ useHead({
           <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
         </article>
         <div>
-          <LazyMangaSectionRankList limit="7" :mangas="month"/>
+          <LazyMangaSectionRankList :limit="7" :mangas="month"/>
         </div>
       </div>
     </div>

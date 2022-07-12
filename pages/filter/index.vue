@@ -5,65 +5,100 @@ import {
   ChevronDoubleRightIcon,
 } from '@heroicons/vue/solid';
 import {ref, computed} from 'vue'
-import {useFetch} from "#app";
+import {useLazyFetch} from "#imports";
 
 const router = useRouter();
 const route = useRoute();
 const {query} = route;
 
-const chapter = ref(50);
-const genres = ref('manhue');
-
-const view = ref('month');
-const gender = ref(1);
-
-const status = ref('ongoing');
+const chapterQ = ref(query.chapter);
+const genresQ = ref(query.genres);
+const viewQ = ref(query.view);
+const genderQ = ref(query.gender);
+const statusQ = ref(query.status);
+const comicQ = ref(query.comics);
+const params = ref({})
 
 const url = computed(() => {
-  return `/api/filter`;
+  let str = '/filter'
+  if (genresQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}genres=${genresQ.value}`
+    params.value['genres'] = genresQ.value
+  }
+
+  if (chapterQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}chapter=${chapterQ.value}`
+    params.value['chapter'] = chapterQ.value
+  }
+
+  if (viewQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}view=${viewQ.value}`
+    params.value['view'] = viewQ.value
+  }
+
+  if (statusQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}status=${statusQ.value}`
+    params.value['status'] = statusQ.value
+  }
+
+  if (genderQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}gender=${genderQ.value}`
+    params.value['gender'] = genderQ.value
+  }
+
+  if (comicQ.value) {
+    const prefix = str.includes('?') ? '&' : '?';
+    str += `${prefix}comics=${comicQ.value}`
+    params.value['comics'] = comicQ.value
+  }
+
+  return str;
 });
 
 const selectedChapter = (chap) => {
-  chapter.value = chap[0].value
-  router.replace(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`);
+  chapterQ.value = chap[0].value
+  router.replace(url.value);
 }
 
 const selectedStatus = (status) => {
-  status.value = status[0].value
-  router.replace(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`);
+  statusQ.value = status[0].value
+  router.replace(url.value);
 }
 
 const selectedRank = (ranl) => {
-  view.value = ranl[0].value
-  router.replace(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`);
+  viewQ.value = ranl[0].value
+  router.replace(url.value);
 }
 
 const selectedGender = (gender) => {
-  gender.value = gender[0].value
-  router.replace(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`);
+  genderQ.value = gender[0].value
+  router.replace(url.value);
 }
 
 const selectedGenres = (genre) => {
-  genres.value = genre[0].value
-  router.replace(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`);
+  genresQ.value = genre[0].value
+  router.replace(url.value);
+}
+
+const selectComic = (comic) => {
+  comicQ.value = comic[0].value
+  router.replace(url.value);
 }
 
 const {
   data: mangas,
   pending,
   refresh
-} = await useFetch<Manga[]>(`/filter?genres=${genres.value}&view=${view.value}&chapter=${chapter.value}&gender=${gender.value}&status=${status.value}`, {
-  params: {
-    genres: genres.value,
-    view: view.value,
-    status: status.value,
-    gender: gender.value,
-    chapter: chapter.value
-  }
+} = await useLazyFetch<Manga[]>('/api' + url.value, {
+  params: params.value
 })
 
 watch([route], async () => {
-  console.log("route", genres.value)
   await refresh();
 });
 
@@ -74,7 +109,7 @@ watch([route], async () => {
     <div v-if="pending">
       <CommonSearchLoading/>
     </div>
-    <section class="w-[90%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden" v-else>
+    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden" v-else>
       <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
           <NuxtLink to="/" href="" class="itemcrumb" itemprop="item"
@@ -87,36 +122,41 @@ watch([route], async () => {
         </li>
         <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
           <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
-          <a
-              href="#" class="itemcrumb" itemprop="item"
-              itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
+          <NuxtLink
+              href="/filter" class="itemcrumb" itemprop="item"
+              itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span>
+          </NuxtLink>
           <meta itemprop="position" content="2">
         </li>
       </ul>
 
+      <div class="filter z-10 mx-auto min-h-fit">
+        <div class="grid min-h-[100px] w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <LazyFilterByGenres @selectGenres="selectedGenres"/>
+          <LazyFilterByComics @selectComic="selectComic"/>
+          <LazyFilterByRank @selectRank="selectedRank"/>
+          <LazyFilterByStatus @selectStatus="selectedStatus"/>
+          <LazyFilterByChapter @selectChapter="selectedChapter"/>
+          <LazyFilterByGender @selectGender="selectedGender"/>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
         <div class="w-full pb-4 lg:my-4 col-span-3">
-          <div class="filter flex">
-            <LazyFilterByGenres @selectGenres="selectedGenres"/>
-            <LazyFilterByRank @selectRank="selectedRank"/>
-            <LazyFilterByStatus @selectStatus="selectedStatus"/>
-            <LazyFilterByChapter @selectChapter="selectedChapter"/>
-            <LazyFilterByGender @selectGender="selectedGender"/>
-          </div>
           <ul
               class="w-full overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 mt-2">
             <li class="flex px-3 py-1 w-full inline-grid mb-4" v-for="manga in mangas" :key="manga.slug">
               <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <figure
                     class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
-                        <nuxt-img fil="fill" 
-                        sizes="159px md:159px lg:159px" 
-                        format="webp" 
-                        loading="lazy"
-                        :src="manga.thumbnail"
-                        class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" 
-                        placeholder>
-                        </nuxt-img>
+                  <nuxt-img fil="fill"
+                            sizes="159px md:159px lg:159px"
+                            format="webp"
+                            loading="lazy"
+                            :src="manga.thumbnail"
+                            class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
+                            placeholder>
+                  </nuxt-img>
                 </figure>
               </LazyNuxtLink>
               <div class="flex w-full flex-col justify-center mt-4">
@@ -150,6 +190,8 @@ watch([route], async () => {
             </li>
           </ul>
         </div>
+
+
         <div class="genres dark-box col-span-1 lg:my-4">
           <b class="page-title uppercase font-medium font-semibold">
             Thể loại
@@ -161,11 +203,12 @@ watch([route], async () => {
               </a>
             </li>
             <li v-for="genre in GENRES_NT" :key="genre.id">
-              <a class="genre_list-title">{{ genre.label }}</a>
+              <NuxtLink :to="`/filter?genres=${genre.value}`" class="genre_list-title">{{ genre.label }}</NuxtLink>
             </li>
           </ul>
-          tat ca the loai
         </div>
+
+
       </div>
     </section>
   </NuxtLayout>

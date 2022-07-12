@@ -23,11 +23,11 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
     <CommonSearchLoading/>
   </div>
   <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
-    <h2
-        class="items-center	justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex page-title px-3 custom-title">
+    <NuxtLink to="/filter?view=newComic"
+        class="items-center	justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex px-3 custom-title">
       Gợi ý cho bạn
       <ChevronRightIcon class="h-8 w-8"/>
-    </h2>
+    </NuxtLink>
     <ul class="w-full overflow-hidden text-white grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2">
       <li class="flex px-3 py-1 w-full inline-grid mb-4" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
@@ -58,7 +58,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
       <li
           class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
         <button class="lg:text-3xl">
-          <a href="#">Xem thêm</a>
+          <NuxtLink to="/filter?view=all">Xem thêm</NuxtLink>
         </button>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
              stroke="currentColor" aria-hidden="true" class="h-8 w-8">

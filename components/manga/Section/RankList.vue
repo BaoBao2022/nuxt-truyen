@@ -19,9 +19,9 @@ defineProps({
 
 <template>
   <div class="w-full pb-4 lg:my-4">
-    <h2 class="items-center justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex page-title px-3 custom-title">
+    <a class="items-center justify-start whitespace-nowrap font-secondary text-1xl h-[40px] flex px-3 custom-title">
      Top tháng
-    </h2>
+    </a>
     <ul class="w-full space-y-4 overflow-hidden text-white">
       <li class="flex w-full px-4 py-2" v-for="manga in mangas.slice(0, limit)" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
@@ -41,11 +41,11 @@ defineProps({
               {{ manga.name }}
             </h3>
           </LazyNuxtLink>
-          <h4 class="text-lg text-mode">{{ manga.newChapter }}</h4>
+          <a class="text-lg text-mode">{{ manga.newChapter }}</a>
 
           <div class="flex align-center">
             <EyeIcon class="h-6 w-5 mr-2 text-mode" style="margin-top: 1px"/>
-            <h4 class="text-lg text-mode"> {{ manga.view }}</h4>
+            <a class="text-lg text-mode"> {{ manga.view }}</a>
           </div>
 
           <ul class="hidden space-x-4 text-lg md:flex">

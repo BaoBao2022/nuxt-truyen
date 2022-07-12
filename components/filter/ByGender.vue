@@ -7,10 +7,22 @@ import {
   ListboxOption,
 } from '@headlessui/vue'
 import {SelectorIcon} from '@heroicons/vue/solid'
-
 import {GENDER} from '~/types';
-const selected = ref(GENDER[0])
+import {watch, useRoute} from "#imports";
 
+const route = useRoute();
+const {query} = route;
+const gender = ref(query.gender)
+
+const genderDefault = computed(() => {
+  if (gender.value) {
+    return GENDER.find(gender => gender.value === gender.value)
+  }
+
+  return GENDER[1];
+})
+
+const selected = ref(genderDefault.value)
 const emits = defineEmits(['selectGender']);
 watch([selected], (value) => {
   emits('selectGender', value);
@@ -19,8 +31,8 @@ watch([selected], (value) => {
 </script>
 
 <template>
-  <div class="flex py-1 mt-2 grid relative items-center w-[180px] mr-3">
-    <h2 class="my-2 font-secondary custom-title lg:text-3xl text-center">(5) Giới tính</h2>
+  <div class="flex py-1 mt-2 grid relative items-center w-[180px]">
+    <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(6) Giới tính</a>
     <Listbox v-model="selected">
       <ListboxButton
           class="btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"

@@ -47,10 +47,10 @@ const light = () => {
           <LazyModalMangaSearch/>
         </div>
       </div>
-      <div class="lg:mr-10 mr-2 cursor-pointer text-white" @click="light" v-if="useColor.preference === 'light'">
+      <div class="lg:mr-10 mr-5 cursor-pointer text-white" @click="light" v-if="useColor.preference === 'light'">
         <MoonIcon class="h-9 w-9"/>
       </div>
-      <div class="lg:mr-10 mr-2 cursor-pointer text-white" @click="dark" v-if="useColor.preference === 'dark'">
+      <div class="lg:mr-10 mr-5 cursor-pointer text-white" @click="dark" v-if="useColor.preference === 'dark'">
         <LightBulbIcon class="h-9 w-9"/>
       </div>
     </header>

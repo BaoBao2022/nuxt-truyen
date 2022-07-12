@@ -1,6 +1,7 @@
 import { Chapter, Genre } from "./chapter";
 export type Status = "Đang tiến hành" | "Hoàn thành";
 import { DropDownLink } from "~/contants";
+import exp from "constants";
 
 export const MANGA_BROWSE_PAGE = "filter";
 export type SourceCrawl = "nettruyen" | "hamtruyen" | "mangareader";
@@ -73,6 +74,25 @@ export const FOLLOW_STATE: Array<{ id: FollowState; title: string }> = [
     title: "Đọc lại",
   },
 ];
+
+export const MANGA_NT = [
+  {
+    label: "Manga",
+    value: 'manga-112'
+  },
+  {
+    label: "Manhua",
+    value: 'manhua'
+  },
+  {
+    label: "Manwa",
+    value: 'manhwa-11400'
+  },
+  {
+    label: "Doujinshi",
+    value: 'doujinshi'
+  },
+]
 
 export const GENRES_NT = [
   { id: "1", value: "action", label: "Action" },

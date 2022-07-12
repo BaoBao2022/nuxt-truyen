@@ -1,16 +1,29 @@
 <script setup>
-import {ref} from 'vue'
+import {computed, ref} from 'vue'
 import {
   Listbox,
   ListboxButton,
   ListboxOptions,
   ListboxOption,
 } from '@headlessui/vue'
+import {useRoute} from '#imports'
 import {SelectorIcon} from '@heroicons/vue/solid'
-
+import {watch} from "vue-demi";
 import {CHAPTER_SORT} from '~/types';
-const selected = ref(CHAPTER_SORT[1])
 
+const route = useRoute();
+const {query} = route;
+const chapter = ref(query.chapter)
+
+const chapterDefault = computed(() => {
+  if (chapter.value) {
+    return CHAPTER_SORT.find(chap => chap.value === chapter.value)
+  }
+
+  return CHAPTER_SORT[1];
+})
+
+const selected = ref(chapterDefault.value)
 const emits = defineEmits(['selectChapter']);
 watch([selected], (value) => {
   emits('selectChapter', value);
@@ -19,8 +32,8 @@ watch([selected], (value) => {
 </script>
 
 <template>
-  <div class="flex py-1 mt-2 grid relative items-center mr-3 w-[180px]">
-    <h2 class="my-2 font-secondary custom-title lg:text-3xl text-center">(4) Số chương</h2>
+  <div class="flex py-1 mt-2 grid relative items-center w-[180px]">
+    <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(5) Số chương</a>
     <Listbox v-model="selected">
       <ListboxButton
           class="btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"

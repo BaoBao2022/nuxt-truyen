@@ -7,9 +7,22 @@ import {
   ListboxOption,
 } from '@headlessui/vue'
 import {SelectorIcon} from '@heroicons/vue/solid'
+import {STATUS_NT} from "~/types";
+import {watch, useRoute, computed} from "#imports";
 
-import {STATUS_NT} from '~/types';
-const selected = ref(STATUS_NT[0])
+const route = useRoute();
+const {query} = route;
+const status = ref(query.status)
+
+const statusDefault = computed(() => {
+  if (status.value) {
+    return STATUS_NT.find(statusI => statusI.value === status.value)
+  }
+
+  return STATUS_NT[1];
+})
+
+const selected = ref(statusDefault.value)
 const emits = defineEmits(['selectStatus']);
 watch([selected], (value) => {
   emits('selectStatus', value);
@@ -18,13 +31,13 @@ watch([selected], (value) => {
 </script>
 
 <template>
-  <div class="flex py-1 mt-2 grid relative items-center w-[180px] mr-3">
-    <h3 class="my-2 font-secondary lg:text-3xl text-center custom-title">(3) Trạng thái</h3>
+  <div class="flex py-1 mt-2 grid relative items-center w-[180px]">
+    <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(4) Trạng thái</a>
     <Listbox v-model="selected">
       <ListboxButton
           class="btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
           style="border-radius: 0">
-        {{selected.label}}
+        {{ selected.label }}
         <SelectorIcon class="h-5 w-5" aria-hidden="true"/>
       </ListboxButton>
       <ListboxOptions
