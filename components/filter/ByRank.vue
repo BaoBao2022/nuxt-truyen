@@ -19,7 +19,7 @@ const viewDefault = computed(() => {
     return VIEW_NT.find(viewNt => viewNt.value === view.value)
   }
 
-  return VIEW_NT[1];
+  return {}
 })
 
 const selected = ref(viewDefault.value)
@@ -35,9 +35,9 @@ watch([selected], (value) => {
     <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(3) Sắp xếp</a>
     <Listbox v-model="selected">
       <ListboxButton
-          class="btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
+          class="h-[34px] btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
           style="border-radius: 0">
-        {{ selected.label }}
+        {{ selected?.label }}
         <SelectorIcon class="h-5 w-5" aria-hidden="true"/>
       </ListboxButton>
       <ListboxOptions

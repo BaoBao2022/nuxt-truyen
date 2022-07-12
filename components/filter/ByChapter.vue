@@ -20,7 +20,7 @@ const chapterDefault = computed(() => {
     return CHAPTER_SORT.find(chap => chap.value === chapter.value)
   }
 
-  return CHAPTER_SORT[1];
+  return {}
 })
 
 const selected = ref(chapterDefault.value)
@@ -36,9 +36,9 @@ watch([selected], (value) => {
     <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(5) Số chương</a>
     <Listbox v-model="selected">
       <ListboxButton
-          class="btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
+          class="h-[34px] btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
           style="border-radius: 0">
-        {{selected.label}}
+        {{selected?.label}}
         <SelectorIcon class="h-5 w-5" aria-hidden="true"/>
       </ListboxButton>
       <ListboxOptions

@@ -107,7 +107,7 @@ watch([route], async () => {
 <template>
   <NuxtLayout>
     <div v-if="pending">
-      <CommonSearchLoading/>
+      <CommonPageLoading/>
     </div>
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden" v-else>
       <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
