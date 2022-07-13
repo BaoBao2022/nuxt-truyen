@@ -11,10 +11,9 @@ const useLastPathChapter = async (spotlight: Manga, slugs: string | readonly str
 
     const mangas: MangaDetails = (comic.value as MangaDetails)
     // Cache manga detail to local storage
-    const cache = useStorage(keys.MANGA_DETAIL, '');
+    const cache = useStorage(keys.mangaCacheDetail, '');
     cache.value = null
     cache.value = JSON.stringify(mangas)
-
     const chapterId = mangas?.chapterList && mangas?.chapterList[mangas.chapterList?.length].chapterId;
     const chapterNumber = mangas.chapterList && mangas.chapterList[mangas.chapterList?.length].chapterNumber;
 

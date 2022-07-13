@@ -41,9 +41,9 @@ useHead({
       <CommonPageLoading/>
     </div>
     <div class="flex h-fit flex-col" v-else>
-      <div id="item-detail" class="mx-auto mt-2 w-[95%] grid grid-cols-1 lg:grid-cols-5">
+      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-5">
         <article class="col-span-3 manga-detail detail-info">
-          <ul class="breadcrumb">
+          <ul class="breadcrumb px-3 mb-4">
             <li>
               <NuxtLink to="/" class="itemcrumb">
                 <a class="a-default">
@@ -76,7 +76,7 @@ useHead({
                 <figure>
                   <nuxt-img
                       format="webp"
-                      placeholder="~/assets/images/placeholder.png"
+                      placeholder="../assets/images/placeholder.png"
                       class="h-[333px] lg:h-[268px] lg:h-[268px]"
                       :src="manga.thumbnail"
                       sizes="sm:100vw md:100vw lg:100vw"
@@ -85,7 +85,7 @@ useHead({
                 </figure>
               </div>
             </div>
-            <div class="px-5 col-span-3 mt-10">
+            <div class="px-5 col-span-3 mt-4">
               <ul class="list-info pt-4">
                 <li class="author grid grid-cols-9 mb-3">
                   <div class="flex col-span-3">

@@ -18,7 +18,7 @@ const swiper = useSwiper();
         <nuxt-img
             format="webp"
             sizes="100px sm:100px md:100px lg:100px"
-            placeholder="~/assets/images/placeholder.png"
+            placeholder="../assets/images/placeholder.png"
             loading="lazy"
             :src="spotlight.thumbnail"
             fil="cover"

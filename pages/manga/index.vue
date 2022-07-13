@@ -77,7 +77,7 @@ useHead({
                 <ul class="my-4 flex flex-wrap items-center gap-4">
                   <h3 class="px-2 py-2">Thể loại:</h3>
                   <li class="rounded-xl bg-highlight px-4 py-2" v-for="genre in comic.genres">
-                    <a href="/browse?genres=mystery">{{ genre.genreTitle }}</a>
+                    <NuxtLink href="/filter?genres=mystery">{{ genre.genreTitle }}</NuxtLink>
                   </li>
                 </ul>
                 <div class="flex h-[150px] w-full flex-col items-center gap-6 md:flex-row md:items-start">

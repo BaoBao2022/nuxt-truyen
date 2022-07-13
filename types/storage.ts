@@ -1,3 +1,4 @@
 export const keys = {
-    MANGA_DETAIL: 'manga-detail',
+    mangaCacheDetail: 'manga-detail',
+    visitedComics: 'visited-comics'
 }

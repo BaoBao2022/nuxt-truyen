@@ -22,7 +22,10 @@ const {data: mangasNew} = await useLazyFetch('/api/manga-new');
       <MangaSectionSwiper :mangas="mangasNew"/>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
         <MangaSectionSuggestion :mangas="mangas"/>
-        <LazyMangaSectionRankList/>
+        <div>
+          <LazyVisitedComic/>
+          <LazyMangaSectionRankList/>
+        </div>
       </div>
     </section>
   </main>

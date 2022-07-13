@@ -11,9 +11,41 @@ const useFirstPathChapter = async (spotlight: Manga, slugs: string | readonly st
 
     const mangas: MangaDetails = (comic.value as MangaDetails)
     // Cache manga detail to local storage
-    const cache = useStorage(keys.MANGA_DETAIL, '');
+    const cache: any = useStorage(keys.mangaCacheDetail, {
+        serializer: {
+            read: (v: any) => v ? JSON.parse(v) : null,
+            write: (v: any) => JSON.stringify(v),
+        }
+    });
+
     cache.value = null
-    cache.value = JSON.stringify(mangas)
+    cache.value = {
+        slug: slug,
+        ...mangas,
+    }
+
+    const visitedComics: any = useStorage(keys.visitedComics, {
+        serializer: {
+            read: (v: any) => v ? JSON.parse(v) : null,
+            write: (v: any) => JSON.stringify(v),
+        }
+    });
+
+    if (visitedComics.value && visitedComics.value.length > 0) {
+        const existingComic = visitedComics.value?.find((comic: any) => comic.slug === slug);
+        if (!existingComic) {
+
+            visitedComics.value.push({
+                slug,
+                ...mangas
+            });
+        }
+    } else {
+        visitedComics.value = [{
+            slug,
+            ...mangas
+        }];
+    }
 
     const chapterId = mangas?.chapterList && mangas?.chapterList[mangas.chapterList?.length - 1].chapterId;
     const chapterNumber = mangas.chapterList && mangas.chapterList[mangas.chapterList?.length - 1].chapterNumber;

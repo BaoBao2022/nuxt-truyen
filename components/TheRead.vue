@@ -27,7 +27,14 @@ const {
   refresh,
 } = useFetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID.value}`);
 
-const manga = useStorage(keys.MANGA_DETAIL, {
+const manga: any = useStorage(keys.mangaCacheDetail, {
+  serializer: {
+    read: (v: any) => v ? JSON.parse(v) : null,
+    write: (v: any) => JSON.stringify(v),
+  }
+});
+
+const visitedComics: any = useStorage(keys.visitedComics, {
   serializer: {
     read: (v: any) => v ? JSON.parse(v) : null,
     write: (v: any) => JSON.stringify(v),
@@ -42,6 +49,7 @@ const scrollToTop = () => {
 
 const handleChapter = async (action: string) => {
   let stt = manga.value.chapterList.findIndex((chapter) => chapter.chapterNumber === params.chapter);
+  const visited = visitedComics.value.find((visited) => visited.slug === manga.value.slug);
 
   if (action === 'next') {
     if (!manga.value.chapterList[--stt]) return;
@@ -50,6 +58,12 @@ const handleChapter = async (action: string) => {
       manga.value.chapterList[stt].chapterNumber,
       manga.value.chapterList[stt].chapterId
     ]
+
+
+    if (visited) {
+      visited.chapterNumber = cNum;
+      visited.chapterId = cID;
+    }
 
     chapterID.value = cID;
     chapterNumber.value = cNum;
@@ -69,6 +83,11 @@ const handleChapter = async (action: string) => {
       manga.value.chapterList[stt].chapterNumber,
       manga.value.chapterList[stt].chapterId
     ];
+
+    if (visited) {
+      visited.chapterNumber = cNum;
+      visited.chapterId = cID;
+    }
 
     chapterNumber.value = cNum
     chapterID.value = cID

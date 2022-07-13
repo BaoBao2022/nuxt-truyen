@@ -10,7 +10,7 @@ const useChapter = async (chapterNumber: string, chapterId: string, slug: string
 
     const mangaDetail: MangaDetails = (comic.value as MangaDetails)
     // Cache manga detail to local storage
-    useStorage(keys.MANGA_DETAIL, mangaDetail);
+    useStorage(keys.mangaCacheDetail, mangaDetail);
     const path = `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
     return path;
 }

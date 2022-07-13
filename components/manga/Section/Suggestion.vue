@@ -36,7 +36,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
                 :src="manga.thumbnail"
                 class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
                 format="webp"
-                placeholder="~/assets/images/placeholder.png">
+                placeholder="../assets/images/placeholder.png">
             </nuxt-img>
           </figure>
         </LazyNuxtLink>

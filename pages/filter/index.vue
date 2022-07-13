@@ -110,26 +110,26 @@ watch([route], async () => {
       <CommonPageLoading/>
     </div>
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden" v-else>
-      <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-          <NuxtLink to="/" href="" class="itemcrumb" itemprop="item"
-                    itemtype="http://schema.org/Thing">
-              <span itemprop="name">
+      <ul class="breadcrumb">
+        <li>
+          <NuxtLink to="/">
+              <span>
                 Trang chủ
               </span>
           </NuxtLink>
           <meta itemprop="position" content="1">
         </li>
-        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+        <li>
           <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
           <NuxtLink
-              href="/filter" class="itemcrumb" itemprop="item"
-              itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span>
+              href="/filter">
+            <span itemprop="name">
+              Thể loại
+            </span>
           </NuxtLink>
           <meta itemprop="position" content="2">
         </li>
       </ul>
-
       <div class="filter z-10 mx-auto min-h-fit">
         <div class="grid min-h-[100px] w-full grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
           <LazyFilterByGenres @selectGenres="selectedGenres"/>
@@ -155,7 +155,7 @@ watch([route], async () => {
                             loading="lazy"
                             :src="manga.thumbnail"
                             class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
-                            placeholder="~/assets/images/placeholder.png">
+                            placeholder="../assets/images/placeholder.png">
                   </nuxt-img>
                 </figure>
               </LazyNuxtLink>
@@ -184,7 +184,7 @@ watch([route], async () => {
             <li
                 class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
               <button class="lg:text-3xl">
-                <a href="/browse?comics=api-112&amp;view=all">Xem thêm</a>
+                <NuxtLink to="/filter?comics=api-112&view=all">Xem thêm</NuxtLink>
               </button>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                    stroke="currentColor" aria-hidden="true" class="h-8 w-8">
@@ -193,21 +193,6 @@ watch([route], async () => {
             </li>
           </ul>
         </div>
-<!--        <div class="genres dark-box col-span-1 lg:my-4">-->
-<!--          <b class="page-title font-medium font-semibold">-->
-<!--            Thể loại-->
-<!--          </b>-->
-<!--          <ul class="grid grid-cols-2 cursor-pointer">-->
-<!--            <li>-->
-<!--              <a>-->
-<!--                Tất cả thể loại-->
-<!--              </a>-->
-<!--            </li>-->
-<!--            <li v-for="genre in GENRES_NT" :key="genre.id">-->
-<!--              <NuxtLink :to="`/filter?genres=${genre.value}`" class="genre_list-title">{{ genre.label }}</NuxtLink>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--        </div>-->
         <LazyFilterListGenres/>
       </div>
     </section>

@@ -325,7 +325,7 @@ input[type='number'] {
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg,#252525,rgba(64,54,103,.1) 70%,#252525);
+  background: linear-gradient(0deg, #252525, rgba(64, 54, 103, .1) 70%, #252525);
   z-index: 2;
 }
 
@@ -398,7 +398,6 @@ input[type='number'] {
 
 .breadcrumb {
   margin-top: 0;
-  margin-bottom: 10px;
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
@@ -406,7 +405,6 @@ input[type='number'] {
 }
 
 .breadcrumb {
-  padding: 8px 0px;
   border-radius: 4px;
 }
 
@@ -608,27 +606,47 @@ input[type='number'] {
   left: 0;
   right: 0;
   height: 52px;
+  background-color: #000;
+  opacity: 0.7;
+}
+
+.items-slide .slide-description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   line-height: 25px;
   padding-left: 5px;
   padding-right: 5px;
   font-size: 13px;
   display: block;
   color: #fff;
-  background-color: #000;
-  //top: 199px;
-  //background: url(../images/bg_over.png);
 }
 
-.items-slide .slide-caption h3 a {
+.items-slide .slide-description h3 a {
   height: 23px;
   overflow: hidden;
   font-size: 15px;
   display: block;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #fff;
+}
+
+.items-slide .slide-description a {
+  color: #fff;
+  font-size: 13px;
 }
 
 .items-slide .slide-caption a {
   color: #fff;
   font-size: 13px;
+}
+
+.items-slide .item {
+  border: 1px solid #f2f2f2;
+  margin: 0 7px;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
 }
