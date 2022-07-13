@@ -19,12 +19,14 @@ const backgroundImage = (spotlight) => {
     backgroundImage: `url(${spotlight.thumbnail})`,
   }
 }
+
 const mangas = props.spotlights.filter(spotlight => spotlight.review !== '');
+
 </script>
 
 <template>
-  <Swiper :direction="'vertical'" :modules="modules" :autoplay="autoPlaySettings"
-    class="relative lg:h-[380px] md:h-[250px] h-[200px]" fade-effect="fade">
+  <Swiper :loop="true" :fadeEffect="{crossFade: true}" effect="fade" :modules="modules" :autoplay="autoPlaySettings"
+    class="relative lg:h-[380px] md:h-[250px] h-[200px]">
     <SwiperSlide v-for="spotlight in mangas">
       <div :key="spotlight.slug">
         <figure

@@ -1,6 +1,7 @@
 <script setup>
 import "swiper/css";
 import 'swiper/css/effect-fade';
+
 const config = useRuntimeConfig();
 const publicConfig = config.public;
 </script>
