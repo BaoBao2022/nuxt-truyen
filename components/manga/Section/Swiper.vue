@@ -13,7 +13,7 @@ defineProps({
 
 const modules = ref([Autoplay, Virtual, EffectFade]);
 const autoPlaySettings = ref({
-  delay: 2500,
+  delay: 4500,
   disableOnInteraction: true
 });
 
