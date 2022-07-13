@@ -1,19 +1,27 @@
 import MangaModel from "~/serveless/models/manga.model";
 import {SourceCollection, SourceParams} from "~/contants";
 import {reactive} from 'vue';
+import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
+import {RankingMangeRequest} from "~/services/request";
 
 export default defineEventHandler(async (event) => {
     const query = useQuery(event);
-    const {slug, source} = reactive(query);
-    let model;
+    const {slug} = reactive(query);
+    // let model;
+    //
+    // switch (source) {
+    //     case SourceParams.netTruyen:
+    //         model = MangaModel.getInstance(SourceCollection[source]);
+    //         break;
+    //
+    // }
+    //
+    // const comic = await model.getComic(slug);
 
-    switch (source) {
-        case SourceParams.netTruyen:
-            model = MangaModel.getInstance(SourceCollection[source]);
-            break;
+    const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
+    const mangas = await NET_TRUYEN_API?.getManga(slug as string);
+    if (mangas.status !== 200)
+        return []
 
-    }
-
-    const comic = await model.getComic(slug);
-    return comic
+    return mangas?.data.data
 })

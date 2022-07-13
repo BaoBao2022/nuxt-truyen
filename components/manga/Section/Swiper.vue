@@ -1,25 +1,26 @@
 <script setup lang="ts">
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
-import { computed, useState } from "#imports";
-import { devices } from '~/types';
-import { ClockIcon, BookOpenIcon, InformationCircleIcon } from '@heroicons/vue/outline';
-import { ChevronRightIcon, StatusOnlineIcon, ClipboardListIcon } from "@heroicons/vue/solid";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import {computed, useState} from "#imports";
+import {devices} from '~/types';
+import {Autoplay, Virtual, EffectFade} from 'swiper';
+import {Swiper, SwiperSlide} from 'swiper/vue';
+import {ref} from "vue";
+import {ChevronRightIcon} from '@heroicons/vue/solid'
 
-const { data: mangas, pending } = await useLazyFetch('/api/manga-updated');
+defineProps({
+  mangas: Array as PropType<Manga[]>
+})
+
+const modules = ref([Autoplay, Virtual, EffectFade]);
+const autoPlaySettings = ref({
+  delay: 2500,
+  disableOnInteraction: true
+});
+
 const device = useState<devices>('devices');
-const hasPreview = useState('hasPreview', () => -1);
-const navigateToManga = async (manga) => {
-  const path = await useFirstPathChapter(manga, '');
-  return navigateTo({
-    path: path
-  })
-}
-
 const sliderPerView = computed(() => {
   if (device.value.hasDesktop) {
-    return 7;
+    return 6;
   }
 
   return 2;
@@ -29,82 +30,53 @@ const sliderPerView = computed(() => {
 
 
 <template>
-  <section class="w-[90%] mx-auto w-max-[1300px] mt-6 overflow-x-hidden" v-if="!pending">
-    <h2
-      class="mt-4 flex select-none items-center font-secondary text-3xl page-title  hover:cursor-pointer md:text-4xl lg:text-5xl">
-      <div class="flex items-center transition-all hover:text-primary">
-        <a href="/browse?view=newComic">
-          Truyện cập nhật mới
-        </a>
-        <ChevronRightIcon class="h-8 w-8" />
-      </div>
+  <div class="mt-4 hover:cursor-grab lg:mt-6 px-3">
+    <h2 class="flex items-center transition-all hover:text-primary">
+      <a class="items-center justify-start font-secondary h-[40px] flex mx-3 page-title custom-title"
+         href="/browse?view=newComic">
+        Truyện cập nhật mới
+        <ChevronRightIcon class="h-8 w-8"/>
+      </a>
     </h2>
-    <div class="mt-4 hover:cursor-grab lg:mt-6">
-      <Swiper :slides-per-view="sliderPerView" :space-between="20">
-        <SwiperSlide v-for="(manga, imanga) in mangas" @mousemove="hasPreview = imanga" @mouseleave="hasPreview = -1">
-          <div :key="`slide_${manga.slug}`">
-            <div class="aspect-h-4 aspect-w-3 rounded-sm image">
-              <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                <span class="default-span-figure">
-                  <nuxt-img sizes="sm:100vw md:100vw lg:100vw" format="webp" loading="lazy" :src="manga.thumbnail"
-                    class="absolute inset-0 rounded-sm object-cover object-center default-img">
-                  </nuxt-img>
-                </span>
-              </LazyNuxtLink>
-              <span
-                class="absolute top-2 left-2 h-fit w-fit rounded-xl bg-white bg-opacity-40 px-4 py-2 text-base backdrop-blur-md md:text-xl lg:text-3xl bg-black">
-                {{ manga.newChapter }}
-              </span>
-              <div v-if="hasPreview === imanga && device.hasDesktop"
-                class="animate__faster animate__animated animate__fadeIn flex h-full w-full flex-col space-y-2 overflow-hidden rounded-xl bg-highlight text-white">
-                <a>
-                  <h3 class="ml-4 mt-4 min-h-[40px] text-[100%] font-semibold line-clamp-2 hover:text-primary">
-                    {{ manga.name }}
-                  </h3>
-                </a>
-                <p class="ml-4 flex flex-nowrap items-center">
-                  <ClipboardListIcon class="h-6 w-6" />
-                  <span class="ml-2 text-[90%] line-clamp-1">
-                    {{ manga.newChapter }}
-                  </span>
-                </p>
-                <p class="ml-4 flex items-center">
-                  <ClockIcon class="h-6 w-6" />
-                  <span class="ml-2 text-[90%]">
-                    {{ manga.updatedAt }}
-                  </span>
-                </p>
-                <p class="ml-4 flex items-center">
-                  <StatusOnlineIcon class="h-6 w-6" />
-                  <span class="ml-2 text-[90%]">
-                    {{ manga.status }}
-                  </span>
-                </p>
-                <div class="flex h-fit w-full flex-col items-center space-y-4 py-6">
-                  <button @click="navigateToManga(manga)"
-                    class="w-[110px] flex w-fit items-center justify-center space-x-4 rounded-xl bg-primary py-2 px-4 transition-all hover:scale-[110%]">
-                    <BookOpenIcon class="h-5 w-5" />
-                    <a>Đọc ngay</a>
-                  </button>
-                  <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                    <button
-                      class="w-[110px] flex w-fit items-center justify-center space-x-4 rounded-xl bg-white py-2 px-4 text-gray-700 transition-all hover:scale-[110%]">
-                      <InformationCircleIcon class="h-5 w-5" />
-                      Thông tin
-                    </button>
-                  </LazyNuxtLink>
-                </div>
-              </div>
-            </div>
-            <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-              <h2
-                class="my-2 select-none text-xl text-white transition-all line-clamp-1 hover:text-primary md:text-2xl">
-                {{ manga.name }}
-              </h2>
-            </LazyNuxtLink>
+    <Swiper
+        class="items-slide"
+        effect="Cards"
+        virtual
+        :observer="false"
+        :slides-per-view="sliderPerView"
+        :space-between="20"
+        :modules="modules"
+        :autoplay="autoPlaySettings">
+      <SwiperSlide v-for="manga in mangas" class="border-[1px] border-white">
+        <div class="h-[250px] rounded-sm relative">
+          <LazyNuxtLink
+              :to="useMangaDetailPagePath(manga.slug)">
+            <nuxt-img
+                class="w-full"
+                placeholder="~/assets/images/placeholder.png"
+                sizes="190vw sm:170vw md:185vw lg:200vw"
+                format="webp"
+                loading="lazy"
+                :src="manga.thumbnail">
+            </nuxt-img>
+          </LazyNuxtLink>
+        </div>
+        <div class="slide-caption">
+          <h3 class="text-center">
+            <NuxtLink :title="manga.name">
+              {{ manga.name }}
+            </NuxtLink>
+          </h3>
+          <div class="flex justify-around">
+            <NuxtLink :title="manga.newChapter">
+              {{ manga.newChapter }}
+            </NuxtLink>
+            <span class="time">
+            {{ manga.updatedAt }}
+          </span>
           </div>
-        </SwiperSlide>
-      </Swiper>
-    </div>
-  </section>
+        </div>
+      </SwiperSlide>
+    </Swiper>
+  </div>
 </template>

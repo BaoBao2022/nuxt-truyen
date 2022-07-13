@@ -6,66 +6,73 @@ import {TailwindColors} from '~/contants';
 import {PropType} from 'vue';
 import {Manga} from '~/types';
 
-defineProps({
-  title: String,
-  limit: {
-    type: Number,
-    default: 7
-  },
-  mangas: Array as PropType<Manga[]>,
-});
+const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
+// defineProps({
+//   title: String,
+//   limit: {
+//     type: Number,
+//     default: 5
+//   },
+//   mangas: Array as PropType<Manga[]>,
+// });
 
 </script>
 
 <template>
-  <div class="w-full pb-4 lg:my-4">
-    <a class="items-center justify-start font-secondary h-[40px] flex px-3 page-title custom-title">
-      Top tháng
-    </a>
-    <ul class="w-full space-y-4 overflow-hidden dark-box">
-      <li class="flex w-full px-4 py-2" v-for="manga in mangas" :key="manga.slug">
-        <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
-          <figure class="relative h-[120px] w-[100px]">
-            <span class="default-span-figure">
-              <nuxt-img format="webp" loading="lazy" fil="fill" :src="manga.thumbnail"
-                        class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
-                        sizes="sm:100vw md:100vw lg:100vw" :srcset="manga.thumbnail">
-                </nuxt-img>
-            </span>
-          </figure>
-        </LazyNuxtLink>
-        <div class="flex w-full flex-col justify-center space-y-2 pl-4 ">
-          <h3
-              class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
-            {{ manga.name }}
-          </h3>
-          <a class="text-lg text-mode">
-            {{ manga.newChapter }}
-          </a>
-
-          <div class="flex align-center chapter">
-            <EyeIcon class="h-6 w-5 mr-2 text-mode view" style="margin-top: 1px"/>
-            <i class="text-lg text-mode view"> {{ manga.view }}</i>
-          </div>
-
-          <ul class="hidden space-x-4 text-lg md:flex">
-            <li class="flex w-fit max-w-[70px] items-center whitespace-nowrap"
-                v-for="(genre, i) in manga.genres.slice(0, 4)" :style="{ 'color': randomColors(TailwindColors, i) }">
-              {{ genre }}
-            </li>
-          </ul>
-        </div>
+  <div class="w-full pb-4 lg:my-4 box-tab" v-if="!pending">
+    <ul class="tab-nav flex justify-around">
+      <li class="w-[33.33333%]">
+        <NuxtLink to="/filter?view=month" rel="nofollow" title="BXH truyện tranh theo tháng" class="active">
+          Top Tháng
+        </NuxtLink>
       </li>
-      <li
-          class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
-        <button class="lg:text-3xl">
-          <a href="/browse?comics=api-112&amp;view=all">Xem thêm</a>
-        </button>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-             aria-hidden="true" class="h-8 w-8">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
-        </svg>
+      <li class="w-[33.33333%]">
+        <NuxtLink to="/filter?view=week" rel="nofollow" title="BXH truyện tranh theo tuần">
+          Top Tuần
+        </NuxtLink>
+      </li>
+      <li class="w-[33.33333%]">
+        <NuxtLink to="/filter?view=day" rel="nofollow" title="BXH truyện tranh theo ngày">
+          Top Ngày
+        </NuxtLink>
       </li>
     </ul>
+    <div class="tab-pane">
+      <ul class="w-full space-y-4 overflow-hidden dark-box">
+        <li class="flex w-full px-4 py-2" v-for="manga in mangas.slice(0, 10)" :key="manga.slug">
+          <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
+            <figure class="relative h-[45px] w-[100px]">
+            <span class="default-span-figure">
+              <nuxt-img
+                  placeholder="~/assets/images/placeholder.png"
+                  format="webp"
+                  loading="lazy"
+                  fil="fill"
+                  :src="manga.thumbnail"
+                  class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
+                  sizes="sm:100vw md:100vw lg:100vw">
+                </nuxt-img>
+            </span>
+            </figure>
+          </LazyNuxtLink>
+          <div class="flex w-full flex-col space-y-2 pl-4 ">
+            <h3
+                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
+              <a>{{ manga.name }}</a>
+            </h3>
+            <div class="flex justify-between">
+              <a class="text-lg text-mode">
+                {{ manga.newChapter }}
+              </a>
+              <div class="flex align-center chapter">
+                <EyeIcon class="h-6 w-5 mr-2 text-mode view" style="margin-top: 1px"/>
+                <i class="text-lg text-mode view"> {{ manga.view }}</i>
+              </div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>

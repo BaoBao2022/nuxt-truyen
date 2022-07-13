@@ -3,7 +3,7 @@ import {Manga, MangaDetails, keys} from "~/types";
 import {useStorage} from "@vueuse/core";
 
 const useChapter = async (chapterNumber: string, chapterId: string, slug: string) => {
-    const {data: comic} = await useFetch(`/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`);
+    const {data: comic} = await useFetch(`/api/comic?slug=${slug}`);
     if (!comic.value) {
         return '';
     }

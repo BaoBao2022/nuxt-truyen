@@ -15,8 +15,13 @@ defineProps({
 <template>
   <div class="pt-24 mx-auto w-full lg:w-[60%]">
     <div v-for="(chap, index) in chapters" :key="`page-${index}`" class="relative my-0 h-fit w-full">
-      <nuxt-img loading="lazy" fil="cover" class="h-auto comic-img mx-auto w-auto"
-        :src="`${publicAPI}/api/proxy?url=http://www.nettruyenco.com&src=${chap?.imgSrc}`">
+      <nuxt-img
+          format="webp"
+          placeholder="~/assets/images/placeholder.png"
+          loading="lazy"
+          fil="cover"
+          class="h-auto comic-img mx-auto w-auto"
+          :src="`${publicAPI}/api/proxy?url=http://www.nettruyenco.com&src=${chap?.imgSrc}`">
         </nuxt-img>
     </div>
   </div>

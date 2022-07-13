@@ -40,11 +40,11 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
           <div class="col-xs-3 text-center small">{{ chap.view }}</div>
         </li>
       </ul>
-      <a v-if="!viewMore" @click="viewMore = true" class="view-more flex items-center justify-center">
+      <a v-if="!viewMore" @click="viewMore = true" class="view-more flex items-center justify-center bg-deep-black">
         <PlusSmIcon class="h-6 w-6"/>
         Xem thêm
       </a>
-      <a v-if="viewMore" @click="viewMore = false" class="view-more flex items-center justify-center">
+      <a v-if="viewMore" @click="viewMore = false" class="view-more flex items-center justify-center bg-deep-black">
         <MinusSmIcon class="h-6 w-6"/>
         Thu gọn
       </a>

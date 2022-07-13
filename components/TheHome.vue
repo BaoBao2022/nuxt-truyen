@@ -1,18 +1,28 @@
 <script lang="ts" setup>
+import {Manga} from "~/types";
 
 const comic = ref("");
-const {data: month, pending} = useLazyFetch(`/api/top-month?comic=${comic.value}`);
+const {
+  data: mangas,
+  pending,
+} = await useLazyFetch<Manga[]>(`/api/manga-updated`);
+
+const {data: mangasNew} = await useLazyFetch('/api/manga-new');
+
+
 </script>
 
 <template>
-  <main v-if="!pending">
-    <HomePageSpotlight :spotlights="month"/>
-<!--    	<MangaSectionSwiper />-->
+  <div v-if="pending">
+    <CommonPageLoading/>
+  </div>
+  <main v-else>
+    <HomePageSpotlight :spotlights="mangas"/>
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-        <MangaSectionSuggestion/>
-        <!--			<MangaSectionTabRanking />-->
-        <LazyMangaSectionRankList :mangas="month"/>
+      <MangaSectionSwiper :mangas="mangasNew"/>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
+        <MangaSectionSuggestion :mangas="mangas"/>
+        <LazyMangaSectionRankList/>
       </div>
     </section>
   </main>

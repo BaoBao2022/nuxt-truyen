@@ -70,14 +70,14 @@
 }
 
 .dark-mode #header {
-  background-image: url(~/assets/images/bg_header.jpeg);
+  //background-image: url(~/assets/images/bg_header.jpeg);
   width: 100%;
   height: 50px;
   transition: top .3s ease-in-out;
 }
 
 .light-mode #header {
-  background-color: #403667;
+  background-image: url('~/assets/images/bg_header.jpeg');
 }
 
 .dark-mode .breadcrumb, .dark-mode .breadcrumb a.active {
@@ -94,7 +94,7 @@
 }
 
 .dark-mode .morelink, .view-more {
-  color: #0cd444;
+  color: #fff;
 }
 
 #item-detail .detail-content p.shortened:before {
@@ -120,6 +120,20 @@
   background: #252525;
 }
 
-.dark-mode .main-menu>li>a {
+.dark-mode .main-menu > li > a {
   color: #fff;
+}
+
+.dark-mode .box-tab ul.tab-nav a.active, .dark-mode .tab-nav li:hover a {
+  border-top-color: #fd0405;
+  color: #ff9601;
+}
+
+.dark-mode .box-tab ul.tab-nav a {
+  background-color: #423e3e;
+  color: #fff;
+}
+
+.dark-mode .new-comments .dark-box ul li h3 a:hover, .dark-mode .dark-box ul li h3 a:hover, .dark-mode .dark-box ul li h3 a:focus, .dark-mode .nav-tabs > li.active > a, .dark-mode .nav-tabs > li.active > a:hover, .dark-mode .nav-tabs > li.active > a:focus {
+  color: #fd0405;
 }

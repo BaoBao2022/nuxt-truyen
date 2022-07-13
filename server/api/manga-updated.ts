@@ -1,6 +1,4 @@
 import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
-import {FilterRequest, RankingMangeRequest} from "~/services/request";
-import {REVALIDATE_TIME} from "~/contants";
 
 export default defineEventHandler(async (event) => {
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);

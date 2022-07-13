@@ -2,12 +2,11 @@
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import {Manga} from '~~/types';
 import {ChevronRightIcon} from "@heroicons/vue/solid";
+import {PropType} from "vue";
 
-const comic = ref("");
-const {
-  data: mangas,
-  pending,
-} = await useLazyFetch<Manga[]>(`/api/manga-new?comic=${comic.value}`);
+defineProps({
+  mangas: Array as PropType<Manga[]>,
+});
 
 const navigateToManga = async (chapterNumber: string, chapterId: string, slug: string) => {
   const path = await useChapter(chapterNumber, chapterId, slug);
@@ -19,23 +18,25 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div v-if="pending">
-    <CommonSearchLoading/>
-  </div>
-  <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
+  <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3">
     <NuxtLink to="/filter?view=newComic"
-              class="items-center	justify-start font-secondary h-[40px] flex px-3 page-title">
-      Gợi ý cho bạn
+              class="items-center	justify-start font-secondary h-[40px] flex mx-3 page-title custom-title">
+      Cập nhật truyện mới
       <ChevronRightIcon class="h-8 w-8"/>
     </NuxtLink>
-    <ul class="w-full overflow-hidden text-white grid lg:grid-cols-6 md:grid-cols-3 grid-cols-2 items">
+    <ul class="w-full overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 items">
       <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure
-              class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
-            <nuxt-img fil="fill" sizes="159px md:159px lg:159px" format="webp" loading="lazy"
-                      :src="manga.thumbnail"
-                      class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img" placeholder>
+              class="image relative h-[200px] md:h-[197px] lg:h-[220px] lg:w-full overflow-hidden rounded-sm">
+            <nuxt-img
+                fil="fill"
+                sizes="159px md:159px lg:159px"
+                loading="lazy"
+                :src="manga.thumbnail"
+                class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
+                format="webp"
+                placeholder="~/assets/images/placeholder.png">
             </nuxt-img>
           </figure>
         </LazyNuxtLink>

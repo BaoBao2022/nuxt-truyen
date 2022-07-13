@@ -154,8 +154,8 @@ watch([route], async () => {
                             format="webp"
                             loading="lazy"
                             :src="manga.thumbnail"
-                            class="aspect-w-3 aspect-h-4 absolute object-cover object-center default-img"
-                            placeholder>
+                            class="aspect-w-3 aspect-h-4 absolute object-cover object-center"
+                            placeholder="~/assets/images/placeholder.png">
                   </nuxt-img>
                 </figure>
               </LazyNuxtLink>
@@ -193,23 +193,22 @@ watch([route], async () => {
             </li>
           </ul>
         </div>
-
-
-        <div class="genres dark-box col-span-1 lg:my-4">
-          <b class="page-title uppercase font-medium font-semibold">
-            Thể loại
-          </b>
-          <ul class="grid grid-cols-2 cursor-pointer">
-            <li>
-              <a>
-                Tất cả thể loại
-              </a>
-            </li>
-            <li v-for="genre in GENRES_NT" :key="genre.id">
-              <NuxtLink :to="`/filter?genres=${genre.value}`" class="genre_list-title">{{ genre.label }}</NuxtLink>
-            </li>
-          </ul>
-        </div>
+<!--        <div class="genres dark-box col-span-1 lg:my-4">-->
+<!--          <b class="page-title font-medium font-semibold">-->
+<!--            Thể loại-->
+<!--          </b>-->
+<!--          <ul class="grid grid-cols-2 cursor-pointer">-->
+<!--            <li>-->
+<!--              <a>-->
+<!--                Tất cả thể loại-->
+<!--              </a>-->
+<!--            </li>-->
+<!--            <li v-for="genre in GENRES_NT" :key="genre.id">-->
+<!--              <NuxtLink :to="`/filter?genres=${genre.value}`" class="genre_list-title">{{ genre.label }}</NuxtLink>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+        <LazyFilterListGenres/>
       </div>
     </section>
   </NuxtLayout>

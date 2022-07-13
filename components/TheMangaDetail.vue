@@ -23,7 +23,7 @@ watchEffect(() => {
 const {
   data: manga,
   pending
-} = useFetch<MangaDetails>(`/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`);
+} = useFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
 
 const comic = ref("");
 const {data: month} = useFetch(`/api/top-month?comic=${comic.value}`);
@@ -43,33 +43,25 @@ useHead({
     <div class="flex h-fit flex-col" v-else>
       <div id="item-detail" class="mx-auto mt-2 w-[95%] grid grid-cols-1 lg:grid-cols-5">
         <article class="col-span-3 manga-detail detail-info">
-          <ul class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
-            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-              <NuxtLink to="/" href="" class="itemcrumb" itemprop="item"
-                        itemtype="http://schema.org/Thing">
-              <span itemprop="name">
-                Trang chủ
-              </span>
+          <ul class="breadcrumb">
+            <li>
+              <NuxtLink to="/" class="itemcrumb">
+                <a class="a-default">
+                  Trang chủ
+                </a>
               </NuxtLink>
-              <meta itemprop="position" content="1">
             </li>
-            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <li>
               <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
-              <a
-                  href="#" class="itemcrumb" itemprop="item"
-                  itemtype="http://schema.org/Thing"><span itemprop="name">Thể loại</span></a>
-              <meta itemprop="position" content="2">
+              <NuxtLink class="a-default" to="/filter">
+                Thể loại
+              </NuxtLink>
             </li>
-            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+            <li>
               <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
-              <a
-                  href="#"
-                  class="itemcrumb active" itemprop="item" itemtype="http://schema.org/Thing">
-                <span itemprop="name">
+              <NuxtLink class="a-default">
                 {{ manga.title }}
-              </span>
-              </a>
-              <meta itemprop="position" content="3">
+              </NuxtLink>
             </li>
           </ul>
           <h1 class="text-center uppercase font-semibold text-3xl title-detail">
@@ -82,10 +74,14 @@ useHead({
             <div class="px-2 absolute-center">
               <div class="w-[250px] md:w-[250px] md:min-w-[198px] lg:w-[198px] h-[333px] lg:h-[268px] lg:h-[268px]">
                 <figure>
-                  <NuxtImg class="h-[333px] lg:h-[268px] lg:h-[268px]" sizes="250px" :srcset="manga.thumbnail"
-                           :src="manga.thumbnail"
-                           loading="lazy" fil="fill">
-                  </NuxtImg>
+                  <nuxt-img
+                      format="webp"
+                      placeholder="~/assets/images/placeholder.png"
+                      class="h-[333px] lg:h-[268px] lg:h-[268px]"
+                      :src="manga.thumbnail"
+                      sizes="sm:100vw md:100vw lg:100vw"
+                      loading="lazy" fil="fill">
+                  </nuxt-img>
                 </figure>
               </div>
             </div>
@@ -121,7 +117,7 @@ useHead({
                     </p>
                   </div>
                   <p class="col-span-6">
-                    <a v-for="(genre, g) in manga.genres" :key="`genre${g}`">
+                    <a class="a-default" v-for="(genre, g) in manga.genres" :key="`genre${g}`">
                       {{ genre.genreTitle }} <span v-if="g !== manga.genres.length - 1">- </span>
                     </a>
                   </p>
@@ -130,7 +126,6 @@ useHead({
                   <div class="flex col-span-3">
                     <p class="name absolute-center-start">
                       <EyeIcon class="h-7 w-7 mr-2"/>
-
                       Lượt xem
                     </p>
                   </div>
@@ -165,7 +160,10 @@ useHead({
           <LazyMangaDetailReview :review="manga.review"/>
           <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
         </article>
-        <div>
+        <div class="mr-3 hidden lg:block">
+          <LazyFilterListGenres/>
+        </div>
+        <div class="hidden lg:block">
           <LazyMangaSectionRankList :limit="limitRank" :mangas="month"/>
         </div>
       </div>

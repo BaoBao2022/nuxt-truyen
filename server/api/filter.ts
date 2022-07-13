@@ -13,8 +13,6 @@ export default defineEventHandler(async (event) => {
     gender: gender as any
   };
 
-  console.log("filterRequest", filterRequest)
-
   const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
   const mangas = await NET_TRUYEN_API?.advancedSearch(filterRequest);
 

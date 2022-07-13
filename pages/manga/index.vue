@@ -8,7 +8,7 @@ const route = useRoute();
 const slug = ref(route.query.slug);
 
 const onPickManga = useState('pickManga');
-const url = `/api/comic?slug=${slug.value}&source=${SourceParams.netTruyen}`;
+const url = `/api/comic?slug=${slug.value}}`;
 const { data: comic, refresh } = await useAsyncData('manga-detail', () => $fetch(url));
 
 const navigateToManga = async (slug) => {

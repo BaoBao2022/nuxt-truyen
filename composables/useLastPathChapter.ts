@@ -4,7 +4,7 @@ import {useStorage} from "@vueuse/core";
 
 const useLastPathChapter = async (spotlight: Manga, slugs: string | readonly string[]) => {
     const slug = slugs || spotlight?.slug
-    const {data: comic} = await useFetch(`/api/comic?slug=${slug}&source=${SourceParams.netTruyen}`);
+    const {data: comic} = await useFetch(`/api/comic?slug=${slug}`);
     if (!comic.value) {
         return '';
     }

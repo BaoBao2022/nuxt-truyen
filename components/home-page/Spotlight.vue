@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper";
+import { Autoplay, EffectFade } from "swiper";
 import {PropType, ref} from 'vue';
 import { Manga } from "~/types";
 
@@ -8,10 +8,10 @@ const props = defineProps({
   spotlights: Array as PropType<Manga[]>
 })
 
-const modules = ref([Autoplay]);
+const modules = ref([Autoplay, EffectFade]);
 const autoPlaySettings = ref({
   delay: 3500,
-  disableOnInteraction: true
+  disableOnInteraction: false
 });
 
 const backgroundImage = (spotlight) => {
@@ -23,7 +23,7 @@ const mangas = props.spotlights.filter(spotlight => spotlight.review !== '');
 </script>
 
 <template>
-  <Swiper :modules="modules" :autoplay="autoPlaySettings" effect="fade"
+  <Swiper :modules="modules" :autoplay="autoPlaySettings"
     class="relative lg:h-[380px] md:h-[250px] h-[200px]">
     <SwiperSlide v-for="spotlight in mangas">
       <div :key="spotlight.slug">

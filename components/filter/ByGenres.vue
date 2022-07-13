@@ -32,7 +32,7 @@ watch([selected], (value) => {
 
 <template>
   <div class="flex py-1 mt-2 grid relative items-center w-[180px]">
-    <a class="my-2 font-secondary custom-title text-xl lg:text-2xl text-left">(1) Thể loại</a>
+    <a class="my-2 font-secondary text-xl lg:text-2xl text-left">(1) Thể loại</a>
     <Listbox v-model="selected">
       <ListboxButton
           class="h-[34px] btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px]"
