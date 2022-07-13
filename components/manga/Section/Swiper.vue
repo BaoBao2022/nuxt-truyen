@@ -14,8 +14,8 @@ defineProps({
 
 const modules = ref([Autoplay, Virtual, EffectFade]);
 const autoPlaySettings = ref({
-  delay: 4503330,
-  disableOnInteraction: true
+  delay: 2000,
+  disableOnInteraction: false
 });
 
 const device = useState<devices>('devices');
@@ -41,9 +41,7 @@ const sliderPerView = computed(() => {
     </h2>
     <Swiper
         class="items-slide"
-        effect="Cards"
         virtual
-        :observer="false"
         :slides-per-view="sliderPerView"
         :space-between="20"
         :modules="modules"

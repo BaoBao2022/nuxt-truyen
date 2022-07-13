@@ -23,8 +23,8 @@ const mangas = props.spotlights.filter(spotlight => spotlight.review !== '');
 </script>
 
 <template>
-  <Swiper :modules="modules" :autoplay="autoPlaySettings"
-    class="relative lg:h-[380px] md:h-[250px] h-[200px]">
+  <Swiper :direction="'vertical'" :modules="modules" :autoplay="autoPlaySettings"
+    class="relative lg:h-[380px] md:h-[250px] h-[200px]" fade-effect="fade">
     <SwiperSlide v-for="spotlight in mangas">
       <div :key="spotlight.slug">
         <figure
