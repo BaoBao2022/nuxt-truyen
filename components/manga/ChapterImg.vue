@@ -17,7 +17,7 @@ defineProps({
     <div v-for="(chap, index) in chapters" :key="`page-${index}`" class="relative my-0 h-fit w-full">
       <nuxt-img
           format="webp"
-          placeholder="../assets/images/placeholder.png"
+          placeholder
           loading="lazy"
           fil="cover"
           class="h-auto comic-img mx-auto w-auto"
