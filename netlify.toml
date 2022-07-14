@@ -1,6 +1,5 @@
 [[plugins]]
-  package = "netlify-plugin-image-optim"
-  package = "netlify-plugin-inline-critical-css"
+package = "netlify-plugin-inline-critical-css"
 
   # All inputs are optional, so you can omit this section.
   # Defaults are shown below.
@@ -20,3 +19,6 @@
       { width = 414, height = 896 },
       { width = 1920, height = 1080 }
     ]
+
+[[plugins]]
+package = "netlify-plugin-image-optim"
