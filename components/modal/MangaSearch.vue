@@ -52,10 +52,7 @@ watch([refInput], async () => {
 </script>
 
 <template>
-  <form @click="open">
-    <button
-        class="mx-4 hidden bg-orange px-2 py-1 text-rose-600 transition-all hover:bg-rose-500 hover:text-white/80 md:block">
-    </button>
+  <form @click="open" class="flex">
     <input class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm truyện...">
     <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 text-background flex items-center">
       <SearchIcon class="w-5 h-5 text-white"/>
@@ -76,7 +73,7 @@ watch([refInput], async () => {
             <DialogPanel class="fixed top-[10%] left-0 right-0 overflow-y-auto">
               <div class="flex min-h-full items-center justify-center p-4 text-center">
                 <div
-                    class="max-h-[70vh] w-[85%] transform overflow-x-hidden overflow-y-scroll rounded-2xl bg-background p-6 text-left align-middle shadow-xl transition-all md:w-[75%] lg:max-h-[85vh] opacity-100 scale-100">
+                    class="max-h-[70vh] w-[85%] transform overflow-x-hidden overflow-y-scroll rounded-2xl bg-black p-6 text-left align-middle shadow-xl transition-all md:w-[75%] lg:max-h-[85vh] opacity-100 scale-100">
                   <div class="flex items-center justify-between">
                     <h3 class="my-4 mx-2 font-secondary text-4xl leading-6 text-white md:text-6xl">
                       Tìm Truyện
