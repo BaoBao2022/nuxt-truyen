@@ -49,12 +49,12 @@ onClickOutside(rankTars, (event) => openRanking.value = false)
       <li class="transition-all hover:text-primary">
         <NuxtLink class="text-white" to="/filter?gender=2">
           <button>
-            Con trai
+            Chuyện con trai
           </button>
         </NuxtLink>
       </li>
       <li class="transition-all hover:text-primary">
-        <NuxtLink class="text-white" to="/filter?gender=1">Con gái</NuxtLink>
+        <NuxtLink class="text-white" to="/filter?gender=1">Chuyện con gái</NuxtLink>
       </li>
     </ul>
   </nav>

@@ -182,8 +182,8 @@ export const CHAPTER_SORT = [
 
 export const GENDER = [
   { value: "-1", label: "Tất cả" },
-  { value: "1", label: "Con gái" },
-  { value: "2", label: "Con trai" },
+  { value: "1", label: "Chuyện con gái" },
+  { value: "2", label: "Chuyện con trai" },
 ];
 
 // export const MANGA_RESOURCE: MangaResource[] = [
