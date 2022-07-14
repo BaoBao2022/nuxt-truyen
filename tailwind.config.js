@@ -31,5 +31,7 @@ module.exports = {
             secondary: 'League Spartan, sans-serif',
         },
     },
-    plugins: []
+    plugins: [
+        require('@tailwindcss/aspect-ratio')
+    ]
 }

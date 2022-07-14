@@ -325,7 +325,7 @@ input[type='number'] {
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg, #252525, rgba(64, 54, 103, .1) 70%, #252525);
+  background: linear-gradient(0deg, #010101, rgba(64, 54, 103, .1) 70%, #000);
   z-index: 2;
 }
 
@@ -649,4 +649,48 @@ input[type='number'] {
   position: relative;
   text-align: center;
   overflow: hidden;
+}
+
+.banner__overlay--down {
+  background-image: linear-gradient(180deg, transparent 10%, rgba(0, 0, 0, .8), #000);
+}
+
+@media screen and (min-width: 768px) {
+  .banner__overlay {
+    background-image: linear-gradient(77deg, rgba(0, 0, 0, .8) 25%, transparent 85%);
+    background-color: transparent;
+  }
+}
+
+.span-position {
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  width: initial;
+  height: initial;
+  background: none;
+  opacity: 1;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  inset: 0;
+}
+
+.img-position {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 0;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 0;
+  height: 0;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: 50% 35%;
 }

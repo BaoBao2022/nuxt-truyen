@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from "nuxt";
 
 export default defineNuxtConfig({
+    ssr: true,
     runtimeConfig: {
         public: {
             NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
@@ -8,14 +9,9 @@ export default defineNuxtConfig({
             SIZE_NAME: "MeeTruyen"
         },
     },
-    // head: [
-    //     {
-    //         name: "theme-color", content: '#fff'
-    //     }
-    // ],
     meta: {
         title: "Đọc truyện tranh online - Truyện gì cũng có - MeeTruyen",
-        link: [{ rel: "icon", type: "image/x-icon", href: "/assets/favicons/favicon-32x32.png" }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "/assets/images/favicon.ico" }],
         /* For PWA. */
         // name: "theme-color", content: '#fff'
     },
@@ -31,7 +27,6 @@ export default defineNuxtConfig({
             "2xl": 1536,
         },
     },
-    ssr: true,
     modules: ["@nuxtjs/color-mode", "@nuxt/image-edge"],
     colorMode: {
         preference: "dark", // default value of $colorMode.preference

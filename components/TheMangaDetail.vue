@@ -40,9 +40,9 @@ useHead({
     <div v-if="pending">
       <CommonPageLoading/>
     </div>
-    <div class="flex h-fit flex-col" v-else>
-      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-5">
-        <article class="col-span-3 manga-detail detail-info">
+    <div class="flex h-fit flex-col pt-24" v-else>
+      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-7">
+        <article class="col-span-5 manga-detail detail-info">
           <ul class="breadcrumb px-3 mb-4">
             <li>
               <NuxtLink to="/" class="itemcrumb">
@@ -160,10 +160,7 @@ useHead({
           <LazyMangaDetailReview :review="manga.review"/>
           <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
         </article>
-        <div class="mr-3 hidden lg:block">
-          <LazyFilterListGenres/>
-        </div>
-        <div class="hidden lg:block">
+        <div class="hidden lg:block col-span-2">
           <LazyMangaSectionRankList :limit="limitRank" :mangas="month"/>
         </div>
       </div>
