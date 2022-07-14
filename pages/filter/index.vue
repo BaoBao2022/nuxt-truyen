@@ -109,7 +109,7 @@ watch([route], async () => {
     <div v-if="pending">
       <CommonPageLoading/>
     </div>
-    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden" v-else>
+    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden pt-24" v-else>
       <ul class="breadcrumb">
         <li>
           <NuxtLink to="/">
@@ -148,7 +148,7 @@ watch([route], async () => {
             <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
               <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <figure
-                    class="image relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
+                    class="relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
                   <nuxt-img fil="fill"
                             sizes="159px md:159px lg:159px"
                             format="webp"

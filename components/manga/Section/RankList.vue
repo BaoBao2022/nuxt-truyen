@@ -19,7 +19,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
 </script>
 
 <template>
-  <div class="w-full pb-4 lg:my-4 box-tab" v-if="!pending">
+  <div class="w-full pb-4 box-tab" v-if="!pending">
     <ul class="tab-nav flex justify-around">
       <li class="w-[33.33333%]">
         <NuxtLink to="/filter?view=month" rel="nofollow" title="BXH truyện tranh theo tháng" class="active">

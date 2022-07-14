@@ -22,7 +22,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 
 <template>
   <ClientOnly>
-    <div class="visited-comics border-[1px] border-gray-300 px-3 mb-7" v-if="visitedComics && visitedComics.length > 0">
+    <div class="visited-comics px-3 mb-4" v-if="visitedComics && visitedComics.length > 0">
       <div class="box dark-box">
         <h2 class="flex justify-between items-center h-[40px]">
           Lịch sử đọc truyện

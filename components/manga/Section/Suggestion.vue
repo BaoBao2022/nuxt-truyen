@@ -28,7 +28,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
       <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure
-              class="image relative h-[200px] md:h-[197px] lg:h-[220px] lg:w-full overflow-hidden rounded-sm">
+              class="relative h-[200px] md:h-[197px] lg:h-[220px] lg:w-full overflow-hidden rounded-sm">
             <nuxt-img
                 fil="fill"
                 sizes="159px md:159px lg:159px"
