@@ -18,6 +18,7 @@
     "autoprefixer": "^10.4.7",
     "netlify-plugin-image-optim": "^0.4.0",
     "netlify-plugin-inline-critical-css": "^2.0.0",
+    "netlify-plugin-minify-html": "^0.3.1",
     "nuxt": "3.0.0-rc.4",
     "postcss": "^8.4.14",
     "sass": "^1.51.0",
