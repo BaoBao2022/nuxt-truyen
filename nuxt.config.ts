@@ -8,14 +8,14 @@ export default defineNuxtConfig({
             SIZE_NAME: "MeeTruyen"
         },
     },
-    head: [
-        {
-            name: "theme-color", content: '#fff'
-        }
-    ],
+    // head: [
+    //     {
+    //         name: "theme-color", content: '#fff'
+    //     }
+    // ],
     meta: {
         title: "Đọc truyện tranh online - Truyện gì cũng có - MeeTruyen",
-        link: [{ rel: "icon", type: "image/x-icon", href: "/assets/images/favicon.png" }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "/assets/favicons/favicon-32x32.png" }],
         /* For PWA. */
         // name: "theme-color", content: '#fff'
     },
