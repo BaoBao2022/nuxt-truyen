@@ -60,9 +60,9 @@ const backgroundImage = (spotlight) => {
             class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right-top bg-no-repeat md:h-[300px] lg:h-[480px]"
             :style="backgroundImage(mangaActive)">
         </figure>
-<!--        <div-->
-<!--            class="absolute top-12 left-5 z-40 flex h-[60%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">-->
-<!--        </div>-->
+        <!--        <div-->
+        <!--            class="absolute top-12 left-5 z-40 flex h-[60%] w-[50%] flex-col space-x-4 space-y-4 font-secondary text-white md:left-[5%] md:w-[55%] md:py-4 lg:space-y-6">-->
+        <!--        </div>-->
         <LazySharedSwiperCard :spotlight="mangaActive"/>
       </div>
 
@@ -104,8 +104,8 @@ const backgroundImage = (spotlight) => {
           top-secret mission to investigate the movements of Donovan Desmond, the chairman of Ostania's National Unity
           Party, who is threatening peace efforts between the two nations.
           <br><br>
-          {{mangaActive.review}}
-          <LazySharedSwiperCardButton :spotlight="mangaActive" />
+          {{ mangaActive.review }}
+          <LazySharedSwiperCardButton :spotlight="mangaActive"/>
         </div>
       </div>
       <div class="absolute bottom-0 w-full h-16 banner__overlay--down"></div>
@@ -122,7 +122,7 @@ const backgroundImage = (spotlight) => {
               :coverflowEffect="{
                 rotate: 15,
                 stretch: 0,
-                depth: 25,
+                depth: 75,
                 modifier: 1,
                 slideShadows: true,
               }"
@@ -132,16 +132,14 @@ const backgroundImage = (spotlight) => {
               :breakpoints="swiperBreakPoints">
             <SwiperSlide v-slot="{ isActive }" v-for="manga in mangas">
               <div class="w-full h-[270px]"
-                   :style="isActive ? {'opacity': '1', 'transform':'translateY(-40px) translateZ(0px)'} : {'opacity': '0.2', 'transform': 'none'}">
+                   :style="isActive ? {'opacity': '1'} : {'opacity': '0.2', 'transform': 'none'}">
                 <div class="relative aspect-w-9 aspect-h-16">
                   <div style="opacity: 1">
-                    <span
-                        style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                    <span class="span-position">
                     <img
-                        alt="Isekai Ojisan"
                         :src="manga.thumbnail"
-                        decoding="async" data-nimg="fill"
-                        style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%; object-fit: cover;"><noscript></noscript></span>
+                        class="img-position" style="object-fit: contain">
+                    </span>
                   </div>
                 </div>
               </div>
