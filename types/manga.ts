@@ -186,12 +186,6 @@ export const GENDER = [
   { value: "2", label: "Chuyện con trai" },
 ];
 
-// export const MANGA_RESOURCE: MangaResource[] = [
-//     {
-//         sourceName: 'NT',
-//         sourceId: 'nt',
-//     },
-// ];
 
 export const TailwindColors = [
   "#facc15",

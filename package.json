@@ -16,6 +16,8 @@
     "@vueuse/core": "^8.7.5",
     "@vueuse/nuxt": "^8.7.5",
     "autoprefixer": "^10.4.7",
+    "netlify-plugin-image-optim": "^0.4.0",
+    "netlify-plugin-inline-critical-css": "^2.0.0",
     "nuxt": "3.0.0-rc.4",
     "postcss": "^8.4.14",
     "sass": "^1.51.0",
@@ -25,9 +27,9 @@
     "@headlessui/vue": "^1.4.1",
     "@heroicons/vue": "^1.0.6",
     "axios": "^0.27.2",
+    "mobile-detect": "^1.4.5",
     "node-html-parser": "^5.3.3",
-    "swiper": "^8.2.6",
-    "mobile-detect": "^1.4.5"
+    "swiper": "^8.2.6"
   },
   "license": "ISC"
 }
