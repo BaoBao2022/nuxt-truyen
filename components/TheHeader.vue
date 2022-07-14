@@ -48,12 +48,12 @@ if (typeof document !== 'undefined')
           Manga
         </p>
       </NuxtLink>
-      <Nuxt href="/filter?view=month">
+      <NuxtLink href="/filter?view=month">
         <p
             class="hover:text-white transition duration-300 text-gray-300">
           Bảng xấp hạng
         </p>
-      </Nuxt>
+      </NuxtLink>
       <NuxtLink href="/filter?gender=1">
         <p
             class="hover:text-white transition duration-300 text-gray-300">
