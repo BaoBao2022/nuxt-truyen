@@ -9,9 +9,9 @@ const publicConfig = config.public;
 
 <template>
   <Head>
-    <Meta name="theme-color" content="#252525"/>
-    <Meta name="msapplication-navbutton-color" content="#252525"/>
-    <Meta name="apple-mobile-web-app-status-bar-style" content="#252525"/>
+    <Meta name="theme-color" content="#000"/>
+    <Meta name="msapplication-navbutton-color" content="#000"/>
+    <Meta name="apple-mobile-web-app-status-bar-style" content="#000"/>
     <Meta name="msapplication-starturl" content="/"/>
     <Meta name="apple-mobile-web-app-title" :content="publicConfig.SIZE_NAME"/>
     <Meta name="application-name" :content="publicConfig.SIZE_NAME"/>

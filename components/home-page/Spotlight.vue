@@ -10,7 +10,7 @@ const props = defineProps({
 
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
-  delay: 33333333,
+  delay: 2500,
   disableOnInteraction: false
 });
 
