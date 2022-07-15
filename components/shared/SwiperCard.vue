@@ -21,7 +21,6 @@ defineProps({
             class="absolute inset-0 object-cover object-center w-full">
         </nuxt-img>
       </span>
-      <div slot="container-end" class="swiper-navigation absolute right-0 bottom-full mb-4 flex space-x-4"><button type="button" class="transition duration-300 p-2 rounded-full swiper-button-prev flex items-center justify-center hover:bg-white hover:text-black border-solid border-2 border-white gap-x-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"></polyline></svg></button><button type="button" class="transition duration-300 p-2 rounded-full swiper-button-next flex items-center justify-center hover:bg-white hover:text-black border-solid border-2 border-white gap-x-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"></polyline></svg></button></div>
     </div>
   </div>
 </template>

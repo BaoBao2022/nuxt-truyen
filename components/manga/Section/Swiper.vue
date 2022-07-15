@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import {Autoplay, EffectCoverflow} from 'swiper';
+import {Autoplay, EffectCoverflow, Navigation} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
 const props = defineProps({
   mangas: Array as PropType<Manga[]>
 })
 
-const modules = ref([EffectCoverflow]);
+const modules = ref([EffectCoverflow, Navigation]);
 const autoPlaySettings = ref({
   delay: 3500,
   disableOnInteraction: false,
@@ -53,11 +53,29 @@ const backgroundImage = (spotlight) => {
     <div class="group relative w-full md:h-[350px] xl:h-[400px] 2xl:h-[450px] overflow-hidden">
       <div class="w-full h-0" v-if="mangaActive && mangaActive.thumbnail">
         <figure
-            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-center bg-no-repeat"
+            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right-top bg-no-repeat"
             :style="backgroundImage(mangaActive)">
         </figure>
         <LazySharedSwiperCard :spotlight="mangaActive"/>
       </div>
+
+      <!--      <div style="bottom: -9px; left: 70px; z-index: 9;" slot="container-end"-->
+      <!--           class="swiper-navigation absolute right-0 bottom-full mb-4 flex space-x-4">-->
+      <!--        <button type="button"-->
+      <!--                class="transition duration-300 p-2 rounded-full swiper-button-prev flex items-center justify-center hover:bg-white hover:text-black border-solid border-2 border-white gap-x-2">-->
+      <!--          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"-->
+      <!--               stroke-linejoin="round" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
+      <!--            <polyline points="15 18 9 12 15 6"></polyline>-->
+      <!--          </svg>-->
+      <!--        </button>-->
+      <!--        <button type="button"-->
+      <!--                class="transition duration-300 p-2 rounded-full swiper-button-next flex items-center justify-center hover:bg-white hover:text-black border-solid border-2 border-white gap-x-2">-->
+      <!--          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round"-->
+      <!--               stroke-linejoin="round" class="w-6 h-6" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
+      <!--            <polyline points="9 18 15 12 9 6"></polyline>-->
+      <!--          </svg>-->
+      <!--        </button>-->
+      <!--      </div>-->
 
       <div class="absolute inset-0 flex flex-col justify-center px-4 banner__overlay md:px-12"></div>
       <div
@@ -88,13 +106,14 @@ const backgroundImage = (spotlight) => {
             <span v-for="genre in mangaActive.genres">{{ genre }}</span>
           </div>
         </div>
-        <div class="m-h-[100px] prose !max-w-full hidden text-base md:block text-gray-200 md:line-clamp-5 lg:line-clamp-6">
+        <div
+            class="m-h-[100px] prose !max-w-full hidden text-base md:block text-gray-200 md:line-clamp-5 lg:line-clamp-6">
           {{ mangaActive.review }}
           <br>
           <br>
           Author: {{ mangaActive.author ? mangaActive.author : 'N/a' }}
         </div>
-          <LazySharedSwiperCardButton :spotlight="mangaActive"/>
+        <LazySharedSwiperCardButton :spotlight="mangaActive"/>
       </div>
       <div class="absolute bottom-0 w-full h-16 banner__overlay--down"></div>
     </div>
@@ -103,6 +122,7 @@ const backgroundImage = (spotlight) => {
           class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events !overflow-visible">
         <ClientOnly>
           <Swiper
+              :navigation="true"
               @activeIndexChange="activeIndexChange"
               :autoplay="autoPlaySettings"
               :modules="modules"
@@ -110,7 +130,7 @@ const backgroundImage = (spotlight) => {
               :coverflowEffect="{
                 rotate: 10,
                 stretch: 0,
-                depth: 100,
+                depth: 50,
                 modifier: 1,
                 slideShadows: true,
               }"
@@ -128,7 +148,7 @@ const backgroundImage = (spotlight) => {
                         format="webp"
                         loading="lazy"
                         :src="manga.thumbnail"
-                        class="img-position" 
+                        class="img-position"
                         style="object-fit: contain">
                     </nuxt-img>
                     </span>

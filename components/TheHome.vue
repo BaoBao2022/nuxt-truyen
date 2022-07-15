@@ -6,21 +6,15 @@ const {
   data: mangas,
   pending,
 } = await useLazyFetch<Manga[]>(`/api/manga-updated`);
-
 const devices = useState('devices');
-console.log("pending", pending.value);
-watchEffect(() => {
-  console.log("pending", pending.value);
-  
-});
+
 </script>
 
 <template>
-  <!-- <div v-if="pending">
+  <div v-if="pending">
     <CommonPageLoading/>
-  </div> -->
-  <main>
-
+  </div>
+  <main v-else>
     <HomePageSpotlight :spotlights="mangas" v-if="devices.hasMobile"/>
     <MangaSectionSwiper :mangas="mangas" v-if="!devices.hasMobile"/>
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">

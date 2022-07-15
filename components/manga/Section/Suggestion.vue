@@ -24,16 +24,16 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
       Cập nhật truyện mới
       <ChevronRightIcon class="h-8 w-8"/>
     </NuxtLink>
-    <ul class="w-full overflow-hidden text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 items">
+    <ul class="w-full text-white grid lg:grid-cols-5 md:grid-cols-3 grid-cols-2 items">
       <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
         <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
           <figure
-              class="duration-500 relative h-[200px] md:h-[197px] lg:h-[220px] lg:w-full overflow-hidden rounded-md">
+              class="duration-500 relative lg:h-full lg:w-full rounded-md">
             <nuxt-img
+                class="h-[240px] w-full"
                 fil="fill"
                 loading="lazy"
                 :src="manga.thumbnail"
-                class="h-[200px] md:h-[197px] lg:h-[220px]"
                 format="webp">
             </nuxt-img>
           </figure>
