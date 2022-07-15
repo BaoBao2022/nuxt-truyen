@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 import {Autoplay, EffectCoverflow} from 'swiper';
-import {Swiper, SwiperSlide, useSwiperSlide} from 'swiper/vue';
-import {ChevronRightIcon} from '@heroicons/vue/solid'
-import {ClockIcon} from '@heroicons/vue/outline'
+import {Swiper, SwiperSlide} from 'swiper/vue';
 
 const props = defineProps({
   mangas: Array as PropType<Manga[]>
@@ -19,7 +16,6 @@ const autoPlaySettings = ref({
 const mangaActive = ref<Manga>({});
 const activeIndexChange = (slide) => {
   mangaActive.value = props.mangas[slide.realIndex];
-  console.log("props.mangas[slide.realIndex]", props.mangas[slide.realIndex])
 }
 const swiperBreakPoints = {
   1: {
@@ -39,7 +35,7 @@ const swiperBreakPoints = {
     spaceBetween: 20,
   },
   1300: {
-    slidesPerView: 8,
+    slidesPerView: 6,
     spaceBetween: 20,
   },
 };
@@ -118,7 +114,7 @@ const backgroundImage = (spotlight) => {
               :modules="modules"
               :effect="'coverflow'"
               :coverflowEffect="{
-                rotate: 15,
+                rotate: 30,
                 stretch: 0,
                 depth: 75,
                 modifier: 1,
@@ -136,7 +132,7 @@ const backgroundImage = (spotlight) => {
                     <span class="span-position">
                     <img
                         :src="manga.thumbnail"
-                        class="img-position" :style="!isActive ? 'object-fit: contain' : ''">
+                        class="img-position" style="object-fit: contain">
                     </span>
                   </div>
                 </div>

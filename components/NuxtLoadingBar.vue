@@ -1,129 +1,119 @@
-<script lang="ts" setup>
-import {reactive, watchEffect} from 'vue';
-import {useState} from "#imports";
+<script>
+import {computed, defineComponent, h, onBeforeUnmount, ref} from "vue";
+import {useNuxtApp} from "#app";
 
-const props = defineProps({
-  throttle: {
-    type: Number,
-    default: 200,
+export default defineComponent({
+  name: "NuxtLoadingIndicator",
+  props: {
+    throttle: {
+      type: Number,
+      default: 200
+    },
+    duration: {
+      type: Number,
+      default: 2e3
+    },
+    height: {
+      type: Number,
+      default: 3
+    },
+    color: {
+      type: String,
+      default: "repeating-linear-gradient(to right,#00dc82 0%,#34cdfe 50%,#0047e1 100%)"
+    }
   },
-  duration: {
-    type: Number,
-    default: 2000,
-  },
-  height: {
-    type: Number,
-    default: 3,
-  },
-});
-// Options & Data
-const data = reactive({
-  percent: 0,
-  show: false,
-  canSucceed: true,
-});
-// Local variables
-let _timer = null;
-let _throttle = null;
-let _cut;
-
-// Functions
-const clear = () => {
-  _timer && clearInterval(_timer);
-  _throttle && clearTimeout(_throttle);
-  _timer = null;
-};
-const start = () => {
-  clear();
-  data.percent = 0;
-  data.canSucceed = true;
-
-  if (props.throttle) {
-    _throttle = setTimeout(startTimer, props.throttle);
-  } else {
-    startTimer();
+  setup(props) {
+    const indicator = useLoadingIndicator({
+      duration: props.duration,
+      throttle: props.throttle
+    });
+    const nuxtApp = useNuxtApp();
+    nuxtApp.hook("page:start", indicator.start);
+    nuxtApp.hook("page:finish", indicator.finish);
+    onBeforeUnmount(() => indicator.clear);
+    return () => h("div", {
+      class: "nuxt-loading-indicator",
+      style: {
+        position: "fixed",
+        top: 0,
+        right: 0,
+        left: 0,
+        pointerEvents: "none",
+        width: `${indicator.progress.value}%`,
+        height: `${props.height}px`,
+        opacity: indicator.isLoading.value ? 1 : 0,
+        background: props.color,
+        backgroundSize: `${100 / indicator.progress.value * 100}% auto`,
+        transition: "width 0.1s, height 0.4s, opacity 0.4s",
+        zIndex: 999999
+      }
+    });
   }
-};
-const set = (num) => {
-  data.show = true;
-  data.canSucceed = true;
-  data.percent = Math.min(100, Math.max(0, Math.floor(num)));
-};
-const increase = (num) => {
-  data.percent = Math.min(100, Math.floor(data.percent + num));
-};
-const decrease = (num) => {
-  data.percent = Math.max(0, Math.floor(data.percent - num));
-};
-const pause = () => clearInterval(_timer);
-const resume = () => startTimer();
-const finish = () => {
-  data.percent = 100;
-  hide();
-};
-const hide = () => {
-  clear();
-  setTimeout(() => {
-    data.show = false;
-    setTimeout(() => {
-      data.percent = 0;
-    }, 400);
-  }, 500);
-};
-const startTimer = () => {
-  data.show = true;
-  _cut = 10000 / Math.floor(props.duration);
-  _timer = setInterval(() => {
-    increase(_cut);
-  }, 100);
-};
+});
 
-// Hooks
-const nuxtApp = useNuxtApp();
+function useLoadingIndicator(opts) {
+  const progress = ref(0);
+  const isLoading = ref(false);
+  const step = computed(() => 1e4 / opts.duration);
+  let _timer = null;
+  let _throttle = null;
 
-nuxtApp.hook('page:start', start);
-nuxtApp.hook('page:finish', finish);
-// const pending = useState('pending');
-// watch([pending], () => {
-//   if (pending.value) start();
-//   if (!pending.value) finish();
-// })
+  function start() {
+    clear();
+    progress.value = 0;
+    isLoading.value = true;
+    if (opts.throttle) {
+      if (process.client) {
+        _throttle = setTimeout(_startTimer, opts.throttle);
+      }
+    } else {
+      _startTimer();
+    }
+  }
 
-onBeforeUnmount(() => clear);
-</script>
+  function finish() {
+    progress.value = 100;
+    _hide();
+  }
 
-<template>
-  <div
-      class="nuxt-progress"
-      :class="{
-      'nuxt-progress-failed': !data.canSucceed,
-    }"
-      :style="{
-      width: data.percent + '%',
-      left: data.left,
-      height: props.height + 'px',
-      opacity: data.show ? 1 : 0,
-      backgroundSize: (100 / data.percent) * 100 + '% auto',
-    }"
-  />
-</template>
+  function clear() {
+    clearInterval(_timer);
+    clearTimeout(_throttle);
+    _timer = null;
+    _throttle = null;
+  }
 
-<style>
-.nuxt-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 0;
-  opacity: 1;
-  transition: width 0.1s, height 0.4s, opacity 0.4s;
-  background: repeating-linear-gradient(
-      to right,
-      #f11542 0%,
-      #af0730 50%,
-      #9a0707 100%
-  );
+  function _increase(num) {
+    progress.value = Math.min(100, progress.value + num);
+  }
 
-  z-index: 999999;
+  function _hide() {
+    clear();
+    if (process.client) {
+      setTimeout(() => {
+        isLoading.value = false;
+        setTimeout(() => {
+          progress.value = 0;
+        }, 400);
+      }, 500);
+    }
+  }
+
+  function _startTimer() {
+    if (process.client) {
+      _timer = setInterval(() => {
+        _increase(step.value);
+      }, 100);
+    }
+  }
+
+  return {
+    progress,
+    isLoading,
+    start,
+    finish,
+    clear
+  };
 }
-</style>
+
+</script>

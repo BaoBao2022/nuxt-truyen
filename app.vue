@@ -30,13 +30,13 @@ const publicConfig = config.public;
     <Meta itemprop="description"
           :content="`Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 💚10 triệu thành viên tại ${publicConfig.SIZE_NAME}`"/>
 
-    <Meta rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
-    <Meta rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
-    <Meta rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+    <Meta rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png"/>
+    <Meta rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png"/>
+    <Meta rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png"/>
     <Meta rel="manifest" href="/assets/favicons/site.webmanifest"></Meta>
 
 
   </Head>
-  <NuxtLoadingBar/>
-  <NuxtPage/>
+    <NuxtLoadingBar/>
+    <NuxtPage/>
 </template>
