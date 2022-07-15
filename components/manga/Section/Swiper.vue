@@ -53,7 +53,7 @@ const backgroundImage = (spotlight) => {
     <div class="group relative w-full md:h-[350px] xl:h-[400px] 2xl:h-[450px] overflow-hidden">
       <div class="w-full h-0" v-if="mangaActive && mangaActive.thumbnail">
         <figure
-            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right bg-no-repeat"
+            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-center bg-no-repeat"
             :style="backgroundImage(mangaActive)">
         </figure>
         <LazySharedSwiperCard :spotlight="mangaActive"/>
