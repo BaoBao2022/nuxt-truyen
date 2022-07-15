@@ -9,7 +9,7 @@ const publicConfig = config.public;
     <div class="overflow-x-hidden ">
       <slot/>
     </div>
-    <LazyTheFooter/>
+<!--    <LazyTheFooter/>-->
   </div>
 
 </template>
