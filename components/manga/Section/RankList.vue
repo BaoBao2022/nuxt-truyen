@@ -7,14 +7,6 @@ import {PropType} from 'vue';
 import {Manga} from '~/types';
 
 const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
-// defineProps({
-//   title: String,
-//   limit: {
-//     type: Number,
-//     default: 5
-//   },
-//   mangas: Array as PropType<Manga[]>,
-// });
 
 </script>
 
