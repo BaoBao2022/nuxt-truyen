@@ -45,7 +45,7 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
           </div>
         </div>
         <p class="text-center text-xl mt-2">
-          Lịch xử
+          Lịch sử
         </p>
       </div>
     </div>

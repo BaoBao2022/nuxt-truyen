@@ -12,9 +12,9 @@ const devices = useState('devices');
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
       <LazyVisitedComic/>
       <LazyHomePageFavoriteStory/>
+      <LazyHomePageCatelog/>
       <LazyHomePageMaybeLove/>
       <LazyHomePageNewStory/>
-      <LazyHomePageCatelog/>
       <LazyHomePageMangaUpdated/>
     </section>
     <!--    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">-->
