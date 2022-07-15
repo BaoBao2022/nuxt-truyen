@@ -57,6 +57,14 @@
   background-color: rgba(63, 63, 63, .4);
 }
 
+.odd_margin-right:nth-child(odd) {
+  margin-right: 7px;
+}
+
+.odd_margin-left:nth-last-child(odd) {
+  margin-left: 7px;
+}
+
 .line-clamp-1, .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;

@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     },
     meta: {
         title: "Đọc truyện tranh online - Truyện gì cũng có - MeeTruyen",
-        link: [{ rel: "icon", type: "image/x-icon", href: "~/assets/images/favicon.ico" }],
+        link: [{ rel: "icon", type: "image/x-icon", href: "https://i.im.ge/2022/07/15/FotbqY.png" }],
         /* For PWA. */
         // name: "theme-color", content: '#fff'
     },

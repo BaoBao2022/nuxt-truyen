@@ -10,7 +10,7 @@ const {
 } = useLazyFetch<Manga[]>(`/api/spotlights`);
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
-  delay: 2500,
+  delay: 3500,
   disableOnInteraction: false
 });
 
@@ -23,12 +23,7 @@ const backgroundImage = (spotlight) => {
 </script>
 
 <template>
-  <div class="px-4 md:px-12 pt-20 pb-8 overflow-hidden" v-if="pending">
-    <div class="">
-      <div class="animate-pulse bg-white/20 aspect-w-16 aspect-h-9 rounded-md"></div>
-    </div>
-  </div>
-
+  <SectionSpotlightBannerLoading v-if="pending"/>
   <template v-else>
     <Swiper :loop="true" :modules="modules" :autoplay="autoPlaySettings"
             class="relative">

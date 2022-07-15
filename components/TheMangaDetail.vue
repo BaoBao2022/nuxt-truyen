@@ -23,10 +23,10 @@ watchEffect(() => {
 const {
   data: manga,
   pending
-} = useFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
+} = useLazyFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
 
 const comic = ref("");
-const {data: month} = useFetch(`/api/top-month?comic=${comic.value}`);
+const {data: month} = useLazyFetch(`/api/top-month?comic=${comic.value}`);
 
 useHead({
   title: manga.value?.title,

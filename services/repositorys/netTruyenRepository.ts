@@ -19,6 +19,7 @@ const netTruyenAPI: Repository = {
                 genres: req.genres ? req.genres : undefined,
                 top: req.top ? req.top : undefined,
                 status: req.status ? req.status : undefined,
+                limit: req.limit ? req.limit : undefined,
             },
         });
     },

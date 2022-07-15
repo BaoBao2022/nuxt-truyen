@@ -1,5 +1,5 @@
 .dark-mode body {
-  background-color: #000000;
+  background-color: #1a1a1a;
   color: #fff;
 }
 
@@ -9,14 +9,6 @@
 
 .chapter a {
   font-size: 13px;
-  color: #000;
-}
-
-.dark-mode .dark-box, .dark-mode .dark-box a {
-  color: #fff;
-}
-
-.dark-box a {
   color: #000;
 }
 
@@ -50,10 +42,6 @@
   background: linear-gradient(0deg, #010101, rgba(64, 54, 103, .1) 70%, #a40000);
   transition: all;
   z-index: 2;
-}
-
-.dark-mode a, .dark-mode .page-title, .dark-mode .breadcrumb, .dark-mode .breadcrumb a, .dark-mode .user-page .link {
-  color: #ff9601;
 }
 
 .items .item figcaption h3 a {
@@ -135,14 +123,4 @@
 
 .dark-mode .chapter a:focus, .dark-mode .chapter a:visited, .dark-mode a.visited, .dark-mode .darkBox ul li .chapter .viewed a {
   color: #9d9d9d;
-}
-
-.dark-box h2 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #2980b9;
-}
-
-.dark-mode .dark-box h2 {
-  color: #ff9601;
 }
