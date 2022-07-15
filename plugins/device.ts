@@ -1,7 +1,7 @@
 import MobileDetect from 'mobile-detect';
 import {useState} from "#imports";
 
-export default () => {
+export default defineNuxtPlugin(() => {
     const headers = useRequestHeaders()
     const md = new MobileDetect(headers['user-agent'])
     const isMobile = md.phone() !== null || md.mobile() === 'UnknownMobile'
@@ -14,7 +14,5 @@ export default () => {
         hasDesktop: isDesktop
     }
 
-
     useState('devices', () => state)
-    return true;
-}
+})

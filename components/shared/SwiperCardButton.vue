@@ -9,7 +9,6 @@ defineProps({
   spotlight: Object as PropType<Manga>
 })
 
-
 const navigateToManga = async (spotlight) => {
   const path = await useFirstPathChapter(spotlight, '');
   return navigateTo({

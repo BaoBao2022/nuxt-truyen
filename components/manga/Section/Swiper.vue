@@ -31,11 +31,11 @@ const swiperBreakPoints = {
     spaceBetween: 10,
   },
   640: {
-    slidesPerView: 4,
+    slidesPerView: 6,
     spaceBetween: 20,
   },
   1300: {
-    slidesPerView: 6,
+    slidesPerView: 8,
     spaceBetween: 20,
   },
 };
@@ -53,7 +53,7 @@ const backgroundImage = (spotlight) => {
     <div class="group relative w-full md:h-[350px] xl:h-[400px] 2xl:h-[450px] overflow-hidden">
       <div class="w-full h-0" v-if="mangaActive && mangaActive.thumbnail">
         <figure
-            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right-top bg-no-repeat md:h-[300px] lg:h-[480px]"
+            class="deslide-cover lg:h-[480px] md:h-[350px] h-[250px] bg-right bg-no-repeat"
             :style="backgroundImage(mangaActive)">
         </figure>
         <LazySharedSwiperCard :spotlight="mangaActive"/>
@@ -88,23 +88,17 @@ const backgroundImage = (spotlight) => {
             <span v-for="genre in mangaActive.genres">{{ genre }}</span>
           </div>
         </div>
-        <div class="h-[200px] prose !max-w-full hidden mt-2 text-base md:block text-gray-200 md:line-clamp-5">
-          Everyone has a part
-          of themselves they cannot show to anyone else.
-          <br><br>
-          At a time when all nations of the world were involved in a fierce war of information happening behind closed
-          doors, Ostania and Westalis had been in a state of cold war against one another for decades. The Westalis
-          Intelligence Services' Eastern-Focused Division (WISE) sends their most talented spy, "Twilight," on a
-          top-secret mission to investigate the movements of Donovan Desmond, the chairman of Ostania's National Unity
-          Party, who is threatening peace efforts between the two nations.
-          <br><br>
+        <div class="m-h-[100px] prose !max-w-full hidden text-base md:block text-gray-200 md:line-clamp-5 lg:line-clamp-6">
           {{ mangaActive.review }}
-          <LazySharedSwiperCardButton :spotlight="mangaActive"/>
+          <br>
+          <br>
+          Author: {{ mangaActive.author ? mangaActive.author : 'N/a' }}
         </div>
+          <LazySharedSwiperCardButton :spotlight="mangaActive"/>
       </div>
       <div class="absolute bottom-0 w-full h-16 banner__overlay--down"></div>
     </div>
-    <div class="w-full px-4 pb-12 md:px-12 mt-4">
+    <div class="w-full px-4 md:px-12 mt-4">
       <div
           class="swiper-container swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events !overflow-visible">
         <ClientOnly>
@@ -114,9 +108,9 @@ const backgroundImage = (spotlight) => {
               :modules="modules"
               :effect="'coverflow'"
               :coverflowEffect="{
-                rotate: 30,
+                rotate: 10,
                 stretch: 0,
-                depth: 75,
+                depth: 100,
                 modifier: 1,
                 slideShadows: true,
               }"
@@ -124,15 +118,19 @@ const backgroundImage = (spotlight) => {
               :centered-slides="true"
               :centered-slides-bounds="true"
               :breakpoints="swiperBreakPoints">
-            <SwiperSlide v-slot="{ isActive }" v-for="manga in mangas">
-              <div class="w-full h-[270px]"
+            <SwiperSlide v-slot="{ isActive }" v-for="manga in mangas" class="rounded-xl">
+              <div class="duration-700 ease-in-out transform hover:scale-105 transition-all w-full h-[270px]"
                    :style="isActive ? {'opacity': '1'} : {'opacity': '0.2', 'transform': 'none'}">
                 <div class="relative aspect-w-9 aspect-h-16">
-                  <div style="opacity: 1">
+                  <div>
                     <span class="span-position">
-                    <img
+                    <nuxt-img
+                        format="webp"
+                        loading="lazy"
                         :src="manga.thumbnail"
-                        class="img-position" style="object-fit: contain">
+                        class="img-position" 
+                        style="object-fit: contain">
+                    </nuxt-img>
                     </span>
                   </div>
                 </div>

@@ -694,3 +694,7 @@ input[type='number'] {
   object-fit: cover;
   object-position: 50% 35%;
 }
+
+.items figure:hover {
+  transform: scale(0.9, 0.9);
+}
