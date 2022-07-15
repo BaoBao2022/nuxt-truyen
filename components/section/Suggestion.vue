@@ -4,10 +4,10 @@ import {Manga} from '~/types';
 import {ChevronRightIcon} from "@heroicons/vue/solid";
 import {PropType} from "vue";
 
-defineProps({
-  mangas: Array as PropType<Manga[]>,
-});
-
+const {
+  data: mangas,
+  pending,
+} = await useLazyFetch<Manga[]>(`/api/manga-updated`);
 const navigateToManga = async (chapterNumber: string, chapterId: string, slug: string) => {
   const path = await useChapter(chapterNumber, chapterId, slug);
 
@@ -18,7 +18,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3">
+  <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
     <NuxtLink to="/filter?view=newComic"
               class="items-center	justify-start font-secondary h-[40px] flex mx-3 page-title custom-title">
       Cập nhật truyện mới
