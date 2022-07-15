@@ -8,13 +8,11 @@ export default defineEventHandler(async (event) => {
     //     'dam-my',
     //     'manhua',
     // ]
-    const filterRequest: FilterRequest = {page: 1, genres: "ngon-tinh", top: "month"}
+    const filterRequest: FilterRequest = {page: 1, genres: "dam-my", top: "day"}
 
     const mangas = await NET_TRUYEN_API?.filter(filterRequest);
     if (mangas.status !== 200)
         return []
 
-    const response = mangas?.data.data.filter(spotlight => spotlight.review !== '');
-    return response;
-
+    return mangas?.data.data.filter(spotlight => spotlight.review !== '');
 });

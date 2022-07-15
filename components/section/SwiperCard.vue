@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {useSwiper} from 'swiper/vue';
 
 defineProps({
   spotlight: Object,

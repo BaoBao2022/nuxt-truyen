@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import {Manga} from "~/types";
 
-const comic = ref("");
 const {
   data: mangas,
   pending,
@@ -11,18 +10,15 @@ const devices = useState('devices');
 </script>
 
 <template>
-  <div v-if="pending">
-    <CommonPageLoading/>
-  </div>
-  <main v-else>
-    <HomePageSpotlight :spotlights="mangas" v-if="devices.hasMobile"/>
-    <MangaSectionSwiper :mangas="mangas" v-if="!devices.hasMobile"/>
+  <main v-if="!pending">
+    <LazySectionSpotlight :spotlights="mangas" v-if="devices.hasMobile"/>
+    <LazySectionSwiper v-if="!devices.hasMobile"/>
     <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
-        <MangaSectionSuggestion :mangas="mangas"/>
+        <LazySectionSuggestion :mangas="mangas"/>
         <div>
           <LazyVisitedComic/>
-          <LazyMangaSectionRankList/>
+          <LazySectionRankList/>
         </div>
       </div>
     </section>

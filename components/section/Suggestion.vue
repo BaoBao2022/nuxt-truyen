@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
-import {Manga} from '~~/types';
+import {Manga} from '~/types';
 import {ChevronRightIcon} from "@heroicons/vue/solid";
 import {PropType} from "vue";
 

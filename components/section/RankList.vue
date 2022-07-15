@@ -31,7 +31,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
     </ul>
     <div class="tab-pane dark-box">
       <ul class="w-full space-y-4 overflow-hidden">
-        <li class="flex w-full px-4 py-2" v-for="manga in mangas.slice(0, 10)" :key="manga.slug">
+        <li class="flex w-full px-4 py-2" v-for="manga in mangas" :key="manga.slug">
           <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <figure class="relative h-[45px] w-[100px]">
             <span class="default-span-figure">

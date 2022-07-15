@@ -64,7 +64,7 @@ const mangas = props.spotlights.filter(spotlight => spotlight.review !== '');
                   </svg>
                   <p class="text-white">{{ spotlight.view }}</p></div>
                 <div class="flex line-clamp-1 items-center space-x-2">
-                  <span class="text-white" v-for="genre in spotlight.genres.slice(0, 3)">{{ genre }}</span>
+                  <span class="text-white" v-for="genre in spotlight.genres">{{ genre }}</span>
                 </div>
               </div>
             </div>
