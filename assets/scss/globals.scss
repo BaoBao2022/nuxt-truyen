@@ -321,11 +321,11 @@ input[type='number'] {
 
 .deslide-cover:before {
   z-index: 1;
-  background: linear-gradient(90deg, #1e1d21, rgba(32, 33, 37, .6) 40%, rgba(32, 33, 37, 0) 60%, rgba(32, 33, 37, 0) 80%, #181a21)
+  background: linear-gradient(90deg, #470707, #000000 58%, rgba(32, 33, 37, 0) 60%, rgba(32, 33, 37, 0) 100%, #181a21);
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg, #010101, rgba(64, 54, 103, .1) 70%, #000);
+  background: linear-gradient(0deg, #000000, rgba(64, 54, 103, .1) 70%, #1b1413);
   z-index: 2;
 }
 

@@ -6,7 +6,7 @@ const props = defineProps({
   mangas: Array as PropType<Manga[]>
 })
 
-const modules = ref([EffectCoverflow, Navigation]);
+const modules = ref([EffectCoverflow, Navigation, Autoplay]);
 const autoPlaySettings = ref({
   delay: 3500,
   disableOnInteraction: false,
