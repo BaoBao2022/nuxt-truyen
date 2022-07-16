@@ -22,23 +22,23 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div class="visited-comics px-3 mb-4">
-    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-      📚 Lịch sử đọc
-    </h2>
-    <ClientOnly v-if="visitedComics && visitedComics.length > 0">
+  <ClientOnly v-if="visitedComics && visitedComics.length > 0">
+    <div class="visited-comics px-3 mb-4">
+      <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">📚
+        Lịch sử đọc
+      </h2>
       <div class="box dark-box">
+
         <swiper
             :slides-per-view="4"
             :space-between="14">
           <swiper-slide v-for="visited in visitedComics">
             <NuxtLink :to="useMangaDetailPagePath(visited.slug)">
               <div class="duration-200 ease-in-out transition-all">
-                <nuxt-img loading="lazy"
-                          class="rounded-xl h-[100px] object-cover"
-                          :src="visited.thumbnail"
-                          fil="fill">
-                </nuxt-img>
+                <img loading="lazy"
+                     class="rounded-xl h-[100px] object-cover"
+                     :src="visited.thumbnail"
+                     fil="fill">
                 <h2 class="text-base line-clamp-1 mt-1 text-white">
                   {{ visited.title }}
                 </h2>
@@ -51,7 +51,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
           </swiper-slide>
         </swiper>
       </div>
-    </ClientOnly>
-    <PulseVisitedComic v-else/>
-  </div>
+    </div>
+  </ClientOnly>
+  <PulseVisitedComic v-else/>
 </template>

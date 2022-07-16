@@ -25,7 +25,6 @@ if (typeof document !== 'undefined')
         <div v-if="open" class="modal">
           <LazyTheSidebar/>
         </div>
-
       </Teleport>
     </div>
     <div class="relative h-[35px] w-[35px] mr-8">

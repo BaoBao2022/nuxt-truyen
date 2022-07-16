@@ -3,7 +3,7 @@
 
 <template>
   <div class="px-3 mb-4 mt-8">
-    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
+    <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
       Phân loại
     </h2>
     <div class="grid grid-cols-2">

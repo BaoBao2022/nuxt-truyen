@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {SourceParams} from "~/contants";
 import {useHead, watchEffect, useRoute} from "#imports";
 import {MangaDetails} from "~/types";
 
@@ -13,25 +12,25 @@ import {
 
 const route = useRoute();
 const params = route.params;
-const slug = ref<string | readonly string[]>("");
-const limitRank = ref<number>(7);
-
-watchEffect(() => {
-  slug.value = params.slug;
-});
+const slug = ref(params.slug);
 
 const {
   data: manga,
-  pending
-} = useLazyFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
+  pending,
+  refresh
+} = await useFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
 
-const comic = ref("");
-const {data: month} = useLazyFetch(`/api/top-month?comic=${comic.value}`);
+console.log("manga", manga.value)
 
-useHead({
-  title: manga.value?.title,
-  description: manga.value?.author,
-})
+watchEffect(async () => {
+  console.log("params", params)
+  // slug.value = params.slug;
+  await refresh();
+});
+// useHead({
+//   title: manga.value?.title,
+//   description: manga.value?.author,
+// })
 
 </script>
 
@@ -60,12 +59,12 @@ useHead({
             <li>
               <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
               <NuxtLink class="a-default">
-                {{ manga.title }}
+                {{ manga?.title }}
               </NuxtLink>
             </li>
           </ul>
           <h1 class="text-center uppercase font-semibold text-3xl title-detail">
-            {{ manga.title }}
+            {{ manga?.title }}
           </h1>
           <time class="small">
             {{ manga.updatedAt }}
@@ -136,7 +135,7 @@ useHead({
               </ul>
               <div class="mt-10" itemscope="" itemtype="http://schema.org/Book">
                 <a>
-                  <span itemprop="name">{{ manga.title }} </span>
+                  <span itemprop="name">{{ manga?.title }} </span>
                 </a>
                 <span itemprop="aggregateRating" itemscope=""
                       itemtype="https://schema.org/AggregateRating"> Xếp hạng: <span itemprop="ratingValue">4.7</span>/5 - <span
@@ -160,9 +159,6 @@ useHead({
           <LazyMangaDetailReview :review="manga.review"/>
           <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
         </article>
-        <div class="hidden lg:block col-span-2">
-          <LazySectionRankList :limit="limitRank" :mangas="month"/>
-        </div>
       </div>
     </div>
   </NuxtLayout>

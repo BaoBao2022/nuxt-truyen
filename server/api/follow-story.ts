@@ -6,8 +6,8 @@ export default defineEventHandler(async () => {
     const filterRequest: FilterRequest = {
         page: 1,
         status: 'all',
-        sort: 'follow' as any,
-        limit: 4,
+        sort: 'day' as any,
+        limit: 6,
     }
 
     const mangas = await API?.filter(filterRequest);
