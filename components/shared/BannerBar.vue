@@ -43,8 +43,8 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       </div>
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
-          <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">
-            <BookOpenIcon class="w-9 h-9 text-amber-700"/>
+          <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center text-3xl">
+            📚
           </div>
         </div>
         <p class="text-center text-xl mt-2">

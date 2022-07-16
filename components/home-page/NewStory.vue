@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {Manga, MANGA_SORT} from "~/types";
+import {Manga} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-updated`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
 
 </script>
 

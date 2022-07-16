@@ -6,8 +6,8 @@ export default defineEventHandler(async () => {
     const API = repositoryFactory(NET_TRUYEN);
     const filterRequest: FilterRequest = {
         page: 1,
-        status: '-1',
-        sort: MANGA_SORT.new,
+        status: 'all',
+        sort: 'newComic' as any,
         limit: 4,
     }
 
