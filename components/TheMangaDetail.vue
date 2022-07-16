@@ -1,14 +1,7 @@
 <script lang="ts" setup>
-import {useHead, watchEffect, useRoute} from "#imports";
 import {MangaDetails} from "~/types";
-
-import {
-  ChevronDoubleRightIcon,
-  UserIcon,
-  RssIcon,
-  TagIcon,
-  EyeIcon,
-} from '@heroicons/vue/solid';
+import {AcademicCapIcon} from "@heroicons/vue/solid";
+import {TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
 
 const route = useRoute();
 const params = route.params;
@@ -19,18 +12,30 @@ const {
   pending,
   refresh
 } = await useFetch<MangaDetails>(`/api/comic?slug=${slug.value}`);
-
-console.log("manga", manga.value)
-
+const backgroundImage = (spotlight) => {
+  return {
+    backgroundImage: `url(${spotlight.thumbnail})`,
+  }
+}
+const categories = ref({
+  'Chi tiết': [] as any,
+  'Chapters': [] as any,
+})
 watchEffect(async () => {
-  console.log("params", params)
-  // slug.value = params.slug;
+  categories.value['Chi tiết'] = [
+    {
+      id: 1,
+      ...manga.value
+    }
+  ]
+  categories.value['Chapters'] = [
+    {
+      id: 2,
+      ...manga.value.chapterList
+    }
+  ]
   await refresh();
 });
-// useHead({
-//   title: manga.value?.title,
-//   description: manga.value?.author,
-// })
 
 </script>
 
@@ -39,126 +44,100 @@ watchEffect(async () => {
     <div v-if="pending">
       <CommonPageLoading/>
     </div>
-    <div class="flex h-fit flex-col pt-24" v-else>
-      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-7">
-        <article class="col-span-5 manga-detail detail-info">
-          <ul class="breadcrumb px-3 mb-4">
-            <li>
-              <NuxtLink to="/" class="itemcrumb">
-                <a class="a-default">
-                  Trang chủ
-                </a>
-              </NuxtLink>
-            </li>
-            <li>
-              <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
-              <NuxtLink class="a-default" to="/filter">
-                Thể loại
-              </NuxtLink>
-            </li>
-            <li>
-              <ChevronDoubleRightIcon class="w-3 h-3 initial mr-2 ml-2"/>
-              <NuxtLink class="a-default">
-                {{ manga?.title }}
-              </NuxtLink>
-            </li>
-          </ul>
-          <h1 class="text-center uppercase font-semibold text-3xl title-detail">
-            {{ manga?.title }}
+    <div class="relative flex h-fit flex-col" v-else>
+      <Head>
+        <Title>{{manga.value?.title}}</Title>
+        <Meta name="description" content="{{manga.value?.author}}"/>
+      </Head>
+      <div
+          class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end top-[135px] w-full">
+        <div class="p-4 w-full">
+          <h1 class="text-xl font-bold uppercase line-clamp-2 text-white w-[70%] h-[35px]">
+            <a class="flex items-end h-[100%]">{{ manga.title }}</a>
           </h1>
-          <time class="small">
-            {{ manga.updatedAt }}
-          </time>
-          <div class="flex grid grid-cols-1 lg:grid-cols-4 mt-4">
-            <div class="px-2 absolute-center">
-              <div class="w-[250px] md:w-[250px] md:min-w-[198px] lg:w-[198px] h-[333px] lg:h-[268px] lg:h-[268px]">
-                <figure>
-                  <nuxt-img
-                      format="webp"
-                      placeholder="../assets/images/placeholder.png"
-                      class="h-[333px] lg:h-[268px] lg:h-[268px]"
-                      :src="manga.thumbnail"
-                      sizes="sm:100vw md:100vw lg:100vw"
-                      loading="lazy" fil="fill">
-                  </nuxt-img>
-                </figure>
-              </div>
+          <div class="flex flex-wrap items-center mt-4 text-lg gap-x-8">
+            <div class="flex items-center gap-x-2">
+              <p class="text-white bg-highlight banner-author">
+                <a class="p-3">{{ manga.author }}</a>
+              </p>
             </div>
-            <div class="px-5 col-span-3 mt-4">
-              <ul class="list-info pt-4">
-                <li class="author grid grid-cols-9 mb-3">
-                  <div class="flex col-span-3">
-                    <p class="name absolute-center-start">
-                      <UserIcon class="h-7 w-7 mr-2"/>
-                      Tác giả
-                    </p>
-                  </div>
-                  <p class="col-span-6">
-                    {{ manga.author }}
-                  </p>
-                </li>
-                <li class="status grid grid-cols-9 mb-3">
-                  <div class="flex col-span-3">
-                    <p class="name absolute-center-start">
-                      <RssIcon class="h-7 w-7 mr-2"/>
-                      Tình trạng
-                    </p>
-                  </div>
-                  <p class="col-span-6">
-                    {{ manga.status }}
-                  </p>
-                </li>
-                <li class="kind grid grid-cols-9 mb-3">
-                  <div class="flex col-span-3 items-start">
-                    <p class="name absolute-center-start">
-                      <TagIcon class="h-7 w-7 mr-2"/>
-                      Thể loại
-                    </p>
-                  </div>
-                  <p class="col-span-6">
-                    <a class="a-default" v-for="(genre, g) in manga.genres" :key="`genre${g}`">
-                      {{ genre.genreTitle }} <span v-if="g !== manga.genres.length - 1">- </span>
-                    </a>
-                  </p>
-                </li>
-                <li class="grid grid-cols-9 mb-1">
-                  <div class="flex col-span-3">
-                    <p class="name absolute-center-start">
-                      <EyeIcon class="h-7 w-7 mr-2"/>
-                      Lượt xem
-                    </p>
-                  </div>
-                  <p class="col-span-6">
-                    {{ manga.view }}
-                  </p>
-                </li>
-              </ul>
-              <div class="mt-10" itemscope="" itemtype="http://schema.org/Book">
-                <a>
-                  <span itemprop="name">{{ manga?.title }} </span>
-                </a>
-                <span itemprop="aggregateRating" itemscope=""
-                      itemtype="https://schema.org/AggregateRating"> Xếp hạng: <span itemprop="ratingValue">4.7</span>/5 - <span
-                    itemprop="ratingCount">2.380</span> Lượt đánh giá.</span>
-              </div>
-              <div class="star flex items-center" data-id="62882" data-rating="3.7" data-allowrating="true"
-                   style="cursor: pointer;">
-                <img
-                    src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="1" title="bad">&nbsp;<img
-                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="2" title="poor">&nbsp;<img
-                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-on.png" alt="3" title="regular">&nbsp;<img
-                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-half.png" alt="4" title="good">&nbsp;<img
-                  src="http://st.nettruyenco.com/Data/Sites/1/skins/comic/images/star-off.png" alt="5" title="gorgeous"><input
-                  type="hidden" name="score" value="3.7">
-              </div>
-              <LazyMangaDetailFollowButton/>
-              <LazyMangaDetailReadButton :slug="slug"/>
+            <div class="flex items-center gap-x-2">
+              <p class="text-white flex items-center">
+                <span class="text-xs mr-1">🔥</span>
+                {{ manga.view }}
+              </p>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="relative aspect-w-16 aspect-h-9 rounded-md">
+        <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none"
+                :style="backgroundImage(manga)">
+        </figure>
+        <div>
+          <img
+              class="img-position z-10"
+              :src="manga.thumbnail" style="object-fit: contain">
+        </div>
+      </div>
+      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-7">
+        <div>
+          <TabGroup>
+            <TabList class="flex space-x-1 rounded-xl">
+              <Tab
+                  v-for="category in Object.keys(categories)"
+                  as="template"
+                  :key="category"
+                  v-slot="{ selected }">
+                <button :class="[
+              'w-full py-2.5 text-sm font-medium leading-5 duration-100 ease-in-out',
+              selected
+                ? 'shadow text-primary border-b-[1px] border-rose-900'
+                : '']">
+                  {{ category }}
+                </button>
+              </Tab>
+            </TabList>
+            <TabPanels class="mt-2">
+              <TabPanel
+                  v-for="(cates, cId) in Object.values(categories)" :key="cId">
+                <div v-for="cate in cates" :key="cate.id">
+                  <div v-if="cate.id === 1">
+                    <a class="text-xl flex justify-between">
+                      <div class="status text-primary flex items-center">
+                        <span class="text-xs mr-1 ml-1">📅</span> {{ cate.status }}
+                      </div>
+                      <div class="star flex items-center" data-id="62882" data-rating="3.7" data-allowrating="true"
+                           style="cursor: pointer;">
+                        ⭐⭐⭐⭐
+                      </div>
+                    </a>
+                    <h4 class="text-base leading-7 text-dark">
+                      <LazyMangaDetailReview :review="cate.review"/>
+                    </h4>
 
-          <LazyMangaDetailReview :review="manga.review"/>
-          <LazyMangaChaplist :slug="slug" :chapterList="manga.chapterList"/>
-        </article>
+                    <div class="flex flex-wrap">
+                      <span class="mr-2">🎓</span>
+                      <span
+                          class="banner-author text-white bg-highlight mr-3 flex items-center h-[20px]"
+                          v-for="genre in manga.genres">
+                        <a class="p-3 text-base line-clamp-1">
+                          {{ genre.genreTitle }}
+                        </a>
+                      </span>
+                    </div>
+
+                    <LazyMangaDetailReadButton :slug="slug"/>
+                  </div>
+
+                  <div v-if="cate.id === 2">
+                    <LazyMangaChaplist :slug="slug" :chapterList="cate"/>
+                  </div>
+                </div>
+              </TabPanel>
+            </TabPanels>
+          </TabGroup>
+        </div>
       </div>
     </div>
   </NuxtLayout>

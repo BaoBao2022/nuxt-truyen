@@ -1,7 +1,9 @@
 <script setup>
 import {ref} from 'vue'
+import {ArrowSmLeftIcon} from '@heroicons/vue/solid'
 
-const open = useState('openNav', () => false)
+// const open = useState('openNav', () => false)
+const route = useRoute();
 const scrollTransform = ref(0);
 if (typeof document !== 'undefined')
   document.addEventListener('scroll', (e) => {
@@ -11,37 +13,26 @@ if (typeof document !== 'undefined')
 </script>
 
 <template>
-  <div :class="scrollTransform === 0  ? 'bg-gradient-to-b from-black/80 via-black/60' : 'bg-black'"
+  <div :class="scrollTransform === 0  ? 'bg-gradient-to-b from-black/80 via-black/60' : 'bg-black/70'"
        class="px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 px-4 md:px-12 flex items-center h-24 fixed top w-full z-50 transition duration-500 to-transparent">
     <div class="sm:hidden mr-4">
-      <button @click="open = !open">
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="w-6 h-6"
-             height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-          <path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>
-        </svg>
-      </button>
+      <NuxtLink class="flex items-center" to="/" v-if="route.name !== 'index'">
+<!--        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="w-6 h-6"-->
+<!--             height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">-->
+<!--          <path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>-->
+<!--        </svg>-->
 
-      <Teleport to="body">
-        <div v-if="open" class="modal">
-          <LazyTheSidebar/>
-        </div>
-      </Teleport>
-    </div>
-    <div class="relative h-[35px] w-[35px] mr-8">
-      <NuxtLink to="/">
-        <div class="relative flex mx-auto w-[30px] h-[30px] mb-8">
-          <div style="opacity: 1;">
-          <span class="span-position">
-            <img
-                class="img-position"
-                alt="logo"
-                src="~/assets/images/logo-banner.png"
-                sizes="100vw">
-        </span>
-          </div>
-        </div>
+        <ArrowSmLeftIcon class="h-8 w-8" />
       </NuxtLink>
+
+<!--      <Teleport to="body">-->
+<!--        <div v-if="open" class="modal">-->
+<!--          <LazyTheSidebar/>-->
+<!--        </div>-->
+<!--      </Teleport>-->
     </div>
+<!--    <div class="relative h-[35px] w-[35px] mr-8">-->
+<!--    </div>-->
     <div class="hidden sm:flex items-center space-x-6 font-semibold text-typography-secondary">
       <NuxtLink class="hover:text-white transition duration-300 text-primary-300" to="/filter?gerens=anime">
         <p class="hover:text-white transition duration-300 text-gray-300">

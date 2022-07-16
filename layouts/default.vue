@@ -1,7 +1,7 @@
 <template>
   <div class="_layout">
     <LazyTheHeader/>
-    <div class="overflow-x-hidden ">
+    <div>
       <slot/>
     </div>
     <LazyTheFooter/>
