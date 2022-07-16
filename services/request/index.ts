@@ -60,6 +60,7 @@ export interface FilterRequest {
     top?: string;
     status?: string;
     limit?: number;
+    sort?: number;
 }
 
 export type RankingMangeRequest = {

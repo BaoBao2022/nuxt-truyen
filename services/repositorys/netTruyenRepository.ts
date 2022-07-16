@@ -17,7 +17,7 @@ const netTruyenAPI: Repository = {
             params: {
                 page: req.page ? req.page : undefined,
                 genres: req.genres ? req.genres : undefined,
-                top: req.top ? req.top : undefined,
+                sort: req.sort ? req.sort : undefined,
                 status: req.status ? req.status : undefined,
                 limit: req.limit ? req.limit : undefined,
             },

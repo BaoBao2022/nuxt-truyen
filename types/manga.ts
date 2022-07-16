@@ -6,16 +6,17 @@ import exp from "constants";
 
 export const MANGA_BROWSE_PAGE = "filter";
 export type SourceCrawl = "nettruyen" | "hamtruyen" | "mangareader";
-export const MANGA_SORT = {
-    'newComic': 0,
-    'all': 10,
-    'month': 11,
-    'week': 12,
-    'day': 13,
-    'new': 15,
-    'chapter': 30,
-    'follow': 20,
-    'comment': 25
+
+export enum MANGA_SORT {
+    newComic = 0,
+    all = 10,
+    month = 11,
+    week = 12,
+    day = 13,
+    new = 15,
+    chapter = 30,
+    follow = 20,
+    comment = 25
 }
 
 export interface SearchResponseData {

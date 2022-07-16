@@ -4,12 +4,6 @@ import {useStorage} from '@vueuse/core';
 import {BookOpenIcon} from "@heroicons/vue/outline";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
-// await new Promise((resolve) => {
-//   setTimeout(() => {
-//     resolve;
-//   }, 2000);
-// });
-
 const visitedComics: any = await useStorage(keys.visitedComics, {
   serializer: {
     read: (v: any) => v ? JSON.parse(v) : null,
@@ -28,13 +22,13 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <ClientOnly v-if="visitedComics && visitedComics.length > 0">
-    <div class="visited-comics px-3 mb-4">
+  <div class="visited-comics px-3 mb-4">
+    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
+      <BookOpenIcon class="h-7 w-7 text-amber-700 mr-2"/>
+      Lịch sử đọc
+    </h2>
+    <ClientOnly v-if="visitedComics && visitedComics.length > 0">
       <div class="box dark-box">
-        <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-          <BookOpenIcon class="h-7 w-7 text-amber-700 mr-2"/>
-          Lịch sử đọc
-        </h2>
         <swiper
             :slides-per-view="4"
             :space-between="14">
@@ -58,9 +52,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
           </swiper-slide>
         </swiper>
       </div>
-    </div>
-  </ClientOnly>
-  <template v-else>
-    <HomePageLoadingItem/>
-  </template>
+    </ClientOnly>
+    <PulseVisitedComic v-else/>
+  </div>
 </template>

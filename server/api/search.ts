@@ -20,15 +20,6 @@ export default defineEventHandler(async (event) => {
     if (mangas.status !== 200)
         return []
 
-
-    const visitedComics: any = useStorage(keys.visitedComics, {
-        serializer: {
-            read: (v: any) => v ? JSON.parse(v) : null,
-            write: (v: any) => JSON.stringify(v),
-        }
-    });
-
-
     return mangas?.data.data;
 
 });

@@ -99,7 +99,7 @@ export default class Lazy {
     }
 
     /**
-     * force loading
+     * force pulse
      *
      * @param {HTMLElement} el
      * @param {string} src

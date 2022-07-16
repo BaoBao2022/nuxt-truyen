@@ -8,9 +8,11 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
     <div class="icons grid grid-cols-4">
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
-          <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">
-            <img class="w-9 h-9 mb-2" src="~/assets/images/ranking.png">
-          </div>
+          <NuxtLink to="/filter?view=month">
+            <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">
+              <img class="w-9 h-9 mb-2" src="~/assets/images/ranking.png">
+            </div>
+          </NuxtLink>
         </div>
         <p class="text-center text-xl mt-2">
           BXH
@@ -18,9 +20,11 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       </div>
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
-          <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%] bg-white">
-            <img class="w-9 h-9" src="~/assets/images/category.png">
-          </div>
+          <NuxtLink to="/filter">
+            <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%] bg-white">
+              <img class="w-9 h-9" src="~/assets/images/category.png">
+            </div>
+          </NuxtLink>
         </div>
         <p class="text-center text-xl mt-2">
           Thể loại
@@ -37,7 +41,6 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
           Theo dõi
         </p>
       </div>
-
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
           <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">

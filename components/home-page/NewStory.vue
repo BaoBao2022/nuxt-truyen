@@ -2,14 +2,14 @@
 import {Manga, MANGA_SORT} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/search?sort=${MANGA_SORT.new}&limit=10`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-updated`);
 
 </script>
 
 <template>
   <div class="visited-comics px-3 mb-4" v-if="!pending">
     <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-      Truyện mới
+      Truyện mới cập nhật
     </h2>
     <swiper
         :slides-per-view="3"

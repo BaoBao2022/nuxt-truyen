@@ -9,7 +9,7 @@ const publicConfig = config.public;
 
 <template>
   <Head>
-    <Meta name="theme-color" content="#1a1a1a"/>
+    <Meta name="theme-color" content="#000"/>
     <Meta name="msapplication-navbutton-color" content="#1a1a1a"/>
     <Meta name="apple-mobile-web-app-status-bar-style" content="#1a1a1a"/>
     <Meta name="msapplication-starturl" content="/"/>
