@@ -13,7 +13,7 @@ const next = () => {
 </script>
 
 <template>
-  <div class="h-[200px] w-full overflow-hidden py-4">
+  <div class="h-[200px] w-full overflow-hidden py-4 bg-accent-1">
     <div class="mx-auto flex h-full w-full flex-col space-y-4 md:w-1/2">
       <div class="flex h-full w-full gap-4">
         <button @click="prev" data-id="prev"

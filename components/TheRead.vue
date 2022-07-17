@@ -128,7 +128,7 @@ useHead({
     <div class="relative flex h-fit flex-1 text-white">
       <div class="h-fit min-h-screen w-full bg-black">
         <div class="fixed top-0 left-0 z-[999] h-[60px] w-full">
-          <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl bg-black">
+          <div class="flex h-full w-full items-center justify-between text-lg md:text-2xl bg-accent-1">
             <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
               <LazyNuxtLink :to="useMangaDetailPagePath(params.slug)" class="flex">
                 <button>

@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="pt-24 mx-auto w-full lg:w-[60%]">
+  <div class="pt-24 mx-auto w-full lg:w-[60%] bg-accent-1">
     <div v-for="(chap, index) in chapters" :key="`page-${index}`" class="relative my-0 h-fit w-full">
       <nuxt-img
           format="webp"

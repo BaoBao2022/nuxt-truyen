@@ -321,11 +321,11 @@ input[type='number'] {
 
 .deslide-cover:before {
   z-index: 1;
-  background: linear-gradient(90deg,#202125,rgb(23 22 22 / 40%) 42%,rgba(32,33,37,0) 60%,rgba(32,33,37,0) 60%,#202125);
+  background: linear-gradient(90deg, #202125, rgb(23 22 22 / 40%) 42%, rgba(32, 33, 37, 0) 60%, rgba(32, 33, 37, 0) 60%, #202125);
 }
 
 .deslide-cover:after {
-  background: linear-gradient(0deg,#000000,rgba(32,33,37,0) 50%,#000000);
+  background: linear-gradient(0deg, #000000, rgba(32, 33, 37, 0) 50%, #000000);
   z-index: 2;
 }
 
@@ -683,4 +683,35 @@ input[type='number'] {
 .chapter_list-detail {
   //border-top: 0.1px solid #999;
   border-bottom: 0.1px solid #999;
+}
+
+.detail-info-counts {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  border-radius: 0.75rem;
+  height: 4.46875rem;
+}
+
+.detail-info-count-item-value {
+  text-align: center;
+  margin: 1.03125rem 0 0;
+  padding: 0;
+  height: 1.6875rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.6875rem;
+}
+
+.detail-info-count-item-label {
+  text-align: center;
+  font-size: .75rem;
+  margin: 0;
+  padding: 0;
+  height: 1rem;
+  font-weight: 600;
+  line-height: 1rem;
 }

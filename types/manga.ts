@@ -55,6 +55,7 @@ export interface MangaDetails {
     view: string;
     review: string;
     chapterList: Chapter[];
+    follow: string;
 }
 
 export type HeadlessManga = Pick<MangaDetails, "chapterList" | "title"> & {

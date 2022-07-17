@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import {keys, MangaDetails} from "~/types";
 import {TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
-import {useFetch} from "#app";
+import {useFetch, useHead} from "#app";
 import {watchEffect} from "vue";
 import {useStorage} from "@vueuse/core";
-import {onMounted} from "vue-demi";
 
 const route = useRoute();
 const params = route.params;
@@ -58,6 +57,34 @@ watchEffect(async () => {
   ]
   await refresh();
 });
+const getView = (view) => {
+  if (parseFloat(view)) {
+    return parseFloat(view).toFixed(2) + 'K'
+  }
+
+  return 'N/a'
+}
+const getFollow = (follow) => {
+  if (parseFloat(follow)) {
+    return parseFloat(follow).toFixed(2) + 'K'
+  }
+
+  return 'N/a'
+}
+
+useHead({
+  title: manga.value?.title,
+  meta: [
+    {
+      name: 'description',
+      content: manga.value?.author,
+    },
+    {
+      name: 'keywords',
+      content: manga.value?.title,
+    },
+  ]
+})
 </script>
 
 <template>
@@ -66,10 +93,6 @@ watchEffect(async () => {
       <CommonPageLoading/>
     </div>
     <div class="relative flex h-fit flex-col" v-else>
-      <Head>
-        <Title>{{manga.value?.title}}</Title>
-        <Meta name="description" content="{{manga.value?.author}}"/>
-      </Head>
       <div class="relative aspect-w-16 aspect-h-9 rounded-md">
         <div
             class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">
@@ -85,8 +108,8 @@ watchEffect(async () => {
               </div>
               <div class="flex items-center gap-x-2">
                 <p class="text-white flex items-center">
-                  <span class="text-xs mr-1">🔥</span>
-                  {{ manga.view }}
+                  <span class="text-xs mr-1">📆</span>
+                  {{ manga.status }}
                 </p>
               </div>
             </div>
@@ -119,24 +142,36 @@ watchEffect(async () => {
                 </button>
               </Tab>
             </TabList>
-            <TabPanels class="mt-2 px-3">
+            <TabPanels class="mt-2 px-3 overflow-auto">
               <TabPanel
                   v-for="(cates, cId) in Object.values(categories)" :key="cId">
                 <div v-for="cate in cates" :key="cate.id">
                   <div v-if="cate.id === 1">
-                    <a class="text-xl flex justify-between mt-4">
-                      <div class="status text-primary flex items-center">
-                        <span class="text-xs mr-1 ml-1">📅</span> {{ cate.status }}
+                    <div class="detail-info-counts bg-primary">
+                      <div class="detail-info-count-item">
+                        <p class="detail-info-count-item-value text-white">
+                          {{ getView(manga.view) }}
+                        </p>
+                        <p class="detail-info-count-item-label text-white">
+                          Lượt xem
+                        </p>
                       </div>
-                      <div class="star flex items-center" data-id="62882" data-rating="3.7" data-allowrating="true"
-                           style="cursor: pointer;">
-                        ⭐⭐⭐⭐
+                      <div class="detail-info-count-item">
+                        <p class="detail-info-count-item-value text-white">
+                          {{ getFollow(manga.follow) }}
+                        </p>
+                        <p class="detail-info-count-item-label text-white">
+                          Follow
+                        </p>
                       </div>
-                    </a>
+                      <div class="detail-info-count-item">
+                        <p class="detail-info-count-item-value text-white">
+                          <span>4.5</span>/5</p>
+                        <p class="detail-info-count-item-label text-white">Đánh giá</p></div>
+                    </div>
                     <h4 class="text-base leading-7 text-dark mt-2">
                       <LazyMangaDetailReview :review="cate.review"/>
                     </h4>
-
                     <div class="flex flex-wrap mt-4">
                       <span class="mr-2">🎓</span>
                       <span
@@ -147,7 +182,6 @@ watchEffect(async () => {
                         </a>
                       </span>
                     </div>
-                    <LazyMangaDetailReadButton/>
                   </div>
                   <div v-if="cate.id === 2">
                     <LazyMangaChaplist :slug="slug" :chapterList="cate"/>
@@ -159,5 +193,6 @@ watchEffect(async () => {
         </div>
       </div>
     </div>
+    <LazyMangaDetailReadButton/>
   </NuxtLayout>
 </template>

@@ -1,5 +1,5 @@
 .dark-mode body {
-  background-color: #1a1a1a;
+  background-color: #000;
   color: #fff;
 }
 
@@ -101,8 +101,4 @@
 
 .dark-mode .chapter a:focus, .dark-mode .chapter a:visited, .dark-mode a.visited, .dark-mode .darkBox ul li .chapter .viewed a {
   color: #9d9d9d;
-}
-
-._layout {
-  background: #252525;
 }

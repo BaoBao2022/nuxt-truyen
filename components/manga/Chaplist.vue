@@ -17,7 +17,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div class="list-chapter">
+  <div class="list-chapter overflow-auto" style="height: calc(100vh - 300px)">
     <ul>
       <li class="flex items-center justify-between py-3 grid grid-cols-1 chapter_list-detail"
           v-for="(chap, cI) in chapterList">
