@@ -22,19 +22,19 @@ const navigateToManga = async () => {
 </script>
 
 <template>
-  <div class="read-action fixed bottom-0 h-[60px] flex items-center w-full bg-deep-black justify-between">
+  <div class="read-action fixed bottom-0 h-[60px] flex items-center w-full bg-deep-black justify-between max-w-[450px]">
     <div class="flex items-start ml-10">
       <div class="text-dark mr-8" @click="share">
         <div class="flex items-center justify-center">
           <ShareIcon class="h-8 w-8"/>
         </div>
-        <a class="text-xl">Chia sẻ</a>
+        <a class="text-base">Chia sẻ</a>
       </div>
       <div class="text-dark" @click="follow">
         <div class="flex items-center justify-center">
           <HeartIcon class="h-8 w-8"/>
         </div>
-        <a class="text-xl">Follow</a>
+        <a class="text-base">Follow</a>
       </div>
     </div>
 

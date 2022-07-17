@@ -25,7 +25,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 
           <div class="chapter">
             <a class="text-base" @click="navigateToManga(chap.chapterNumber, chap.chapterId, slug)">
-              {{ cI }}. Chapter {{ chap.chapterNumber }}</a>
+              {{ chap.chapterNumber  }}. Chapter {{ chap.chapterNumber }}</a>
           </div>
           <div class=" no-wrap small small text-xs text-left text-dark">{{ chap.updatedAt }}</div>
           <div class=" small text-xs text-left text-dark">{{ chap.view }}</div>

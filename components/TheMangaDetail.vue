@@ -4,6 +4,8 @@ import {TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
 import {useFetch, useHead} from "#app";
 import {watchEffect} from "vue";
 import {useStorage} from "@vueuse/core";
+import {MessageType} from "vscode-languageserver-protocol";
+import Log = MessageType.Log;
 
 const route = useRoute();
 const params = route.params;
@@ -58,6 +60,7 @@ watchEffect(async () => {
   await refresh();
 });
 const getView = (view) => {
+  console.log("view", view)
   if (parseFloat(view)) {
     return parseFloat(view).toFixed(2) + 'K'
   }
@@ -124,7 +127,7 @@ useHead({
               :src="manga.thumbnail" style="object-fit: contain">
         </div>
       </div>
-      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1 lg:grid-cols-7">
+      <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1">
         <div>
           <TabGroup>
             <TabList class="flex space-x-1 rounded flex justify-around">
