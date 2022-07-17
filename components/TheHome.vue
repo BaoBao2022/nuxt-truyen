@@ -5,8 +5,7 @@ const devices = useState('devices');
 
 <template>
   <main>
-    <LazySectionSpotlight v-if="devices.hasMobile"/>
-    <LazySectionSwiper v-if="!devices.hasMobile"/>
+    <LazySectionSpotlight/>
     <LazySharedBannerBar/>
 
     <section class="px-3">
