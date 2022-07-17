@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {ref, watchEffect} from 'vue';
-import {SearchIcon, UserIcon, MoonIcon} from '@heroicons/vue/solid';
+import {ref} from 'vue';
+import {SearchIcon} from '@heroicons/vue/solid';
 import {XIcon, EmojiSadIcon} from '@heroicons/vue/outline';
 import {useDebounce} from '@vueuse/core';
 import {
@@ -10,10 +10,11 @@ import {
   DialogPanel,
 } from '@headlessui/vue'
 import {useRuntimeConfig, useState} from "#imports";
+import {useFetch} from "#app";
 
 const config = useRuntimeConfig();
 const refInput = ref('');
-const debounced = useDebounce(refInput, 300)
+const debounced = useDebounce(refInput, 200)
 const shouldShow = ref(false);
 
 const open = () => {
@@ -35,9 +36,9 @@ watch([refInput], async () => {
     hasResult.value = true;
     loading.value = true;
 
-    const mangas = await $fetch(`${config.public.NUXT_PUBLIC_SERVICE_URL}/api/nt/search`, {
+    const mangas = await $fetch(`/api/search-manga`, {
       params: {
-        q: debounced.value
+        q: debounced.value,
       }
     });
 
@@ -53,7 +54,7 @@ watch([refInput], async () => {
 
 <template>
   <form @click="open" class="flex">
-<!--    <input class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm truyện...">-->
+    <!--    <input class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm truyện...">-->
     <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 text-background flex items-center">
       <SearchIcon class="w-5 h-5 text-white"/>
     </div>
@@ -70,25 +71,25 @@ watch([refInput], async () => {
                            enter-to="opacity-100 scale-100" leave="duration-200 ease-in"
                            leave-from="opacity-100 scale-100"
                            leave-to="opacity-0 scale-95">
-            <DialogPanel class="fixed top-[10%] left-0 right-0 overflow-y-auto">
+            <DialogPanel class="fixed top-[7%] left-0 right-0 overflow-y-auto">
               <div class="flex min-h-full items-center justify-center p-4 text-center">
                 <div
-                    class="max-h-[70vh] w-[85%] transform overflow-x-hidden overflow-y-scroll rounded-2xl bg-black p-6 text-left align-middle shadow-xl transition-all md:w-[75%] lg:max-h-[85vh] opacity-100 scale-100">
+                    class="max-h-[80vh] w-[95%] transform overflow-x-hidden overflow-y-scroll rounded-2xl bg-accent-1 p-6 text-left align-middle shadow-xl transition-all md:w-[75%] lg:max-h-[85vh] opacity-100 scale-100">
                   <div class="flex items-center justify-between">
                     <h3 class="my-4 mx-2 font-secondary text-4xl leading-6 text-white md:text-6xl">
                       Tìm Truyện
                     </h3>
                     <button @click="close" class="button rounded-full p-4 text-white md:mr-6">
-                      <XIcon class="h-8 w-8"/>
+                      <XIcon class="h-6 w-6"/>
                     </button>
                   </div>
-                  <div class="my-10 flex h-[60px] items-center rounded bg-secondary py-4 text-white">
-                    <SearchIcon class="h-10 w-10 ml-4"/>
+                  <div class="my-10 flex h-[40px] items-center rounded bg-secondary py-4 text-white">
+                    <SearchIcon class="h-6 w-6 ml-4"/>
                     <input autofocus type="text" class="w-full bg-transparent p-4" @keyup="search" @change="search"
                            v-model="refInput">
                     <button v-if="refInput.length > 0" @click="clearInput"
                             class="absolute-center m-4 h-10 w-10 rounded-lg bg-primary text-white hover:opacity-60 md:h-14 md:w-14 md:rounded">
-                      <XIcon class="h-10 w-10"/>
+                      <XIcon class="h-6 w-6"/>
                     </button>
                   </div>
                   <div v-if="!hasResult && !loading && refInput.length > 0"
@@ -98,7 +99,8 @@ watch([refInput], async () => {
                     <EmojiSadIcon class="h-10 w-10"/>
                   </div>
                   <LazyCommonSearchLoading v-if="loading" class-name="h-20 w-20"/>
-                  <LazyModalSearchResult @closeSearchModal="close" :searchData="searchData" v-if="hasResult"/>
+
+                  <LazyModalSearchResult @closeSearchModal="close" :searchData="searchData"/>
                 </div>
               </div>
             </DialogPanel>

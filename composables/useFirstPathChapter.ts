@@ -34,11 +34,8 @@ const useFirstPathChapter = async (spotlight: Manga, slugs: string | readonly st
         }];
     }
 
-    console.log("mangas", mangas.value)
     const chapterId = mangas.value?.chapterList && mangas.value?.chapterList[mangas.value.chapterList?.length - 1].chapterId;
     const chapterNumber = mangas.value.chapterList && mangas.value.chapterList[mangas.value.chapterList?.length - 1].chapterNumber;
-    console.log("chapterId", chapterId)
-    console.log("chapterNumber", chapterNumber)
 
     return `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
 }

@@ -7,7 +7,6 @@ export default defineEventHandler(async (event) => {
 
     const query = useQuery(event);
     const {status, sort, limit} = query;
-    console.log("limit", limit)
     const NET_TRUYEN_API = repositoryFactory(NET_TRUYEN);
     const filterRequest: FilterRequest = {
         page: 1,
