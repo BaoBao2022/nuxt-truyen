@@ -2,18 +2,18 @@
 import {useLazyFetch} from '#imports';
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 
-const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-112`);
+const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
 </script>
 
 <template>
   <div class="px-3 mb-4 mt-8">
     <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
-      Được đề xuất
+      Đam mỹ
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>
-      <div class="grid grid-cols-2">
-        <div class="col-span-1 odd_margin-left odd_margin-right mt-5" v-for="manga in mangas">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="col-span-1 mt-5" v-for="manga in mangas">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img loading="lazy"
                       class="rounded-xl h-[130px] w-full object-cover"
@@ -33,5 +33,6 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
         </div>
       </div>
     </template>
+
   </div>
 </template>

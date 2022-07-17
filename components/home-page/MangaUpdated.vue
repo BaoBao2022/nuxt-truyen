@@ -5,7 +5,7 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 const {
   data: mangas,
   pending,
-} = await useLazyFetch<Manga[]>(`/api/manga-updated`);
+} = await useLazyFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
 
 </script>
 

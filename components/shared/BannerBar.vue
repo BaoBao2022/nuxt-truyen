@@ -15,7 +15,7 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
           </NuxtLink>
         </div>
         <p class="text-center text-xl mt-2">
-          BXH
+          Bảng xếp hạng
         </p>
       </div>
       <div class="grid grid-cols-1">

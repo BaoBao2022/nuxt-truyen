@@ -1,10 +1,13 @@
 import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
 import {FilterRequest} from "~/services/request";
-import {MANGA_SORT} from "~/types";
 
-export default defineEventHandler(async () => {
+export default defineEventHandler(async (event) => {
     const API = repositoryFactory(NET_TRUYEN);
+    const query = useQuery(event);
+    const {genres} = query;
+
     const filterRequest: FilterRequest = {
+        genres: genres as string,
         page: 1,
         status: 'all',
         sort: 'newComic' as any,

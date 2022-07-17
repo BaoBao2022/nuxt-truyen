@@ -9,12 +9,12 @@ const devices = useState('devices');
     <LazySectionSwiper v-if="!devices.hasMobile"/>
     <LazySharedBannerBar/>
 
-    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">
+    <section class="px-3">
       <LazyVisitedComic/>
       <LazyHomePageFavoriteStory/>
       <LazyHomePageCatelog/>
       <LazyHomePageMaybeLove/>
-      <LazyHomePageNewStory/>
+      <LazyHomePageDamMy/>
       <LazyHomePageNgonTinh/>
       <LazyHomePageMangaUpdated/>
       <LazyHomePageRankList/>

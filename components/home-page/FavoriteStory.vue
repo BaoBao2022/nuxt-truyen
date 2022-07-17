@@ -4,7 +4,7 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 import {useLazyFetch} from '#imports'
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath'
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=manga-112`);
 </script>
 
 <template>

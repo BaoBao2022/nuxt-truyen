@@ -14,7 +14,7 @@ if (typeof document !== 'undefined')
 
 <template>
   <div :class="scrollTransform === 0  ? 'bg-gradient-to-b from-black/80 via-black/60' : 'bg-black/70'"
-       class="px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 px-4 md:px-12 flex items-center h-24 fixed top w-full z-50 transition duration-500 to-transparent">
+       class="max-w-[400px] px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 px-4 md:px-12 flex items-center h-24 fixed top w-full z-50 transition duration-500 to-transparent">
     <div class="sm:hidden mr-4">
       <NuxtLink class="flex items-center" to="/" v-if="route.name !== 'index'">
 <!--        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="w-6 h-6"-->

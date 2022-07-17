@@ -56,7 +56,7 @@ export type GENRES =
 
 export interface FilterRequest {
     page?: number;
-    genres?: GENRES;
+    genres?: string;
     top?: string;
     status?: string;
     limit?: number;

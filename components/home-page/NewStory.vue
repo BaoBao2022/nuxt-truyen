@@ -2,7 +2,7 @@
 import {Manga} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new?genres=manga-112`);
 
 </script>
 

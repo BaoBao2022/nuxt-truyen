@@ -1,5 +1,5 @@
 <template>
-  <div class="_layout">
+  <div class="_layout max-w-[400px] mx-auto overflow-x-hidden">
     <LazyTheHeader/>
     <div>
       <slot/>

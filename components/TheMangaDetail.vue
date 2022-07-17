@@ -50,7 +50,7 @@ watchEffect(async () => {
         <Meta name="description" content="{{manga.value?.author}}"/>
       </Head>
       <div
-          class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end top-[135px] w-full">
+          class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end top-[31%] w-full">
         <div class="p-4 w-full">
           <h1 class="text-xl font-bold uppercase line-clamp-2 text-white w-[70%] h-[35px]">
             <a class="flex items-end h-[100%]">{{ manga.title }}</a>
@@ -98,7 +98,7 @@ watchEffect(async () => {
                 </button>
               </Tab>
             </TabList>
-            <TabPanels class="mt-2">
+            <TabPanels class="mt-2 px-3">
               <TabPanel
                   v-for="(cates, cId) in Object.values(categories)" :key="cId">
                 <div v-for="cate in cates" :key="cate.id">
@@ -112,11 +112,11 @@ watchEffect(async () => {
                         ⭐⭐⭐⭐
                       </div>
                     </a>
-                    <h4 class="text-base leading-7 text-dark">
+                    <h4 class="text-base leading-7 text-dark mt-2">
                       <LazyMangaDetailReview :review="cate.review"/>
                     </h4>
 
-                    <div class="flex flex-wrap">
+                    <div class="flex flex-wrap mt-4">
                       <span class="mr-2">🎓</span>
                       <span
                           class="banner-author text-white bg-highlight mr-3 flex items-center h-[20px]"
