@@ -12,7 +12,7 @@ const {
 <template>
   <div class="visited-comics px-3 mb-4">
     <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-      Truyện được cập nhật
+      ⚡ Truyện được cập nhật
     </h2>
     <PulseMangaUpdatedLoading v-if="pending"/>
     <template v-else>
@@ -23,7 +23,7 @@ const {
           <div class="duration-200 ease-in-out transition-all">
             <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
               <nuxt-img loading="lazy"
-                        class="rounded-xl h-[100px] object-cover w-[200px]"
+                        class="rounded h-[100px] object-cover w-[200px]"
                         :src="manga.thumbnail"
                         fil="fill">
               </nuxt-img>

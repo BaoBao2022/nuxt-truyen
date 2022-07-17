@@ -1,28 +1,15 @@
 import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from "~/contants";
-import {keys, Manga, MangaDetails} from "~/types";
+import {keys, Manga} from "~/types";
 import {useStorage} from "@vueuse/core";
 
 const useFirstPathChapter = async (spotlight: Manga, slugs: string | readonly string[]) => {
     const slug = slugs || spotlight?.slug
-    const {data: comic} = await useFetch(`/api/comic?slug=${slug}`);
-    if (!comic.value) {
-        return '';
-    }
-
-    const mangas: MangaDetails = (comic.value as MangaDetails)
-    // Cache manga detail to local storage
-    const cache: any = useStorage(keys.mangaCacheDetail, {
+    const mangas: any = useStorage(keys.mangaCacheDetail, {
         serializer: {
             read: (v: any) => v ? JSON.parse(v) : null,
             write: (v: any) => JSON.stringify(v),
         }
     });
-
-    cache.value = null
-    cache.value = {
-        slug: slug,
-        ...mangas,
-    }
 
     const visitedComics: any = useStorage(keys.visitedComics, {
         serializer: {
@@ -47,8 +34,11 @@ const useFirstPathChapter = async (spotlight: Manga, slugs: string | readonly st
         }];
     }
 
-    const chapterId = mangas?.chapterList && mangas?.chapterList[mangas.chapterList?.length - 1].chapterId;
-    const chapterNumber = mangas.chapterList && mangas.chapterList[mangas.chapterList?.length - 1].chapterNumber;
+    console.log("mangas", mangas.value)
+    const chapterId = mangas.value?.chapterList && mangas.value?.chapterList[mangas.value.chapterList?.length - 1].chapterId;
+    const chapterNumber = mangas.value.chapterList && mangas.value.chapterList[mangas.value.chapterList?.length - 1].chapterNumber;
+    console.log("chapterId", chapterId)
+    console.log("chapterNumber", chapterNumber)
 
     return `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${slug}/${chapterNumber}/${chapterId}`;
 }

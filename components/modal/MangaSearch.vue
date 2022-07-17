@@ -82,17 +82,17 @@ watch([refInput], async () => {
                       <XIcon class="h-8 w-8"/>
                     </button>
                   </div>
-                  <div class="my-10 flex h-[60px] items-center rounded-xl bg-secondary py-4 text-white">
+                  <div class="my-10 flex h-[60px] items-center rounded bg-secondary py-4 text-white">
                     <SearchIcon class="h-10 w-10 ml-4"/>
                     <input autofocus type="text" class="w-full bg-transparent p-4" @keyup="search" @change="search"
                            v-model="refInput">
                     <button v-if="refInput.length > 0" @click="clearInput"
-                            class="absolute-center m-4 h-10 w-10 rounded-lg bg-primary text-white hover:opacity-60 md:h-14 md:w-14 md:rounded-xl">
+                            class="absolute-center m-4 h-10 w-10 rounded-lg bg-primary text-white hover:opacity-60 md:h-14 md:w-14 md:rounded">
                       <XIcon class="h-10 w-10"/>
                     </button>
                   </div>
                   <div v-if="!hasResult && !loading && refInput.length > 0"
-                       class="absolute-center mx-auto my-4 w-3/4 rounded-xl bg-secondary py-4 text-white">
+                       class="absolute-center mx-auto my-4 w-3/4 rounded bg-secondary py-4 text-white">
                     <p class="mr-4 whitespace-nowrap text-base md:text-2xl">
                       Truyện bạn cần tìm chưa có!</p>
                     <EmojiSadIcon class="h-10 w-10"/>

@@ -128,7 +128,7 @@ const backgroundImage = (manga) => {
                 :centered-slides="true"
                 :centered-slides-bounds="true"
                 :breakpoints="swiperBreakPoints">
-              <SwiperSlide v-slot="{ isActive }" v-for="manga in mangas" class="rounded-xl">
+              <SwiperSlide v-slot="{ isActive }" v-for="manga in mangas" class="rounded">
                 <div class="duration-700 ease-in-out transform hover:scale-105 transition-all w-full h-[270px]"
                      :style="isActive ? {'opacity': '1'} : {'opacity': '0.2', 'transform': 'none'}">
                   <div>

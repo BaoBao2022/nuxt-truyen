@@ -18,7 +18,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div class="w-full rounded-xl pb-4 lg:my-4 col-span-3" v-if="!pending">
+  <div class="w-full rounded pb-4 lg:my-4 col-span-3" v-if="!pending">
     <NuxtLink to="/filter?view=newComic"
               class="items-center	justify-start font-secondary h-[40px] flex mx-3 page-title custom-title">
       Cập nhật truyện mới
@@ -63,7 +63,7 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
         </figcaption>
       </li>
       <li
-          class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
+          class="flex w-full items-center justify-center rounded py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
         <button class="lg:text-3xl">
           <NuxtLink to="/filter?view=all">Xem thêm</NuxtLink>
         </button>

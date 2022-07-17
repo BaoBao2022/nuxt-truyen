@@ -182,7 +182,7 @@ watch([route], async () => {
               </figcaption>
             </li>
             <li
-                class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
+                class="flex w-full items-center justify-center rounded py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
               <button class="lg:text-3xl">
                 <NuxtLink to="/filter?comics=api-112&view=all">Xem thêm</NuxtLink>
               </button>

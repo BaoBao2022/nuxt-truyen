@@ -11,7 +11,7 @@ const {
 } = useLazyFetch<Manga[]>(`/api/spotlights?genres=manga-112`);
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
-  delay: 3500,
+  delay: 3500333,
   disableOnInteraction: false
 });
 
@@ -31,7 +31,7 @@ const backgroundImage = (spotlight) => {
       <SwiperSlide v-for="spotlight in mangas">
         <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)" class="relative">
           <div
-              class="z-20 top-[65%] absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end">
+              class="z-20 bottom-0 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end">
             <div class="p-4 w-full h-[82px]">
               <h1 class="text-xl font-bold uppercase line-clamp-1 text-white">
                 {{ spotlight.name }}
@@ -54,11 +54,14 @@ const backgroundImage = (spotlight) => {
             <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none"
                     :style="backgroundImage(spotlight)">
             </figure>
-            <div>
+            <div class="via-black/60">
               <span>
-                <img
+                <nuxt-img
+                    format="webp"
+                    fil="cover"
                     class="img-position z-10"
                     :src="spotlight.thumbnail" style="object-fit: contain">
+                </nuxt-img>
               </span>
             </div>
           </div>

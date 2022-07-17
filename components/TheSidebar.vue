@@ -37,7 +37,7 @@ onClickOutside(nav, (event) => open.value = false)
           </li>
           <li class="flex flex-wrap">
             <NuxtLink :to="`/filter?comics=${manga.value}`"
-                      class="text-xl md:text-3xl absolute-center bg-hight-light ml-4 mt-4 w-fit rounded-xl py-2 px-4 md:mt-6"
+                      class="text-xl md:text-3xl absolute-center bg-hight-light ml-4 mt-4 w-fit rounded py-2 px-4 md:mt-6"
                       v-for="manga in MANGA_NT">
               {{ manga.label }}
             </NuxtLink>
@@ -49,7 +49,7 @@ onClickOutside(nav, (event) => open.value = false)
           </li>
           <li class="grid grid-cols-2">
             <NuxtLink :to="`/filter?genres=${genre.value}`"
-                      class="text-xl md:text-3xl hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded-xl py-2 px-4 md:mt-6"
+                      class="text-xl md:text-3xl hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded py-2 px-4 md:mt-6"
                       v-for="genre in GENRES_NT.slice(0, 8)">
               {{ genre.label }}
             </NuxtLink>

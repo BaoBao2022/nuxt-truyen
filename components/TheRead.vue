@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { MANGA_PATH_NAME, MANGA_PATH_READ_NAME } from "~/contants";
-import { ref, useHead, useLazyAsyncData, useLazyFetch, useRoute } from "#imports";
-import { isClient, set, useStorage } from "@vueuse/core";
-import { CogIcon } from '@heroicons/vue/outline';
-import { keys } from "~/types";
+import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME} from "~/contants";
+import {ref, useRoute} from "#imports";
+import {isClient, set, useStorage} from "@vueuse/core";
+import {CogIcon} from '@heroicons/vue/outline';
+import {keys} from "~/types";
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 
 import {
@@ -11,10 +11,10 @@ import {
   ArrowNarrowLeftIcon,
   ArrowRightIcon,
 } from '@heroicons/vue/solid';
+import {watchEffect} from "vue";
 
 const route = useRoute();
 const router = useRouter();
-
 const params = route.params;
 
 const chapterID = ref(params.id);
@@ -25,9 +25,15 @@ const {
   pending,
   data: chapters,
   refresh,
-} = useFetch(`/api/chapters?slug=${realSlug}&chapter=${chapterNumber.value}&id=${chapterID.value}`);
+} = await useFetch('/api/chapters', {
+  params: {
+    slug: realSlug,
+    chapter: chapterNumber.value,
+    id: chapterID.value,
+  }
+});
 
-const manga: any = useStorage(keys.mangaCacheDetail, {
+const manga: any = await useStorage(keys.mangaCacheDetail, {
   serializer: {
     read: (v: any) => v ? JSON.parse(v) : null,
     write: (v: any) => JSON.stringify(v),
@@ -68,12 +74,10 @@ const handleChapter = async (action: string) => {
     chapterID.value = cID;
     chapterNumber.value = cNum;
 
-    
-    router.replace(
-      `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${cNum}/${cID}`,
-    );
 
-    await refresh();
+    router.replace(
+        `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${cNum}/${cID}`,
+    );
   }
 
   if (action === 'prev') {
@@ -93,7 +97,7 @@ const handleChapter = async (action: string) => {
     chapterID.value = cID
 
     router.replace(
-      `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${cNum}/${cID}`,
+        `/${MANGA_PATH_NAME}/${MANGA_PATH_READ_NAME}/${params.slug}/${cNum}/${cID}`,
     );
   }
 
@@ -105,6 +109,10 @@ const handleNextProcess = (action: string) => {
   handleChapter(action)
 }
 
+watchEffect(() => {
+  refresh()
+})
+
 useHead({
   title: `${manga.value?.title} | Chapter ${chapterNumber.value}`,
   description: manga.value?.review,
@@ -114,7 +122,7 @@ useHead({
 
 <template>
   <div v-if="pending">
-    <CommonPageLoading />
+    <CommonPageLoading/>
   </div>
   <div class="flex h-fit min-h-screen flex-col bg-black" v-else>
     <div class="relative flex h-fit flex-1 text-white">
@@ -124,34 +132,34 @@ useHead({
             <div class="flex h-full w-fit items-center justify-evenly gap-4 px-4 md:space-x-4">
               <LazyNuxtLink :to="useMangaDetailPagePath(params.slug)" class="flex">
                 <button>
-                  <ArrowNarrowLeftIcon class="h-8 w-8" />
+                  <ArrowNarrowLeftIcon class="h-8 w-8"/>
                 </button>
               </LazyNuxtLink>
-              <client-only>
+              <ClientOnly>
                 <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ manga.title }}</h1>
-              </client-only>
+              </ClientOnly>
               <button
-                class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">
+                  class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded bg-highlight p-2 text-base line-clamp-1 md:text-lg">
                 Chapter: {{ chapterNumber }}
               </button>
               <div class="absolute-center h-full w-fit gap-4 md:mx-6">
                 <button data-id="prev" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('prev')">
-                  <ArrowLeftIcon class="h-6 w-6" />
+                  <ArrowLeftIcon class="h-6 w-6"/>
                 </button>
                 <button data-id="next" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('next')">
-                  <ArrowRightIcon class="w-6 h-6" />
+                  <ArrowRightIcon class="w-6 h-6"/>
                 </button>
               </div>
             </div>
             <div class="flex h-full w-fit items-center pr-2 md:gap-10 md:px-4">
               <button class="rounded-lg bg-highlight p-2">
-                <CogIcon class="h8 w-8" />
+                <CogIcon class="h8 w-8"/>
               </button>
             </div>
           </div>
         </div>
-        <LazyMangaChapterImg :chapters="chapters.data" />
-        <LazyMangaReadMangaFooter @nextProcess="handleNextProcess" />
+        <LazyMangaChapterImg :chapters="chapters.data"/>
+        <LazyMangaReadMangaFooter @nextProcess="handleNextProcess"/>
       </div>
     </div>
   </div>

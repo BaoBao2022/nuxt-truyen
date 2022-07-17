@@ -18,7 +18,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new?genres=man
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img loading="lazy"
-                      class="rounded-xl h-[160px] object-cover w-[200px]"
+                      class="rounded h-[160px] object-cover w-[200px]"
                       :src="manga.thumbnail"
                       fil="fill">
             </nuxt-img>

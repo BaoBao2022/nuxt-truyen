@@ -8,7 +8,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
 <template>
   <div class="px-3 mb-4 mt-8">
     <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
-      Đam mỹ
+      ⚡ Đam mỹ
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>
@@ -16,7 +16,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
         <div class="col-span-1 mt-5" v-for="manga in mangas">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img loading="lazy"
-                      class="rounded-xl h-[130px] w-full object-cover"
+                      class="rounded h-[130px] w-full object-cover"
                       format="webg"
                       :src="manga.thumbnail"
                       fil="fill">
