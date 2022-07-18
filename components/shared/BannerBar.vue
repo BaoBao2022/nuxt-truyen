@@ -4,6 +4,9 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
 </script>
 
 <template>
+  <div>
+
+  </div>
   <div class="h-[100px] banner-icons py-10">
     <div class="icons grid grid-cols-4">
       <div class="grid grid-cols-1">

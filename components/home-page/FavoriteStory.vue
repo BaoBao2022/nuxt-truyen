@@ -25,6 +25,10 @@ const swiperBreakPoints = {
     slidesPerView: 5,
     spaceBetween: 20,
   },
+  800: {
+    slidesPerView: 6,
+    spaceBetween: 20,
+  },
 };
 </script>
 
