@@ -17,7 +17,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img
                 loading="lazy"
-                class="rounded h-[150px] w-full object-cover"
+                class="rounded-xl h-[150px] w-full object-cover"
                 format="webp"
                 :src="manga.thumbnail"
                 fil="fill">

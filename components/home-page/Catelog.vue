@@ -12,7 +12,7 @@
           <img loading="lazy"
                format="webp"
                quantity="100"
-               class="rounded w-full"
+               class="rounded-xl w-full"
                src="~/assets/images/mao-hiem.png"
                fil="fill">
         </NuxtLink>
@@ -23,7 +23,7 @@
           <img loading="lazy"
                quantity="100"
                format="webp"
-               class="rounded"
+               class="rounded-xl"
                src="~/assets/images/huyen-huyen.png"
                fil="fill">
         </NuxtLink>
@@ -32,7 +32,7 @@
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=dam-my">
           <img loading="lazy"
-               class="rounded"
+               class="rounded-xl"
                quantity="100"
                format="webp"
                src="~/assets/images/dam-my.png"
@@ -45,7 +45,7 @@
           <img loading="lazy"
                quantity="100"
                format="webp"
-               class="rounded"
+               class="rounded-xl"
                src="~/assets/images/tong-tai.png"
                fil="fill">
         </NuxtLink>
@@ -56,7 +56,7 @@
           <img loading="lazy"
                quantity="100"
                format="webp"
-               class="rounded"
+               class="rounded-xl"
                src="~/assets/images/nu-cuong.png"
                fil="cover">
         </NuxtLink>
@@ -66,7 +66,7 @@
         <NuxtLink to="/filter?genres=school-life">
           <img loading="lazy"
                quantity="100"
-               class="rounded"
+               class="rounded-xl"
                format="webp"
                src="~/assets/images/truong-hoc.png"
                fil="cover">

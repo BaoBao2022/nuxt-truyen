@@ -54,7 +54,7 @@ const swiperBreakPoints = {
               <nuxt-img
                   format="webp"
                   loading="lazy"
-                  class="rounded object-cover h-[130px] w-full"
+                  class="rounded-xl object-cover h-[130px] w-full"
                   :src="manga.thumbnail"
                   fil="fill">
               </nuxt-img>

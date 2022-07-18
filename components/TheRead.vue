@@ -139,20 +139,20 @@ useHead({
                 <h1 class="fond-bold h-fit w-[25%] capitalize line-clamp-1 md:w-[30%]">{{ manga.title }}</h1>
               </ClientOnly>
               <button
-                  class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded bg-highlight p-2 text-base line-clamp-1 md:text-lg">
+                  class="h-[60%] w-fit max-w-[80px] whitespace-nowrap rounded-xl bg-highlight p-2 text-base line-clamp-1 md:text-lg">
                 Chapter: {{ chapterNumber }}
               </button>
               <div class="absolute-center h-full w-fit gap-4 md:mx-6">
-                <button data-id="prev" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('prev')">
+                <button data-id="prev" class="rounded-xl-lg bg-highlight p-4 md:p-4" @click="handleChapter('prev')">
                   <ArrowLeftIcon class="h-6 w-6"/>
                 </button>
-                <button data-id="next" class="rounded-lg bg-highlight p-4 md:p-4" @click="handleChapter('next')">
+                <button data-id="next" class="rounded-xl-lg bg-highlight p-4 md:p-4" @click="handleChapter('next')">
                   <ArrowRightIcon class="w-6 h-6"/>
                 </button>
               </div>
             </div>
             <div class="flex h-full w-fit items-center pr-2 md:gap-10 md:px-4">
-              <button class="rounded-lg bg-highlight p-2">
+              <button class="rounded-xl-lg bg-highlight p-2">
                 <CogIcon class="h8 w-8"/>
               </button>
             </div>

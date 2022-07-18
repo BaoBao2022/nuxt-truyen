@@ -3,12 +3,13 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import {Autoplay, EffectFade} from "swiper";
 import {PropType, ref} from 'vue';
 import {Manga} from "~/types";
-import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
+import {randomColors} from '~/serveless/utils';
+import {TailwindColors} from '~/contants';
 
 const {
   data: mangas,
   pending,
-} = useLazyFetch<Manga[]>(`/api/spotlights?genres=manga-112`);
+} = useLazyFetch<Manga[]>(`/api/spotlights`);
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
   delay: 3500,
@@ -32,17 +33,21 @@ const backgroundImage = (spotlight) => {
         :autoplay="autoPlaySettings"
         class="relative">
       <SwiperSlide v-for="spotlight in mangas">
-        <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)" class="relative">
+        <div class="relative aspect-w-16 aspect-h-9 rounded-xl-md">
           <div
-              class="z-999 bottom-0 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end">
-            <div class="p-4 w-full h-[82px]">
-              <h1 class="text-xl font-bold uppercase line-clamp-1 text-white">
-                {{ spotlight.name }}
+              class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">
+            <div class="p-4 w-full">
+              <h1 class="text-xl font-bold uppercase line-clamp-2 text-white w-[70%] h-[35px]">
+                <a class="flex items-end h-[100%]">{{ spotlight.name }}</a>
               </h1>
               <div class="flex flex-wrap items-center mt-4 text-lg gap-x-8">
                 <div class="flex items-center gap-x-2">
-                  <SvgSmile/>
-                  <p class="text-white">{{ spotlight.view }}</p>
+                  <p class="text-white flex items-center">
+                    <span class="text-xs mr-1">
+                      <SvgSmile/>
+                    </span>
+                    {{ spotlight.view }}
+                  </p>
                 </div>
                 <div class="flex items-center gap-x-2">
                   <div class="flex items-center gap-x-2">
@@ -52,27 +57,21 @@ const backgroundImage = (spotlight) => {
                   </div>
                 </div>
                 <div class="flex line-clamp-1 items-center space-x-2 w-[100%]">
-                  <span class="text-white" v-for="genre in spotlight.genres">{{ genre }}</span>
+                  <span class="text-white" v-for="(genre, genI) in spotlight.genres"
+                        :style="{'color': randomColors(TailwindColors, genI )}">{{ genre }} </span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="relative aspect-w-16 aspect-h-9 rounded-md h-[220px]">
-            <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none"
-                    :style="backgroundImage(spotlight)">
-            </figure>
-            <div class="via-black/60">
-              <span>
-                <nuxt-img
-                    format="webp"
-                    fil="cover"
-                    class="img-position z-10"
-                    :src="spotlight.thumbnail" style="object-fit: contain">
-                </nuxt-img>
-              </span>
-            </div>
+          <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none"
+                  :style="backgroundImage(spotlight)">
+          </figure>
+          <div>
+            <img
+                class="img-position z-10"
+                :src="spotlight.thumbnail" style="object-fit: contain">
           </div>
-        </NuxtLink>
+        </div>
       </SwiperSlide>
     </Swiper>
   </template>

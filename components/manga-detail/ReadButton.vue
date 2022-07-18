@@ -40,7 +40,7 @@ const navigateToManga = async () => {
 
     <div>
       <button
-          class="btn bg-primary mr-5 h-[35px] text-base hover:bg-highlight flex items-center justify-center w-[160px] rounded-[60px]"
+          class="btn bg-primary mr-5 h-[35px] text-base hover:bg-highlight flex items-center justify-center w-[160px] rounded-xl-[60px]"
           @click="navigateToManga">
         <a>Đọc từ đầu</a>
       </button>

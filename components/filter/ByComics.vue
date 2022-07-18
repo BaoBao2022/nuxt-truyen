@@ -38,7 +38,7 @@ watch([selected], (value) => {
     <a class="my-2 font-secondary text-xl lg:text-2xl text-left">(2) Truyện tranh</a>
     <Listbox v-model="selected">
       <ListboxButton
-          class="h-[34px] btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-[0px]"
+          class="h-[34px] btn bg-deep-black flex items-center border-white text-white flex justify-between w-[180px] rounded-xl-[0px]"
           style="border-radius: 0">
         {{ selected?.label }}
         <SelectorIcon class="h-5 w-5" aria-hidden="true"/>

@@ -148,7 +148,7 @@ watch([route], async () => {
             <li class="flex px-3 py-1 w-full inline-grid mb-4 item" v-for="manga in mangas" :key="manga.slug">
               <LazyNuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <figure
-                    class="relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-sm">
+                    class="relative h-[200px] md:h-[197px] lg:h-[200px] lg:w-full overflow-hidden rounded-xl-sm">
                   <nuxt-img fil="fill"
                             sizes="159px md:159px lg:159px"
                             format="webp"
@@ -182,7 +182,7 @@ watch([route], async () => {
               </figcaption>
             </li>
             <li
-                class="flex w-full items-center justify-center rounded py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
+                class="flex w-full items-center justify-center rounded-xl py-4 px-4 transition-all hover:cursor-pointer hover:bg-highlight">
               <button class="lg:text-3xl">
                 <NuxtLink to="/filter?comics=api-112&view=all">Xem thêm</NuxtLink>
               </button>

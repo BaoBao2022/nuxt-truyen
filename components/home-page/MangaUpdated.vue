@@ -53,7 +53,7 @@ const swiperBreakPoints = {
             <div class="duration-200 ease-in-out transition-all">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <nuxt-img loading="lazy"
-                          class="rounded h-[130px] object-cover"
+                          class="rounded-xl h-[130px] object-cover"
                           :src="manga.thumbnail"
                           fil="fill">
                 </nuxt-img>

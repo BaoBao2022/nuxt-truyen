@@ -16,7 +16,7 @@ onClickOutside(nav, (event) => open.value = false)
         class="slideLeftReturn magictime absolute-center  fixed inset-0 z-[999] w-[250px] min-w-[230px] bg-black p-4 md:w-[40%]">
       <div class="flex h-full w-full flex-col">
         <div class="absolute-center flex h-fit w-full items-center justify-end">
-          <button @click="open = false" class="absolute-center bg-hight-light ml-4 rounded-full p-4 text-white md:p-5"
+          <button @click="open = false" class="absolute-center bg-hight-light ml-4 rounded-xl-full p-4 text-white md:p-5"
                   tabindex="0">
             <XIcon class="h-9 w-9"/>
           </button>
@@ -37,7 +37,7 @@ onClickOutside(nav, (event) => open.value = false)
           </li>
           <li class="flex flex-wrap">
             <NuxtLink :to="`/filter?comics=${manga.value}`"
-                      class="text-xl md:text-3xl absolute-center bg-hight-light ml-4 mt-4 w-fit rounded py-2 px-4 md:mt-6"
+                      class="text-xl md:text-3xl absolute-center bg-hight-light ml-4 mt-4 w-fit rounded-xl py-2 px-4 md:mt-6"
                       v-for="manga in MANGA_NT">
               {{ manga.label }}
             </NuxtLink>
@@ -49,7 +49,7 @@ onClickOutside(nav, (event) => open.value = false)
           </li>
           <li class="grid grid-cols-2">
             <NuxtLink :to="`/filter?genres=${genre.value}`"
-                      class="text-xl md:text-3xl hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded py-2 px-4 md:mt-6"
+                      class="text-xl md:text-3xl hover:bg-hight-light ml-4 mt-4 flex w-full items-center rounded-xl py-2 px-4 md:mt-6"
                       v-for="genre in GENRES_NT.slice(0, 8)">
               {{ genre.label }}
             </NuxtLink>

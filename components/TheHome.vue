@@ -11,12 +11,12 @@ const devices = useState('devices');
     <section class="px-3">
       <LazyVisitedComic/>
       <LazyHomePageFavoriteStory/>
+      <LazyHomePageMangaUpdated/>
       <LazyHomePageCatelog/>
       <LazyHomePageNgonTinh/>
       <LazyHomePageMaybeLove/>
       <LazyHomePageDamMy/>
       <LazyHomePageNewStory/>
-      <LazyHomePageMangaUpdated/>
       <LazyHomePageRankList/>
     </section>
   </main>

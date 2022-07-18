@@ -79,21 +79,21 @@ watch([refInput], async () => {
                     <h3 class="my-4 mx-2 font-secondary text-4xl leading-6 text-white md:text-6xl">
                       Tìm Truyện
                     </h3>
-                    <button @click="close" class="button rounded-full p-4 text-white md:mr-6">
+                    <button @click="close" class="button rounded-xl-full p-4 text-white md:mr-6">
                       <XIcon class="h-6 w-6"/>
                     </button>
                   </div>
-                  <div class="my-10 flex h-[40px] items-center rounded bg-secondary py-4 text-white">
+                  <div class="my-10 flex h-[40px] items-center rounded-xl bg-secondary py-4 text-white">
                     <SearchIcon class="h-6 w-6 ml-4"/>
                     <input autofocus type="text" class="w-full bg-transparent p-4" @keyup="search" @change="search"
                            v-model="refInput">
                     <button v-if="refInput.length > 0" @click="clearInput"
-                            class="absolute-center m-4 h-10 w-10 rounded-lg bg-primary text-white hover:opacity-60 md:h-14 md:w-14 md:rounded">
+                            class="absolute-center m-4 h-10 w-10 rounded-xl-lg bg-primary text-white hover:opacity-60 md:h-14 md:w-14 md:rounded-xl">
                       <XIcon class="h-6 w-6"/>
                     </button>
                   </div>
                   <div v-if="!hasResult && !loading && refInput.length > 0"
-                       class="absolute-center mx-auto my-4 w-3/4 rounded bg-secondary py-4 text-white">
+                       class="absolute-center mx-auto my-4 w-3/4 rounded-xl bg-secondary py-4 text-white">
                     <p class="mr-4 whitespace-nowrap text-base md:text-2xl">
                       Truyện bạn cần tìm chưa có!</p>
                     <EmojiSadIcon class="h-10 w-10"/>

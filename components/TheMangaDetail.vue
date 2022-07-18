@@ -96,7 +96,7 @@ useHead({
       <CommonPageLoading/>
     </div>
     <div class="relative flex h-fit flex-col" v-else>
-      <div class="relative aspect-w-16 aspect-h-9 rounded-md">
+      <div class="relative aspect-w-16 aspect-h-9 rounded-xl-md">
         <div
             class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">
           <div class="p-4 w-full">
@@ -130,7 +130,7 @@ useHead({
       <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1">
         <div>
           <TabGroup>
-            <TabList class="flex space-x-1 rounded flex justify-around">
+            <TabList class="flex space-x-1 rounded-xl flex justify-around">
               <Tab
                   v-for="category in Object.keys(categories)"
                   as="template"

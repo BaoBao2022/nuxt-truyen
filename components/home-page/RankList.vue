@@ -49,9 +49,9 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
             ️<span class="text-3xl mr-2 w-[25px] font-secondary flex items-center justify-center"
                    v-if="mI > 2">️{{ mI + 1 }}</span>
             <figure class="relative h-[65px] w-[60px]">
-            <span class="rounded  h-[65px] w-[60px]">
+            <span class="rounded-xl  h-[65px] w-[60px]">
               <nuxt-img
-                  class=" h-[65px] w-[60px] object-cover object-center rounded"
+                  class=" h-[65px] w-[60px] object-cover object-center rounded-xl"
                   format="webp"
                   loading="lazy"
                   fil="fill"

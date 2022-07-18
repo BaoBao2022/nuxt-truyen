@@ -24,7 +24,7 @@ defineProps({
   </LazyNuxtLink>
   <ul class="hidden space-x-4 text-lg md:flex">
     <li v-for="(genre, i) in spotlight.genres" :key="`genre_spotlight_${i}`"
-      class="flex w-fit max-w-[100px] items-center whitespace-nowrap rounded border-[1px] border-white py-2 px-4 line-clamp-1">
+      class="flex w-fit max-w-[100px] items-center whitespace-nowrap rounded-xl border-[1px] border-white py-2 px-4 line-clamp-1">
       {{ genre }}
     </li>
   </ul>

@@ -22,12 +22,12 @@ const navigateToManga = async (spotlight) => {
 <template>
   <div class="flex space-x-6 text-xl md:text-2xl lg:pt-6">
     <button @click="navigateToManga(spotlight)"
-            class="absolute-center rounded bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
+            class="absolute-center rounded-xl bg-primary py-3 px-5 transition-all hover:scale-110 md:w-[100px]">
       Đọc ngay
     </button>
     <LazyNuxtLink :to="useMangaDetailPagePath(spotlight?.slug)">
       <button
-          class="absolute-center rounded bg-white py-3 px-5 text-gray-800 transition-all hover:scale-110 md:w-[100px]">
+          class="absolute-center rounded-xl bg-white py-3 px-5 text-gray-800 transition-all hover:scale-110 md:w-[100px]">
         Chi tiết
       </button>
     </LazyNuxtLink>
