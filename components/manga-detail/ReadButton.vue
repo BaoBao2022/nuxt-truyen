@@ -22,7 +22,7 @@ const navigateToManga = async () => {
 </script>
 
 <template>
-  <div class="md:max-w-[750px] read-action fixed bottom-0 h-[60px] flex items-center w-full bg-deep-black justify-between max-w-[450px]">
+  <div class="md:max-w-[750px] read-action fixed bottom-0 h-[60px] flex items-center w-full justify-between max-w-[450px] read-bar">
     <div class="flex items-start ml-10">
       <div class="text-dark mr-8" @click="share">
         <div class="flex items-center justify-center">
@@ -40,7 +40,7 @@ const navigateToManga = async () => {
 
     <div>
       <button
-          class="btn bg-primary mr-5 h-[35px] text-base hover:bg-highlight flex items-center justify-center w-[160px] rounded-xl-[60px]"
+          class="btn bg-primary mr-5 h-[35px] text-base hover:bg-highlight flex items-center justify-center w-[160px] rounded-[60px]"
           @click="navigateToManga">
         <a>Đọc từ đầu</a>
       </button>
