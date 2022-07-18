@@ -12,7 +12,7 @@
           <nuxt-img loading="lazy"
                     format="webp"
                     class="rounded w-full"
-                    src="/assets/images/mao-hiem.png"
+                    src="/mao-hiem.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -23,7 +23,7 @@
           <nuxt-img loading="lazy"
                     format="webp"
                     class="rounded"
-                    src="/assets/images/huyen-huyen.png"
+                    src="/huyen-huyen.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -34,8 +34,9 @@
           <nuxt-img loading="lazy"
                     class="rounded"
                     format="webp"
-                    src="/assets/images/dam-my.png"
-                    fil="fill"></nuxt-img>
+                    src="/dam-my.png"
+                    fil="fill">
+          </nuxt-img>
         </NuxtLink>
       </div>
 
@@ -44,8 +45,9 @@
           <nuxt-img loading="lazy"
                     format="webp"
                     class="rounded"
-                    src="/assets/images/tong-tai.png"
-                    fil="fill"></nuxt-img>
+                    src="/tong-tai.png"
+                    fil="fill">
+          </nuxt-img>
         </NuxtLink>
       </div>
 
@@ -54,7 +56,7 @@
           <nuxt-img loading="lazy"
                     format="webp"
                     class="rounded"
-                    src="/assets/images/nu-cuong.png"
+                    src="/nu-cuong.png"
                     fil="cover">
           </nuxt-img>
         </NuxtLink>
@@ -65,7 +67,7 @@
           <nuxt-img loading="lazy"
                     class="rounded"
                     format="webp"
-                    src="/assets/images/truong-hoc.png"
+                    src="/truong-hoc.png"
                     fil="cover">
           </nuxt-img>
         </NuxtLink>

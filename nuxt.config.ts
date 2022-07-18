@@ -1,22 +1,21 @@
-import { defineNuxtConfig } from "nuxt";
+import {defineNuxtConfig} from "nuxt";
 
 export default defineNuxtConfig({
     ssr: true,
     runtimeConfig: {
         public: {
             NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
-            DOMAIN: 'https://meetruyen.com',
+            DOMAIN: 'meetruyen.com',
             SIZE_NAME: "MeeTruyen"
         },
     },
     meta: {
-        title: "Đọc truyện tranh online - Truyện gì cũng có - MeeTruyen",
-        link: [{ rel: "icon", type: "image/x-icon", href: "https://i.im.ge/2022/07/15/FotbqY.png" }],
-        /* For PWA. */
-        // name: "theme-color", content: '#fff'
+        title: "Truyện tranh online - Miễn phí - Không quảng cáo",
+        link: [{rel: "icon", type: "image/x-icon", href: "https://i.im.ge/2022/07/15/FotbqY.png"}],
     },
     image: {
-        // The screen sizes predefined by `@nuxt/image`:
+        dir: 'assets/images',
+        domains: ['meetruyen.com'],
         screens: {
             xs: 320,
             sm: 640,

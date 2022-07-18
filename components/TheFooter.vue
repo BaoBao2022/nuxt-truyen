@@ -4,14 +4,17 @@ const route = useRoute()
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center justify-center px-4 md:px-12 py-16 space-y-4" v-if="route.name === 'index'">
+  <div class="w-full flex flex-col items-center justify-center px-4 md:px-12 py-16 space-y-4"
+       v-if="route.name === 'index'">
     <div class="relative flex mx-auto h-24 w-24 mb-8 !mb-0">
       <div style="opacity: 1;">
-        <span
-          style="box-sizing:border-box;display:block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:absolute;top:0;left:0;bottom:0;right:0"><img
-          alt="logo" src="https://i.im.ge/2022/07/15/FotbqY.png" decoding="async" data-nimg="fill"
-          style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%;object-fit:contain"
-          sizes="100vw"/>
+        <span class="span-position">
+          <nuxt-img
+              format="webp"
+              src="/logo-banner.png"
+              fil="fill"
+              class="img-position">
+          </nuxt-img>
       </span>
       </div>
     </div>
