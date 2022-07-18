@@ -44,14 +44,9 @@
 }
 
 .dark-mode #header {
-  //background-image: url(~/assets/images/bg_header.jpeg);
   width: 100%;
   height: 50px;
   transition: top .3s ease-in-out;
-}
-
-.light-mode #header {
-  background-image: url('~/assets/images/bg_header.jpeg');
 }
 
 .dark-mode .breadcrumb, .dark-mode .breadcrumb a.active {

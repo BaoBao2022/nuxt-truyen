@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     ssr: true,
     runtimeConfig: {
         public: {
-            NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
+            NUXT_PUBLIC_SERVICE_URL: "",
             DOMAIN: 'meetruyen.com',
             SIZE_NAME: "MeeTruyen"
         },
@@ -14,7 +14,8 @@ export default defineNuxtConfig({
         link: [{rel: "icon", type: "image/x-icon", href: "https://i.im.ge/2022/07/15/FotbqY.png"}],
     },
     image: {
-        dir: 'assets/images',
+        // dir: 'public',
+        // staticFilename: '[publicPath]/images/[name]-[hash][ext]',
         domains: ['meetruyen.com'],
         screens: {
             xs: 320,

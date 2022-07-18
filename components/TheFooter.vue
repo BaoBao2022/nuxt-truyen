@@ -11,7 +11,7 @@ const route = useRoute()
         <span class="span-position">
           <nuxt-img
               format="webp"
-              src="/logo-banner.png"
+              src="logo-banner.png"
               fil="fill"
               class="img-position">
           </nuxt-img>

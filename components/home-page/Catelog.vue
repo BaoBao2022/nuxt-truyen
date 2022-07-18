@@ -11,8 +11,9 @@
         <NuxtLink to="/filter?genres=mao-hiem">
           <nuxt-img loading="lazy"
                     format="webp"
+                    quantity="100"
                     class="rounded w-full"
-                    src="/mao-hiem.png"
+                    src="mao-hiem.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -21,9 +22,10 @@
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=fantasy-105">
           <nuxt-img loading="lazy"
+                    quantity="100"
                     format="webp"
                     class="rounded"
-                    src="/huyen-huyen.png"
+                    src="huyen-huyen.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -33,8 +35,9 @@
         <NuxtLink to="/filter?genres=dam-my">
           <nuxt-img loading="lazy"
                     class="rounded"
+                    quantity="100"
                     format="webp"
-                    src="/dam-my.png"
+                    src="dam-my.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -43,9 +46,10 @@
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=comic">
           <nuxt-img loading="lazy"
+                    quantity="100"
                     format="webp"
                     class="rounded"
-                    src="/tong-tai.png"
+                    src="tong-tai.png"
                     fil="fill">
           </nuxt-img>
         </NuxtLink>
@@ -54,9 +58,10 @@
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=ngon-tinh">
           <nuxt-img loading="lazy"
+                    quantity="100"
                     format="webp"
                     class="rounded"
-                    src="/nu-cuong.png"
+                    src="nu-cuong.png"
                     fil="cover">
           </nuxt-img>
         </NuxtLink>
@@ -65,9 +70,10 @@
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=school-life">
           <nuxt-img loading="lazy"
+                    quantity="100"
                     class="rounded"
                     format="webp"
-                    src="/truong-hoc.png"
+                    src="truong-hoc.png"
                     fil="cover">
           </nuxt-img>
         </NuxtLink>
