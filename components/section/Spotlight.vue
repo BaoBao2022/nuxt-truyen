@@ -11,7 +11,7 @@ const {
 } = useLazyFetch<Manga[]>(`/api/spotlights?genres=manga-112`);
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
-  delay: 3500333,
+  delay: 3500,
   disableOnInteraction: false
 });
 
@@ -42,11 +42,15 @@ const backgroundImage = (spotlight) => {
               <div class="flex flex-wrap items-center mt-4 text-lg gap-x-8">
                 <div class="flex items-center gap-x-2">
                   <SvgSmile/>
-                  <p class="text-white">87%</p>
+                  <p class="text-white">{{ spotlight.view }}</p>
                 </div>
                 <div class="flex items-center gap-x-2">
-                  <SvgFollow/>
-                  <p class="text-white">{{ spotlight.view }}</p></div>
+                  <div class="flex items-center gap-x-2">
+                    <p class="text-white bg-highlight banner-author">
+                      <a class="p-3">{{ spotlight.author }}</a>
+                    </p>
+                  </div>
+                </div>
                 <div class="flex line-clamp-1 items-center space-x-2 w-[100%]">
                   <span class="text-white" v-for="genre in spotlight.genres">{{ genre }}</span>
                 </div>

@@ -31,7 +31,7 @@ const proxy = async (src: string) => {
           class="h-auto comic-img mx-auto w-auto"
           :data-original="chap?.imgSrc"
           :data-cdn="chap.imgSrcCDN"
-          :src="`/api/proxy?src=${chap?.imgSrc.replace('?data=net', '')}&url=http://www.nettruyenco.com`">
+          :src="`${publicAPI}/api/proxy?src=${chap?.imgSrc}&url=http://www.nettruyenco.com`">
     </div>
   </div>
 </template>

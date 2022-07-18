@@ -145,7 +145,7 @@ useHead({
                 </button>
               </Tab>
             </TabList>
-            <TabPanels class="mt-2 px-3">
+            <TabPanels class="mt-2 px-3 h-[100vh]">
               <TabPanel
                   v-for="(cates, cId) in Object.values(categories)" :key="cId">
                 <div v-for="cate in cates" :key="cate.id">

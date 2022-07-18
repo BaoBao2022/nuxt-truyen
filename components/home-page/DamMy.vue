@@ -8,7 +8,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
 <template>
   <div class="px-3 mb-4 mt-8">
     <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
-      ⚡ Đam mỹ
+      # Đam mỹ
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>

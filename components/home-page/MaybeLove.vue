@@ -8,7 +8,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
 <template>
   <div class="px-3 mb-4 mt-8">
     <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
-      🌎 Được đề xuất
+      # Được đề xuất
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>
@@ -29,6 +29,11 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
           <p class="text-sm text-zinc-500 line-clamp-1 font-secondary">
             <a class="text-sm font-secondary text-zinc-500 mr-1" v-for="genre in manga.genres">
               {{ genre }}
+            </a>
+          </p>
+          <p class="text-sm text-zinc-500 line-clamp-1 font-secondary">
+            <a class="text-sm font-secondary text-zinc-500 mr-1">
+              {{ manga.newChapter }}
             </a>
           </p>
         </div>
