@@ -9,12 +9,11 @@ const route = useRoute()
     <div class="relative flex mx-auto h-24 w-24 mb-8 !mb-0">
       <div style="opacity: 1;">
         <span class="span-position">
-          <nuxt-img
+          <img
               format="webp"
-              src="logo-banner.png"
+              src="~/assets/images/logo-banner.png"
               fil="fill"
               class="img-position">
-          </nuxt-img>
       </span>
       </div>
     </div>

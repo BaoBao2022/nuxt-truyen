@@ -10,11 +10,10 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter?view=month">
             <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">
-              <nuxt-img
+              <img
                   format="webp"
                   class="w-9 h-9 mb-2"
-                  src="ranking.png">
-              </nuxt-img>
+                  src="~/assets/images/ranking.png">
             </div>
           </NuxtLink>
         </div>
@@ -26,11 +25,10 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter">
             <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%] bg-white">
-              <nuxt-img
+              <img
                   format="webp"
                   class="w-9 h-9"
-                  src="category.png">
-              </nuxt-img>
+                  src="~/assets/images/category.png">
             </div>
           </NuxtLink>
         </div>
@@ -38,7 +36,6 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
           Thể loại
         </p>
       </div>
-
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
           <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center bg-white">
