@@ -10,19 +10,28 @@ defineProps({
   chapters: Array as PropType<ChapterImg[]>,
 });
 
+const proxy = async (src: string) => {
+  return await $fetch(`/api/proxy`, {
+    params: {
+      src: src.replace("?data=net", ''),
+      url: 'http://www.nettruyenco.com'
+    }
+  });
+}
+
 </script>
 
 <template>
   <div class="pt-24 mx-auto w-full lg:w-[60%] bg-accent-1">
     <div v-for="(chap, index) in chapters" :key="`page-${index}`" class="relative my-0 h-fit w-full">
-      <nuxt-img
+      <img
           format="webp"
           loading="lazy"
           fil="cover"
           class="h-auto comic-img mx-auto w-auto"
-          :src="`${publicAPI}/api/proxy?url=http://www.nettruyenco.com&src=${chap?.imgSrc}`">
-      </nuxt-img>
-
+          :data-original="chap?.imgSrc"
+          :data-cdn="chap.imgSrcCDN"
+          :src="proxy(chap.imgSrc)">
     </div>
   </div>
 </template>
