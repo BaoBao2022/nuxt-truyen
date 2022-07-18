@@ -9,9 +9,9 @@ export default defineEventHandler(async (event) => {
         headers: {
             referer: String(url),
         },
-    } as any;
+    } as const;
 
     const response = await axios.get(String(src), options);
 
-    response.data.pipe(event.res);
+    return response.data.pipe(event.res);
 });
