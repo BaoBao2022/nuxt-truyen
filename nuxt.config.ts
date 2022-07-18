@@ -14,8 +14,8 @@ export default defineNuxtConfig({
         link: [{rel: "icon", type: "image/x-icon", href: "https://i.im.ge/2022/07/15/FotbqY.png"}],
     },
     image: {
-        // dir: 'public',
-        // staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+        dir: 'public/images',
+        staticFilename: '[publicPath]/images/[name]-[hash][ext]',
         domains: ['meetruyen.com'],
         screens: {
             xs: 320,

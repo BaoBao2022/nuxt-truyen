@@ -1,5 +1,5 @@
 <template>
-  <div class="_layout max-w-[450px] mx-auto bg-accent-1 h-[100vh]">
+  <div class="_layout max-w-[450px] mx-auto bg-accent-1">
     <LazyTheHeader/>
     <div>
       <slot/>
