@@ -3,7 +3,28 @@ import {Manga} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
 const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
-
+const swiperBreakPoints = {
+  1: {
+    slidesPerView: 2,
+    spaceBetween: 2,
+  },
+  320: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  480: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 4,
+    spaceBetween: 20,
+  },
+  750: {
+    slidesPerView: 5,
+    spaceBetween: 20,
+  },
+};
 </script>
 
 <template>
@@ -12,6 +33,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
       # Truyện mới cập nhật
     </h2>
     <swiper
+        :breakpoints="swiperBreakPoints"
         :initialSlide="3"
         :centered-slides-bounds="true"
         :centeredSlides="true"

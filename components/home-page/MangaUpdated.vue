@@ -6,7 +6,28 @@ const {
   data: mangas,
   pending,
 } = await useLazyFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
-
+const swiperBreakPoints = {
+  1: {
+    slidesPerView: 2,
+    spaceBetween: 2,
+  },
+  320: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  480: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 4,
+    spaceBetween: 20,
+  },
+  750: {
+    slidesPerView: 5,
+    spaceBetween: 20,
+  },
+};
 </script>
 
 <template>
@@ -18,6 +39,7 @@ const {
     <template v-else>
       <ClientOnly>
         <swiper
+            :breakpoints="swiperBreakPoints"
             :initialSlide="3"
             :centered-slides-bounds="true"
             :centeredSlides="true"

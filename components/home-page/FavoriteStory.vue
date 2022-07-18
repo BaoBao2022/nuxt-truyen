@@ -4,6 +4,28 @@ import {Swiper, SwiperSlide} from 'swiper/vue';
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath'
 
 const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=comedy-99`);
+const swiperBreakPoints = {
+  1: {
+    slidesPerView: 2,
+    spaceBetween: 2,
+  },
+  320: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  480: {
+    slidesPerView: 4,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 4,
+    spaceBetween: 20,
+  },
+  750: {
+    slidesPerView: 5,
+    spaceBetween: 20,
+  },
+};
 </script>
 
 <template>
@@ -15,6 +37,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=
     <PulseFavoriteStoryLoading v-if="pending"/>
     <template v-else>
       <Swiper
+          :breakpoints="swiperBreakPoints"
           class="h-[165px]"
           :initialSlide="3"
           :centered-slides-bounds="true"
