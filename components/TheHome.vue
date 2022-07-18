@@ -15,17 +15,9 @@ const devices = useState('devices');
       <LazyHomePageMaybeLove/>
       <LazyHomePageDamMy/>
       <LazyHomePageNgonTinh/>
+      <LazyHomePageNewStory/>
       <LazyHomePageMangaUpdated/>
       <LazyHomePageRankList/>
     </section>
-    <!--    <section class="w-[95%] mx-auto min-w-[333px] w-max-[1300px] mt-6 overflow-x-hidden">-->
-    <!--      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">-->
-    <!--&lt;!&ndash;        <LazySectionSuggestion/>&ndash;&gt;-->
-    <!--        <div>-->
-    <!--&lt;!&ndash;          <LazyVisitedComic/>&ndash;&gt;-->
-    <!--&lt;!&ndash;          <LazySectionRankList/>&ndash;&gt;-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </section>-->
   </main>
 </template>

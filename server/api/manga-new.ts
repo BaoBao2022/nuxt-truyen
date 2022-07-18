@@ -4,10 +4,7 @@ import repositoryFactory, {NET_TRUYEN} from "~/services/repositoryFactory";
 export default defineEventHandler(async (event) => {
     const API = repositoryFactory(NET_TRUYEN);
 
-    const query = useQuery(event);
-    const {genres} = query;
-
-    const mangas = await API?.getNewManga(1, genres as string);
+    const mangas = await API?.getNewManga(1);
 
     if (mangas.status !== 200)
         return []

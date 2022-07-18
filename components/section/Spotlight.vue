@@ -26,8 +26,11 @@ const backgroundImage = (spotlight) => {
 <template>
   <SectionSpotlightBannerLoading v-if="pending"/>
   <template v-else>
-    <Swiper :loop="true" :modules="modules" :autoplay="autoPlaySettings"
-            class="relative">
+    <Swiper
+        :loop="true"
+        :modules="modules"
+        :autoplay="autoPlaySettings"
+        class="relative">
       <SwiperSlide v-for="spotlight in mangas">
         <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)" class="relative">
           <div

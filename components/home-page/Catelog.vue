@@ -9,56 +9,65 @@
     <div class="grid grid-cols-2">
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=mao-hiem">
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/mao-hiem.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    format="webp"
+                    class="rounded w-full"
+                    src="../../assets/images/mao-hiem.png"
+                    fil="fill">
+          </nuxt-img>
         </NuxtLink>
       </div>
 
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=fantasy-105">
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/huyen-huyen.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    format="webp"
+                    class="rounded"
+                    src="../../assets/images/huyen-huyen.png"
+                    fil="fill">
+          </nuxt-img>
         </NuxtLink>
       </div>
 
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=dam-my">
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/dam-my.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    class="rounded"
+                    format="webp"
+                    src="../..//assets/images/dam-my.png"
+                    fil="fill"></nuxt-img>
         </NuxtLink>
       </div>
 
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=comic">
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/tong-tai.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    format="webp"
+                    class="rounded"
+                    src="../..//assets/images/tong-tai.png"
+                    fil="fill"></nuxt-img>
         </NuxtLink>
       </div>
 
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=ngon-tinh">
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/nu-cuong.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    format="webp"
+                    class="rounded"
+                    src="../..//assets/images/nu-cuong.png"
+                    fil="cover">
+          </nuxt-img>
         </NuxtLink>
       </div>
 
       <div class="col-span-1 odd_margin-left odd_margin-right mt-5">
         <NuxtLink to="/filter?genres=school-life">
-
-        <img loading="lazy"
-             class="rounded h-[80px] w-full object-cover"
-             src="~/assets/images/truong-hoc.png"
-             fil="fill">
+          <nuxt-img loading="lazy"
+                    class="rounded"
+                    format="webp"
+                    src="../../assets/images/truong-hoc.png"
+                    fil="cover">
+          </nuxt-img>
         </NuxtLink>
       </div>
     </div>

@@ -14,11 +14,11 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
 
 <template>
   <div class="visited-comics px-3 mb-4">
+    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
+      📚 Lịch sử đọc
+    </h2>
     <ClientOnly v-if="visitedComics && visitedComics.length > 0">
 
-      <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-        📚 Lịch sử đọc
-      </h2>
       <div class="box dark-box">
         <swiper
             :slides-per-view="4"
@@ -42,6 +42,7 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
         </swiper>
       </div>
     </ClientOnly>
+    <PulseVisitedComic v-else/>
+
   </div>
-  <PulseVisitedComic v-if="!visitedComics && visitedComics.length <= 0 "/>
 </template>

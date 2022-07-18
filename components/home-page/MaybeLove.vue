@@ -12,14 +12,15 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>
-      <div class="grid grid-cols-2">
-        <div class="col-span-1 odd_margin-left odd_margin-right mt-5" v-for="manga in mangas">
+      <div class="grid grid-cols-3 gap-4">
+        <div class="col-span-1  mt-5" v-for="manga in mangas">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <nuxt-img loading="lazy"
-                      class="rounded h-[130px] w-full object-cover"
-                      format="webg"
-                      :src="manga.thumbnail"
-                      fil="fill">
+            <nuxt-img
+                loading="lazy"
+                class="rounded h-[150px] w-full object-cover"
+                format="webp"
+                :src="manga.thumbnail"
+                fil="fill">
             </nuxt-img>
           </NuxtLink>
           <h2 class="text-base line-clamp-1 mt-1 text-white">

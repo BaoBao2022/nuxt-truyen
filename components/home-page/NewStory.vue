@@ -2,7 +2,7 @@
 import {Manga} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new?genres=manga-112`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
 
 </script>
 
@@ -12,13 +12,13 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new?genres=man
       Truyện mới cập nhật
     </h2>
     <swiper
-        :slides-per-view="3"
+        :slides-per-view="4"
         :space-between="14">
       <swiper-slide v-for="manga in mangas">
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img loading="lazy"
-                      class="rounded h-[160px] object-cover w-[200px]"
+                      class="rounded h-[130px] object-cover"
                       :src="manga.thumbnail"
                       fil="fill">
             </nuxt-img>

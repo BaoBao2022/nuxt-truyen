@@ -12,12 +12,12 @@ const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
     <template v-else>
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-4 gap-4">
         <div class="col-span-1 mt-5" v-for="manga in mangas">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
             <nuxt-img loading="lazy"
                       class="rounded h-[130px] w-full object-cover"
-                      format="webg"
+                      format="webp"
                       :src="manga.thumbnail"
                       fil="fill">
             </nuxt-img>

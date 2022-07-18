@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
         genres: genres as string,
         page: 1,
         status: 'all',
-        sort: 'newComic' as any,
-        limit: 4,
+        sort: 'new' as any,
+        limit: 6,
     }
 
     const mangas = await API?.filter(filterRequest);
