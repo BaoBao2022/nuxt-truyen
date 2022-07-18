@@ -34,7 +34,7 @@ const backgroundImage = (spotlight) => {
       <SwiperSlide v-for="spotlight in mangas">
         <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)" class="relative">
           <div
-              class="z-20 bottom-0 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end">
+              class="z-999 bottom-0 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end">
             <div class="p-4 w-full h-[82px]">
               <h1 class="text-xl font-bold uppercase line-clamp-1 text-white">
                 {{ spotlight.name }}

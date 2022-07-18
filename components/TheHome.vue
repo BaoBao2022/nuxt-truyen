@@ -4,7 +4,7 @@ const devices = useState('devices');
 </script>
 
 <template>
-  <main>
+  <main class="h-[auto]">
     <LazySectionSpotlight/>
     <LazySharedBannerBar/>
 
@@ -12,9 +12,9 @@ const devices = useState('devices');
       <LazyVisitedComic/>
       <LazyHomePageFavoriteStory/>
       <LazyHomePageCatelog/>
+      <LazyHomePageNgonTinh/>
       <LazyHomePageMaybeLove/>
       <LazyHomePageDamMy/>
-      <LazyHomePageNgonTinh/>
       <LazyHomePageNewStory/>
       <LazyHomePageMangaUpdated/>
       <LazyHomePageRankList/>

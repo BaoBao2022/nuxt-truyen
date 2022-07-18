@@ -22,7 +22,7 @@ const navigateToManga = async () => {
 </script>
 
 <template>
-  <div class="read-action fixed bottom-0 h-[60px] flex items-center w-full bg-deep-black justify-between max-w-[450px]">
+  <div class="md:max-w-[750px] read-action fixed bottom-0 h-[60px] flex items-center w-full bg-deep-black justify-between max-w-[450px]">
     <div class="flex items-start ml-10">
       <div class="text-dark mr-8" @click="share">
         <div class="flex items-center justify-center">
