@@ -8,10 +8,11 @@ const devices = useState('devices');
     <LazySectionSpotlight/>
     <LazySharedBannerBar/>
 
-    <section class="px-3">
-      <LazyVisitedComic/>
-      <LazyHomePageFavoriteStory/>
+    <section>
       <LazyHomePageMangaUpdated/>
+
+<!--      <LazyVisitedComic/>-->
+      <LazyHomePageFavoriteStory/>
       <LazyHomePageCatelog/>
       <LazyHomePageNgonTinh/>
       <LazyHomePageMaybeLove/>

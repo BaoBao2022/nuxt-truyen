@@ -33,9 +33,9 @@ const swiperBreakPoints = {
 </script>
 
 <template>
-  <div class="px-3">
-    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
-      <SvgFollow class="mr-2"/>
+  <div class="px-4">
+    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-black">
+<!--      <SvgFollow class="mr-2"/>-->
       # Được yêu thích
     </h2>
     <PulseFavoriteStoryLoading v-if="pending"/>
@@ -60,7 +60,7 @@ const swiperBreakPoints = {
               </nuxt-img>
             </NuxtLink>
             <div class="h-[30px] flex flex-wrap">
-              <h2 class="text-base line-clamp-1 mt-1 text-white">
+              <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
                 {{ manga.name }}
               </h2>
               <a class="text-sm text-zinc-500">

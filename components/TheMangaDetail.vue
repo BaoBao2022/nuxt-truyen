@@ -95,7 +95,7 @@ useHead({
     <div v-if="pending">
       <CommonPageLoading/>
     </div>
-    <div class="relative flex h-fit flex-col" v-else>
+    <div class="relative flex h-[100vh] flex-col bg-accent-4" v-else>
       <div class="relative aspect-w-16 aspect-h-9 rounded-xl-md">
         <div
             class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">

@@ -7,7 +7,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
 
 <template>
   <div class="px-3 mb-4 mt-8">
-    <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
+    <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-black">
       # Được đề xuất
     </h2>
     <PulseMaybeLoveLoading v-if="pending"/>
@@ -23,7 +23,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/recommend-story?genres=manga-
                 fil="fill">
             </nuxt-img>
           </NuxtLink>
-          <h2 class="text-base line-clamp-1 mt-1 text-white">
+          <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
             {{ manga.name }}
           </h2>
           <p class="text-sm text-zinc-500 line-clamp-1 font-secondary">

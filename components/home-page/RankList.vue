@@ -12,7 +12,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
 
 <template>
   <div class="px-3 mb-4 mt-8" v-if="!pending">
-    <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-white">
+    <h2 class="flex h-[20px] text-2xl font-semibold flex justify-start items-center text-black">
       🏆 BXH Hot
     </h2>
     <ul class="flex justify-around">
@@ -63,8 +63,8 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
           </LazyNuxtLink>
           <div class="flex w-full flex-col pl-4">
             <h3
-                class="font-secondary text-2xl font-semibold transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl chap-title">
-              <a>{{ manga.name }}</a>
+                class="transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+              <a class="text-xl font-semibold">{{ manga.name }}</a>
             </h3>
             <a class="text-base text-mode">
               {{ manga.newChapter }}

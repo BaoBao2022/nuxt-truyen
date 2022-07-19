@@ -32,8 +32,8 @@ const swiperBreakPoints = {
 </script>
 
 <template>
-  <div class="visited-comics px-3 mb-4" v-if="!pending">
-    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-white">
+  <div class="visited-comics px-4 mb-4" v-if="!pending">
+    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-black">
       # Truyện mới cập nhật
     </h2>
     <swiper
@@ -52,7 +52,7 @@ const swiperBreakPoints = {
                       fil="fill">
             </nuxt-img>
           </NuxtLink>
-          <h2 class="text-base line-clamp-1 mt-1 text-white">
+          <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
             {{ manga.name }}
           </h2>
           <p class="text-sm text-zinc-500 line-clamp-1 font-secondary">

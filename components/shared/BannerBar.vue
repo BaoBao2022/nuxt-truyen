@@ -1,6 +1,6 @@
 <script setup>
 import {HeartIcon} from "@heroicons/vue/solid";
-import {BookOpenIcon} from "@heroicons/vue/outline";
+
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter?view=month">
-            <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center">
+            <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center">
               <img
                   format="webp"
                   class="w-9 h-9 mb-2"
@@ -27,7 +27,7 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter">
-            <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%] bg-white">
+            <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%]">
               <img
                   format="webp"
                   class="w-9 h-9"
@@ -41,8 +41,8 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       </div>
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
-          <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center bg-white">
-            <HeartIcon class="w-10 h-10 text-amber-700"/>
+          <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center">
+            <HeartIcon class="w-10 h-10"/>
           </div>
         </div>
         <p class="text-center text-xl mt-2">
@@ -51,7 +51,7 @@ import {BookOpenIcon} from "@heroicons/vue/outline";
       </div>
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
-          <div class="icon w-16 h-16 bg-amber-100 rounded-[100%] flex items-center justify-center text-3xl">
+          <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center text-3xl">
             📚
           </div>
         </div>
