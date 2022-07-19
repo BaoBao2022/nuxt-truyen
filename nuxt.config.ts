@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     },
     image: {
         dir: 'public/',
-        // staticFilename: '[publicPath]/images/[name]-[hash][ext]',
+        staticFilename: '[publicPath]/[name]-[hash][ext]',
         domains: ['meetruyen.com'],
         screens: {
             xs: 320,
