@@ -18,18 +18,6 @@ const autoPlaySettings = ref({
 
 const mangaLocal = [
   {
-    id: 4,
-    name: 'Cô Vương Quả Nữ',
-    thumbnail: 'spotlight-5.png',
-    slug: 'co-vuong-qua-nu-54444',
-    updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
-    view: '6.763.201',
-    author: 'Đang cập nhật',
-    status: 'Đang cập nhật',
-    follow: '46.578',
-    genres: ['Comedy', 'Manhua', 'Ngôn Tình', 'Truyện Màu']
-  },
-  {
     id: 1,
     name: 'Kiều Mỵ Phu Lang, Tại Tuyến Lục Trà',
     thumbnail: 'spotlight-1.png',
@@ -40,6 +28,18 @@ const mangaLocal = [
     status: 'Đang cập nhật',
     follow: '38.423',
     genres: ['Drama', 'Manhua', 'Ngôn Tình', 'Romance', 'Truyện Màu']
+  },
+  {
+    id: 4,
+    name: 'Cô Vương Quả Nữ',
+    thumbnail: 'spotlight-5.png',
+    slug: 'co-vuong-qua-nu-54444',
+    updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
+    view: '6.763.201',
+    author: 'Đang cập nhật',
+    status: 'Đang cập nhật',
+    follow: '46.578',
+    genres: ['Comedy', 'Manhua', 'Ngôn Tình', 'Truyện Màu']
   },
   {
     id: 2,
@@ -118,6 +118,7 @@ const mangaLocal = [
 <!--          </figure>-->
           <div>
             <nuxt-img
+                provider="ipx"
                 class="img-position z-10 object-cover"
                 format="webp"
                 :src="spotlight.thumbnail">
