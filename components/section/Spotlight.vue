@@ -20,7 +20,7 @@ const mangaLocal = [
   {
     id: 1,
     name: 'Kiều Mỵ Phu Lang, Tại Tuyến Lục Trà',
-    thumbnail: 'assets/images/spotlight-1.png',
+    thumbnail: '/images/spotlight-1.png',
     slug: 'kieu-my-phu-lang-tai-tuyen-luc-tra-53686',
     updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
     view: '2.422.242',
@@ -32,7 +32,7 @@ const mangaLocal = [
   {
     id: 4,
     name: 'Cô Vương Quả Nữ',
-    thumbnail: 'assets/images/spotlight-5.png',
+    thumbnail: '/images/spotlight-5.png',
     slug: 'co-vuong-qua-nu-54444',
     updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
     view: '6.763.201',
@@ -44,7 +44,7 @@ const mangaLocal = [
   {
     id: 2,
     name: 'Mau Xuyên Không Rửa Tội Cho Nhân Vật Phản Diện',
-    thumbnail: 'assets/images/spotlight-2.png',
+    thumbnail: '/images/spotlight-2.png',
     slug: 'mau-xuyen-khong-rua-toi-cho-nhan-vat-phan-dien-45007',
     updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
     view: '5.934.249',
@@ -56,7 +56,7 @@ const mangaLocal = [
   {
     id: 3,
     name: 'Manh Sư Tại Thượng',
-    thumbnail: 'assets/images/spotlight-3.png',
+    thumbnail: '/images/spotlight-3.png',
     slug: 'manh-su-tai-thuong-23169',
     updatedAt: '[Cập nhật lúc: 14:43 19/07/2022]',
     view: '59.158.407',
