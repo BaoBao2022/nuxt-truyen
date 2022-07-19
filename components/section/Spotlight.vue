@@ -117,12 +117,11 @@ const mangaLocal = [
 <!--          <figure class="w-full bg-cover bg-center bg-no-repeat blur-none">-->
 <!--          </figure>-->
           <div>
-            <nuxt-img
+            <img
                 provider="ipx"
                 class="img-position z-10 object-cover"
                 format="webp"
                 :src="spotlight.thumbnail">
-            </nuxt-img>
           </div>
         </div>
       </NuxtLink>
