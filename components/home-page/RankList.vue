@@ -1,12 +1,12 @@
 <script lang="ts" setup>
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
-import {EyeIcon} from '@heroicons/vue/solid';
-import {randomColors} from '~/serveless/utils';
-import {TailwindColors} from '~/contants';
-import {PropType} from 'vue';
-import {Manga} from '~/types';
+import { EyeIcon } from '@heroicons/vue/solid';
+import { randomColors } from '~/serveless/utils';
+import { TailwindColors } from '~/contants';
+import { PropType } from 'vue';
+import { Manga } from '~/types';
 
-const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
+const { data: mangas, pending } = useLazyFetch(`/api/top-month`);
 
 </script>
 
@@ -18,7 +18,7 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
     <ul class="flex justify-around">
       <li class="w-[33.33333%]">
         <NuxtLink to="/filter?view=month" rel="nofollow" title="BXH truyện tranh theo tháng"
-                  class="rank-active text-base">
+          class="rank-active text-base">
           <span class="px-3">
             Truyện hot tháng này
           </span>
@@ -46,24 +46,18 @@ const {data: mangas, pending} = useLazyFetch(`/api/top-month`);
             ️<span class="text-4xl mr-2 w-[25px]" v-if="mI == 0">🥇</span>
             ️<span class="text-4xl mr-2 w-[25px]" v-if="mI == 1">️🥈</span>
             ️<span class="text-4xl mr-2 w-[25px]" v-if="mI == 2">🥉</span>
-            ️<span class="text-3xl mr-2 w-[25px] font-secondary flex items-center justify-center"
-                   v-if="mI > 2">️{{ mI + 1 }}</span>
+            ️<span class="text-3xl mr-2 w-[25px] font-secondary flex items-center justify-center" v-if="mI > 2">️{{ mI +
+                1
+            }}</span>
             <figure class="relative h-[65px] w-[60px]">
-            <span class="rounded-xl  h-[65px] w-[60px]">
-              <nuxt-img
-                  class=" h-[65px] w-[60px] object-cover object-center rounded-xl"
-                  format="webp"
-                  loading="lazy"
-                  fil="fill"
-                  :src="manga.thumbnail"
-                  sizes="sm:100vw md:100vw lg:100vw">
-                </nuxt-img>
-            </span>
+              <span class="rounded-xl  h-[65px] w-[60px]">
+                <img class=" h-[65px] w-[60px] object-cover object-center rounded-xl" format="webp" loading="lazy"
+                  fil="fill" :src="manga.thumbnail" sizes="sm:100vw md:100vw lg:100vw">
+              </span>
             </figure>
           </LazyNuxtLink>
           <div class="flex w-full flex-col pl-4">
-            <h3
-                class="transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
+            <h3 class="transition-all line-clamp-1 hover:cursor-pointer hover:text-primary md:text-3xl">
               <a class="text-xl font-semibold">{{ manga.name }}</a>
             </h3>
             <a class="text-base text-mode">

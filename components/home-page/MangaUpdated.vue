@@ -61,12 +61,11 @@ const swiperBreakPoints = {
               <NuxtLink
                   class="flex items-center"
                   :to="useMangaDetailPagePath(manga.slug)">
-                <nuxt-img
+                <img
                     loading="lazy"
                     class="rounded-xl w-[75px] h-[100px] object-cover"
                     :src="manga.thumbnail"
                     fil="fill">
-                </nuxt-img>
                 <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
                   <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
                     <NuxtLink :to="useMangaDetailPagePath(manga.slug)">

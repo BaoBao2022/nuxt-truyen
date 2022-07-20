@@ -15,12 +15,11 @@ const {data: mangas, pending} = useLazyFetch(`/api/dam-my`);
       <div class="grid grid-cols-4 gap-4">
         <div class="col-span-1 mt-5" v-for="manga in mangas">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <nuxt-img loading="lazy"
+            <img loading="lazy"
                       class="rounded-xl h-[130px] w-full object-cover"
                       format="webp"
                       :src="manga.thumbnail"
                       fil="fill">
-            </nuxt-img>
           </NuxtLink>
           <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
             {{ manga.name }}

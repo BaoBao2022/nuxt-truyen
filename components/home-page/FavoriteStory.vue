@@ -51,13 +51,12 @@ const swiperBreakPoints = {
         <SwiperSlide v-for="manga in mangas">
           <div class="duration-200 ease-in-out transition-all">
             <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-              <nuxt-img
+              <img
                   format="webp"
                   loading="lazy"
                   class="rounded-xl object-cover h-[130px] w-full"
                   :src="manga.thumbnail"
                   fil="fill">
-              </nuxt-img>
             </NuxtLink>
             <div class="h-[30px] flex flex-wrap">
               <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
