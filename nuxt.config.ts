@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     image: {
         dir: 'public/',
         staticFilename: '[publicPath]/[name]-[hash][ext]',
-        domains: ['meetruyen.com'],
+        domains: ['meetruyen.com', 'meetruyen.netlify.app'],
         screens: {
             xs: 320,
             sm: 640,
