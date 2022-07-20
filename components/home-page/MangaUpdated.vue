@@ -8,7 +8,8 @@ import "swiper/css/grid";
 const {
   data: mangas,
   pending,
-} = await useLazyFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
+} = await useFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
+
 const swiperBreakPoints = {
   1: {
     slidesPerView: 2,
@@ -76,14 +77,12 @@ const swiperBreakPoints = {
                       <!--                            class="reviewCount">(&lt;!&ndash; &ndash;&gt;1.3K&lt;!&ndash; &ndash;&gt;)</span></div>-->
                     </div>
                   </div>
-
                 </NuxtLink>
               </div>
             </swiper-slide>
           </swiper>
         </ClientOnly>
       </div>
-
       <div class="trend__Footer-qgyx2j-3 jQjUBg">
         <div class="trend__LinkToAll-qgyx2j-4 iABAfw">
           <a href="#">
