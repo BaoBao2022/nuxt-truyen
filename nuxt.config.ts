@@ -2,6 +2,7 @@ import {defineNuxtConfig} from "nuxt";
 
 export default defineNuxtConfig({
     ssr: true,
+    target: 'server',
     runtimeConfig: {
         public: {
             NUXT_PUBLIC_SERVICE_URL: process.env.NUXT_PUBLIC_SERVICE_URL,
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
     image: {
         dir: 'public/',
         staticFilename: '[publicPath]/[name]-[hash][ext]',
-        domains: ['meetruyen.com', 'meetruyen.netlify.app'],
+        domains: ['meetruyen.com', 'meetruyen.netlify.app', 'https://meetruyen.netlify.app', 'www.meetruyen.com', 'https://meetruyen.com'],
         screens: {
             xs: 320,
             sm: 640,

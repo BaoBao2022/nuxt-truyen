@@ -43,54 +43,54 @@ const swiperBreakPoints = {
     <div class="px-4" v-else>
       <div>
         <a href="/xu-huong">
-          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend"></a>
+<!--          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend">-->
+          <SvgBannerTrending />
+        </a>
       </div>
       <div class="gxFbOF">
-        <ClientOnly>
-          <swiper
-              :modules="[Grid]"
-              :grid="{
+        <swiper
+            :modules="[Grid]"
+            :grid="{
                   rows: 3,
                   fill: 'row'
                 }"
-              :slides-per-view="1.3"
-              :space-between="14">
-            <swiper-slide v-for="manga in mangas" class="h-[130px]">
-              <div class="duration-200 ease-in-out transition-all kesnlQ">
-                <NuxtLink
-                    class="flex items-center"
-                    :to="useMangaDetailPagePath(manga.slug)">
-                  <nuxt-img
-                      loading="lazy"
-                      class="rounded-xl w-[75px] h-[100px] object-cover"
-                      :src="manga.thumbnail"
-                      fil="fill">
-                  </nuxt-img>
-                  <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
-                    <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
-                      <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                        {{ manga.name }}
-                      </NuxtLink>
-                    </h3>
-                    <p class="trendItem__ChapCount-sc-1vc74my-4 jbgrIv">
-                      {{ manga.newChapter }}
-                    </p>
-                    <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
-                      <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
-                        <SvgViewChapter/>
-                        <span>{{ manga.view }}</span>
-                      </div>
-                      <!--                        <div class="trendItem__ComicReview-sc-1vc74my-7 iCEPso"><img-->
-                      <!--                            src="/icons/widgets/trend/icon-star.svg" alt="review"><span>5</span><span-->
-                      <!--                            class="reviewCount">(&lt;!&ndash; &ndash;&gt;1.3K&lt;!&ndash; &ndash;&gt;)</span></div>-->
+            :slides-per-view="1.3"
+            :space-between="14">
+          <swiper-slide v-for="manga in mangas" class="h-[130px]">
+            <div class="duration-200 ease-in-out transition-all kesnlQ">
+              <NuxtLink
+                  class="flex items-center"
+                  :to="useMangaDetailPagePath(manga.slug)">
+                <nuxt-img
+                    loading="lazy"
+                    class="rounded-xl w-[75px] h-[100px] object-cover"
+                    :src="manga.thumbnail"
+                    fil="fill">
+                </nuxt-img>
+                <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
+                  <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
+                    <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
+                      {{ manga.name }}
+                    </NuxtLink>
+                  </h3>
+                  <p class="trendItem__ChapCount-sc-1vc74my-4 jbgrIv">
+                    {{ manga.newChapter }}
+                  </p>
+                  <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
+                    <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
+                      <SvgViewChapter/>
+                      <span>{{ manga.view }}</span>
                     </div>
+                    <!--                        <div class="trendItem__ComicReview-sc-1vc74my-7 iCEPso"><img-->
+                    <!--                            src="/icons/widgets/trend/icon-star.svg" alt="review"><span>5</span><span-->
+                    <!--                            class="reviewCount">(&lt;!&ndash; &ndash;&gt;1.3K&lt;!&ndash; &ndash;&gt;)</span></div>-->
                   </div>
+                </div>
 
-                </NuxtLink>
-              </div>
-            </swiper-slide>
-          </swiper>
-        </ClientOnly>
+              </NuxtLink>
+            </div>
+          </swiper-slide>
+        </swiper>
       </div>
 
       <div class="trend__Footer-qgyx2j-3 jQjUBg">
@@ -106,7 +106,7 @@ const swiperBreakPoints = {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media only screen and (min-width: 375px) {
   .swiper-slide {
     margin-right: 0 !important;

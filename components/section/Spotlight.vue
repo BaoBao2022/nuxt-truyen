@@ -60,6 +60,12 @@ const mangaLocal = [
   }
 ]
 
+const backgroundImage = () => {
+  return {
+    backgroundImage: `url(https://cdn.funtoon.vn/image/resources/1641268437278.1942.png)`,
+  }
+}
+
 </script>
 
 <template>
@@ -91,24 +97,22 @@ const mangaLocal = [
                   <div class="flex items-center gap-x-2">
                     <p class="text-white flex items-center">
                       <SvgFollow class="mr-1"/>
-                      {{spotlight.follow}}
+                      {{ spotlight.follow }}
                     </p>
 
-                      <!--                      <a class="p-3">{{ spotlight.author ? spotlight.author : 'Đang cập nhật' }}</a>-->
+                    <!--                      <a class="p-3">{{ spotlight.author ? spotlight.author : 'Đang cập nhật' }}</a>-->
                   </div>
                 </div>
-<!--                <div class="flex line-clamp-1 items-center space-x-2 w-[100%]">-->
-<!--                  <span class="text-white" v-for="(genre, genI) in spotlight.genres"-->
-<!--                        :style="{'color': randomColors(TailwindColors, genI )}">{{ genre }} </span>-->
-<!--                </div>-->
+                <!--                <div class="flex line-clamp-1 items-center space-x-2 w-[100%]">-->
+                <!--                  <span class="text-white" v-for="(genre, genI) in spotlight.genres"-->
+                <!--                        :style="{'color': randomColors(TailwindColors, genI )}">{{ genre }} </span>-->
+                <!--                </div>-->
               </div>
             </div>
           </div>
-          <!--          <figure class="w-full bg-cover bg-center bg-no-repeat blur-none"-->
-          <!--                  :style="backgroundImage(spotlight)">-->
-          <!--          </figure>-->
-<!--          <figure class="w-full bg-cover bg-center bg-no-repeat blur-none">-->
-<!--          </figure>-->
+          <figure class="w-full bg-cover bg-center bg-no-repeat z-50"
+                  style="background-image: url(https://cdn.funtoon.vn/image/resources/1641268437278.1942.png)">
+          </figure>
           <div>
             <img
                 provider="ipx"
