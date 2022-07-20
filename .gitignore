@@ -2,7 +2,6 @@ node_modules
 *.log*
 .nitro
 .cache
-.env
 .idea
 .DS_Store
 .nuxt

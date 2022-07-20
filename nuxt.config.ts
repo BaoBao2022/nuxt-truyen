@@ -4,9 +4,9 @@ export default defineNuxtConfig({
     ssr: true,
     runtimeConfig: {
         public: {
-            NUXT_PUBLIC_SERVICE_URL: "https://truyenmem.herokuapp.com",
-            DOMAIN: 'meetruyen.com',
-            SIZE_NAME: "MeeTruyen"
+            NUXT_PUBLIC_SERVICE_URL: process.env.NUXT_PUBLIC_SERVICE_URL,
+            DOMAIN: process.env.DOMAIN,
+            SIZE_NAME: process.env.SIZE_NAME,
         },
     },
     meta: {
