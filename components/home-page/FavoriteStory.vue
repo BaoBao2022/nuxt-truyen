@@ -41,14 +41,14 @@ const swiperBreakPoints = {
       <div
         class="col-span-1 rounded-[8px] p-13 max-w-[384px] w-full h-[138px] bg-white relative shadow-[0_3px_20px_rgba(0,0,0,10%)]">
         <div class="absolute bottom-[13px] left-[13px]">
-          <a>
+          <NuxtLink :to="useMangaDetailPagePath(mangas[mangas.length - 1].slug)">
             <div class="max-w-full w-[105px]">
               <div class="relative pb-[133.3333%]">
                 <img class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
                   :src="mangas[mangas.length - 1].thumbnail">
               </div>
             </div>
-          </a>
+          </NuxtLink>
         </div>
         <div class="ml-[118px] p-4">
           <h3 class="text-xl font-bold">
