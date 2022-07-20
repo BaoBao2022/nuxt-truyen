@@ -2,7 +2,6 @@ import { defineNuxtConfig } from "nuxt";
 
 export default defineNuxtConfig({
   ssr: true,
-  target: "server",
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_SERVICE_URL: process.env.NUXT_PUBLIC_SERVICE_URL,
@@ -42,16 +41,16 @@ export default defineNuxtConfig({
     },
   },
   modules: ["@nuxtjs/color-mode", "@nuxt/image-edge"],
-  // colorMode: {
-  //     preference: "dark", // default value of $colorMode.preference
-  //     fallback: "dark", // fallback value if not system preference found
-  //     hid: "nuxt-color-mode-script",
-  //     globalName: "__NUXT_COLOR_MODE__",
-  //     componentName: "ColorScheme",
-  //     classPrefix: "",
-  //     classSuffix: "-mode",
-  //     storageKey: "nuxt-color-mode",
-  // },
+  colorMode: {
+    preference: "dark", // default value of $colorMode.preference
+    fallback: "dark", // fallback value if not system preference found
+    hid: "nuxt-color-mode-script",
+    globalName: "__NUXT_COLOR_MODE__",
+    componentName: "ColorScheme",
+    classPrefix: "",
+    classSuffix: "-mode",
+    storageKey: "nuxt-color-mode",
+  },
   build: {
     transpile: ["@heroicons/vue"],
     postcss: {
