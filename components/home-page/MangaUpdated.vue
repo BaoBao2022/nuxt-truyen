@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {Manga} from "~/types";
-import {Swiper, SwiperSlide} from 'swiper/vue';
-import {Grid} from "swiper";
-import {ChevronDoubleRightIcon} from "@heroicons/vue/solid";
+import { Manga } from "~/types";
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Grid } from "swiper";
+import { ChevronDoubleRightIcon } from "@heroicons/vue/solid";
 import "swiper/css/grid";
 
 const {
@@ -39,34 +39,24 @@ const swiperBreakPoints = {
 
 <template>
   <div class="mb-4">
-    <PulseMangaUpdatedLoading v-if="pending"/>
+    <PulseMangaUpdatedLoading v-if="pending" />
     <div class="px-4" v-else>
       <div>
         <a href="/xu-huong">
-<!--          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend">-->
+          <!--          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend">-->
           <SvgBannerTrending />
         </a>
       </div>
       <div class="gxFbOF">
-        <swiper
-            :modules="[Grid]"
-            :grid="{
-                  rows: 3,
-                  fill: 'row'
-                }"
-            :slides-per-view="1.3"
-            :space-between="14">
+        <swiper :modules="[Grid]" :grid="{
+          rows: 3,
+          fill: 'row'
+        }" :slides-per-view="1.3" :space-between="14">
           <swiper-slide v-for="manga in mangas" class="h-[130px]">
             <div class="duration-200 ease-in-out transition-all kesnlQ">
-              <NuxtLink
-                  class="flex items-center"
-                  :to="useMangaDetailPagePath(manga.slug)">
-                <nuxt-img
-                    loading="lazy"
-                    class="rounded-xl w-[75px] h-[100px] object-cover"
-                    :src="manga.thumbnail"
-                    fil="fill">
-                </nuxt-img>
+              <NuxtLink class="flex items-center" :to="useMangaDetailPagePath(manga.slug)">
+                <img loading="lazy" class="rounded-xl w-[75px] h-[100px] object-cover" :src="manga.thumbnail"
+                  fil="fill">
                 <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
                   <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
                     <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
@@ -78,7 +68,7 @@ const swiperBreakPoints = {
                   </p>
                   <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
                     <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
-                      <SvgViewChapter/>
+                      <SvgViewChapter />
                       <span>{{ manga.view }}</span>
                     </div>
                     <!--                        <div class="trendItem__ComicReview-sc-1vc74my-7 iCEPso"><img-->
@@ -97,7 +87,7 @@ const swiperBreakPoints = {
         <div class="trend__LinkToAll-qgyx2j-4 iABAfw">
           <a href="/xu-huong">
             <span>Xem tất cả</span>
-            <ChevronDoubleRightIcon class="h-5 w-5 text-gray-custom ml-2"/>
+            <ChevronDoubleRightIcon class="h-5 w-5 text-gray-custom ml-2" />
           </a>
         </div>
       </div>

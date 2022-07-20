@@ -121,8 +121,7 @@ const backgroundImage = () => {
             style="background-image: url(https://cdn.funtoon.vn/image/resources/1641268437278.1942.png)">
           </figure>
           <div>
-            <nuxt-img loading="lazy" class="img-position z-10 object-cover" format="webp" :src="spotlight.thumbnail">
-            </nuxt-img>
+            <img loading="lazy" class="img-position z-10 object-cover" format="webp" :src="spotlight.thumbnail">
           </div>
         </div>
       </NuxtLink>
