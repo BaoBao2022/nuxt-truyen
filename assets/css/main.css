@@ -1,7 +1,7 @@
 @import "assets/scss/utils.scss";
 @import "assets/scss/background.scss";
-@import "assets/scss/globals.scss";
-@import "assets/scss/theme.scss";
+/* @import "assets/scss/globals.scss"; */
+/* @import "assets/scss/theme.scss"; */
 @import "assets/scss/button.scss";
 @import "assets/css/magic.min.css";
 
@@ -10,20 +10,19 @@
 @tailwind utilities;
 
 body {
-    font-size: 1.6rem;
-    text-rendering: optimizeSpeed;
-    height: fit-content;
-    transition-duration: .35s;
+  font-size: 1.6rem;
+  text-rendering: optimizeSpeed;
+  height: fit-content;
+  transition-duration: 0.35s;
 
-    --tw-bg-opacity: 1;
-    font-family: Nunito, sans-serif;
+  --tw-bg-opacity: 1;
+  font-family: Nunito, sans-serif;
 }
 
+.text-gray-custom {
+  color: rgb(138, 138, 143);
+}
 
-/*body {*/
-/*    font-family: "Nunito Sans", sans-serif;*/
-/*    font-size: 14px;*/
-/*    line-height: 1.5;*/
-/*    background: rgb(229, 229, 229);*/
-/*    color: rgb(51, 51, 51);*/
-/*}*/
+.text_chapter-name {
+  color: rgb(38, 42, 65);
+}

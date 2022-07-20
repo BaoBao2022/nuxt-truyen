@@ -12,19 +12,17 @@ $dot-height: 15px !default;
 $dot-radius: $dot-width * 0.5 !default;
 
 $dot-color: #f43f5e !default;
-$dot-bg-color: $dot-color !default;
-$dot-before-color: $dot-color !default;
-$dot-after-color: $dot-color !default;
+$dot-bg-color: $dot-color  !default;
+$dot-before-color: $dot-color  !default;
+$dot-after-color: $dot-color  !default;
 
 $dot-spacing: $dot-width + $dot-width * 0.5 !default;
 
-@mixin dot(
-  $width: $dot-width,
+@mixin dot($width: $dot-width,
   $height: $dot-height,
   $radius: $dot-radius,
   $bg-color: $dot-bg-color,
-  $color: $dot-color
-) {
+  $color: $dot-color) {
   width: $width;
   height: $height;
   border-radius: $radius;
@@ -118,6 +116,7 @@ input[type='number'] {
   0% {
     transform: scale(0.8, 0.8);
   }
+
   100% {
     transform: scale(1, 1);
   }
@@ -134,10 +133,12 @@ input[type='number'] {
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
   }
+
   50% {
     stroke-dasharray: 90, 200;
     stroke-dashoffset: -35px;
   }
+
   100% {
     stroke-dashoffset: -125px;
   }
@@ -147,8 +148,10 @@ input[type='number'] {
   0% {
     transform: translateY(40px);
   }
+
   100% {
-    transform: translateY(-35px); /* The image width */
+    transform: translateY(-35px);
+    /* The image width */
   }
 }
 
@@ -156,8 +159,10 @@ input[type='number'] {
   0% {
     transform: translateX(-26px);
   }
+
   100% {
-    transform: translateX(25px); /* The image width */
+    transform: translateX(25px);
+    /* The image width */
   }
 }
 
@@ -188,11 +193,9 @@ input[type='number'] {
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    background: linear-gradient(
-                    0deg,
-                    rgba(222, 33, 24, 1) 0%,
-                    rgba(234, 72, 66, 0.9279061966583508) 100%
-    );
+    background: linear-gradient(0deg,
+        rgba(222, 33, 24, 1) 0%,
+        rgba(234, 72, 66, 0.9279061966583508) 100%);
     transform-origin: center;
     transform: translate3d(50%, 50%, 0) scale3d(0, 0, 0);
     transition: transform 0.2s ease-in-out;
@@ -272,7 +275,7 @@ input[type='number'] {
 .section-swiper {
 
   .swiper-pagination-bullet {
-    @apply h-[5px] w-[5px] md:h-[7px] md:w-[7px];
+    @apply h-[5px] w-[5px] md: h-[7px] md:w-[7px];
     background-color: rgba(255, 255, 255, 0.8) !important;
   }
 
@@ -290,14 +293,12 @@ input[type='number'] {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-                    90deg,
-                    #202125 0,
-                    rgba(32, 33, 37, 0.6) 40%,
-                    rgba(32, 33, 37, 0) 60%,
-                    rgba(32, 33, 37, 0) 80%,
-                    #202125 100%
-    );
+    background: linear-gradient(90deg,
+        #202125 0,
+        rgba(32, 33, 37, 0.6) 40%,
+        rgba(32, 33, 37, 0) 60%,
+        rgba(32, 33, 37, 0) 80%,
+        #202125 100%);
   }
 
   &::after {
@@ -308,12 +309,10 @@ input[type='number'] {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(
-                    0deg,
-                    #202125 0,
-                    rgba(32, 33, 37, 0) 50%,
-                    #202125 100%
-    );
+    background: linear-gradient(0deg,
+        #202125 0,
+        rgba(32, 33, 37, 0) 50%,
+        #202125 100%);
     z-index: 2;
   }
 }
@@ -329,7 +328,8 @@ input[type='number'] {
   z-index: 2;
 }
 
-.deslide-cover:after, .deslide-cover:before {
+.deslide-cover:after,
+.deslide-cover:before {
   content: "";
   position: absolute;
   top: 0;
@@ -408,7 +408,8 @@ input[type='number'] {
   border-radius: 4px;
 }
 
-.breadcrumb > li, .pagination {
+.breadcrumb>li,
+.pagination {
   display: inline-block;
 }
 

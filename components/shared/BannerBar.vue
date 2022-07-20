@@ -7,7 +7,7 @@ import {HeartIcon} from "@heroicons/vue/solid";
   <div>
 
   </div>
-  <div class="h-[100px] banner-icons py-10">
+  <div class="banner-icons py-4">
     <div class="icons grid grid-cols-4">
       <div class="grid grid-cols-1">
         <div class="flex items-center justify-center">
@@ -20,8 +20,8 @@ import {HeartIcon} from "@heroicons/vue/solid";
             </div>
           </NuxtLink>
         </div>
-        <p class="text-center text-xl mt-2">
-          Bảng xếp hạng
+        <p class="text-center text-base mt-2">
+          BXH
         </p>
       </div>
       <div class="grid grid-cols-1">
@@ -35,7 +35,7 @@ import {HeartIcon} from "@heroicons/vue/solid";
             </div>
           </NuxtLink>
         </div>
-        <p class="text-center text-xl mt-2">
+        <p class="text-center text-base mt-2">
           Thể loại
         </p>
       </div>
@@ -45,7 +45,7 @@ import {HeartIcon} from "@heroicons/vue/solid";
             <HeartIcon class="w-10 h-10"/>
           </div>
         </div>
-        <p class="text-center text-xl mt-2">
+        <p class="text-center text-base mt-2">
           Theo dõi
         </p>
       </div>
@@ -55,7 +55,7 @@ import {HeartIcon} from "@heroicons/vue/solid";
             📚
           </div>
         </div>
-        <p class="text-center text-xl mt-2">
+        <p class="text-center text-base mt-2">
           Lịch sử
         </p>
       </div>
