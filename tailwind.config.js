@@ -6,16 +6,16 @@ module.exports = {
         "./plugins/**/*.{js,ts}",
     ],
     theme: {
+        borderWidth: {
+            DEFAULT: '1px',
+            '0': '0',
+            '2': '2px',
+            '3': '3px',
+            '4': '4px',
+            '6': '6px',
+            '8': '8px',
+        },
         screens: {
-            borderWidth: {
-                DEFAULT: '1px',
-                '0': '0',
-                '2': '2px',
-                '3': '3px',
-                '4': '4px',
-                '6': '6px',
-                '8': '8px',
-            },
             ssm: '360px',
             sm: '640px',
             md: '768px',

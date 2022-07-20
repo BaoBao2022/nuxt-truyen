@@ -2,14 +2,7 @@
 import {Swiper, SwiperSlide} from "swiper/vue";
 import {Autoplay, EffectFade} from "swiper";
 import {PropType, ref} from 'vue';
-import {Manga} from "~/types";
-import {randomColors} from '~/serveless/utils';
-import {TailwindColors} from '~/contants';
-//
-// const {
-//   data: mangas,
-//   pending,
-// } = useLazyFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
+
 const modules = ref([Autoplay]);
 const autoPlaySettings = ref({
   delay: 3000,

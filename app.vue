@@ -1,7 +1,6 @@
 <script setup>
 import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/navigation";
+// import "swiper/css/effect-coverflow";
 
 const config = useRuntimeConfig();
 const publicConfig = config.public;
