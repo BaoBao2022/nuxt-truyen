@@ -32,24 +32,16 @@ const swiperBreakPoints = {
 </script>
 
 <template>
-  <div class="visited-comics px-4 mb-4" v-if="!pending">
-    <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-black">
+  <div class="px-4 mb-4" v-if="!pending">
+    <h2 class=" h-[40px] text-3xl font-bold flex justify-start items-center text-black">
       # Truyện mới cập nhật
     </h2>
-    <swiper
-        :breakpoints="swiperBreakPoints"
-        :initialSlide="3"
-        :centered-slides-bounds="true"
-        :centeredSlides="true"
-        :slides-per-view="4"
-        :space-between="14">
+    <swiper :breakpoints="swiperBreakPoints" :initialSlide="3" :centered-slides-bounds="true" :centeredSlides="true"
+      :slides-per-view="4" :space-between="14">
       <swiper-slide v-for="manga in mangas">
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <nuxt-img loading="lazy"
-                      class="rounded-xl h-[130px] object-cover"
-                      :src="manga.thumbnail"
-                      fil="fill">
+            <nuxt-img loading="lazy" class="rounded-xl h-[130px] object-cover" :src="manga.thumbnail" fil="fill">
             </nuxt-img>
           </NuxtLink>
           <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">

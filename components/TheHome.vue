@@ -5,20 +5,19 @@ const devices = useState('devices');
 
 <template>
   <main class="h-[auto]">
-    <LazySectionSpotlight/>
-    <LazySharedBannerBar/>
+    <LazySectionSpotlight />
+    <LazySharedBannerBar />
 
     <section>
-      <LazyHomePageMangaUpdated/>
-
-<!--      <LazyVisitedComic/>-->
-      <LazyHomePageFavoriteStory/>
-      <LazyHomePageCatelog/>
-      <LazyHomePageNgonTinh/>
-      <LazyHomePageMaybeLove/>
-      <LazyHomePageDamMy/>
-      <LazyHomePageNewStory/>
-      <LazyHomePageRankList/>
+      <LazyHomePageMangaUpdated />
+      <!--      <LazyVisitedComic/>-->
+      <LazyHomePageFavoriteStory />
+      <LazyHomePageCatelog />
+      <LazyHomePageNgonTinh />
+      <LazyHomePageMaybeLove />
+      <LazyHomePageDamMy />
+      <LazyHomePageNewStory />
+      <!-- <LazyHomePageRankList/> -->
     </section>
   </main>
 </template>

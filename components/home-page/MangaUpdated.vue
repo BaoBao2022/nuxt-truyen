@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import { Manga } from "~/types";
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Grid } from "swiper";
-import { ChevronDoubleRightIcon } from "@heroicons/vue/solid";
+import {Manga} from "~/types";
+import {Swiper, SwiperSlide} from 'swiper/vue';
+import {Grid} from "swiper";
+import {ChevronDoubleRightIcon} from "@heroicons/vue/solid";
 import "swiper/css/grid";
 
 const {
   data: mangas,
   pending,
-} = await useFetch<Manga[]>(`/api/manga-updated?genres=manga-112`);
+} = await useFetch<Manga[]>(`/api/manga-updated`);
 
 const swiperBreakPoints = {
   1: {
@@ -40,7 +40,7 @@ const swiperBreakPoints = {
 
 <template>
   <div class="mb-4">
-    <PulseMangaUpdatedLoading v-if="pending" />
+    <PulseMangaUpdatedLoading v-if="pending"/>
     <div class="px-4" v-else>
       <div>
         <a href="/xu-huong">
@@ -56,7 +56,7 @@ const swiperBreakPoints = {
               <div class="duration-200 ease-in-out transition-all kesnlQ">
                 <NuxtLink class="flex items-center" :to="useMangaDetailPagePath(manga.slug)">
                   <nuxt-img loading="lazy" class="rounded-xl w-[75px] h-[100px] object-cover" :src="manga.thumbnail"
-                    fil="fill">
+                            fil="fill">
                   </nuxt-img>
                   <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
                     <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
@@ -69,12 +69,9 @@ const swiperBreakPoints = {
                     </p>
                     <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
                       <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
-                        <SvgViewChapter />
+                        <SvgViewChapter/>
                         <span>{{ manga.view }}</span>
                       </div>
-                      <!--                        <div class="trendItem__ComicReview-sc-1vc74my-7 iCEPso"><img-->
-                      <!--                            src="/icons/widgets/trend/icon-star.svg" alt="review"><span>5</span><span-->
-                      <!--                            class="reviewCount">(&lt;!&ndash; &ndash;&gt;1.3K&lt;!&ndash; &ndash;&gt;)</span></div>-->
                     </div>
                   </div>
                 </NuxtLink>
@@ -87,7 +84,7 @@ const swiperBreakPoints = {
         <div class="trend__LinkToAll-qgyx2j-4 iABAfw">
           <a href="#">
             <span class="text-base">Xem tất cả</span>
-            <ChevronDoubleRightIcon class="h-4 w-4 text-gray-custom ml-2" />
+            <ChevronDoubleRightIcon class="h-4 w-4 text-gray-custom ml-2"/>
           </a>
         </div>
       </div>
@@ -96,7 +93,7 @@ const swiperBreakPoints = {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media only screen and (min-width: 375px) {
   .swiper-slide {
     margin-right: 0 !important;

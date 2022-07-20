@@ -2,7 +2,7 @@
 // import { ref } from 'vue'
 import { ArrowSmLeftIcon } from '@heroicons/vue/solid'
 
-// const route = useRoute();
+const route = useRoute();
 // const scrollTransform = ref(0);
 // if (typeof document !== 'undefined')
 //   document.addEventListener('scroll', (e) => {
