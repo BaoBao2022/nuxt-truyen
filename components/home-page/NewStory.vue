@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import {Manga} from "~/types";
-import {Swiper, SwiperSlide} from 'swiper/vue';
+import { Manga } from "~/types";
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
+const { data: mangas, pending } = useLazyFetch<Manga[]>(`/api/manga-new`);
 const swiperBreakPoints = {
   1: {
     slidesPerView: 2,
@@ -36,20 +36,12 @@ const swiperBreakPoints = {
     <h2 class="flex h-[40px] text-2xl font-semibold flex justify-start items-center text-black">
       # Truyện mới cập nhật
     </h2>
-    <swiper
-        :breakpoints="swiperBreakPoints"
-        :initialSlide="3"
-        :centered-slides-bounds="true"
-        :centeredSlides="true"
-        :slides-per-view="4"
-        :space-between="14">
+    <swiper :breakpoints="swiperBreakPoints" :initialSlide="3" :centered-slides-bounds="true" :centeredSlides="true"
+      :slides-per-view="4" :space-between="14">
       <swiper-slide v-for="manga in mangas">
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <img loading="lazy"
-                      class="rounded-xl h-[130px] object-cover"
-                      :src="manga.thumbnail"
-                      fil="fill">
+            <img loading="lazy" class="rounded-xl h-[130px] object-cover" :src="manga.thumbnail" fil="fill">
           </NuxtLink>
           <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
             {{ manga.name }}
@@ -71,7 +63,6 @@ const swiperBreakPoints = {
 </template>
 
 <style>
-
 .swiper-slide {
   width: 80%;
 }
