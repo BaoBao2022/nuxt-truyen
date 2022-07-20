@@ -87,8 +87,8 @@ const swiperBreakPoints = {
       <div class="trend__Footer-qgyx2j-3 jQjUBg">
         <div class="trend__LinkToAll-qgyx2j-4 iABAfw">
           <a href="#">
-            <span>Xem tất cả</span>
-            <ChevronDoubleRightIcon class="h-5 w-5 text-gray-custom ml-2" />
+            <span class="text-base">Xem tất cả</span>
+            <ChevronDoubleRightIcon class="h-4 w-4 text-gray-custom ml-2" />
           </a>
         </div>
       </div>
