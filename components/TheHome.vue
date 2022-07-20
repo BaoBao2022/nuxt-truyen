@@ -1,23 +1,23 @@
 <script lang="ts" setup>
-const devices = useState('devices');
 
 </script>
 
 <template>
-  <main class="h-[auto]">
+  <main class="h-[auto] bg-white">
     <LazySectionSpotlight />
     <LazySharedBannerBar />
 
     <section>
       <LazyHomePageMangaUpdated />
       <!--      <LazyVisitedComic/>-->
-      <LazyHomePageFavoriteStory />
-      <LazyHomePageCatelog />
-      <LazyHomePageNgonTinh />
+      <LazyHomePageXuyenKhong />
+      <LazyHomePageCatelog class="mt-10" />
+      <LazyHomePageNewStory class="mt-10" />
       <LazyHomePageMaybeLove />
+      <LazyHomePageNgonTinh />
       <LazyHomePageDamMy />
-      <LazyHomePageNewStory />
-      <!-- <LazyHomePageRankList/> -->
+      <LazyHomePageFavoriteStory />
+      <LazyHomePageRankList />
     </section>
   </main>
 </template>

@@ -1,31 +1,32 @@
 <script lang="ts" setup>
-import {Manga} from "~/types";
-import {Swiper, SwiperSlide} from 'swiper/vue';
+import { Manga } from "~/types";
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
-const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
+const { data: mangas, pending } = useLazyFetch<Manga[]>(`/api/manga-new`);
+
 const swiperBreakPoints = {
   1: {
     slidesPerView: 2,
     spaceBetween: 2,
   },
   320: {
-    slidesPerView: 4,
+    slidesPerView: 3.4,
     spaceBetween: 10,
   },
   480: {
-    slidesPerView: 4,
+    slidesPerView: 4.4,
     spaceBetween: 10,
   },
   640: {
-    slidesPerView: 4,
+    slidesPerView: 5.4,
     spaceBetween: 20,
   },
   750: {
-    slidesPerView: 5,
+    slidesPerView: 6.4,
     spaceBetween: 20,
   },
   800: {
-    slidesPerView: 6,
+    slidesPerView: 7.4,
     spaceBetween: 20,
   },
 };
@@ -33,11 +34,10 @@ const swiperBreakPoints = {
 
 <template>
   <div class="px-4 mb-4" v-if="!pending">
-    <h2 class=" h-[40px] text-3xl font-bold flex justify-start items-center text-black">
+    <h2 class=" h-[20px] text-3xl font-bold flex justify-start items-center text-black mb-4">
       # Truyện mới cập nhật
     </h2>
-    <swiper :breakpoints="swiperBreakPoints" :initialSlide="3" :centered-slides-bounds="true" :centeredSlides="true"
-      :slides-per-view="4" :space-between="14">
+    <swiper :breakpoints="swiperBreakPoints">
       <swiper-slide v-for="manga in mangas">
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
@@ -64,7 +64,6 @@ const swiperBreakPoints = {
 </template>
 
 <style>
-
 .swiper-slide {
   width: 80%;
 }

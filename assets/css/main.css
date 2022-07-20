@@ -17,6 +17,7 @@ body {
 
   --tw-bg-opacity: 1;
   font-family: Nunito, sans-serif;
+  background: rgb(229, 229, 229);
 }
 
 .text-gray-custom {

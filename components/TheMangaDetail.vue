@@ -92,7 +92,7 @@ useHead({
 
 <template>
   <NuxtLayout>
-    <div v-if="pending">
+    <div v-if="pending" class="z-[999]">
       <div class="px-4 md:px-12 pt-3 pb-8 overflow-hidden rounded-xl-md">
         <div>
           <div class="animate-pulse bg-black/80 aspect-w-16 aspect-h-9 rounded-xl"></div>
@@ -110,13 +110,11 @@ useHead({
           </div>
         </div>
       </div>
-
       <div class="mt-4 px-4 col-span-1 w-full h-[350px]">
         <div class="h-[350px]">
           <div class="h-[350px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
         </div>
       </div>
-
       <div class="px-4 grid grid-cols-5 gap-4 fixed bottom-0 w-full mb-3">
         <div class=" col-span-1 w-full h-[50px]">
           <div class="h-[50px]">

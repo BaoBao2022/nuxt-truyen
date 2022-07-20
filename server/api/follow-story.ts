@@ -10,8 +10,8 @@ export default defineEventHandler(async (event) => {
         genres: genres as string,
         page: 1,
         // status: 'all',
-        // sort: 'day' as any,
-        limit: 10,
+        sort: 'month' as any,
+        limit: 16,
     }
 
     const mangas = await API?.filter(filterRequest);

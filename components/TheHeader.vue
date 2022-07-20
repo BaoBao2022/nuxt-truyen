@@ -1,27 +1,28 @@
 <script setup>
-// import { ref } from 'vue'
-import { ArrowSmLeftIcon } from '@heroicons/vue/solid'
+import {ArrowSmLeftIcon} from '@heroicons/vue/solid'
 
 const route = useRoute();
-// const scrollTransform = ref(0);
-// if (typeof document !== 'undefined')
-//   document.addEventListener('scroll', (e) => {
-//     scrollTransform.value = window.pageYOffset || document.documentElement.scrollTop;
-//   });
+
+const scrollTransform = ref(0);
+if (typeof document !== 'undefined')
+  document.addEventListener('scroll', (e) => {
+    scrollTransform.value = window.pageYOffset || document.documentElement.scrollTop;
+  });
 
 </script>
 
 <template>
   <div
-    class="max-w-[450px] md:max-w-[750px] px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 px-4 md:px-12 flex items-center h-24 fixed top w-full z-50 transition duration-500 to-transparent">
+      :class="scrollTransform === 0  ? '' : 'bg-black/70'"
+      class="max-w-[450px] md:max-w-[750px] px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-36 px-4 md:px-12 flex items-center h-24 fixed top w-full z-50 transition duration-500 to-transparent">
     <div class="mr-4">
       <NuxtLink class="flex items-center" to="/" v-if="route.name !== 'index'">
-        <ArrowSmLeftIcon class="h-9 w-9 text-white" />
+        <SvgBack class="h-9 w-9 text-white"/>
       </NuxtLink>
     </div>
     <div class="flex items-center space-x-4 ml-auto">
       <NuxtLink href="/">
-        <LazyModalMangaSearch />
+        <LazyModalMangaSearch/>
       </NuxtLink>
       <!-- <div class="flex items-center space-x-2">
         <NuxtLink href="/">

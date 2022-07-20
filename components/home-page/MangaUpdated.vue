@@ -70,7 +70,7 @@ const swiperBreakPoints = {
                     <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
                       <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
                         <SvgViewChapter/>
-                        <span>{{ manga.view }}</span>
+                        <span class="text-base">{{ manga.view }}</span>
                       </div>
                     </div>
                   </div>

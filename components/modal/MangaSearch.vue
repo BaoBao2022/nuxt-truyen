@@ -56,7 +56,8 @@ watch([refInput], async () => {
   <form @click="open" class="flex">
     <!--    <input class="hidden w-[80%] bg-transparent md:block" placeholder="Tìm truyện...">-->
     <div class="h-full w-fit rounded-2xl p-4 hover:cursor-pointer hover:opacity-60 text-background flex items-center">
-      <SearchIcon class="w-5 h-5 text-white"/>
+      <SvgSearch class="mr-4"/>
+      <SvgNotify class=""/>
     </div>
   </form>
   <TransitionRoot appear :show="shouldShow" as="template">
