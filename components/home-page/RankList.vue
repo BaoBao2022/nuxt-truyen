@@ -23,7 +23,7 @@ const { data: mangas, pending } = useLazyFetch(`/api/top-month`);
               }}</span>
             <figure class="relative">
               <span class="rounded-xl">
-                <SharedImg class="h-[109px] w-full object-cover object-center rounded-xl" format="webp" loading="lazy"
+                <SharedImg class="h-[109px] w-[80px] w-full object-cover object-center rounded-xl" format="webp" loading="lazy"
                   fil="fill" :src="manga.thumbnail" sizes="sm:100vw md:100vw lg:100vw" />
               </span>
             </figure>
