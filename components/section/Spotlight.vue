@@ -24,7 +24,7 @@ const backgroundImage = () => {
 
 <template>
   <SectionSpotlightBannerLoading v-if="pending"/>
-    <ClientOnly>
+  <ClientOnly>
     <Swiper :loop="true" :modules="modules" :autoplay="autoPlaySettings" class="relative">
       <SwiperSlide v-for="spotlight in spotlights">
         <NuxtLink :to="useMangaDetailPagePath(spotlight.slug)">
@@ -59,11 +59,15 @@ const backgroundImage = () => {
                     style="background-image: url(https://cdn.funtoon.vn/image/resources/1641268437278.1942.png)">
             </figure>
             <div>
-              <img loading="lazy" class="img-position z-10 object-cover" format="webp" :src="spotlight.thumbnail">
+              <SharedImg
+                  loading="lazy"
+                  class="img-position z-10 object-cover"
+                  format="webp"
+                  :src="spotlight.thumbnail"/>
             </div>
           </div>
         </NuxtLink>
       </SwiperSlide>
     </Swiper>
-    </ClientOnly>
+  </ClientOnly>
 </template>

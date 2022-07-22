@@ -10,7 +10,6 @@ defineProps({
 <template>
   <div class="detail-content">
     <div class="">
-
       <span class="relative" :class="{'shortened' : !moreReview }">
         <span class="text-xl">💡</span> {{ review }}
       </span>

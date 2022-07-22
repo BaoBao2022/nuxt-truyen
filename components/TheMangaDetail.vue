@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { keys, MangaDetails } from "~/types";
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
-import { useFetch, useHead } from "#app";
-import { watchEffect } from "vue";
-import { useStorage } from "@vueuse/core";
-import { MessageType } from "vscode-languageserver-protocol";
+import {keys, MangaDetails} from "~/types";
+import {TabGroup, TabList, Tab, TabPanels, TabPanel} from '@headlessui/vue'
+import {useFetch, useHead} from "#app";
+import {watchEffect} from "vue";
+import {useStorage} from "@vueuse/core";
+import {MessageType} from "vscode-languageserver-protocol";
 import Log = MessageType.Log;
 
 const route = useRoute();
@@ -91,62 +91,21 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
-    <div v-if="pending" class="z-[999]">
-      <div class="px-4 md:px-12 pt-3 pb-8 overflow-hidden rounded-xl-md">
-        <div>
-          <div class="animate-pulse bg-black/80 aspect-w-16 aspect-h-9 rounded-xl"></div>
-        </div>
-      </div>
-      <div class="px-4 grid grid-cols-2 gap-4">
-        <div class=" col-span-1 w-full h-[50px]">
-          <div class="h-[50px]">
-            <div class="h-[50px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-          </div>
-        </div>
-        <div class=" col-span-1 w-full h-[50px]">
-          <div class="h-[50px]">
-            <div class="h-[50px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-4 px-4 col-span-1 w-full h-[350px]">
-        <div class="h-[350px]">
-          <div class="h-[350px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-        </div>
-      </div>
-      <div class="px-4 grid grid-cols-5 gap-4 fixed bottom-0 w-full mb-3">
-        <div class=" col-span-1 w-full h-[50px]">
-          <div class="h-[50px]">
-            <div class="h-[50px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-          </div>
-        </div>
-        <div class=" col-span-1 w-full h-[50px]">
-          <div class="h-[50px]">
-            <div class="h-[50px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-          </div>
-        </div>
-        <div class=" col-span-3 w-full h-[50px]">
-          <div class="h-[50px]">
-            <div class="h-[50px] animate-pulse bg-black/80 aspect-w-9 rounded-xl"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <div class="relative flex h-[100vh] flex-col bg-accent-4" v-else>
-      <LazyMangaDetailReadButton />
-      <div class="relative aspect-w-16 aspect-h-9 rounded-xl-md">
+  <div class="animate-pulse bg-black/50 h-[100vh]" v-if="pending"></div>
+  <NuxtLayout v-else>
+    <div class="relative flex h-[100vh] flex-col bg-accent-4">
+      <LazyMangaDetailReadButton/>
+      <div class=" aspect-w-16 aspect-h-9 rounded-xl-md">
         <div
-          class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">
+            class="z-20 absolute fixed-0 bg-gradient-to-b from-transparent via-black/60 to-black/80 flex items-end bottom-0 w-full">
           <div class="p-4 w-full">
             <h1 class="text-xl font-bold uppercase line-clamp-2 text-white w-[70%] h-[35px]">
-              <a class="flex items-end h-[100%]">{{ manga.title }}</a>
+              <a class="flex items-end h-[100%]">{{ manga.name }}</a>
             </h1>
             <div class="flex flex-wrap items-center mt-4 text-lg gap-x-8">
               <div class="flex items-center gap-x-2">
                 <p class="text-white bg-highlight banner-author">
-                  <a class="p-3">{{ manga.author }}</a>
+                  <a class="p-3">{{ manga.author ? manga.author : 'Đang cập nhật' }}</a>
                 </p>
               </div>
               <div class="flex items-center gap-x-2">
@@ -158,76 +117,74 @@ useHead({
             </div>
           </div>
         </div>
-        <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none" :style="backgroundImage(manga)">
+        <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat"
+                :style="backgroundImage(manga)">
         </figure>
-        <div>
-          <img class="img-position z-10" :src="manga.thumbnail" style="object-fit: contain">
-        </div>
+        <SharedImg class="img-position z-10 object-contain" :src="manga.thumbnail"/>
       </div>
       <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1">
-        <div>
-          <TabGroup>
-            <TabList class="flex space-x-1 rounded-xl flex justify-around">
-              <Tab v-for="category in Object.keys(categories)" as="template" :key="category" v-slot="{ selected }">
-                <button :class="[
-              'w-full py-2.5 text-sm font-medium leading-5 w-[100px]',
-              selected
-                ? 'shadow text-primary border-b-[1px] border-rose-900'
-                : 'border-b-[1px] border-gray-600']">
-                  {{ category }}
-                </button>
-              </Tab>
-            </TabList>
-            <TabPanels class="mt-2 px-3">
-              <TabPanel v-for="(cates, cId) in Object.values(categories)" :key="cId">
-                <div v-for="cate in cates" :key="cate.id">
-                  <div v-if="cate.id === 1">
-                    <div class="detail-info-counts bg-primary">
-                      <div class="detail-info-count-item">
-                        <p class="detail-info-count-item-value text-white">
-                          {{ getView(manga.view) }}
-                        </p>
-                        <p class="detail-info-count-item-label text-white">
-                          Lượt xem
-                        </p>
-                      </div>
-                      <div class="detail-info-count-item">
-                        <p class="detail-info-count-item-value text-white">
-                          {{ getFollow(manga.follow) }}
-                        </p>
-                        <p class="detail-info-count-item-label text-white">
-                          Follow
-                        </p>
-                      </div>
-                      <div class="detail-info-count-item">
-                        <p class="detail-info-count-item-value text-white">
-                          <span>4.5</span>/5
-                        </p>
-                        <p class="detail-info-count-item-label text-white">Đánh giá</p>
-                      </div>
-                    </div>
-                    <h4 class="text-base leading-7 text-dark mt-2">
-                      <LazyMangaDetailReview :review="cate.review" />
-                    </h4>
-                    <div class="flex flex-wrap mt-4">
-                      <span class="mr-2">🎓</span>
-                      <span class="banner-author text-white bg-highlight mr-3 flex items-center h-[20px]"
-                        v-for="genre in manga.genres">
-                        <a class="p-3 text-base line-clamp-1">
-                          {{ genre.genreTitle }}
-                        </a>
-                      </span>
-                    </div>
-                  </div>
-                  <div v-if="cate.id === 2">
-                    <LazyMangaChaplist :slug="slug" :chapterList="cate" />
+        <div class="detail-info-counts bg-primary mb-2">
+          <div class="detail-info-count-item">
+            <p class="detail-info-count-item-value text-white">
+              {{ getView(manga.view) }}
+            </p>
+            <p class="detail-info-count-item-label text-white">
+              Lượt xem
+            </p>
+          </div>
+          <div class="detail-info-count-item">
+            <p class="detail-info-count-item-value text-white">
+              {{ getFollow(manga.follow) }}
+            </p>
+            <p class="detail-info-count-item-label text-white">
+              Follow
+            </p>
+          </div>
+          <div class="detail-info-count-item">
+            <p class="detail-info-count-item-value text-white">
+              <span>4.5</span>/5
+            </p>
+            <p class="detail-info-count-item-label text-white">Đánh giá</p>
+          </div>
+        </div>
+        <TabGroup>
+          <TabList class="flex space-x-1 rounded-xl flex justify-around">
+            <Tab v-for="category in Object.keys(categories)" as="template" :key="category" v-slot="{ selected }">
+              <button :class="[
+                    'w-full py-2.5 text-xl leading-5 w-[100px]',
+                    selected
+                      ? 'shadow text-primary border-b-[1px] border-rose-900'
+                      : 'border-b-[1px] border-gray-600 text-gray-custom']">
+                {{ category }}
+              </button>
+            </Tab>
+          </TabList>
+          <TabPanels class="mt-2 px-3">
+            <TabPanel v-for="(cates, cId) in Object.values(categories)" :key="cId">
+              <div v-for="cate in cates" :key="cate.id">
+                <div v-if="cate.id === 1">
+                  <h4 class="text-base leading-7 text-dark mt-2">
+                    <LazyMangaDetailReview :review="cate.review"/>
+                  </h4>
+                  <div class="flex flex-wrap mt-4">
+                    <span class="mr-2">🎓</span>
+                    <span class="banner-author text-white bg-highlight mr-3 flex items-center h-[20px]"
+                          v-for="genre in manga.genres">
+                              <a class="p-3 text-base line-clamp-1">
+                                {{ genre.genreTitle }}
+                              </a>
+                            </span>
                   </div>
                 </div>
-              </TabPanel>
-            </TabPanels>
-          </TabGroup>
-        </div>
+                <div v-if="cate.id === 2">
+                  <LazyMangaChaplist :slug="slug" :chapterList="cate"/>
+                </div>
+              </div>
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
       </div>
     </div>
   </NuxtLayout>
 </template>
+

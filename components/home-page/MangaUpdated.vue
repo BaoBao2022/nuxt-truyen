@@ -1,41 +1,15 @@
 <script lang="ts" setup>
 import {Manga} from "~/types";
-import {Swiper, SwiperSlide} from 'swiper/vue';
 import {Grid} from "swiper";
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import {ChevronDoubleRightIcon} from "@heroicons/vue/solid";
-import "swiper/css/grid";
+import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
 
 const {
   data: mangas,
   pending,
 } = await useFetch<Manga[]>(`/api/manga-updated`);
 
-const swiperBreakPoints = {
-  1: {
-    slidesPerView: 2,
-    spaceBetween: 2,
-  },
-  320: {
-    slidesPerView: 4,
-    spaceBetween: 10,
-  },
-  480: {
-    slidesPerView: 4,
-    spaceBetween: 10,
-  },
-  640: {
-    slidesPerView: 4,
-    spaceBetween: 20,
-  },
-  750: {
-    slidesPerView: 5,
-    spaceBetween: 20,
-  },
-  800: {
-    slidesPerView: 6,
-    spaceBetween: 20,
-  },
-};
 </script>
 
 <template>
@@ -44,7 +18,8 @@ const swiperBreakPoints = {
     <div class="px-4" v-else>
       <div>
         <a href="/xu-huong">
-          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend"></a>
+          <SharedImg class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend" />
+        </a>
       </div>
       <div class="gxFbOF">
         <ClientOnly>
@@ -53,24 +28,33 @@ const swiperBreakPoints = {
             fill: 'row'
           }" :slides-per-view="1.3" :space-between="14">
             <swiper-slide v-for="manga in mangas" class="h-[130px]">
-              <div class="duration-200 ease-in-out transition-all kesnlQ">
+              <div class="p-5">
                 <NuxtLink class="flex items-center" :to="useMangaDetailPagePath(manga.slug)">
-                  <nuxt-img loading="lazy" class="rounded-xl w-[75px] h-[100px] object-cover" :src="manga.thumbnail"
-                            fil="fill">
-                  </nuxt-img>
-                  <div class="trendItem__Info-sc-1vc74my-1 hzqRqV">
-                    <h3 class="trendItem__Name-sc-1vc74my-3 bTGYsm text-xl font-semibold">
+                  <SharedImg
+                      loading="lazy"
+                      class="rounded-xl w-[75px] h-[100px] object-cover"
+                      :src="manga.thumbnail"
+                      fil="fill"/>
+                  <div class="px-5" style="width: calc(100% - 102px)">
+                    <h3 class="text-xl font-semibold line-clamp-1 mb-1">
                       <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                         {{ manga.name }}
                       </NuxtLink>
                     </h3>
-                    <p class="trendItem__ChapCount-sc-1vc74my-4 jbgrIv">
+                    <p class="text-xs italic line-clamp-2 mb-1">
+                      {{ manga.review }}
+                    </p>
+                    <p class=" text-gray-custom mb-3 text-base">
                       {{ manga.newChapter }}
                     </p>
-                    <div class="trendItem__ViewReview-sc-1vc74my-5 hhWiSs">
-                      <div class="trendItem__ComicView-sc-1vc74my-6 iUoBCq">
-                        <SvgViewChapter/>
-                        <span class="text-base">{{ manga.view }}</span>
+                    <div class="flex items-center">
+                      <div class="flex items-center">
+                        <SvgViewChapter class="w-5 h-5 mb-1"/>
+                        <span class="text-base text-gray-custom">{{ manga.view }}</span>
+                      </div>
+                      <div class="flex items-center">
+                        <SvgFollow class="w-5 h-5 ml-2 mr-1 mb-1"/>
+                        <span class="text-base text-gray-custom">{{ manga.follow }}</span>
                       </div>
                     </div>
                   </div>
@@ -80,10 +64,10 @@ const swiperBreakPoints = {
           </swiper>
         </ClientOnly>
       </div>
-      <div class="trend__Footer-qgyx2j-3 jQjUBg">
-        <div class="trend__LinkToAll-qgyx2j-4 iABAfw">
-          <a href="#">
-            <span class="text-base">Xem tất cả</span>
+      <div class="rounded-b-xl shadow-[0_3px_20px_rgba(0,0,0,10%)] bg-white">
+        <div>
+          <a class="flex items-center justify-center p-5">
+            <span class="text-xl text-gray-custom">Xem tất cả</span>
             <ChevronDoubleRightIcon class="h-4 w-4 text-gray-custom ml-2"/>
           </a>
         </div>

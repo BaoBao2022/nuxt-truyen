@@ -1,6 +1,6 @@
 <script setup>
+import "swiper/css/grid";
 import "swiper/css";
-// import "swiper/css/effect-coverflow";
 
 const config = useRuntimeConfig();
 const publicConfig = config.public;
@@ -33,6 +33,6 @@ const publicConfig = config.public;
     <Meta rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png"/>
     <Meta rel="manifest" href="/assets/favicons/site.webmanifest"></Meta>
   </Head>
-    <NuxtLoadingBar/>
-    <NuxtPage/>
+  <NuxtLoadingBar/>
+  <NuxtPage/>
 </template>
