@@ -37,14 +37,14 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
             </div>
             <div class="ml-[118px] p-4">
               <h3 class="text-xl font-semibold line-clamp-1">
-                <a>{{ manga.name }}</a>
+                <a>{{ manga.name ? manga.name : manga.title }}</a>
               </h3>
               <p class="line-clamp-2 text-xs italic">
                 {{ manga.review }}
               </p>
               <div>
                 <a class="text-primary text-base">
-                  Chương {{ manga.chapterNumber }}/{{ manga.chapterList.length }}
+                  Chương {{ manga.chapterNumber ? manga.chapterNumber : 0 }}/{{ manga?.chapterList?.length }}
                 </a>
               </div>
               <button class="bg-primary p-1 text-base w-[80px] rounded-3xl h-[25px]">

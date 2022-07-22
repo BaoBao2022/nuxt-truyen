@@ -65,7 +65,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/xuyen-khong`);
     <div class="mt-10">
       <ClientOnly>
         <Swiper :breakpoints="swiperBreakPoints">
-          <SwiperSlide v-for=" manga in mangas">
+          <SwiperSlide v-for="manga in mangas">
             <div class="duration-200 ease-in-out transition-all">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <SharedImg format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
