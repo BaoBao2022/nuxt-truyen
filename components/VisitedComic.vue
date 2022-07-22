@@ -4,6 +4,33 @@ import {useStorage} from '@vueuse/core';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath'
 
+const swiperBreakPoints = {
+  1: {
+    slidesPerView: 2,
+    spaceBetween: 2,
+  },
+  320: {
+    slidesPerView: 3.4,
+    spaceBetween: 10,
+  },
+  480: {
+    slidesPerView: 4.4,
+    spaceBetween: 10,
+  },
+  640: {
+    slidesPerView: 5.4,
+    spaceBetween: 20,
+  },
+  750: {
+    slidesPerView: 6.4,
+    spaceBetween: 20,
+  },
+  800: {
+    slidesPerView: 7.4,
+    spaceBetween: 20,
+  },
+};
+
 const visitedComics: any = await useStorage(keys.visitedComics, {
   serializer: {
     read: (v: any) => v ? JSON.parse(v) : null,

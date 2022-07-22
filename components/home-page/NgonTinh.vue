@@ -87,7 +87,7 @@ const swiperBreakPoints = {
       </div>
     </div>
     <div class="mt-10">
-      <Swiper :breakpoints="swiperBreakPoints">
+      <Swiper :breakpoints="swiperBreakPoints" virtual>
         <SwiperSlide v-for="manga in mangas">
           <div class="duration-200 ease-in-out transition-all">
             <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
