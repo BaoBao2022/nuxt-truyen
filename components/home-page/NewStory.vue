@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { Manga } from "~/types";
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import {Manga} from "~/types";
+import {Swiper, SwiperSlide} from 'swiper/vue';
 
-const { data: mangas, pending } = useLazyFetch<Manga[]>(`/api/manga-new`);
+const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/manga-new`);
 
 const swiperBreakPoints = {
   1: {
@@ -41,7 +41,7 @@ const swiperBreakPoints = {
       <swiper-slide v-for="manga in mangas">
         <div class="duration-200 ease-in-out transition-all">
           <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-            <SharedImg loading="lazy" class="rounded-xl h-[130px] object-cover" :src="manga.thumbnail" fil="fill" />
+            <SharedImg loading="lazy" class="rounded-xl h-[130px] object-cover" :src="manga.thumbnail" fil="fill"/>
           </NuxtLink>
           <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
             {{ manga.name }}
