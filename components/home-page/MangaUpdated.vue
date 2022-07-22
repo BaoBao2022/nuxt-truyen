@@ -35,12 +35,15 @@ const {
                       :src="manga.thumbnail"
                       fil="fill"/>
                   <div class="px-5" style="width: calc(100% - 102px)">
-                    <h3 class="text-xl font-semibold line-clamp-1 mb-3">
+                    <h3 class="text-xl font-semibold line-clamp-1 mb-1">
                       <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                         {{ manga.name }}
                       </NuxtLink>
                     </h3>
-                    <p class="font-secondary text-gray-custom mb-3 text-xl">
+                    <p class="text-xs italic line-clamp-2 mb-1">
+                      {{ manga.review }}
+                    </p>
+                    <p class=" text-gray-custom mb-3 text-base">
                       {{ manga.newChapter }}
                     </p>
                     <div class="flex items-center">
@@ -60,7 +63,7 @@ const {
           </swiper>
         </ClientOnly>
       </div>
-      <div class="rounded-b-xl shadow-[0_3px_20px_rgba(0,0,0,10%)]">
+      <div class="rounded-b-xl shadow-[0_3px_20px_rgba(0,0,0,10%)] bg-white">
         <div>
           <a class="flex items-center justify-center p-5">
             <span class="text-xl text-gray-custom">Xem tất cả</span>

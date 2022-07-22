@@ -2,9 +2,6 @@ import { defineNuxtConfig } from "nuxt";
 
 export default defineNuxtConfig({
   ssr: true,
-  nitro: {
-    preset: 'node-server'
-  },
   runtimeConfig: {
     public: {
       NUXT_PUBLIC_SERVICE_URL: process.env.NUXT_PUBLIC_SERVICE_URL,
