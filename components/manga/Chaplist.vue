@@ -17,20 +17,23 @@ const navigateToManga = async (chapterNumber: string, chapterId: string, slug: s
 </script>
 
 <template>
-  <div class="list-chapter overflow-auto" style="height: calc(100vh - 300px)">
+  <div class="list-chapter overflow-auto" style="height: calc(100vh - 400px)">
     <ul>
       <li class="flex items-center justify-between py-3 grid grid-cols-1 chapter_list-detail"
           v-for="(chap, cI) in chapterList">
         <div v-if="cI >= 0">
-
           <div class="chapter">
-            <a class="text-base" @click="navigateToManga(chap.chapterNumber, chap.chapterId, slug)">
-              {{ chap.chapterNumber  }}. Chapter {{ chap.chapterNumber }}</a>
+            <a class="text-xl text-white font-bold" @click="navigateToManga(chap.chapterNumber, chap.chapterId, slug)">
+              Chương {{ chap.chapterNumber }}</a>
           </div>
-          <div class=" no-wrap small small text-xs text-left text-dark">{{ chap.updatedAt }}</div>
-          <div class=" small text-xs text-left text-dark">{{ chap.view }}</div>
+          <div class="flex justify-between items-center">
+            <div class="text-gray-custom text-base">{{ chap.updatedAt }}</div>
+            <div class="text-gray-custom text-base flex items-center">
+              <SvgViewChapter class="w-5 h-5 mb-1" />
+              {{ chap.view }}
+            </div>
+          </div>
         </div>
-
       </li>
     </ul>
   </div>

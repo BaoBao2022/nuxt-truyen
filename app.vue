@@ -1,6 +1,6 @@
 <script setup>
+import "swiper/css/grid";
 import "swiper/css";
-// import "swiper/css/effect-coverflow";
 
 const config = useRuntimeConfig();
 const publicConfig = config.public;

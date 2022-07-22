@@ -8,8 +8,10 @@
     <LazySharedBannerBar />
 
     <section>
+      <LazyVisitedComic />
+
       <LazyHomePageMangaUpdated />
-      <!--      <LazyVisitedComic/>-->
+
       <LazyHomePageXuyenKhong />
       <LazyHomePageCatelog class="mt-10" />
       <LazyHomePageNewStory class="mt-10" />

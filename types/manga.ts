@@ -62,32 +62,32 @@ export type HeadlessManga = Pick<MangaDetails, "chapterList" | "title"> & {
     mangaSlug: string;
 };
 
-export const FOLLOW_STATE: Array<{ id: FollowState; title: string }> = [
-    {
-        id: "reading",
-        title: "Đang đọc",
-    },
-    {
-        id: "completed",
-        title: "Hoàn thành",
-    },
-    {
-        id: "dropped",
-        title: "Tạm ngưng",
-    },
-    {
-        id: "on-hold",
-        title: "Giữ lại",
-    },
-    {
-        id: "plan-to-read",
-        title: "Dự định đọc",
-    },
-    {
-        id: "re-reading",
-        title: "Đọc lại",
-    },
-];
+// export const FOLLOW_STATE: Array<{ id: FollowState; title: string }> = [
+//     {
+//         id: "reading",
+//         title: "Đang đọc",
+//     },
+//     {
+//         id: "completed",
+//         title: "Hoàn thành",
+//     },
+//     {
+//         id: "dropped",
+//         title: "Tạm ngưng",
+//     },
+//     {
+//         id: "on-hold",
+//         title: "Giữ lại",
+//     },
+//     {
+//         id: "plan-to-read",
+//         title: "Dự định đọc",
+//     },
+//     {
+//         id: "re-reading",
+//         title: "Đọc lại",
+//     },
+// ];
 
 export const MANGA_NT = [
     {

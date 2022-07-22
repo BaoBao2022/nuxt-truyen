@@ -1,4 +1,4 @@
-import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME, SourceParams} from "~/contants";
+import {MANGA_PATH_NAME, MANGA_PATH_READ_NAME} from "~/contants";
 import {keys, Manga} from "~/types";
 import {useStorage} from "@vueuse/core";
 
@@ -24,13 +24,13 @@ const useFirstPathChapter = async (spotlight: Manga, slugs: string | readonly st
 
             visitedComics.value.push({
                 slug,
-                ...mangas
+                ...mangas.value
             });
         }
     } else {
         visitedComics.value = [{
             slug,
-            ...mangas
+            ...mangas.value
         }];
     }
 

@@ -33,7 +33,7 @@ const swiperBreakPoints = {
 </script>
 <template>
   <PulseMangaUpdatedLoading v-if="pending" />
-  <div class="px-4" v-else>
+  <div class="px-4" v-if="mangas && mangas.length > 0 && !pending">
     <h2 class=" h-[70px] text-3xl font-bold flex justify-start items-center text-black mb-4">
       # Đam Mỹ Bách Hợp
     </h2>
@@ -43,72 +43,72 @@ const swiperBreakPoints = {
         <div class="absolute bottom-[13px] left-[13px]">
           <NuxtLink :to="useMangaDetailPagePath(mangas[mangas.length - 1].slug)">
             <div class=" max-w-full w-[105px]">
-            <div class="relative pb-[133.3333%]">
-              <img class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
-                :src="mangas[mangas.length - 1].thumbnail">
+              <div class="relative pb-[133.3333%]">
+                <img class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
+                  :src="mangas[mangas.length - 1].thumbnail">
+              </div>
             </div>
+          </NuxtLink>
         </div>
-        </NuxtLink>
-      </div>
-      <div class="ml-[118px] p-4">
-        <h3 class="text-xl font-bold">
-          <a>{{ mangas[mangas.length - 1].name }}</a>
-        </h3>
-        <div>
-          <div class="rating flex items-center">
-            <SvgStar />
-            <SvgStar />
-            <SvgStar />
-            <SvgStar />
-            <SvgStar />
-            <p class="text-xl">4.8
-              <span class="text-base font-semibold text-gray-500"> (369)</span>
-            </p>
-          </div>
-          <div class="mt-3">
-            <a>
-              <p class="w-full text-xl">
-                "Làm thêm nữa nhá"
+        <div class="ml-[118px] p-4">
+          <h3 class="text-xl font-bold">
+            <a>{{ mangas[mangas.length - 1].name }}</a>
+          </h3>
+          <div>
+            <div class="rating flex items-center">
+              <SvgStar />
+              <SvgStar />
+              <SvgStar />
+              <SvgStar />
+              <SvgStar />
+              <p class="text-xl">4.8
+                <span class="text-base font-semibold text-gray-500"> (369)</span>
               </p>
-            </a>
-          </div>
-          <div class="mt-3">
-            <a class="mt-3">
-              <p class="flex items-center justify-start w-full text-gray-500">
-                <SvgComment class="mr-2" />
-                <span class="name text-base font-semibold">Bang Vo</span>
-                <span class="mx-2 text-xl">•</span>
-                <span class="text-base">21 giờ trước</span>
-              </p>
-            </a>
+            </div>
+            <div class="mt-3">
+              <a>
+                <p class="w-full text-xl">
+                  "Làm thêm nữa nhá"
+                </p>
+              </a>
+            </div>
+            <div class="mt-3">
+              <a class="mt-3">
+                <p class="flex items-center justify-start w-full text-gray-500">
+                  <SvgComment class="mr-2" />
+                  <span class="name text-base font-semibold">Bang Vo</span>
+                  <span class="mx-2 text-xl">•</span>
+                  <span class="text-base">21 giờ trước</span>
+                </p>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="mt-10">
-    <ClientOnly>
-      <Swiper :breakpoints="swiperBreakPoints">
-        <SwiperSlide v-for=" manga in mangas">
-          <div class="duration-200 ease-in-out transition-all">
-            <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-              <nuxt-img format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
-                :src="manga.thumbnail" fil="fill">
-              </nuxt-img>
-            </NuxtLink>
-            <div class="h-[30px] flex flex-wrap">
-              <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
-                {{ manga.name }}
-              </h2>
-              <a class="text-sm text-zinc-500">
-                {{ manga.newChapter }}
-              </a>
-            </div>
+    <div class="mt-10">
+      <ClientOnly>
+        <Swiper :breakpoints="swiperBreakPoints">
+          <SwiperSlide v-for=" manga in mangas">
+            <div class="duration-200 ease-in-out transition-all">
+              <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
+                <nuxt-img format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
+                  :src="manga.thumbnail" fil="fill">
+                </nuxt-img>
+              </NuxtLink>
+              <div class="h-[30px] flex flex-wrap">
+                <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
+                  {{ manga.name }}
+                </h2>
+                <a class="text-sm text-zinc-500">
+                  {{ manga.newChapter }}
+                </a>
+              </div>
 
-          </div>
-        </SwiperSlide>
-      </Swiper>
-    </ClientOnly>
-  </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </ClientOnly>
+    </div>
   </div>
 </template>
