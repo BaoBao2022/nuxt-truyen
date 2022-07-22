@@ -2,7 +2,6 @@
 import {Manga, swiperBreakPoints} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath'
-import Img from "~/components/shared/Img.vue";
 
 const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=manhua`);
 </script>
@@ -19,7 +18,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=
           <NuxtLink :to="useMangaDetailPagePath(mangas[mangas.length - 1].slug)">
             <div class="max-w-full w-[105px]">
               <div class="relative pb-[133.3333%]">
-                <Img class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
+                <SharedImg class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
                      :src="mangas[mangas.length - 1].thumbnail"/>
               </div>
             </div>
@@ -67,7 +66,7 @@ const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/follow-story?genres=
           <SwiperSlide v-for="manga in mangas">
             <div class="duration-200 ease-in-out transition-all">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                <Img
+                <SharedImg
                     format="webp"
                     loading="lazy"
                     class="rounded-xl object-cover h-[139px] w-full"

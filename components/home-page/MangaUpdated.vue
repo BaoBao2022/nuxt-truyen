@@ -18,7 +18,8 @@ const {
     <div class="px-4" v-else>
       <div>
         <a href="/xu-huong">
-          <img class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend"></a>
+          <SharedImg class="w-full" src="https://weeboo.vn/icons/widgets/trend/img-header.svg" alt="trend" />
+        </a>
       </div>
       <div class="gxFbOF">
         <ClientOnly>
@@ -29,7 +30,7 @@ const {
             <swiper-slide v-for="manga in mangas" class="h-[130px]">
               <div class="p-5">
                 <NuxtLink class="flex items-center" :to="useMangaDetailPagePath(manga.slug)">
-                  <Img
+                  <SharedImg
                       loading="lazy"
                       class="rounded-xl w-[75px] h-[100px] object-cover"
                       :src="manga.thumbnail"

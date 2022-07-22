@@ -44,8 +44,8 @@ const swiperBreakPoints = {
           <NuxtLink :to="useMangaDetailPagePath(mangas[mangas.length - 1].slug)">
             <div class=" max-w-full w-[105px]">
               <div class="relative pb-[133.3333%]">
-                <img class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
-                  :src="mangas[mangas.length - 1].thumbnail">
+                <SharedImg class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
+                  :src="mangas[mangas.length - 1].thumbnail" />
               </div>
             </div>
           </NuxtLink>
@@ -92,9 +92,8 @@ const swiperBreakPoints = {
           <SwiperSlide v-for=" manga in mangas">
             <div class="duration-200 ease-in-out transition-all">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                <nuxt-img format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
-                  :src="manga.thumbnail" fil="fill">
-                </nuxt-img>
+                <SharedImg format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
+                  :src="manga.thumbnail" fil="fill" />
               </NuxtLink>
               <div class="h-[30px] flex flex-wrap">
                 <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">

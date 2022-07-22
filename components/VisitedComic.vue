@@ -13,11 +13,11 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
 </script>
 
 <template>
-  <div class="visited-comics px-3 mt-10" v-if="visitedComics && visitedComics.length > 0">
-    <h2 class=" h-[40px] mb-2 text-2xl font-semibold flex justify-start items-center text-black">
-      # Truyện đang đọc
-    </h2>
-    <ClientOnly>
+  <ClientOnly>
+    <div class="visited-comics px-3 mt-10" v-if="visitedComics && visitedComics.length > 0">
+      <h2 class=" h-[40px] mb-2 text-2xl font-semibold flex justify-start items-center text-black">
+        # Truyện đang đọc
+      </h2>
       <swiper
           :slides-per-view="1.3"
           :space-between="14" class="pt-20_important h-[175px]">
@@ -28,7 +28,7 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
                 <div class=" max-w-full w-[105px]">
                   <div class="relative pb-[133.3333%]">
-                    <Img
+                    <SharedImg
                         class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
                         :src="manga.thumbnail"/>
                   </div>
@@ -54,10 +54,6 @@ const visitedComics: any = await useStorage(keys.visitedComics, {
           </div>
         </swiper-slide>
       </swiper>
-    </ClientOnly>
-
-    <!--    <PulseVisitedComic v-else />-->
-
-
-  </div>
+    </div>
+  </ClientOnly>
 </template>

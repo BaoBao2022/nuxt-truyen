@@ -8,10 +8,10 @@ import {HeartIcon} from "@heroicons/vue/solid";
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter?view=month" class="rounded-[100%] bg-yellow-200">
             <div class="icon w-16 h-16 rounded-[100%] flex items-center justify-center">
-              <img
+              <SharedImg
                   alt="ranking"
                   class="w-9 h-9 mb-2"
-                  src="/images/ranking.png">
+                  src="/images/ranking.png" />
             </div>
           </NuxtLink>
         </div>
@@ -23,10 +23,10 @@ import {HeartIcon} from "@heroicons/vue/solid";
         <div class="flex items-center justify-center">
           <NuxtLink to="/filter" class="rounded-[100%] bg-blue-200">
             <div class="icon w-16 h-16 flex items-center justify-center rounded-[100%]">
-              <img
+              <SharedImg
                   alt="category"
                   class="w-9 h-9"
-                  src="/images/category.png">
+                  src="/images/category.png" />
             </div>
           </NuxtLink>
         </div>

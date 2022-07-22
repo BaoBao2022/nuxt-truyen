@@ -91,8 +91,9 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
-    <div class="relative flex h-[100vh] flex-col bg-accent-4" v-if="!pending">
+  <div class="animate-pulse bg-black/50 h-[100vh]" v-if="pending"></div>
+  <NuxtLayout v-else>
+    <div class="relative flex h-[100vh] flex-col bg-accent-4">
       <LazyMangaDetailReadButton/>
       <div class=" aspect-w-16 aspect-h-9 rounded-xl-md">
         <div
@@ -116,10 +117,10 @@ useHead({
             </div>
           </div>
         </div>
-        <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat blur-none"
+        <figure class="deslide-cover w-full bg-cover bg-center bg-no-repeat"
                 :style="backgroundImage(manga)">
         </figure>
-        <img class="img-position z-10" :src="manga.thumbnail" style="object-fit: contain">
+        <SharedImg class="img-position z-10 object-contain" :src="manga.thumbnail"/>
       </div>
       <div id="item-detail" class="mx-auto mt-4 w-[95%] grid grid-cols-1">
         <div class="detail-info-counts bg-primary mb-2">

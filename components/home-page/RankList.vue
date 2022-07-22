@@ -1,11 +1,5 @@
 <script lang="ts" setup>
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath';
-import { EyeIcon } from '@heroicons/vue/solid';
-import { randomColors } from '~/serveless/utils';
-import { TailwindColors } from '~/contants';
-import { PropType } from 'vue';
-import { Manga } from '~/types';
-
 const { data: mangas, pending } = useLazyFetch(`/api/top-month`);
 
 </script>
@@ -29,9 +23,8 @@ const { data: mangas, pending } = useLazyFetch(`/api/top-month`);
               }}</span>
             <figure class="relative">
               <span class="rounded-xl">
-                <nuxt-img class="h-[109px] w-full object-cover object-center rounded-xl" format="webp" loading="lazy"
-                  fil="fill" :src="manga.thumbnail" sizes="sm:100vw md:100vw lg:100vw">
-                </nuxt-img>
+                <SharedImg class="h-[109px] w-full object-cover object-center rounded-xl" format="webp" loading="lazy"
+                  fil="fill" :src="manga.thumbnail" sizes="sm:100vw md:100vw lg:100vw" />
               </span>
             </figure>
           </LazyNuxtLink>

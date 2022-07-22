@@ -1,36 +1,10 @@
 <script lang="ts" setup>
 import {Manga} from "~/types";
 import {Swiper, SwiperSlide} from 'swiper/vue';
+import {swiperBreakPoints} from '~/types'
 import useMangaDetailPagePath from '~/composables/useMangaDetailPagePath'
 
 const {data: mangas, pending} = useLazyFetch<Manga[]>(`/api/xuyen-khong`);
-const swiperBreakPoints = {
-  1: {
-    slidesPerView: 2,
-    spaceBetween: 2,
-  },
-  320: {
-    slidesPerView: 3.4,
-    spaceBetween: 10,
-  },
-  480: {
-    slidesPerView: 4.4,
-    spaceBetween: 10,
-  },
-  640: {
-    slidesPerView: 5.4,
-    spaceBetween: 20,
-  },
-  750: {
-    slidesPerView: 6.4,
-    spaceBetween: 20,
-  },
-  800: {
-    slidesPerView: 7.4,
-    spaceBetween: 20,
-  },
-};
-
 </script>
 <template>
   <PulseMangaUpdatedLoading v-if="pending"/>
@@ -45,9 +19,9 @@ const swiperBreakPoints = {
           <NuxtLink :to="useMangaDetailPagePath(mangas[mangas.length - 1].slug)">
             <div class=" max-w-full w-[105px]">
               <div class="relative pb-[133.3333%]">
-                <Img
+                <SharedImg
                     class="rounded-2xl visible h-full left-0 absolute top-0 w-full"
-                    :src="mangas[mangas.length - 1].thumbnail" />
+                    :src="mangas[mangas.length - 1].thumbnail"/>
               </div>
             </div>
           </NuxtLink>
@@ -94,9 +68,8 @@ const swiperBreakPoints = {
           <SwiperSlide v-for=" manga in mangas">
             <div class="duration-200 ease-in-out transition-all">
               <NuxtLink :to="useMangaDetailPagePath(manga.slug)">
-                <nuxt-img format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
-                          :src="manga.thumbnail" fil="fill">
-                </nuxt-img>
+                <SharedImg format="webp" loading="lazy" class="rounded-xl object-cover h-[139px] w-full"
+                           :src="manga.thumbnail" fil="fill"/>
               </NuxtLink>
               <div class="h-[30px] flex flex-wrap">
                 <h2 class="text-base line-clamp-1 mt-1 text-black font-semibold">
@@ -106,7 +79,6 @@ const swiperBreakPoints = {
                   {{ manga.newChapter }}
                 </a>
               </div>
-
             </div>
           </SwiperSlide>
         </Swiper>
